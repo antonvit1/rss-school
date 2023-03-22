@@ -335,3 +335,37 @@ body {
   color: #b2b2b2;
   padding-right: 9vw;
 }
+.footer {
+  background: url(assets/noise_transparent@2x.png),
+    radial-gradient(100% 215.42% at 0% 0%, #5b483a 0%, #262425 100%), #211f20;
+  padding-right: 40px;
+  padding-left: 40px;
+  padding-top: 40px;
+  display: flex;
+  justify-content: space-between;
+  font-family: "Georgia";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 35px;
+  line-height: 130%;
+  letter-spacing: 0.06em;
+  color: #ffffff;
+}
+
+.tittle-left-footer {
+  margin: 0;
+}
+.email-phone {
+  font-size: 20px;
+  line-height: 115%;
+  letter-spacing: 0.06em;
+  color: #f1cdb3;
+  display: flex;
+  justify-content: space-around;
+}
+.email {
+  text-decoration: none;
+}
+.phone {
+  text-decoration: none;
+}

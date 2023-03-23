@@ -58,14 +58,17 @@ body {
   text-decoration: none;
   list-style-type: none;
   color: #cdcdcd;
-}
-li:first-child {
-  margin: 0;
-  border-bottom: solid #f1cdb3;
+  transition: 0.4s;
 }
 
-.nav-header:visited {
+.nav-header:hover {
   color: #fafafa;
+  transition: 0.4s;
+}
+.nav-header:active {
+  color: #fafafa;
+  margin: 0;
+  border-bottom: solid #f1cdb3;
 }
 .under-header-section {
   display: flex;
@@ -108,7 +111,13 @@ li:first-child {
   line-height: 130%;
   color: #292929;
   letter-spacing: 0.06em;
+  transition: 0.4s;
 }
+.button-left-section-uhs:hover {
+  cursor: pointer;
+  background-color: #fddcc4;
+}
+
 .picture-dog {
   justify-content: center;
 }
@@ -176,6 +185,10 @@ li:first-child {
   width: 52px;
   height: 52px;
 }
+.prev-button-slider:hover {
+  background-color: #fddcc4;
+  cursor: pointer;
+}
 .next-button-slider {
   display: flex;
   align-items: center;
@@ -184,6 +197,10 @@ li:first-child {
   border-radius: 50%;
   width: 52px;
   height: 52px;
+}
+.next-button-slider:hover {
+  background-color: #fddcc4;
+  cursor: pointer;
 }
 .all-card-pets {
   display: flex;
@@ -196,7 +213,14 @@ li:first-child {
   background: #fafafa;
   border-radius: 9px;
 }
-
+.card-pets:hover {
+  cursor: pointer;
+}
+.card-pets:hover .learn-more-underpet {
+  background-color: #fddcc4;
+  border: 2px solid #fddcc4;
+  cursor: pointer;
+}
 .pet-name-card {
   text-align: center;
   color: #545454;
@@ -223,7 +247,9 @@ li:first-child {
   border-radius: 100px;
   border: 2px solid #f1cdb3;
   margin-bottom: 30px;
+  transition: 0.4s;
 }
+
 .get-to-know-the-rest {
   margin: 0 auto;
   margin-top: 60px;
@@ -449,8 +475,3 @@ li:first-child {
   padding-left: 20px;
   padding-top: 6px;
 }
-
-/* .footer-dog {
-  width: 300px;
-  height: 310px;
-} */

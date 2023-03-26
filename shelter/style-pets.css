@@ -1,3 +1,6 @@
+body {
+  margin: 0;
+}
 .header {
   display: flex;
   justify-content: space-between;
@@ -8,6 +11,7 @@
 .left-section-header {
   display: flex;
   flex-direction: column;
+  padding-bottom: 29px;
 }
 .name-site {
   color: #545454;
@@ -47,7 +51,10 @@
   color: #545454;
   transition: 0.4s;
 }
-
+#our {
+  border-bottom: solid #f1cdb3;
+  padding-bottom: 4px;
+}
 .nav-header:hover {
   color: #292929;
   transition: 0.4s;
@@ -125,23 +132,31 @@
   line-height: 130%;
   letter-spacing: 0.06em;
   color: #292929;
-  padding: 10px 30px;
+  padding: 13px 20px;
   border: 2px solid #f1cdb3;
   border-radius: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto;
-  width: 200px;
-  margin-top: 30px;
-  margin-bottom: 40px;
+  width: 187px;
+  margin-top: 29px;
+  margin-bottom: 30px;
   transition: 0.4s;
 }
 .slider-button {
   display: flex;
   justify-content: center;
+  padding-top: 31px;
 }
 .pettts-button-prev-next {
+  font-family: "Georgia";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 115%;
+  letter-spacing: 0.06em;
+  color: #292929;
   background: #f6f6f6;
   display: flex;
   align-items: center;
@@ -161,6 +176,12 @@
   border: 2px solid #fddcc4;
   background: #fddcc4;
   cursor: pointer;
+}
+#prev-one {
+  border: 2px solid #cdcdcd;
+}
+#prev-two {
+  border: 2px solid #cdcdcd;
 }
 
 .footer {

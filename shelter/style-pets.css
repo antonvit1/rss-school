@@ -156,7 +156,7 @@ body {
   justify-content: center;
   padding-top: 30px;
 }
-.pettts-button-prev-next {
+.pets-button-prev-next {
   font-family: "Georgia";
   font-style: normal;
   font-weight: 400;
@@ -176,22 +176,25 @@ body {
   transition: 0.4s;
 }
 
-.pettts-button-prev-next:first-child {
+.pets-button-prev-next:first-child {
   margin-left: 0;
+  cursor: default;
 }
-.pettts-button-prev-next:hover {
+.pets-button-prev-next:hover {
   border: 2px solid #fddcc4;
   background: #fddcc4;
   cursor: pointer;
 }
 #prev-one {
   border: 2px solid #cdcdcd;
+  cursor: default;
 }
 #prev-one:hover {
   background: #f6f6f6;
 }
 #prev-two {
   border: 2px solid #cdcdcd;
+  cursor: default;
 }
 #prev-two:hover {
   background: #f6f6f6;

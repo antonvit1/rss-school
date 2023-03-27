@@ -422,9 +422,11 @@ body {
   border: none;
   margin-bottom: 20px;
   cursor: pointer;
+  transition: 0.5s;
 }
 .card-number:hover {
   background-color: #fddcc4;
+  transition: 0.5s;
 }
 .number {
   padding-left: 15px;

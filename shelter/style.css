@@ -81,13 +81,11 @@ body {
 .nav-header:active {
   color: #fafafa;
 }
-.under-header-section {
+.not-only-under-header-section {
   display: flex;
   justify-content: space-between;
   margin: 0 auto;
   max-width: 1200px;
-}
-.under-header-section {
   padding-top: 89px;
 }
 .title-left-section-uhs {
@@ -172,7 +170,7 @@ body {
   padding-bottom: 25px;
 }
 
-.pets {
+.our-friends-pets {
   background-color: #f6f6f6;
 }
 .pets-wrapper {
@@ -369,7 +367,7 @@ body {
   color: #545454;
 }
 
-.donation {
+.in-addition-donation {
   background-color: #f6f6f6;
 }
 .donation-wrapper {

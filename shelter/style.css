@@ -60,7 +60,7 @@ body {
   list-style-type: none;
 }
 .nav-header {
-  margin-left: 2.8vw;
+  margin-left: 36px;
   text-decoration: none;
   list-style-type: none;
   color: #cdcdcd;
@@ -80,7 +80,6 @@ body {
 }
 .nav-header:active {
   color: #fafafa;
-  margin: 0;
 }
 .under-header-section {
   display: flex;
@@ -138,12 +137,14 @@ body {
 .picture-dog {
   justify-content: center;
 }
-.about {
-  display: flex;
-  justify-content: space-between;
-  padding: 81px 215px 99px 215px;
+.about-the {
   margin: 0 auto;
   max-width: 1200px;
+}
+.about-wrapper {
+  display: flex;
+  justify-content: space-between;
+  padding: 81px 180px 99px 175px;
 }
 .right-section-about {
   padding-left: 120px;
@@ -156,6 +157,8 @@ body {
   color: #4c4c4c;
 }
 .title-about {
+  margin: 0;
+  padding-right: 20px;
   font-family: "Georgia";
   font-style: normal;
   font-weight: 400;
@@ -163,12 +166,12 @@ body {
   line-height: 130%;
   letter-spacing: 0.06em;
   color: #545454;
-  padding-right: 10vw;
 }
 .first-text-about {
   padding-top: 25px;
   padding-bottom: 25px;
 }
+
 .pets {
   background-color: #f6f6f6;
 }
@@ -179,7 +182,7 @@ body {
   padding-bottom: 100px;
   padding-left: 40px;
   padding-right: 40px;
-  max-width: 1280px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 .title-pets {
@@ -367,21 +370,24 @@ body {
 }
 
 .donation {
-  padding: 80px 182px 99px 183px;
   background-color: #f6f6f6;
 }
 .donation-wrapper {
-  max-width: 1200px;
-  margin: 0 auto;
+  padding: 80px 40px 100px 40px;
+  padding-bottom: 100px;
   display: flex;
   justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 .img-donation {
-  padding-top: 11px;
+  padding-left: 143px;
+  padding-top: 10px;
   height: 261px;
 }
 .right-section-donation {
   padding-left: 30px;
+  padding-right: 142px;
 }
 .tittle-donation {
   margin: 0;
@@ -393,7 +399,6 @@ body {
   line-height: 130%;
   letter-spacing: 0.06em;
   color: #545454;
-  max-width: 380px;
 }
 .name-type-bank {
   font-family: "Georgia";
@@ -404,7 +409,7 @@ body {
   letter-spacing: 0.06em;
   color: #545454;
   padding-top: 20px;
-  padding-bottom: 20px;
+  padding-bottom: 18px;
 }
 .card-number-link {
   text-decoration: none;
@@ -440,16 +445,11 @@ body {
   font-size: 12px;
   line-height: 18px;
   color: #b2b2b2;
-  max-width: 380px;
 }
 .footer {
   background: url(assets/noise_transparent@2x.png),
-    radial-gradient(100% 215.42% at 0% 0%, #5b483a 0%, #262425 100%), #211f20;
-  padding-right: 40px;
-  padding-left: 40px;
-  padding-top: 40px;
-  display: flex;
-  justify-content: space-between;
+    radial-gradient(110.67% 538.64% at 5.73% 50%, #513d2f 0%, #1a1a1c 100%),
+    #211f20;
 }
 .footer-wrapper {
   padding-right: 40px;
@@ -457,7 +457,7 @@ body {
   padding-top: 40px;
   display: flex;
   justify-content: space-between;
-  max-width: 1200;
+  max-width: 1200px;
   margin: 0 auto;
 }
 .left-section-footer {
@@ -484,6 +484,7 @@ body {
   color: #f1cdb3;
   display: flex;
   padding-top: 38px;
+  text-decoration: none;
 }
 .email-phone:last-child {
   margin-top: 2px;
@@ -495,7 +496,6 @@ body {
   padding-left: 20px;
 }
 .phone {
-  text-decoration: none;
   color: #f1cdb3;
   padding-top: 5px;
   padding-left: 20px;
@@ -524,9 +524,9 @@ body {
   line-height: 115%;
   letter-spacing: 0.06em;
   padding-top: 31px;
+  text-decoration: none;
 }
 .location-link-boston {
-  text-decoration: none;
   font-family: "Georgia";
   font-style: normal;
   font-weight: 400;
@@ -538,7 +538,6 @@ body {
   padding-top: 1px;
 }
 .location-link-london {
-  text-decoration: none;
   font-family: "Georgia";
   font-style: normal;
   font-weight: 400;

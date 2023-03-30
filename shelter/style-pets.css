@@ -305,3 +305,105 @@ body {
   padding-left: 20px;
   padding-top: 6px;
 }
+@media (max-width: 1200px) {
+  .our-friends {
+    padding: 0;
+    padding: 80px 94px 90px 94px;
+  }
+  .footer-wrapper {
+    padding: 0;
+    padding-left: 64px;
+    padding-right: 64px;
+    padding-top: 30px;
+    flex-wrap: wrap;
+  }
+  .left-section-footer {
+    padding: 0;
+    width: 279px;
+  }
+  .tittle-left-footer {
+    width: auto;
+  }
+  .centr-section-footer {
+    padding: 0;
+    width: 291px;
+  }
+  .footer-dog {
+    margin: 0 auto;
+    padding-top: 65px;
+  }
+}
+
+@media (max-width: 550px) {
+  .our-friends {
+    padding: 0;
+  }
+  .title-pets {
+    padding: 0;
+    font-size: 25px;
+    padding-top: 42px;
+    padding-left: 8px;
+    padding-right: 8px;
+    text-align: center;
+    padding-bottom: 12px;
+  }
+  .all-animal-cards {
+    justify-content: center;
+  }
+  .slider-button {
+    padding: 0;
+    padding: 12px 8px 42px 8px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .pets-button-prev-next {
+    margin: 0;
+  }
+  #prev-two {
+    margin: 0;
+  }
+  .footer-wrapper {
+    padding: 0;
+
+    padding-top: 30px;
+
+    display: flex;
+    flex-direction: column;
+  }
+  .left-section-footer {
+    padding: 0;
+    width: auto;
+  }
+  .tittle-left-footer {
+    width: auto;
+    font-size: 25px;
+    text-align: center;
+    padding-left: 21px;
+    padding-right: 21px;
+  }
+  .email-phone {
+    display: flex;
+    justify-content: center;
+  }
+  .centr-section-footer {
+    padding: 0;
+    width: auto;
+  }
+  .tittle-center-footer {
+    font-size: 25px;
+    padding-top: 40px;
+    text-align: center;
+  }
+  .location {
+    padding: 0;
+    padding-top: 40px;
+    display: flex;
+    justify-content: center;
+  }
+  .footer-dog {
+    padding-top: 40px;
+    padding-left: 30px;
+    padding-right: 30px;
+    justify-content: center;
+  }
+}

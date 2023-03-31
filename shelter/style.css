@@ -97,7 +97,7 @@ body {
   font-size: 44px;
   line-height: 130%;
   color: #ffffff;
-  width: 320px;
+  padding-right: 100px;
 }
 .discription-left-section-uhs {
   padding-top: 40px;
@@ -107,7 +107,6 @@ body {
   font-size: 15px;
   line-height: 160%;
   color: #cdcdcd;
-  width: 465px;
 }
 .button-left-section-uhs {
   background: #f1cdb3;
@@ -458,6 +457,10 @@ body {
   max-width: 1200px;
   margin: 0 auto;
 }
+.footer-text {
+  display: flex;
+  justify-content: space-between;
+}
 .left-section-footer {
   padding-top: 17px;
 }
@@ -561,15 +564,16 @@ body {
   .not-only-under-header-section {
     display: flex;
     flex-direction: column;
-  }
-  .not-only-under-header-section {
     padding-top: 60px;
-  }
-  .title-left-section-uhs {
-    padding: 0;
   }
   .left-section-uhs {
     margin: 0 auto;
+    padding-left: 125px;
+    padding-right: 120px;
+  }
+  .title-left-section-uhs {
+    padding: 0;
+    padding-right: 70px;
   }
   .button-left-section-uhs {
     margin: 0 auto;
@@ -577,9 +581,11 @@ body {
     margin-top: 42px;
   }
   .picture-dog {
-    padding-top: 60px;
-    padding-left: 169px;
-    max-width: 600px;
+    margin: 0;
+    padding-top: 100px;
+    padding-left: 140px;
+    width: 569px;
+    height: 593px;
   }
   .about-wrapper {
     padding: 0;
@@ -601,7 +607,10 @@ body {
     padding: 0;
     padding-left: 39px;
     padding-right: 39px;
-    padding-bottom: 57px;
+    padding-bottom: 100px;
+  }
+  .title-help {
+    padding-bottom: 4px;
   }
   .icon-under-title-help {
     padding: 0;
@@ -610,6 +619,7 @@ body {
   }
   .card-help:nth-child(6) {
     padding: 0;
+    padding-top: 55px;
     padding-left: 30px;
     padding-right: 30px;
   }
@@ -637,42 +647,49 @@ body {
   }
   .tittle-donation {
     padding: 0;
-    padding-right: 100px;
+    padding-right: 60px;
   }
   .img-donation {
     padding: 0;
+    padding-top: 60px;
     height: 100%;
   }
   .footer-wrapper {
     padding: 0;
-    padding-left: 64px;
-    padding-top: 30px;
-  }
-  .footer-wrapper {
-    display: flex;
-
     flex-wrap: wrap;
-    justify-content: center;
+    padding-left: 65px;
+    padding-top: 32px;
+    padding-right: 60px;
+  }
+  .footer-text {
+    display: flex;
+    justify-content: space-between;
   }
   .left-section-footer {
     padding: 0;
   }
   .centr-section-footer {
     padding: 0;
-
-    padding-left: 3vw;
-    padding-right: 1vw;
-    width: 280px;
+    padding-left: 57px;
+  }
+  .footer-dog {
+    padding-top: 65px;
+    margin: 0 auto;
   }
 }
 @media (max-width: 1200px) {
+  .title-pets {
+    padding-top: 80px;
+  }
   .prev-button-slider {
     flex-shrink: 0;
     margin-right: 10px;
+    margin-left: 30px;
   }
   .next-button-slider {
     flex-shrink: 0;
     margin-left: 10px;
+    margin-right: 30px;
   }
 }
 @media (max-width: 1100px) {
@@ -682,18 +699,190 @@ body {
   .card-pets:last-child {
     display: none;
   }
+  .get-to-know-the-rest {
+    margin-bottom: 100px;
+  }
   .all-card-pets {
-    width: auto;
-    display: block;
-    display: flex;
-    justify-content: space-around;
+    margin-top: 1px;
+    width: 580px;
   }
 }
 @media (max-width: 767px) {
+  .start-screen {
+    padding: 0;
+  }
+  .header {
+    padding: 0;
+    padding-top: 30px;
+  }
+  .left-section-header {
+    padding-left: 20px;
+  }
   .right-section-header {
     display: none;
   }
+  .left-section-uhs {
+    padding: 0;
+  }
+  .title-left-section-uhs {
+    letter-spacing: 0.06em;
+    font-size: 25px;
+    margin: 0;
+    text-align: center;
+    padding: 0;
+    padding-left: 37px;
+    padding-right: 35px;
+  }
 
+  .discription-left-section-uhs {
+    padding-left: 14px;
+    padding-right: 14px;
+    padding-top: 41px;
+    text-align: center;
+  }
+  .picture-dog {
+    padding: 0;
+    padding-top: 105px;
+    margin-left: 50px;
+    width: 260px;
+    height: 271.77px;
+  }
+  .about-wrapper {
+    padding: 0;
+    padding: 42px 25px 42px 25px;
+  }
+  .title-about {
+    padding: 0px;
+    font-size: 25px;
+    text-align: center;
+  }
+  .first-text-about {
+    text-align: justify;
+    padding: 0;
+    padding-top: 24px;
+  }
+
+  .second-text-about {
+    padding-top: 22px;
+    text-align: justify;
+    padding-bottom: 40px;
+  }
+  .dog-and-cat {
+    padding: 0;
+    width: 260px;
+    height: 353.6px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  .title-pets {
+    padding: 0;
+    padding-top: 43px;
+    font-size: 25px;
+    margin-bottom: 40px;
+  }
+  .slider {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .all-card-pets {
+    order: -1;
+  }
+  .all-card-pets {
+    justify-content: center;
+    padding-bottom: 20px;
+  }
+  .card-pets:nth-child(2) {
+    display: none;
+  }
+  .prev-button-slider {
+    margin: 0 auto;
+    margin-left: 68px;
+  }
+  .next-button-slider {
+    margin: 0 auto;
+    margin-right: 68px;
+  }
+  .get-to-know-the-rest {
+    margin-top: 42px;
+    margin-bottom: 42px;
+  }
+  .help-wrapper {
+    padding: 0;
+  }
+  .title-help {
+    padding: 0;
+    padding-top: 42px;
+    font-size: 25px;
+    margin-bottom: 10px;
+  }
+  .icon-under-title-help {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 42px;
+  }
+  .card-help {
+    width: 130px;
+    padding: 0;
+    padding-top: 30px;
+  }
+  .img-card-help {
+    width: 50px;
+    height: 50px;
+  }
+  .text-under-card-help {
+    font-size: 15px;
+    padding: 0;
+    padding-top: 20px;
+  }
+  .card-help:nth-child(6) {
+    padding: 0;
+    padding-top: 30px;
+  }
+  .donation-wrapper {
+    padding: 0;
+  }
+  .footer-text {
+    flex-direction: column;
+  }
+  .centr-section-footer {
+    padding: 0;
+  }
+  .right-section-donation {
+    padding: 0;
+  }
+  .right-section-donation {
+    padding-left: 19px;
+    padding-right: 19px;
+  }
+  .tittle-donation {
+    padding: 0;
+    padding: 42px 31px 3px 31px;
+    font-size: 25px;
+    text-align: center;
+  }
+  .name-type-bank {
+    font-size: 15px;
+    letter-spacing: 0;
+    padding-left: 4px;
+    padding-bottom: 23px;
+  }
+  .number {
+    font-size: 15px;
+    padding-top: 3px;
+  }
+  .legal-inform {
+    text-align: justify;
+  }
+  .img-donation {
+    padding: 0;
+    padding-top: 42px;
+    padding-bottom: 43px;
+    width: 260px;
+    height: 135.2px;
+    margin: 0 auto;
+  }
   .icon-burger-menu {
     display: block;
     margin: 30px auto;

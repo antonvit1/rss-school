@@ -33,7 +33,7 @@ body {
   font-family: "Georgia";
   font-style: normal;
   font-weight: 400;
-  font-size: 32px;
+  font-size: 2rem;
   line-height: 110%;
   padding-bottom: 10px;
   letter-spacing: 0.06em;
@@ -44,7 +44,7 @@ body {
   font-family: "Arial";
   font-style: normal;
   font-weight: 400;
-  font-size: 13px;
+  font-size: 0.81rem;
   line-height: 15px;
   letter-spacing: 0.1em;
   color: #ffffff;
@@ -97,7 +97,7 @@ body {
   font-size: 44px;
   line-height: 130%;
   color: #ffffff;
-  width: 320px;
+  padding-right: 100px;
 }
 .discription-left-section-uhs {
   padding-top: 40px;
@@ -107,7 +107,6 @@ body {
   font-size: 15px;
   line-height: 160%;
   color: #cdcdcd;
-  width: 465px;
 }
 .button-left-section-uhs {
   background: #f1cdb3;
@@ -314,7 +313,6 @@ body {
   background-color: #ffffff;
 }
 .help-wrapper {
-  max-width: 1200px;
   padding-left: 40px;
   padding-right: 40px;
   padding-bottom: 45px;
@@ -337,7 +335,6 @@ body {
   padding-top: 60px;
   padding-left: 27px;
   padding-right: 17px;
-
   display: flex;
   flex-wrap: wrap;
 }
@@ -460,6 +457,10 @@ body {
   max-width: 1200px;
   margin: 0 auto;
 }
+.footer-text {
+  display: flex;
+  justify-content: space-between;
+}
 .left-section-footer {
   padding-top: 17px;
 }
@@ -472,7 +473,6 @@ body {
   letter-spacing: 0.06em;
   color: #ffffff;
   margin: 0;
-  width: 280px;
 }
 .email-phone {
   font-family: "Georgia";
@@ -502,7 +502,7 @@ body {
 }
 .centr-section-footer {
   padding-top: 17px;
-  padding-left: 158px;
+  padding-left: 140px;
   padding-right: 160px;
 }
 
@@ -547,4 +547,474 @@ body {
   letter-spacing: 0.06em;
   padding-left: 20px;
   padding-top: 6px;
+}
+.icon-burger-menu {
+  display: none;
+}
+.burger-menu {
+  display: none;
+}
+@media (max-width: 1270px) {
+  .start-screen {
+    padding: 0;
+    padding-right: 30px;
+    padding-left: 30px;
+  }
+  .not-only-under-header-section {
+    display: flex;
+    flex-direction: column;
+    padding-top: 60px;
+  }
+  .left-section-uhs {
+    margin: 0 auto;
+    padding-left: 125px;
+    padding-right: 120px;
+  }
+  .title-left-section-uhs {
+    padding: 0;
+    padding-right: 70px;
+  }
+  .button-left-section-uhs {
+    margin: 0 auto;
+    display: block;
+    margin-top: 42px;
+  }
+  .picture-dog {
+    margin: 0;
+    padding-top: 100px;
+    padding-left: 140px;
+    width: 569px;
+    height: 593px;
+  }
+  .about-wrapper {
+    padding: 0;
+    display: flex;
+    flex-direction: column-reverse;
+    padding: 80px 169px 100px 169px;
+  }
+  .right-section-about {
+    padding: 0;
+  }
+  .title-about {
+    padding-right: 60px;
+  }
+  .dog-and-cat {
+    padding: 80px 65px 0px 65px;
+  }
+
+  .help-wrapper {
+    padding: 0;
+    padding-left: 39px;
+    padding-right: 39px;
+    padding-bottom: 100px;
+  }
+  .title-help {
+    padding-bottom: 4px;
+  }
+  .icon-under-title-help {
+    padding: 0;
+    display: flex;
+    justify-content: center;
+  }
+  .card-help:nth-child(6) {
+    padding: 0;
+    padding-top: 55px;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  .card-help {
+    width: 170px;
+    padding: 0;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 55px;
+  }
+
+  .donation-wrapper {
+    padding: 0;
+    padding-top: 80px;
+    padding-left: 131px;
+    padding-right: 132px;
+    padding-bottom: 100px;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .right-section-donation {
+    padding: 0;
+    padding-right: 62px;
+    padding-left: 63px;
+  }
+  .tittle-donation {
+    padding: 0;
+    padding-right: 60px;
+  }
+  .img-donation {
+    padding: 0;
+    padding-top: 60px;
+    height: 100%;
+  }
+  .footer-wrapper {
+    padding: 0;
+    flex-wrap: wrap;
+    padding-left: 65px;
+    padding-top: 32px;
+    padding-right: 60px;
+  }
+  .footer-text {
+    display: flex;
+    justify-content: space-between;
+  }
+  .left-section-footer {
+    padding: 0;
+  }
+  .centr-section-footer {
+    padding: 0;
+    padding-left: 36px;
+  }
+  .footer-dog {
+    padding-top: 65px;
+    margin: 0 auto;
+  }
+}
+@media (max-width: 1200px) {
+  .title-pets {
+    padding-top: 80px;
+  }
+  .prev-button-slider {
+    flex-shrink: 0;
+    margin-right: 10px;
+    margin-left: 30px;
+  }
+  .next-button-slider {
+    flex-shrink: 0;
+    margin-left: 10px;
+    margin-right: 30px;
+  }
+}
+@media (max-width: 1100px) {
+  .pets-wrapper {
+    padding: 0;
+  }
+  .card-pets:last-child {
+    display: none;
+  }
+  .get-to-know-the-rest {
+    margin-bottom: 100px;
+  }
+  .all-card-pets {
+    margin-top: 1px;
+    width: 580px;
+  }
+}
+@media (max-width: 767px) {
+  .start-screen {
+    padding: 0;
+  }
+  .header {
+    padding: 0;
+    padding-top: 30px;
+  }
+  .left-section-header {
+    padding-left: 20px;
+  }
+  .right-section-header {
+    display: none;
+  }
+  .left-section-uhs {
+    padding: 0;
+  }
+  .title-left-section-uhs {
+    letter-spacing: 0.06em;
+    font-size: 25px;
+    margin: 0;
+    text-align: center;
+    padding: 0;
+    padding-left: 37px;
+    padding-right: 35px;
+  }
+
+  .discription-left-section-uhs {
+    padding-left: 14px;
+    padding-right: 14px;
+    padding-top: 41px;
+    text-align: center;
+  }
+  .picture-dog {
+    padding: 0;
+    padding-top: 105px;
+    margin-left: 50px;
+    width: 260px;
+    height: 271.77px;
+  }
+  .about-wrapper {
+    padding: 0;
+    padding: 42px 25px 42px 25px;
+  }
+  .title-about {
+    padding: 0px;
+    font-size: 25px;
+    text-align: center;
+  }
+  .first-text-about {
+    text-align: justify;
+    padding: 0;
+    padding-top: 24px;
+  }
+
+  .second-text-about {
+    padding-top: 22px;
+    text-align: justify;
+    padding-bottom: 40px;
+  }
+  .dog-and-cat {
+    padding: 0;
+    width: 260px;
+    height: 353.6px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin: 0 auto;
+  }
+  .title-pets {
+    padding: 0;
+    padding-top: 43px;
+    font-size: 25px;
+    margin-bottom: 40px;
+  }
+
+  .get-to-know-the-rest {
+    margin-top: 42px;
+    margin-bottom: 42px;
+  }
+  .help-wrapper {
+    padding: 0;
+  }
+  .title-help {
+    padding: 0;
+    padding-top: 42px;
+    font-size: 25px;
+    margin-bottom: 10px;
+  }
+  .icon-under-title-help {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 42px;
+  }
+  .card-help {
+    width: 130px;
+    padding: 0;
+    padding-top: 30px;
+  }
+  .img-card-help {
+    width: 50px;
+    height: 50px;
+  }
+  .text-under-card-help {
+    font-size: 15px;
+    padding: 0;
+    padding-top: 20px;
+  }
+  .card-help:nth-child(6) {
+    padding: 0;
+    padding-top: 30px;
+  }
+  .donation-wrapper {
+    padding: 0;
+  }
+  .footer-text {
+    flex-direction: column;
+  }
+  .centr-section-footer {
+    padding: 0;
+  }
+  .right-section-donation {
+    padding: 0;
+  }
+  .right-section-donation {
+    padding-left: 19px;
+    padding-right: 19px;
+  }
+  .tittle-donation {
+    padding: 0;
+    padding: 42px 31px 3px 31px;
+    font-size: 25px;
+    text-align: center;
+  }
+  .name-type-bank {
+    font-size: 15px;
+    letter-spacing: 0;
+    padding-left: 4px;
+    padding-bottom: 23px;
+  }
+  .number {
+    font-size: 15px;
+    padding-top: 3px;
+  }
+  .legal-inform {
+    text-align: justify;
+  }
+  .img-donation {
+    padding: 0;
+    padding-top: 42px;
+    padding-bottom: 43px;
+    width: 260px;
+    height: 135.2px;
+    margin: 0 auto;
+  }
+  .footer-wrapper {
+    padding: 0;
+    padding-top: 29px;
+    display: flex;
+    justify-content: center;
+  }
+  .footer-text {
+    flex-direction: column;
+    justify-content: center;
+  }
+  .left-section-footer {
+    justify-content: center;
+  }
+  .tittle-left-footer {
+    margin: none;
+    font-size: 25px;
+    text-align: center;
+  }
+  .email-phone {
+    display: flex;
+    justify-content: center;
+  }
+  .centr-section-footer {
+    padding-top: 40px;
+  }
+  .tittle-center-footer {
+    font-size: 25px;
+    text-align: center;
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+  .location {
+    display: flex;
+    justify-content: center;
+    padding-top: 39px;
+    padding-left: 10px;
+  }
+  .location-link-london {
+    padding-right: 40px;
+  }
+  .footer-dog {
+    padding: 0;
+    padding-top: 41px;
+    width: 260px;
+    height: 269px;
+  }
+  .icon-burger-menu {
+    display: block;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    right: 18px;
+    top: 42px;
+    transition-duration: 1s;
+    cursor: pointer;
+    z-index: 2;
+  }
+  .icon-burger-menu span {
+    background-color: #f1cdb3;
+    height: 2px;
+    width: 30px;
+    position: absolute;
+    transition-duration: 0.25s;
+    top: 18px;
+  }
+  .icon-burger-menu span:before {
+    background-color: #f1cdb3;
+    height: 2px;
+    width: 30px;
+    position: absolute;
+    top: -10px;
+    left: 0;
+    content: "";
+  }
+  .icon-burger-menu span:after {
+    background-color: #f1cdb3;
+    height: 2px;
+    width: 30px;
+    position: absolute;
+    top: 10px;
+    left: 0;
+    content: "";
+  }
+  .icon-burger-menu.active {
+    transform: rotate(90deg);
+    top: 44px;
+    right: 16px;
+  }
+  .burger-menu {
+    display: block;
+    width: 60px;
+    height: 45px;
+    position: relative;
+    transition-duration: 1s;
+  }
+  .burger-menu {
+    position: fixed;
+    top: 0;
+    right: -320px;
+    width: 320px;
+    height: 100%;
+    background: #292929;
+    transition: 0.5s;
+  }
+  .burger-menu.active {
+    right: 0;
+  }
+  .burger-menu-list {
+    padding: 0;
+    list-style-type: none;
+    text-decoration: none;
+    padding-top: 233px;
+    text-align: center;
+  }
+  .item-menu {
+    text-decoration: none;
+    color: #cdcdcd;
+    font-family: "Arial";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 160%;
+  }
+  .burger-menu-list li {
+    padding-bottom: 42px;
+  }
+
+  #burger-start-button {
+    border-bottom: solid #f1cdb3;
+    padding-bottom: 6px;
+  }
+}
+@media (max-width: 699px) {
+  .slider {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .all-card-pets {
+    order: -1;
+  }
+  .all-card-pets {
+    justify-content: center;
+    padding-bottom: 20px;
+  }
+  .card-pets:nth-child(2) {
+    display: none;
+  }
+  .prev-button-slider {
+    margin: 0 auto;
+    margin-left: 68px;
+  }
+  .next-button-slider {
+    margin: 0 auto;
+    margin-right: 68px;
+  }
 }

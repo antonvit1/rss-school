@@ -359,7 +359,8 @@ body {
     padding-left: 36px;
   }
   .footer-dog {
-    padding-top: 65px;
+    padding-top: 64px;
+    padding-right: 5px;
     margin: 0 auto;
   }
 }
@@ -419,7 +420,7 @@ body {
   }
   .footer-dog {
     padding: 0;
-    padding-top: 41px;
+    padding-top: 42px;
     width: 260px;
     height: 269px;
   }
@@ -520,7 +521,7 @@ body {
     padding-left: 8px;
     padding-right: 8px;
     text-align: center;
-    padding-bottom: 12px;
+    padding-bottom: 11px;
   }
   .all-animal-cards {
     justify-content: center;

@@ -101,6 +101,7 @@ body {
 }
 .discription-left-section-uhs {
   padding-top: 40px;
+  padding-right: 30px;
   font-family: "Arial";
   font-style: normal;
   font-weight: 400;
@@ -565,6 +566,10 @@ body {
     flex-direction: column;
     padding-top: 60px;
   }
+  .discription-left-section-uhs {
+    padding: 0;
+    padding-top: 40px;
+  }
   .left-section-uhs {
     margin: 0 auto;
     padding-left: 125px;
@@ -573,6 +578,9 @@ body {
   .title-left-section-uhs {
     padding: 0;
     padding-right: 70px;
+  }
+  .link-make-a-friend-buttom {
+    padding-right: 5px;
   }
   .button-left-section-uhs {
     margin: 0 auto;
@@ -590,7 +598,7 @@ body {
     padding: 0;
     display: flex;
     flex-direction: column-reverse;
-    padding: 80px 169px 100px 169px;
+    padding: 80px 169px 99px 169px;
   }
   .right-section-about {
     padding: 0;
@@ -648,10 +656,16 @@ body {
     padding: 0;
     padding-right: 60px;
   }
+  .name-type-bank {
+    padding-bottom: 20px;
+  }
   .img-donation {
     padding: 0;
     padding-top: 60px;
     height: 100%;
+  }
+  .card-number {
+    margin-bottom: 20px;
   }
   .footer-wrapper {
     padding: 0;
@@ -672,8 +686,9 @@ body {
     padding-left: 36px;
   }
   .footer-dog {
-    padding-top: 65px;
+    padding-top: 64px;
     margin: 0 auto;
+    padding-right: 5px;
   }
 }
 @media (max-width: 1200px) {
@@ -682,13 +697,13 @@ body {
   }
   .prev-button-slider {
     flex-shrink: 0;
-    margin-right: 10px;
-    margin-left: 30px;
+    margin-right: 1vw;
+    margin-left: 3.9vw;
   }
   .next-button-slider {
     flex-shrink: 0;
-    margin-left: 10px;
-    margin-right: 30px;
+    margin-left: 1vw;
+    margin-right: 3.9vw;
   }
 }
 @media (max-width: 1100px) {
@@ -738,6 +753,9 @@ body {
     padding-right: 14px;
     padding-top: 41px;
     text-align: center;
+  }
+  .link-make-a-friend-buttom {
+    margin-left: 5px;
   }
   .picture-dog {
     padding: 0;
@@ -969,6 +987,9 @@ body {
   .burger-menu.active {
     right: 0;
   }
+  body.active {
+    position: fixed;
+  }
   .burger-menu-list {
     padding: 0;
     list-style-type: none;
@@ -994,13 +1015,14 @@ body {
     padding-bottom: 6px;
   }
 }
-@media (max-width: 699px) {
+@media (max-width: 750px) {
   .slider {
     display: flex;
     flex-wrap: wrap;
   }
   .all-card-pets {
     order: -1;
+    width: 100%;
   }
   .all-card-pets {
     justify-content: center;

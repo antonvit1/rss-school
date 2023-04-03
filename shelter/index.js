@@ -12,8 +12,9 @@ console.log(`Вёрстка страницы Main соответствует м�
 
 let iconBurgerMenu = document.querySelector('.icon-burger-menu');
 let burgerMenu = document.querySelector('.burger-menu');
-
+let body = document.querySelector('body');
 iconBurgerMenu.addEventListener('click',function(){
     iconBurgerMenu.classList.toggle('active');
     burgerMenu.classList.toggle('active');
+    body.classList.toggle('active')
 })

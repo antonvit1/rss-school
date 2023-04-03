@@ -485,6 +485,9 @@ body {
   .burger-menu.active {
     right: 0;
   }
+  body.active {
+    position: fixed;
+  }
   .burger-menu-list {
     padding: 0;
     list-style-type: none;

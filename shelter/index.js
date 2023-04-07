@@ -1,20 +1,51 @@
-console.log(`Вёрстка страницы Main соответствует макету при ширине экрана 1280px: +14\n
-Вёрстка страницы Main соответствует макету при ширине экрана 768px: +14\n
-Вёрстка страницы Main соответствует макету при ширине экрана 320px: +14\n
-Вёрстка страницы Pets соответствует макету при ширине экрана 1280px: +6\n
-Вёрстка страницы Pets соответствует макету при ширине экрана 768px: +6\n
-Вёрстка страницы Pets соответствует макету при ширине экрана 320px: +6\n
-Ни на одном из разрешений до 320px включительно не появляется горизонтальная полоса прокрутки, справа от отдельных блоков не появляются белые поля. Весь контент страницы при этом сохраняется: не обрезается и не удаляется: +20\n
-Верстка резиновая: при плавном изменении размера экрана от 1280px до 320px верстка подстраивается под этот размер, элементы верстки меняют свои размеры и расположение, не наезжают друг на друга, изображения могут менять размер, но сохраняют правильные пропорции : +8\n
-При ширине экрана меньше 768px на обеих страницах меню в хедере скрывается, появляется иконка бургер-меню: +4 \n
-Верстка обеих страниц валидная: для проверки валидности вёрстки используйте сервис  : +8
-`);
 
-let iconBurgerMenu = document.querySelector('.icon-burger-menu');
-let burgerMenu = document.querySelector('.burger-menu');
-let body = document.querySelector('body');
-iconBurgerMenu.addEventListener('click',function(){
-    iconBurgerMenu.classList.toggle('active');
-    burgerMenu.classList.toggle('active');
-    body.classList.toggle('active')
-})
+
+let iconBurgerMenu = document.querySelector(".icon-burger-menu");
+let burgerMenu = document.querySelector(".burger-menu");
+let body = document.querySelector("body");
+let bodyWrapper = document.querySelector(".body-wrapper");
+let startScreen = document.querySelector(".start-screen");
+let aboutThe = document.querySelector(".about-the");
+let jenifer = document.querySelector("#jennifer");
+let jeniferDog = document.querySelector("#jennifer-dog");
+let openClosePopup = document.querySelector(".open-close-popup");
+let ourFriendsPets = document.querySelector(".our-friends-pets");
+let help = document.querySelector(".help");
+let inAdditionDonation = document.querySelector(".in-addition-donation");
+
+iconBurgerMenu.addEventListener("click", function () {
+  iconBurgerMenu.classList.toggle("active");
+  burgerMenu.classList.toggle("active");
+  body.classList.toggle("active");
+  startScreen.classList.toggle("active");
+  aboutThe.classList.toggle("active");
+});
+function changeBurgerState() {
+  iconBurgerMenu.classList.remove("active");
+  burgerMenu.classList.remove("active");
+  body.classList.remove("active");
+  startScreen.classList.remove("active");
+  aboutThe.classList.remove("active");
+}
+
+burgerMenu.addEventListener("click", function () {
+  changeBurgerState();
+});
+startScreen.addEventListener("click", function () {
+  changeBurgerState();
+});
+aboutThe.addEventListener("click", function () {
+  changeBurgerState();
+});
+
+jenifer.addEventListener("click", function () {
+  jeniferDog.classList.toggle("active");
+  bodyWrapper.classList.toggle("active");
+  document.body.style.overflow = "hidden";
+});
+openClosePopup.addEventListener("click", function () {
+  jeniferDog.classList.remove("active");
+  body.classList.remove("active");
+  bodyWrapper.classList.remove("active");
+  document.body.style.overflow = "";
+});

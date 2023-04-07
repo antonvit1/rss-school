@@ -3,6 +3,23 @@ html {
 }
 body {
   margin: 0;
+  position: relative;
+}
+/* body.active {
+  overflow: auto;
+} */
+.body-wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0.5;
+  background: #000000;
+  display: none;
+}
+.body-wrapper.active {
+  display: block;
 }
 .start-screen {
   background: url(assets/noise_transparent@2x.png),
@@ -555,6 +572,158 @@ body {
 .burger-menu {
   display: none;
 }
+.popup {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  /* z-index: 10;
+  overflow: auto; */
+  display: none;
+}
+.popup.active {
+  display: block;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+.open-close-popup {
+  border-radius: 50%;
+  border: 2px solid #f1cdb3;
+  width: 52px;
+  height: 52px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  position: relative;
+  left: 466px;
+  bottom: 276px;
+  background-color: rgba(28, 28, 28, 0);
+  cursor: pointer;
+}
+/* .open-close-popup.popup.active {
+} */
+.open-close-popup:hover {
+  background-color: #fddcc4;
+  border: 2px solid #fddcc4;
+}
+
+.popup-card {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  height: 500px;
+  width: 900px;
+  background: #fafafa;
+  border-radius: 9px;
+}
+.right-section-popup-card {
+  display: flex;
+  flex-direction: column;
+  padding-right: 20px;
+  padding-left: 30px;
+}
+.name-animal-popup {
+  font-size: 35px;
+  line-height: 130%;
+  font-family: "Georgia";
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: #000000;
+  margin: 0;
+  padding-top: 50px;
+  padding-bottom: 10px;
+}
+.who-is-animal-popup {
+  font-family: "Georgia";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 115%;
+  letter-spacing: 0.06em;
+  color: #000000;
+  margin: 0;
+}
+.discription-animal-popup {
+  font-family: "Georgia";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 110%;
+  letter-spacing: 0.06em;
+  color: #000000;
+  padding-top: 40px;
+  padding-bottom: 43px;
+}
+.age-and-other-inform-popup {
+  margin: 0;
+  padding: 0;
+  padding-left: 15px;
+}
+.age-and-other-inform-popup li {
+  color: #f1cdb3;
+}
+.parametr-animal-popup {
+  padding-bottom: 10px;
+}
+.title-value-parametr-popup {
+  font-family: "Georgia";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 110%;
+  letter-spacing: 0.06em;
+  color: #000000;
+}
+.value-parametr-popup {
+  font-family: "Georgia";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 110%;
+  letter-spacing: 0.06em;
+  color: #000000;
+}
+.img-animal-popup {
+  width: 500px;
+  height: 500px;
+  border-radius: 9px 0px 0px 9px;
+}
+body.active {
+  position: fixed;
+}
+.start-screen.active {
+  background-color: black;
+  opacity: 0.8;
+}
+.about-the.active {
+  background-color: black;
+  opacity: 0.8;
+}
+.our-friends-pets.active {
+  background-color: black;
+  z-index: 12;
+  opacity: 0.8;
+}
+.help.active {
+  background-color: black;
+  opacity: 0.8;
+}
+.in-addition-donation.active {
+  background-color: black;
+  opacity: 0.8;
+}
 @media (max-width: 1270px) {
   .start-screen {
     padding: 0;
@@ -987,8 +1156,17 @@ body {
   .burger-menu.active {
     right: 0;
   }
+
   body.active {
     position: fixed;
+  }
+  .start-screen.active {
+    background-color: #292929;
+    opacity: 0.5;
+  }
+  .about-the.active {
+    background-color: #292929;
+    opacity: 0.5;
   }
   .burger-menu-list {
     padding: 0;
@@ -996,6 +1174,7 @@ body {
     text-decoration: none;
     padding-top: 233px;
     text-align: center;
+    scroll-behavior: smooth;
   }
   .item-menu {
     text-decoration: none;
@@ -1005,12 +1184,18 @@ body {
     font-weight: 400;
     font-size: 32px;
     line-height: 160%;
+    transition: 0.4s;
+  }
+  .item-menu:hover {
+    color: #fafafa;
+    transition: 0.4s;
   }
   .burger-menu-list li {
     padding-bottom: 42px;
   }
 
   #burger-start-button {
+    color: #fafafa;
     border-bottom: solid #f1cdb3;
     padding-bottom: 6px;
   }

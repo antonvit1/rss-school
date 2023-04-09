@@ -119,7 +119,7 @@ let help = document.querySelector(".help");
 let inAdditionDonation = document.querySelector(".in-addition-donation");
 let katrine = document.querySelector("#katrine");
 let woody = document.querySelector("#woody");
-
+// burgerMenu
 iconBurgerMenu.addEventListener("click", function () {
   iconBurgerMenu.classList.toggle("active");
   burgerMenu.classList.toggle("active");
@@ -139,7 +139,7 @@ burgerMenu.addEventListener("click", function () {
 bodyWrapper.addEventListener("click", function () {
   changeBurgerState();
 });
-
+// PopUp
 let arrCardPets = document.querySelectorAll(".card-pets");
 let arr2 = Array.from(arrCardPets);
 
@@ -174,38 +174,64 @@ function closePopUpCard() {
 closePopup.addEventListener("click", function () {
   closePopUpCard();
 });
-
+// slider
 let buttonSliderPrev = document.querySelector(".prev-button-slider");
 let buttonSliderNext = document.querySelector(".next-button-slider");
-
+let buttonCheck = 0;
 let newCards = [];
+let prevCards = [];
+let nextCards = [];
 
 window.addEventListener("load", function (event) {
-  updateCards()
+  updateCards();
 });
 
-let countPressButton = 0;
 function changeTextPictureCardSlider(i, elem) {
   elem.id = arrPets[i].id;
   elem.querySelector(".img-pets-in-slider").src = arrPets[i].img;
   elem.querySelector(".pet-name-card").textContent = arrPets[i].name;
 }
+
 function updateCards() {
-  const currentCards = [...newCards]
-  newCards = []
+  let currentCards = [...newCards];
+  newCards = [];
+
   arr2.forEach((elem, index) => {
     let indexRandom = Math.floor(Math.random() * 8);
-    while (newCards.includes(indexRandom) || currentCards.includes(indexRandom)) {
+    while (
+      newCards.includes(indexRandom) ||
+      currentCards.includes(indexRandom)
+    ) {
       indexRandom = Math.floor(Math.random() * 8);
     }
     newCards.push(indexRandom);
-    changeTextPictureCardSlider(indexRandom, elem)
+    changeTextPictureCardSlider(indexRandom, elem);
+  });
+}
+function updateOnOldCard(prevNextCards) {
+  newCards = [];
+  arr2.forEach((elem, index) => {
+    newCards.push(prevNextCards[index]);
+    changeTextPictureCardSlider(prevNextCards[index], elem);
   });
 }
 
 buttonSliderPrev.addEventListener("click", function () {
-  updateCards()
+  prevCards = [...newCards];
+  if (buttonCheck === 0 || buttonCheck === 1) {
+    updateCards();
+  } else {
+    updateOnOldCard(nextCards);
+  }
+  buttonCheck = 1;
 });
 buttonSliderNext.addEventListener("click", function () {
-  updateCards()
+  nextCards = [...newCards];
+
+  if (buttonCheck === 0 || buttonCheck === 2) {
+    updateCards();
+  } else {
+    updateOnOldCard(prevCards);
+  }
+  buttonCheck = 2;
 });

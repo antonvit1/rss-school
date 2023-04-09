@@ -142,15 +142,15 @@ bodyWrapper.addEventListener("click", function () {
 
 let arrCardPets = document.querySelectorAll(".card-pets");
 let arr2 = Array.from(arrCardPets);
-arr2.forEach((elem) =>{
-elem.addEventListener('click',function(){
-  jeniferDog.classList.toggle("active");
-  bodyWrapper.classList.toggle("active");
-  document.body.style.overflow = "hidden";
-  changePetsCard(elem.id);
-})
-})
 
+arr2.forEach((elem) => {
+  elem.addEventListener("click", function () {
+    jeniferDog.classList.toggle("active");
+    bodyWrapper.classList.toggle("active");
+    document.body.style.overflow = "hidden";
+    changePetsCard(elem.id);
+  });
+});
 
 function changePetsCard(a) {
   i = arrPets.findIndex((elem) => elem.id === a);
@@ -167,7 +167,7 @@ function changePetsCard(a) {
 }
 
 function closePopUpCard() {
-    jeniferDog.classList.remove("active");
+  jeniferDog.classList.remove("active");
   bodyWrapper.classList.remove("active");
   document.body.style.overflow = "";
 }
@@ -175,39 +175,37 @@ closePopup.addEventListener("click", function () {
   closePopUpCard();
 });
 
-let buttonSliderPrev = document.querySelector('.prev-button-slider');
-let buttonSliderNext = document.querySelector('.next-button-slider')
-let arrReturn = [];
+let buttonSliderPrev = document.querySelector(".prev-button-slider");
+let buttonSliderNext = document.querySelector(".next-button-slider");
+
+let newCards = [];
+
+window.addEventListener("load", function (event) {
+  updateCards()
+});
 
 let countPressButton = 0;
-function changeTextPictureCardSlider (i, elem){
+function changeTextPictureCardSlider(i, elem) {
   elem.id = arrPets[i].id;
-  elem.querySelector('.img-pets-in-slider').src = arrPets[i].img;
-  elem.querySelector('.pet-name-card').textContent = arrPets[i].name;
-
+  elem.querySelector(".img-pets-in-slider").src = arrPets[i].img;
+  elem.querySelector(".pet-name-card").textContent = arrPets[i].name;
+}
+function updateCards() {
+  const currentCards = [...newCards]
+  newCards = []
+  arr2.forEach((elem, index) => {
+    let indexRandom = Math.floor(Math.random() * 8);
+    while (newCards.includes(indexRandom) || currentCards.includes(indexRandom)) {
+      indexRandom = Math.floor(Math.random() * 8);
+    }
+    newCards.push(indexRandom);
+    changeTextPictureCardSlider(indexRandom, elem)
+  });
 }
 
-function getRandomInt() {
-  return Math.floor(Math.random() * 8);
-}
-buttonSliderPrev.addEventListener('click',function(){
-    arr2.forEach((elem, index) => {
-// let randomNumb = getRandomInt();
-  changeTextPictureCardSlider(getRandomInt(), elem);
-
-  if (arrReturn.length > 3) {
-    arrReturn.splice(0, 3)
-  }
-  console.log(elem);
-
-//  do {
-//   changeTextPictureCardSlider(getRandomInt(), elem);
-// } while(arrReturn.includes(elem))
-arrReturn.push(elem);
-  console.log(arrReturn);
-})
-
-})
-buttonSliderNext.addEventListener('click',function(){
-})
-
+buttonSliderPrev.addEventListener("click", function () {
+  updateCards()
+});
+buttonSliderNext.addEventListener("click", function () {
+  updateCards()
+});

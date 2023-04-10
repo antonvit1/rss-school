@@ -8,6 +8,7 @@
     <title>Pets</title>
   </head>
   <body>
+    <div class="body-wrapper"></div>
     <header class="header">
       <div class="header-wrapper">
         <a
@@ -49,7 +50,7 @@
           are looking for a house
         </h1>
         <div class="all-animal-cards">
-          <div class="card-pets">
+          <div class="card-pets" id="katrine">
             <img
               class="img-pets-in-slider"
               src="assets/pets-katrine.png"
@@ -58,7 +59,7 @@
             <button class="learn-more-underpet">Learn more</button>
           </div>
 
-          <div class="card-pets">
+          <div class="card-pets" id="jennifer">
             <img
               class="img-pets-in-slider"
               src="assets/pets-jennifer.png"
@@ -66,7 +67,7 @@
             <span class="pet-name-card">Jennifer</span>
             <button class="learn-more-underpet">Learn more</button>
           </div>
-          <div class="card-pets">
+          <div class="card-pets" id="woody">
             <img
               class="img-pets-in-slider"
               src="assets/pets-woody.png"
@@ -75,16 +76,16 @@
             <button class="learn-more-underpet">Learn more</button>
           </div>
 
-          <div class="card-pets">
+          <div class="card-pets" id="sophia">
             <img
               class="img-pets-in-slider"
-              src="assets/pets-dog-katrine.png"
+              src="assets/pets-dog-sophia.png"
               alt="dog-sophia" />
             <span class="pet-name-card">Sophia</span>
             <button class="learn-more-underpet">Learn more</button>
           </div>
 
-          <div class="card-pets">
+          <div class="card-pets" id="timmy">
             <img
               class="img-pets-in-slider"
               src="assets/pets-timmy.png"
@@ -93,7 +94,7 @@
             <button class="learn-more-underpet">Learn more</button>
           </div>
 
-          <div class="card-pets">
+          <div class="card-pets" id="charly">
             <img
               class="img-pets-in-slider"
               src="assets/pets-charly.png"
@@ -102,7 +103,7 @@
             <button class="learn-more-underpet">Learn more</button>
           </div>
 
-          <div class="card-pets">
+          <div class="card-pets" id="scarlett">
             <img
               class="img-pets-in-slider"
               src="assets/pets-scarlet.png"
@@ -111,7 +112,7 @@
             <button class="learn-more-underpet">Learn more</button>
           </div>
 
-          <div class="card-pets">
+          <div class="card-pets" id="freddie">
             <img
               class="img-pets-in-slider"
               src="assets/pets-freddie.png"
@@ -121,26 +122,29 @@
           </div>
         </div>
         <div class="slider-button">
-          <button class="pets-button-prev-next" id="prev-one">
-            <img
-              class="arrow-numb"
-              src="assets/left-arrow-two.svg"
-              alt="arrow" />
+          <button class="pets-button-prev-next disabled" id="prev-one">
+            <svg class="arrow-numb" width="25" height="11" viewBox="0 0 25 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9.94687 10.7852L0.913671 6.08789V4.98438L9.94687 0.287109V1.625L2.43711 5.53125L9.94687 9.44727V10.7852ZM24.018 10.7852L14.9848 6.08789V4.98438L24.018 0.287109V1.625L16.5082 5.53125L24.018 9.44727V10.7852Z" fill="currentColor"/>
+              </svg>
           </button>
-          <button class="pets-button-prev-next" id="prev-two">
-            <img
-              class="arrow-numb"
-              src="assets/left-arrow-one.svg"
-              alt="arrow" />
+          <button class="pets-button-prev-next disabled" id="prev-two">
+            <svg class="arrow-numb" width="10" height="11" viewBox="0 0 10 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9.98242 10.7852L0.949219 6.08789V4.98438L9.98242 0.287109V1.625L2.47266 5.53125L9.98242 9.44727V10.7852Z" fill="currentColor"/>
+              </svg>
           </button>
           <button class="pets-button-prev-next" id="button-number-one">
             1
           </button>
-          <button class="pets-button-prev-next">
-            <img class="arrow-numb" src="assets/arrow-rig.svg" alt="arrow" />
+          <button class="pets-button-prev-next" id="next-one">
+            <svg class="arrow-numb" width="10" height="11" viewBox="0 0 10 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9.04102 6.08789L0.0078125 10.7852V9.44727L7.51758 5.53125L0.0078125 1.625V0.287109L9.04102 4.98438V6.08789Z" fill="currentColor"/>
+              </svg>
           </button>
-          <button class="pets-button-prev-next">
-            <img class="arrow-numb" src="assets/arrow-right.svg" alt="arrow" />
+          <button class="pets-button-prev-next" id="next-two">
+            <svg width="25" height="11" viewBox="0 0 25 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10.0055 6.08789L0.972265 10.7852V9.44727L8.48203 5.53125L0.972265 1.625V0.287109L10.0055 4.98438V6.08789ZM24.0766 6.08789L15.0434 10.7852V9.44727L22.5531 5.53125L15.0434 1.625V0.287109L24.0766 4.98438V6.08789Z" fill="currentColor"/>
+              </svg>
+
           </button>
         </div>
       </section>
@@ -206,12 +210,37 @@
             <nav>
               <ul class="burger-menu-list">
       <li><a class="item-menu" id="burger-start-button" href="main.html">About the shelter</a></li>
-      <li><a class="item-menu" id="burger-our-pets" href="pets.html">Our pets</a></li>
-      <li><a class="item-menu" href="#help-the-shelter">Help the shelter</a></li>
+      <li><a class="item-menu" id="burger-our-pets" >Our pets</a></li>
+      <li><a class="item-menu" href="main.html#help-the-shelter">Help the shelter</a></li>
       <li><a class="item-menu" href="#contacts">Contacts</a></li>
     </ul>
   </nav>
   </div>
-  <script src="index.js"></script>
+  <div class="popup" id="jennifer-dog">
+        <div class="popup-card">
+      <img class="img-animal-popup" src="assets/pets-jennifer.png" alt="animal" />
+      <div class="right-section-popup-card">
+        <h3 class="name-animal-popup">Jennifer</h3>
+        <h4 class="who-is-animal-popup">Dog - Labrador</h4>
+        <div class="discription-animal-popup">
+          Jennifer is a sweet 2 months old Labrador that is patiently waiting
+          to find a new forever home. This girl really enjoys being able to go
+          outside to run and play, but won't hesitate to play up a storm in
+          the house if she has all of her favorite toys.
+        </div>
+        <ul class="age-and-other-inform-popup">
+          <li class="parametr-animal-popup"><span class="title-value-parametr-popup">Age: </span><span class="value-parametr-popup" id="age">2 months</span></li>
+          <li class="parametr-animal-popup"><span class="title-value-parametr-popup">Inoculations: </span><span class="value-parametr-popup" id="inoculations">none</span></li>
+          <li class="parametr-animal-popup"><span class="title-value-parametr-popup">Diseases: </span><span class="value-parametr-popup" id="diseases">none</span></li>
+          <li class="parametr-animal-popup"><span class="title-value-parametr-popup">Parasites: </span><span class="value-parametr-popup"  id="parasites">none</span></li>
+        </ul>
+      </div>
+      <button class="open-close-popup">
+        <img class="cross-card-pet" src="assets/Vector.svg" alt="cross" />
+      </button>
+    </div>
+
+</div>
+  <script src="indexpets.js"></script>
   </body>
 </html>

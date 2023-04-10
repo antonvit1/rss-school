@@ -2,12 +2,13 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css?v=1.0" />
     <link rel="icon" type="image/ico" sizes="32x32" href="assets/favicon.ico" />
     <title>Shelter</title>
   </head>
   <body>
+    <div class="body-wrapper"></div>
     <div class="start-screen">
       <header class="header">
         <a class="left-section-header" href="main.html">
@@ -20,9 +21,7 @@
               <a class="nav-header" id="about"> About the shelter</a>
             </li>
             <li>
-              <a class="nav-header"
-                href="pets.html"
-                >Our pets</a>
+              <a class="nav-header" href="pets.html">Our pets</a>
             </li>
             <li>
               <a class="nav-header" href="#help-the-shelter">
@@ -80,7 +79,7 @@
       <section class="our-friends-pets" id="our-pets">
         <div class="pets-wrapper">
           <h3 class="title-pets">
-            Our friends who<br />
+            Our friends who<br />div
             are looking for a house
           </h3>
           <div class="slider">
@@ -88,7 +87,7 @@
               <img class="prew-arrow" src="assets/Arrow.svg" alt="arrow" />
             </button>
             <div class="all-card-pets">
-              <div class="card-pets">
+              <div class="card-pets" id="katrine">
                 <img
                   class="img-pets-in-slider"
                   src="assets/pets-katrine.png"
@@ -96,7 +95,7 @@
                 <span class="pet-name-card">Katrine</span>
                 <button class="learn-more-underpet">Learn more</button>
               </div>
-              <div class="card-pets">
+              <div class="card-pets" id="jennifer">
                 <img
                   class="img-pets-in-slider"
                   src="assets/pets-jennifer.png"
@@ -104,7 +103,7 @@
                 <span class="pet-name-card">Jennifer</span>
                 <button class="learn-more-underpet">Learn more</button>
               </div>
-              <div class="card-pets">
+              <div class="card-pets" id="woody">
                 <img
                   class="img-pets-in-slider"
                   src="assets/pets-woody.png"
@@ -112,6 +111,9 @@
                 <span class="pet-name-card">Woody</span>
                 <button class="learn-more-underpet">Learn more</button>
               </div>
+
+
+
             </div>
             <button class="next-button-slider">
               <img
@@ -228,71 +230,101 @@
     <footer class="footer" id="contacts">
       <div class="footer-wrapper">
         <div class="footer-text">
-        <div class="left-section-footer">
-          <h3 class="tittle-left-footer">For questions and suggestions</h3>
+          <div class="left-section-footer">
+            <h3 class="tittle-left-footer">For questions and suggestions</h3>
 
-          <a class="email-phone" href="mailto:email@shelter.com">
-            <img
-              class="icon-email-phone"
-              src="assets/icon-email.svg"
-              alt="letter" />
-            <span class="email">email@shelter.com</span>
-          </a>
-          <a class="email-phone" href="tel:+136745677554">
-            <img
-              class="icon-email-phone"
-              src="assets/icon-phone.svg"
-              alt="icon" />
-            <span class="phone">+13 674 567 75 54</span>
-          </a>
+            <a class="email-phone" href="mailto:email@shelter.com">
+              <img
+                class="icon-email-phone"
+                src="assets/icon-email.svg"
+                alt="letter" />
+              <span class="email">email@shelter.com</span>
+            </a>
+            <a class="email-phone" href="tel:+136745677554">
+              <img
+                class="icon-email-phone"
+                src="assets/icon-phone.svg"
+                alt="icon" />
+              <span class="phone">+13 674 567 75 54</span>
+            </a>
+          </div>
+
+          <div class="centr-section-footer">
+            <h3 class="tittle-center-footer">We are waiting for your visit</h3>
+
+            <a
+              class="location"
+              href="https://www.google.com/maps/place/1+Centre+St,+Boston,+MA+02119,+%D0%A1%D0%A8%D0%90/@42.3300628,-71.0920028,17z/data=!3m1!4b1!4m6!3m5!1s0x89e37a260516d22d:0x67663c18c6a54ce9!8m2!3d42.3300628!4d-71.0920028!16s%2Fg%2F11td12jd0m"
+              target="_blank">
+              <img
+                class="icon-location"
+                src="assets/icon-marker.svg"
+                alt="icon-marker" />
+              <span class="location-link-boston"
+                >1 Central Street, Boston (entrance from the store)</span
+              >
+            </a>
+
+            <a
+              class="location"
+              href="https://www.google.com/maps/search/18+South+Park,+London/@51.4952692,-0.2250104,12z/data=!3m1!4b1?authuser=0"
+              target="_blank">
+              <img
+                class="icon-location"
+                src="assets/icon-marker.svg"
+                alt="icon-marker" />
+              <span class="location-link-london">18 South Park, London</span>
+            </a>
+          </div>
         </div>
-
-        <div class="centr-section-footer">
-          <h3 class="tittle-center-footer">We are waiting for your visit</h3>
-
-          <a
-            class="location"
-            href="https://www.google.com/maps/place/1+Centre+St,+Boston,+MA+02119,+%D0%A1%D0%A8%D0%90/@42.3300628,-71.0920028,17z/data=!3m1!4b1!4m6!3m5!1s0x89e37a260516d22d:0x67663c18c6a54ce9!8m2!3d42.3300628!4d-71.0920028!16s%2Fg%2F11td12jd0m"
-            target="_blank">
-            <img
-              class="icon-location"
-              src="assets/icon-marker.svg"
-              alt="icon-marker" />
-            <span class="location-link-boston"
-              >1 Central Street, Boston (entrance from the store)</span
-            >
-          </a>
-
-          <a
-            class="location"
-            href="https://www.google.com/maps/search/18+South+Park,+London/@51.4952692,-0.2250104,12z/data=!3m1!4b1?authuser=0"
-            target="_blank">
-            <img
-              class="icon-location"
-              src="assets/icon-marker.svg"
-              alt="icon-marker" />
-            <span class="location-link-london">18 South Park, London</span>
-          </a>
-        </div>
-      </div>
         <img class="footer-dog" src="assets/footer-puppy.png" alt="dog" />
       </div>
     </footer>
-
-        <div class="icon-burger-menu">
-        <span></span>
-
-               </div>
-            <div class="burger-menu">
-              <nav>
-                <ul class="burger-menu-list">
-        <li><a class="item-menu" id="burger-start-button" href="main.html">About the shelter</a></li>
-        <li><a class="item-menu" href="pets.html">Our pets</a></li>
-        <li><a class="item-menu" href="#help-the-shelter">Help the shelter</a></li>
-        <li><a class="item-menu" href="#contacts">Contacts</a></li>
-      </ul>
-    </nav>
+    <div class="icon-burger-menu">
+      <span></span>
     </div>
+    <div class="burger-menu">
+      <nav>
+        <ul class="burger-menu-list">
+          <li>
+            <a class="item-menu" id="burger-start-button"
+              >About the shelter</a
+            >
+          </li>
+          <li><a class="item-menu" href="pets.html">Our pets</a></li>
+          <li>
+            <a class="item-menu" href="#help-the-shelter">Help the shelter</a>
+          </li>
+          <li><a class="item-menu" href="#contacts">Contacts</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="popup" id="jennifer-dog">
+      <div class="popup-card">
+        <img class="img-animal-popup" src="assets/pets-jennifer.png" alt="animal" />
+        <div class="right-section-popup-card">
+          <h3 class="name-animal-popup">Jennifer</h3>
+          <h4 class="who-is-animal-popup">Dog - Labrador</h4>
+          <div class="discription-animal-popup">
+            Jennifer is a sweet 2 months old Labrador that is patiently waiting
+            to find a new forever home. This girl really enjoys being able to go
+            outside to run and play, but won't hesitate to play up a storm in
+            the house if she has all of her favorite toys.
+          </div>
+          <ul class="age-and-other-inform-popup">
+            <li class="parametr-animal-popup"><span class="title-value-parametr-popup">Age: </span><span class="value-parametr-popup" id="age">2 months</span></li>
+            <li class="parametr-animal-popup"><span class="title-value-parametr-popup">Inoculations: </span><span class="value-parametr-popup" id="inoculations">none</span></li>
+            <li class="parametr-animal-popup"><span class="title-value-parametr-popup">Diseases: </span><span class="value-parametr-popup" id="diseases">none</span></li>
+            <li class="parametr-animal-popup"><span class="title-value-parametr-popup">Parasites: </span><span class="value-parametr-popup"  id="parasites">none</span></li>
+          </ul>
+        </div>
+        <button class="open-close-popup">
+          <img class="cross-card-pet" src="assets/Vector.svg" alt="cross" />
+        </button>
+      </div>
+  </div>
     <script src="index.js"></script>
+
   </body>
+  bla
 </html>

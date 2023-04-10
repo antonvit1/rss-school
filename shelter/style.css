@@ -579,7 +579,6 @@ body {
   left: 0;
   right: 0;
   top: 0;
-
   display: none;
 }
 .popup.active {
@@ -601,10 +600,9 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 10;
-  position: relative;
-  left: 466px;
-  bottom: 276px;
+  position: absolute;
+  top: -52px;
+  right: -42px;
   background-color: rgba(28, 28, 28, 0);
   cursor: pointer;
 }
@@ -855,10 +853,7 @@ body.active {
     margin: 0 auto;
     padding-right: 5px;
   }
-  .open-close-popup {
-    left: 330px;
-    bottom: 200px;
-  }
+
   .popup-card {
     left: 69px;
     right: 69px;
@@ -1247,8 +1242,7 @@ body.active {
     margin-right: 68px;
   }
   .open-close-popup {
-    left: 130px;
-    bottom: 215px;
+    right: -30px;
   }
   .popup-card {
     left: 40px;
@@ -1256,7 +1250,7 @@ body.active {
   }
   .right-section-popup-card {
     padding: 0;
-    padding: 10px 10px 11px 10px;
+    padding: 11px 10px 5px 10px;
   }
   .name-animal-popup {
     text-align: center;
@@ -1269,5 +1263,8 @@ body.active {
   }
   .img-animal-popup {
     display: none;
+  }
+  .age-and-other-inform-popup {
+    padding-top: 5px;
   }
 }

@@ -59,7 +59,7 @@
             <button class="learn-more-underpet">Learn more</button>
           </div>
 
-          <div class="card-pets">
+          <div class="card-pets" id="jennifer">
             <img
               class="img-pets-in-slider"
               src="assets/pets-jennifer.png"
@@ -122,26 +122,29 @@
           </div>
         </div>
         <div class="slider-button">
-          <button class="pets-button-prev-next" id="prev-one">
-            <img
-              class="arrow-numb"
-              src="assets/left-arrow-two.svg"
-              alt="arrow" />
+          <button class="pets-button-prev-next disabled" id="prev-one">
+            <svg class="arrow-numb" width="25" height="11" viewBox="0 0 25 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9.94687 10.7852L0.913671 6.08789V4.98438L9.94687 0.287109V1.625L2.43711 5.53125L9.94687 9.44727V10.7852ZM24.018 10.7852L14.9848 6.08789V4.98438L24.018 0.287109V1.625L16.5082 5.53125L24.018 9.44727V10.7852Z" fill="currentColor"/>
+              </svg>
           </button>
-          <button class="pets-button-prev-next" id="prev-two">
-            <img
-              class="arrow-numb"
-              src="assets/left-arrow-one.svg"
-              alt="arrow" />
+          <button class="pets-button-prev-next disabled" id="prev-two">
+            <svg class="arrow-numb" width="10" height="11" viewBox="0 0 10 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9.98242 10.7852L0.949219 6.08789V4.98438L9.98242 0.287109V1.625L2.47266 5.53125L9.98242 9.44727V10.7852Z" fill="currentColor"/>
+              </svg>
           </button>
           <button class="pets-button-prev-next" id="button-number-one">
             1
           </button>
-          <button class="pets-button-prev-next">
-            <img class="arrow-numb" src="assets/arrow-rig.svg" alt="arrow" />
+          <button class="pets-button-prev-next" id="next-one">
+            <svg class="arrow-numb" width="10" height="11" viewBox="0 0 10 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9.04102 6.08789L0.0078125 10.7852V9.44727L7.51758 5.53125L0.0078125 1.625V0.287109L9.04102 4.98438V6.08789Z" fill="currentColor"/>
+              </svg>
           </button>
-          <button class="pets-button-prev-next">
-            <img class="arrow-numb" src="assets/arrow-right.svg" alt="arrow" />
+          <button class="pets-button-prev-next" id="next-two">
+            <svg width="25" height="11" viewBox="0 0 25 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10.0055 6.08789L0.972265 10.7852V9.44727L8.48203 5.53125L0.972265 1.625V0.287109L10.0055 4.98438V6.08789ZM24.0766 6.08789L15.0434 10.7852V9.44727L22.5531 5.53125L15.0434 1.625V0.287109L24.0766 4.98438V6.08789Z" fill="currentColor"/>
+              </svg>
+
           </button>
         </div>
       </section>
@@ -214,10 +217,7 @@
   </nav>
   </div>
   <div class="popup" id="jennifer-dog">
-    <button class="open-close-popup">
-      <img class="cross-card-pet" src="assets/Vector.svg" alt="cross" />
-    </button>
-    <div class="popup-card">
+        <div class="popup-card">
       <img class="img-animal-popup" src="assets/pets-jennifer.png" alt="animal" />
       <div class="right-section-popup-card">
         <h3 class="name-animal-popup">Jennifer</h3>
@@ -235,7 +235,11 @@
           <li class="parametr-animal-popup"><span class="title-value-parametr-popup">Parasites: </span><span class="value-parametr-popup"  id="parasites">none</span></li>
         </ul>
       </div>
+      <button class="open-close-popup">
+        <img class="cross-card-pet" src="assets/Vector.svg" alt="cross" />
+      </button>
     </div>
+
 </div>
   <script src="indexpets.js"></script>
   </body>

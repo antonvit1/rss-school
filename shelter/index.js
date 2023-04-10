@@ -79,10 +79,10 @@ const arrPets = [
   },
   {
     id: "freddie",
-    name: " - Freddie",
+    name: "Freddie",
     img: "assets/pets-freddie.png",
     type: "Cat",
-    breed: "British Shorthair",
+    breed: " - British Shorthair",
     description:
       "Freddie is a little shy at first, but very sweet when he warms up. He likes playing with shoe strings and bottle caps. He is quick to learn the rhythms of his human’s daily life. Freddie has bounced around a lot in his life, and is looking to find his forever home.",
     age: "2 months",
@@ -185,6 +185,7 @@ let nextCards = [];
 window.addEventListener("load", function (event) {
   updateCards();
 });
+
 
 function changeTextPictureCardSlider(i, elem) {
   elem.id = arrPets[i].id;

@@ -235,3 +235,7 @@ buttonSliderNext.addEventListener("click", function () {
   }
   buttonCheck = 2;
 });
+console.log(`Реализация burger menu на обеих страницах: +26 \n
+Реализация слайдера-карусели на странице Main: +32\n
+Реализация пагинации на странице Pets: +36\n
+Реализация попап на обеих страницах: +12`);

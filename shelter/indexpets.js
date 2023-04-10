@@ -104,7 +104,7 @@ const arrPets = [
     parasites: ["lice", "fleas"],
   },
 ];
-let screenWidth = '';
+let screenWidth = "";
 let iconBurgerMenu = document.querySelector(".icon-burger-menu");
 let burgerMenu = document.querySelector(".burger-menu");
 let body = document.querySelector("body");
@@ -141,6 +141,7 @@ bodyWrapper.addEventListener("click", function () {
 });
 //popUp
 let arrCardPets = document.querySelectorAll(".card-pets");
+
 let arr2 = Array.from(arrCardPets);
 arr2.forEach((elem) => {
   elem.addEventListener("click", function () {
@@ -192,24 +193,22 @@ let nextTwo = document.querySelector("#next-two");
 let numberPage = 1;
 const pages = {};
 
-
-function screenWidthDetection (){
-  if(window.innerWidth > 1270){
-    screenWidth = 'large';
-  }else if(window.innerWidth <= 1270 && window.innerWidth > 767){
-    screenWidth = 'middle';
-  }else if(window.innerWidth <= 767){
-    screenWidth = 'small'
+function screenWidthDetection() {
+  if (window.innerWidth > 1270) {
+    screenWidth = "large";
+  } else if (window.innerWidth <= 1270 && window.innerWidth > 767) {
+    screenWidth = "middle";
+  } else if (window.innerWidth <= 767) {
+    screenWidth = "small";
   }
 }
-window.addEventListener('resize', (e) => {
-  screenWidthDetection ()
-  });
-
+window.addEventListener("resize", (e) => {
+  screenWidthDetection();
+});
 
 window.addEventListener("load", function (event) {
   updateCards();
-  screenWidthDetection ()
+  screenWidthDetection();
 });
 
 function paginationChangeCardContent(i, elem) {
@@ -220,177 +219,192 @@ function paginationChangeCardContent(i, elem) {
 
 function updateCards() {
   let currentCards = [];
-  arr2.forEach((elem) => {
-    let indexRandom = Math.floor(Math.random() * 8);
-    while (currentCards.includes(indexRandom)) {
+
+  arr2.forEach((elem, index, arr) => {
+    let indexRandom = 0;
+
+    if (!(numberPage in pages)) {
       indexRandom = Math.floor(Math.random() * 8);
+      while (currentCards.includes(indexRandom)) {
+        indexRandom = Math.floor(Math.random() * 8);
+      }
+    } else {
+      indexRandom = pages[numberPage][index];
     }
     paginationChangeCardContent(indexRandom, elem);
     currentCards.push(indexRandom);
   });
 
   pages[numberPage] = currentCards;
-
-
 }
-function changeButtonPaginationBackground (){
-  if (numberPage === 1){
-    nextOne.classList.remove('disabled');
-    nextTwo.classList.remove('disabled');
-    prevOne.classList.add('disabled');
-    prevTwo.classList.add('disabled');
-  }else if(numberPage === 2){
-    prevOne.classList.remove('disabled');
-    nextOne.classList.remove('disabled');
-    nextTwo.classList.remove('disabled');
-    prevTwo.classList.add('disabled');
-  }else if(numberPage === 5){
-    nextOne.classList.remove('disabled');
-    nextTwo.classList.add('disabled');
-        prevOne.classList.remove('disabled');
-    prevTwo.classList.remove('disabled');
-      }else if(numberPage > 2 && numberPage < 5){
-        nextOne.classList.remove('disabled');
-        nextTwo.classList.remove('disabled');
-        prevTwo.classList.remove('disabled');
-        prevOne.classList.remove('disabled');
-  }else if(numberPage === 6){
-    nextOne.classList.add('disabled');
-    nextTwo.classList.add('disabled');
-    prevOne.classList.remove('disabled');
-    prevTwo.classList.remove('disabled');
 
+function changeButtonPaginationBackground() {
+  if (numberPage === 1) {
+    nextOne.classList.remove("disabled");
+    nextTwo.classList.remove("disabled");
+    prevOne.classList.add("disabled");
+    prevTwo.classList.add("disabled");
+  } else if (numberPage === 2) {
+    prevOne.classList.remove("disabled");
+    nextOne.classList.remove("disabled");
+    nextTwo.classList.remove("disabled");
+    prevTwo.classList.add("disabled");
+  } else if (numberPage === 5) {
+    nextOne.classList.remove("disabled");
+    nextTwo.classList.add("disabled");
+    prevOne.classList.remove("disabled");
+    prevTwo.classList.remove("disabled");
+  } else if (numberPage > 2 && numberPage < 5) {
+    nextOne.classList.remove("disabled");
+    nextTwo.classList.remove("disabled");
+    prevTwo.classList.remove("disabled");
+    prevOne.classList.remove("disabled");
+  } else if (numberPage === 6) {
+    nextOne.classList.add("disabled");
+    nextTwo.classList.add("disabled");
+    prevOne.classList.remove("disabled");
+    prevTwo.classList.remove("disabled");
   }
 }
-function changeButtonPaginationBackgroundMiddle (){
-  if (numberPage === 1){
-    nextOne.classList.remove('disabled');
-    nextTwo.classList.remove('disabled');
-    prevOne.classList.add('disabled');
-    prevTwo.classList.add('disabled');
-  }else if(numberPage === 2){
-    prevOne.classList.remove('disabled');
-    nextOne.classList.remove('disabled');
-    nextTwo.classList.remove('disabled');
-    prevTwo.classList.add('disabled');
-  }else if(numberPage === 7){
-    nextOne.classList.remove('disabled');
-    nextTwo.classList.add('disabled');
-        prevOne.classList.remove('disabled');
-    prevTwo.classList.remove('disabled');
-      }else if(numberPage > 2 && numberPage < 7){
-        nextOne.classList.remove('disabled');
-        nextTwo.classList.remove('disabled');
-        prevTwo.classList.remove('disabled');
-        prevOne.classList.remove('disabled');
-  }else if(numberPage === 8){
-    nextOne.classList.add('disabled');
-    nextTwo.classList.add('disabled');
-    prevOne.classList.remove('disabled');
-    prevTwo.classList.remove('disabled');
-
+function changeButtonPaginationBackgroundMiddle() {
+  if (numberPage === 1) {
+    nextOne.classList.remove("disabled");
+    nextTwo.classList.remove("disabled");
+    prevOne.classList.add("disabled");
+    prevTwo.classList.add("disabled");
+  } else if (numberPage === 2) {
+    prevOne.classList.remove("disabled");
+    nextOne.classList.remove("disabled");
+    nextTwo.classList.remove("disabled");
+    prevTwo.classList.add("disabled");
+  } else if (numberPage === 7) {
+    nextOne.classList.remove("disabled");
+    nextTwo.classList.add("disabled");
+    prevOne.classList.remove("disabled");
+    prevTwo.classList.remove("disabled");
+  } else if (numberPage > 2 && numberPage < 7) {
+    nextOne.classList.remove("disabled");
+    nextTwo.classList.remove("disabled");
+    prevTwo.classList.remove("disabled");
+    prevOne.classList.remove("disabled");
+  } else if (numberPage === 8) {
+    nextOne.classList.add("disabled");
+    nextTwo.classList.add("disabled");
+    prevOne.classList.remove("disabled");
+    prevTwo.classList.remove("disabled");
   }
 }
-function changeButtonPaginationBackgroundSmall (){
-  if (numberPage === 1){
-    nextOne.classList.remove('disabled');
-    nextTwo.classList.remove('disabled');
-    prevOne.classList.add('disabled');
-    prevTwo.classList.add('disabled');
-  }else if(numberPage === 2){
-    prevOne.classList.remove('disabled');
-    nextOne.classList.remove('disabled');
-    nextTwo.classList.remove('disabled');
-    prevTwo.classList.add('disabled');
-  }else if(numberPage === 15){
-    nextOne.classList.remove('disabled');
-    nextTwo.classList.add('disabled');
-        prevOne.classList.remove('disabled');
-    prevTwo.classList.remove('disabled');
-      }else if(numberPage > 2 && numberPage < 15){
-        nextOne.classList.remove('disabled');
-        nextTwo.classList.remove('disabled');
-        prevTwo.classList.remove('disabled');
-        prevOne.classList.remove('disabled');
-  }else if(numberPage === 16){
-    nextOne.classList.add('disabled');
-    nextTwo.classList.add('disabled');
-    prevOne.classList.remove('disabled');
-    prevTwo.classList.remove('disabled');
-
+function changeButtonPaginationBackgroundSmall() {
+  if (numberPage === 1) {
+    nextOne.classList.remove("disabled");
+    nextTwo.classList.remove("disabled");
+    prevOne.classList.add("disabled");
+    prevTwo.classList.add("disabled");
+  } else if (numberPage === 2) {
+    prevOne.classList.remove("disabled");
+    nextOne.classList.remove("disabled");
+    nextTwo.classList.remove("disabled");
+    prevTwo.classList.add("disabled");
+  } else if (numberPage === 15) {
+    nextOne.classList.remove("disabled");
+    nextTwo.classList.add("disabled");
+    prevOne.classList.remove("disabled");
+    prevTwo.classList.remove("disabled");
+  } else if (numberPage > 2 && numberPage < 15) {
+    nextOne.classList.remove("disabled");
+    nextTwo.classList.remove("disabled");
+    prevTwo.classList.remove("disabled");
+    prevOne.classList.remove("disabled");
+  } else if (numberPage === 16) {
+    nextOne.classList.add("disabled");
+    nextTwo.classList.add("disabled");
+    prevOne.classList.remove("disabled");
+    prevTwo.classList.remove("disabled");
   }
 }
 
-nextOne.addEventListener('click', function() {
-  if(screenWidth === 'large' && numberPage < 6){
+nextOne.addEventListener("click", function () {
+  if (screenWidth === "large" && numberPage < 6) {
     numberPage += 1;
-    document.querySelector('#button-number-one').textContent = String(numberPage);
+    document.querySelector("#button-number-one").textContent =
+      String(numberPage);
     updateCards();
-    changeButtonPaginationBackground ();
-  }else if (screenWidth === "middle" && numberPage < 8){
+    changeButtonPaginationBackground();
+  } else if (screenWidth === "middle" && numberPage < 8) {
     numberPage += 1;
-    document.querySelector('#button-number-one').textContent = String(numberPage);
+    document.querySelector("#button-number-one").textContent =
+      String(numberPage);
     updateCards();
-    changeButtonPaginationBackgroundMiddle ();
-  }else if(screenWidth === "small" && numberPage < 16){
+    changeButtonPaginationBackgroundMiddle();
+  } else if (screenWidth === "small" && numberPage < 16) {
     numberPage += 1;
-    document.querySelector('#button-number-one').textContent = String(numberPage);
+    document.querySelector("#button-number-one").textContent =
+      String(numberPage);
     updateCards();
-    changeButtonPaginationBackgroundSmall ();
+    changeButtonPaginationBackgroundSmall();
   }
-})
-nextTwo.addEventListener('click', function(){
-  if(screenWidth === 'large' && numberPage < 5){
+});
+nextTwo.addEventListener("click", function () {
+  if (screenWidth === "large" && numberPage < 5) {
     numberPage += 2;
-    document.querySelector('#button-number-one').textContent = String(numberPage);
+    document.querySelector("#button-number-one").textContent =
+      String(numberPage);
     updateCards();
-    changeButtonPaginationBackground ()
-  }else if (screenWidth === "middle" && numberPage < 7){
+    changeButtonPaginationBackground();
+  } else if (screenWidth === "middle" && numberPage < 7) {
     numberPage += 2;
-    document.querySelector('#button-number-one').textContent = String(numberPage);
+    document.querySelector("#button-number-one").textContent =
+      String(numberPage);
     updateCards();
-    changeButtonPaginationBackgroundMiddle ();
-  }else if(screenWidth === "small" && numberPage < 15){
+    changeButtonPaginationBackgroundMiddle();
+  } else if (screenWidth === "small" && numberPage < 15) {
     numberPage += 2;
-    document.querySelector('#button-number-one').textContent = String(numberPage);
+    document.querySelector("#button-number-one").textContent =
+      String(numberPage);
     updateCards();
-    changeButtonPaginationBackgroundSmall ();
+    changeButtonPaginationBackgroundSmall();
   }
-})
+});
 
-prevOne.addEventListener('click', function(){
-  if(screenWidth === 'large' && numberPage > 0){
+prevOne.addEventListener("click", function () {
+  if (screenWidth === "large" && numberPage > 0) {
     numberPage -= 1;
-    document.querySelector('#button-number-one').textContent = String(numberPage);
+    document.querySelector("#button-number-one").textContent =
+      String(numberPage);
     updateCards();
-    changeButtonPaginationBackground ()
-  }else if (screenWidth === "middle" && numberPage > 0){
+    changeButtonPaginationBackground();
+  } else if (screenWidth === "middle" && numberPage > 0) {
     numberPage -= 1;
-    document.querySelector('#button-number-one').textContent = String(numberPage);
+    document.querySelector("#button-number-one").textContent =
+      String(numberPage);
     updateCards();
-    changeButtonPaginationBackgroundMiddle ();
-  }else if(screenWidth === "small" && numberPage > 0){
+    changeButtonPaginationBackgroundMiddle();
+  } else if (screenWidth === "small" && numberPage > 0) {
     numberPage -= 1;
-    document.querySelector('#button-number-one').textContent = String(numberPage);
+    document.querySelector("#button-number-one").textContent =
+      String(numberPage);
     updateCards();
-    changeButtonPaginationBackgroundSmall ();
+    changeButtonPaginationBackgroundSmall();
   }
-})
-prevTwo.addEventListener('click', function(){
-  if(screenWidth === 'large' && numberPage > 2){
+});
+prevTwo.addEventListener("click", function () {
+  if (screenWidth === "large" && numberPage > 2) {
     numberPage -= 2;
-    document.querySelector('#button-number-one').textContent = String(numberPage);
+    document.querySelector("#button-number-one").textContent =
+      String(numberPage);
     updateCards();
-    changeButtonPaginationBackground ()
-  }else if (screenWidth === "middle" && numberPage > 2){
+    changeButtonPaginationBackground();
+  } else if (screenWidth === "middle" && numberPage > 2) {
     numberPage -= 2;
-    document.querySelector('#button-number-one').textContent = String(numberPage);
+    document.querySelector("#button-number-one").textContent =
+      String(numberPage);
     updateCards();
-    changeButtonPaginationBackgroundMiddle ();
-  }else if(screenWidth === "small" && numberPage > 2){
+    changeButtonPaginationBackgroundMiddle();
+  } else if (screenWidth === "small" && numberPage > 2) {
     numberPage -= 2;
-    document.querySelector('#button-number-one').textContent = String(numberPage);
+    document.querySelector("#button-number-one").textContent =
+      String(numberPage);
     updateCards();
-    changeButtonPaginationBackgroundSmall ();
+    changeButtonPaginationBackgroundSmall();
   }
-})
+});

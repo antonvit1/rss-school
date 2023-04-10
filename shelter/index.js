@@ -186,7 +186,6 @@ window.addEventListener("load", function (event) {
   updateCards();
 });
 
-
 function changeTextPictureCardSlider(i, elem) {
   elem.id = arrPets[i].id;
   elem.querySelector(".img-pets-in-slider").src = arrPets[i].img;

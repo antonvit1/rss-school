@@ -136,11 +136,14 @@ function changeBurgerState() {
 burgerMenu.addEventListener("click", function () {
   changeBurgerState();
 });
+
 bodyWrapper.addEventListener("click", function () {
-  changeBurgerState();
+   changeBurgerState();
+
 });
 // PopUp
 let arrCardPets = document.querySelectorAll(".card-pets");
+
 let arr2 = Array.from(arrCardPets);
 
 arr2.forEach((elem) => {
@@ -167,6 +170,7 @@ function changePetsCard(a) {
 }
 
 function closePopUpCard() {
+
   jeniferDog.classList.remove("active");
   bodyWrapper.classList.remove("active");
   document.body.style.overflow = "";
@@ -174,6 +178,11 @@ function closePopUpCard() {
 closePopup.addEventListener("click", function () {
   closePopUpCard();
 });
+
+bodyWrapper.addEventListener("click", function () {
+  closePopUpCard();
+});
+
 // slider
 let buttonSliderPrev = document.querySelector(".prev-button-slider");
 let buttonSliderNext = document.querySelector(".next-button-slider");
@@ -235,6 +244,8 @@ buttonSliderNext.addEventListener("click", function () {
   }
   buttonCheck = 2;
 });
+
+
 console.log(`Реализация burger menu на обеих страницах: +26 \n
 Реализация слайдера-карусели на странице Main: +33\n
 Реализация пагинации на странице Pets: +36\n

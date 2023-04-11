@@ -336,10 +336,10 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  bottom: 0;
-  left: 0;
+  top: 50%;
   right: 0;
-  top: 0;
+  left: 0;
+
   display: none;
 }
 .popup.active {
@@ -348,10 +348,9 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  bottom: 0;
-  left: 0;
+  top: 50%;
   right: 0;
-  top: 0;
+  left: 0;
 }
 .open-close-popup {
   border-radius: 50%;

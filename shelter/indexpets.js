@@ -174,6 +174,9 @@ function closePopUpCard() {
 closePopup.addEventListener("click", function () {
   closePopUpCard();
 });
+bodyWrapper.addEventListener("click", function () {
+  closePopUpCard();
+});
 //pagination
 
 let arrayFortyEightPets = arrPets.concat(
@@ -248,10 +251,10 @@ function changeButtonPaginationBackground() {
     prevOne.classList.remove("disabled");
     nextOne.classList.remove("disabled");
     nextTwo.classList.remove("disabled");
-    prevTwo.classList.add("disabled");
+    prevTwo.classList.remove("disabled");
   } else if (numberPage === 5) {
     nextOne.classList.remove("disabled");
-    nextTwo.classList.add("disabled");
+    nextTwo.classList.remove("disabled");
     prevOne.classList.remove("disabled");
     prevTwo.classList.remove("disabled");
   } else if (numberPage > 2 && numberPage < 5) {
@@ -276,10 +279,10 @@ function changeButtonPaginationBackgroundMiddle() {
     prevOne.classList.remove("disabled");
     nextOne.classList.remove("disabled");
     nextTwo.classList.remove("disabled");
-    prevTwo.classList.add("disabled");
+    prevTwo.classList.remove("disabled");
   } else if (numberPage === 7) {
     nextOne.classList.remove("disabled");
-    nextTwo.classList.add("disabled");
+    nextTwo.classList.remove("disabled");
     prevOne.classList.remove("disabled");
     prevTwo.classList.remove("disabled");
   } else if (numberPage > 2 && numberPage < 7) {
@@ -304,10 +307,10 @@ function changeButtonPaginationBackgroundSmall() {
     prevOne.classList.remove("disabled");
     nextOne.classList.remove("disabled");
     nextTwo.classList.remove("disabled");
-    prevTwo.classList.add("disabled");
+    prevTwo.classList.remove("disabled");
   } else if (numberPage === 15) {
     nextOne.classList.remove("disabled");
-    nextTwo.classList.add("disabled");
+    nextTwo.classList.remove("disabled");
     prevOne.classList.remove("disabled");
     prevTwo.classList.remove("disabled");
   } else if (numberPage > 2 && numberPage < 15) {
@@ -345,20 +348,20 @@ nextOne.addEventListener("click", function () {
   }
 });
 nextTwo.addEventListener("click", function () {
-  if (screenWidth === "large" && numberPage < 5) {
-    numberPage += 2;
+  if (screenWidth === "large" && numberPage < 6) {
+    numberPage = 6;
     document.querySelector("#button-number-one").textContent =
       String(numberPage);
     updateCards();
     changeButtonPaginationBackground();
-  } else if (screenWidth === "middle" && numberPage < 7) {
-    numberPage += 2;
+  } else if (screenWidth === "middle" && numberPage < 8) {
+    numberPage = 8;
     document.querySelector("#button-number-one").textContent =
       String(numberPage);
     updateCards();
     changeButtonPaginationBackgroundMiddle();
-  } else if (screenWidth === "small" && numberPage < 15) {
-    numberPage += 2;
+  } else if (screenWidth === "small" && numberPage < 16) {
+    numberPage = 16;
     document.querySelector("#button-number-one").textContent =
       String(numberPage);
     updateCards();
@@ -388,20 +391,20 @@ prevOne.addEventListener("click", function () {
   }
 });
 prevTwo.addEventListener("click", function () {
-  if (screenWidth === "large" && numberPage > 2) {
-    numberPage -= 2;
+  if (screenWidth === "large" && numberPage > 1) {
+    numberPage = 1;
     document.querySelector("#button-number-one").textContent =
       String(numberPage);
     updateCards();
     changeButtonPaginationBackground();
-  } else if (screenWidth === "middle" && numberPage > 2) {
-    numberPage -= 2;
+  } else if (screenWidth === "middle" && numberPage > 1) {
+    numberPage = 1;
     document.querySelector("#button-number-one").textContent =
       String(numberPage);
     updateCards();
     changeButtonPaginationBackgroundMiddle();
-  } else if (screenWidth === "small" && numberPage > 2) {
-    numberPage -= 2;
+  } else if (screenWidth === "small" && numberPage > 1) {
+    numberPage = 1;
     document.querySelector("#button-number-one").textContent =
       String(numberPage);
     updateCards();

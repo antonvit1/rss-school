@@ -18,6 +18,7 @@ body {
 .body-wrapper.active {
   display: block;
 }
+
 .start-screen {
   background: url(assets/noise_transparent@2x.png),
     radial-gradient(100% 215.42% at 0% 0%, #5b483a 0%, #262425 100%), #211f20;
@@ -575,10 +576,10 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  bottom: 0;
-  left: 0;
+  top: 50%;
   right: 0;
-  top: 0;
+  left: 0;
+
   display: none;
 }
 .popup.active {
@@ -587,10 +588,9 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  bottom: 0;
-  left: 0;
+  top: 50%;
   right: 0;
-  top: 0;
+  left: 0;
 }
 .open-close-popup {
   border-radius: 50%;

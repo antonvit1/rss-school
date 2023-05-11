@@ -1,0 +1,19 @@
+.body {
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
+}
+.complexity-wrapper {
+  /* display: flex; */
+  margin-top: 100px;
+  margin-bottom: 40px;
+  margin-right: 30px;
+}
+.all-cells {
+  margin-top: 50px;
+  width: 250px;
+}
+.cell {
+  width: 25px;
+  height: 25px;
+}

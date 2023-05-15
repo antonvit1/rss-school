@@ -17,3 +17,8 @@
   width: 25px;
   height: 25px;
 }
+.message-gameover {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+}

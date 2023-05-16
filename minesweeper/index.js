@@ -1,41 +1,44 @@
 let countBomb = 10;
 let flag = 0;
-// let countFlag = 0;
-const arrayFieldSize = [10, 15, 25];
+
+const width = 10;
 const arrayComplexity = ["Easy", "Medium", "Hard"];
 const body = document.querySelector("body");
 body.classList = "body";
-const wrapperComplexity = document.createElement("div");
-wrapperComplexity.className = "complexity-wrapper";
-body.appendChild(wrapperComplexity);
 
 //create inscription about count flag
 let numberOfRemainBombs = countBomb;
 let wrapperInscriptionCountFlag = document.createElement("div");
-wrapperInscriptionCountFlag.className = "inscription-count-flag"
+wrapperInscriptionCountFlag.className = "inscription-count-flag";
 body.appendChild(wrapperInscriptionCountFlag);
+
 let inscriptionCountFlag = document.createElement("div");
 inscriptionCountFlag.className = "flag";
 inscriptionCountFlag.innerHTML = "🚩";
-wrapperInscriptionCountFlag.appendChild(inscriptionCountFlag)
+wrapperInscriptionCountFlag.appendChild(inscriptionCountFlag);
+
 let countFlag = document.createElement("div");
 countFlag.className = "count-flag";
 countFlag.innerHTML = numberOfRemainBombs;
 wrapperInscriptionCountFlag.appendChild(countFlag);
 
-let arrayOfCellAll = Array(arrayFieldSize[0] * arrayFieldSize[0]).fill(" ");
+let mesageNoFlag = document.createElement("span");
+mesageNoFlag.className = "message-no-flag";
+wrapperInscriptionCountFlag.appendChild(mesageNoFlag);
+
+let arrayOfCellAll = Array(width * width).fill(" ");
 let arrayOfCell = [];
-for (let i = 0; i < arrayOfCellAll.length / arrayFieldSize[0]; i++) {
-  arrayOfCell[i] = arrayOfCellAll.slice(
-    i * arrayFieldSize[0],
-    i * arrayFieldSize[0] + arrayFieldSize[0]
-  );
+for (let i = 0; i < arrayOfCellAll.length / width; i++) {
+  arrayOfCell[i] = arrayOfCellAll.slice(i * width, i * width + width);
 }
 
+const wrapperOfWrapperComplexity = document.createElement("div");
+wrapperOfWrapperComplexity.className = "wrapper-of-wrapper";
+body.appendChild(wrapperOfWrapperComplexity);
 const divCell = document.createElement("div");
 divCell.className = "all-cells";
 
-body.appendChild(divCell);
+wrapperOfWrapperComplexity.appendChild(divCell);
 arrayOfCell.forEach((element) => {
   element.forEach((value) => {
     let buttonCell = document.createElement("button");
@@ -45,14 +48,36 @@ arrayOfCell.forEach((element) => {
 
     buttonCell.addEventListener("contextmenu", (e) => {
       e.preventDefault();
-      if (buttonCell.innerHTML === "🚩") {
-        buttonCell.innerHTML = " ";
-        numberOfRemainBombs -= 1;
-      } else if (buttonCell.innerHTML === " ") {
-        buttonCell.innerHTML = "🚩";
-        numberOfRemainBombs += 1;
-      } else if (buttonCell.innerHTML !== "🚩" && buttonCell.innerHTML !== " ") {
-        buttonCell.innerHTML;
+      if (numberOfRemainBombs > 0) {
+        if (buttonCell.innerHTML === "🚩") {
+          buttonCell.innerHTML = " ";
+          numberOfRemainBombs += 1;
+          countFlag.innerHTML = numberOfRemainBombs;
+          playSoundMove("bomb");
+        } else if (buttonCell.innerHTML === " ") {
+          buttonCell.innerHTML = "🚩";
+          numberOfRemainBombs -= 1;
+          countFlag.innerHTML = numberOfRemainBombs;
+          playSoundMove("bomb");
+        } else if (
+          buttonCell.innerHTML !== "🚩" &&
+          buttonCell.innerHTML !== " "
+        ) {
+          buttonCell.innerHTML;
+          playSoundMove("bomb");
+        } else if (numberOfRemainBombs > 0) {
+          mesageNoFlag.innerHTML = "You used all the flags!";
+        }
+      } else {
+        if (buttonCell.innerHTML === "🚩") {
+          buttonCell.innerHTML = " ";
+          numberOfRemainBombs += 1;
+          countFlag.innerHTML = numberOfRemainBombs;
+          mesageNoFlag.innerHTML = "";
+          playSoundMove("bomb");
+        } else {
+          mesageNoFlag.innerHTML = "You used all the flags!";
+        }
       }
     });
   });
@@ -67,18 +92,13 @@ function fieldFilling() {
 
   const arrayBomb = Array(countBomb).fill("💣");
 
-  const arrayWithoutBomb = Array(
-    arrayFieldSize[0] * arrayFieldSize[0] - countBomb
-  ).fill(" ");
+  const arrayWithoutBomb = Array(width * width - countBomb).fill(" ");
   const totalGameArray = arrayWithoutBomb
     .concat(arrayBomb)
     .sort(() => Math.random() - 0.5);
 
   for (let i = 0; i < totalGameArray.length / countBomb; i++) {
-    gameArray[i] = totalGameArray.slice(
-      i * arrayFieldSize[0],
-      i * arrayFieldSize[0] + arrayFieldSize[0]
-    );
+    gameArray[i] = totalGameArray.slice(i * width, i * width + width);
   }
   gameArray = gameArray.map((arrInArr, i, arr) => {
     return arrInArr.map((value, index, arrCell) => {
@@ -120,9 +140,6 @@ function fieldFilling() {
         helpCountBomb = 0;
         smallHelpArr = [];
       }
-      // else {
-      //   value = "💣";
-      // }
       return value;
     });
   });
@@ -134,95 +151,149 @@ fieldFilling();
 let arrayOfDomButton = Array.from(document.querySelectorAll(".cell"));
 
 function openCell() {
-arrayOfDomButton.forEach((cell, index, array) => {
-  cell.addEventListener("click", () => {
-    if (arrayOfDomButton.every((cell) => cell.innerHTML === " ")) {
-      cell.innerHTML = gameArray[index];
-      while (cell.innerHTML === "💣") {
-        fieldFilling();
+  arrayOfDomButton.forEach((cell, index, array) => {
+    cell.addEventListener("click", () => {
+      if (arrayOfDomButton.every((cell) => cell.innerHTML === " ")) {
         cell.innerHTML = gameArray[index];
-      }
-    }
-    cell.innerHTML = gameArray[index];
-    if (cell.innerHTML === "💣") {
-      array.forEach((value, i) => {
-        if (gameArray[i] === "💣") {
-          value.innerHTML = gameArray[i];
+        while (cell.innerHTML === "💣") {
+          fieldFilling();
+          cell.innerHTML = gameArray[index];
         }
-      });
-      gameOver();
-    }
+      }
+      cell.innerHTML = gameArray[index];
+      if (cell.innerHTML === "💣") {
+        playSoundMove("game-over");
+        array.forEach((value, i) => {
+          if (gameArray[i] === "💣") {
+            value.innerHTML = gameArray[i];
+          }
+        });
+        gameOver();
+      }
+      if (cell.innerHTML === "0") {
+        playSoundMove("one-click");
+        // cell.innerHTML = "i";
+        function openNeighborCells(currentIndex) {
 
-    console.log(gameArray);
+          // if (array[currentIndex].classList.contains("checked")) return;
+          if (
+            array[currentIndex - (width + 1)] &&
+            !array[currentIndex - (width + 1)].classList.contains("checked") &&
+            currentIndex % width !== 0
+          ) {
+            array[currentIndex - (width + 1)].innerHTML =
+              gameArray[currentIndex - (width + 1)];
+            array[currentIndex - (width + 1)].classList.add("checked");
+            if (array[currentIndex - (width + 1)].innerHTML === "0") {
+              console.log("left-top-diagonal", currentIndex);
+               openNeighborCells(currentIndex - (width + 1));
+            }
+          }
+          if (
+            currentIndex > width &&
+            !array[currentIndex - width].classList.contains("checked")
+          ) {
+            console.log("AAAAAAAAAAA");
+            array[currentIndex - width].innerHTML =
+              gameArray[currentIndex - width];
+            array[currentIndex - width].classList.add("checked");
+            if (array[currentIndex - width].innerHTML === "0") {
+              console.log("top", currentIndex);
+               openNeighborCells(currentIndex - width);
+            }
+          }
+          if (
+            array[currentIndex - (width - 1)] &&
+            !array[currentIndex - (width - 1)].classList.contains("checked") &&
+            currentIndex % width !== width - 1
+          ) {
+            array[currentIndex - (width - 1)].innerHTML =
+              gameArray[currentIndex - (width - 1)];
+            array[currentIndex - (width - 1)].classList.add("checked");
+            console.log("right-diagonal", currentIndex);
+            if (array[currentIndex - (width - 1)].innerHTML === "0") {
+              console.log("recursive right-top-diagonal");
+               openNeighborCells(currentIndex - (width - 1));
+            }
+          }
 
-    if (cell.innerHTML === "0") {
-      // cell.innerHTML = "i";
-      function openNeighborCells(){
-      if (
-        array[index - (arrayFieldSize[0] + 1)] &&
-        index % arrayFieldSize[0] !== 0
-      ) {
-        array[index - (arrayFieldSize[0] + 1)].innerHTML =
-          gameArray[index - (arrayFieldSize[0] + 1)];
-          console.log(array[index - (arrayFieldSize[0] + 1)].innerHTML);
-          // if (array[index - (arrayFieldSize[0] + 1)].innerHTML !== 0){
-          //   return;
-          // } else {
-          //  return openNeighborCells();
-          // }
+          if (
+            array[currentIndex + 1] &&
+            !array[currentIndex + 1].classList.contains("checked") &&
+            currentIndex % width !== width - 1
+          ) {
+            array[currentIndex + 1].innerHTML = gameArray[currentIndex + 1];
+            array[currentIndex + 1].classList.add("checked");
+            if (array[currentIndex + 1].innerHTML === "0") {
+              console.log("right", currentIndex);
+               openNeighborCells(currentIndex + 1);
+            }
+          }
+
+          if (
+            array[currentIndex + (width + 1)] &&
+            !array[currentIndex + (width + 1)].classList.contains("checked") &&
+            currentIndex % width !== width - 1
+          ) {
+            array[currentIndex + (width + 1)].innerHTML =
+              gameArray[currentIndex + (width + 1)];
+            array[currentIndex + (width + 1)].classList.add("checked");
+            if (array[currentIndex + (width + 1)].innerHTML === "0") {
+              console.log("bottom-right-diagonal", currentIndex);
+               openNeighborCells(currentIndex + (width + 1));
+            }
+          }
+          if (
+            array[currentIndex + width] &&
+            !array[currentIndex + width].classList.contains("checked")
+          ) {
+            array[currentIndex + width].innerHTML =
+              gameArray[currentIndex + width];
+            array[currentIndex + width].classList.add("checked");
+            if (array[currentIndex + width].innerHTML === "0") {
+              console.log("bottom", currentIndex);
+               openNeighborCells(currentIndex + width);
+            }
+          }
+          if (
+            array[currentIndex + (width - 1)] &&
+            !array[currentIndex + (width - 1)].classList.contains("checked") &&
+            currentIndex % width !== 0
+          ) {
+            array[currentIndex + (width - 1)].innerHTML =
+              gameArray[currentIndex + (width - 1)];
+            array[currentIndex + (width - 1)].classList.add("checked");
+            if (array[currentIndex + (width - 1)].innerHTML === "0") {
+              console.log("left-bottom-diagonal", currentIndex);
+               openNeighborCells(currentIndex + (width - 1));
+            }
+          }
+          if (
+            array[currentIndex - 1] &&
+            !array[currentIndex - 1].classList.contains("checked") &&
+            currentIndex % width !== 0
+          ) {
+            array[currentIndex - 1].innerHTML = gameArray[currentIndex - 1];
+            array[currentIndex - 1].classList.add("checked");
+            if (array[currentIndex - 1].innerHTML === "0") {
+              console.log("left", currentIndex);
+               openNeighborCells(currentIndex - 1);
+            }
+          }
+          return;
+        }
+        openNeighborCells(index);
       }
-      if (index > arrayFieldSize[0]) {
-        array[index - arrayFieldSize[0]].innerHTML =
-          gameArray[index - arrayFieldSize[0]];
+      if (cell.innerHTML !== "0" && cell.innerHTML !== "💣") {
+        playSoundMove("one-click");
       }
-      if (
-        array[index - (arrayFieldSize[0] + 1)] &&
-        index % arrayFieldSize[0] !== arrayFieldSize[0] - 1
-      ) {
-        array[index - (arrayFieldSize[0] - 1)].innerHTML =
-          gameArray[index - (arrayFieldSize[0] - 1)];
-      }
-      if (array[index - 1] && index % arrayFieldSize[0] !== 0) {
-        array[index - 1].innerHTML = gameArray[index - 1];
-      }
-      if (
-        array[index + 1] &&
-        index % arrayFieldSize[0] !== arrayFieldSize[0] - 1
-      ) {
-        array[index + 1].innerHTML = gameArray[index + 1];
-      }
-      if (
-        array[index + (arrayFieldSize[0] + 1)] &&
-        index % arrayFieldSize[0] !== arrayFieldSize[0] - 1
-      ) {
-        array[index + (arrayFieldSize[0] + 1)].innerHTML =
-          gameArray[index + (arrayFieldSize[0] + 1)];
-      }
-      if (array[index + arrayFieldSize[0]]) {
-        array[index + arrayFieldSize[0]].innerHTML =
-          gameArray[index + arrayFieldSize[0]];
-      }
-      if (
-        array[index + (arrayFieldSize[0] - 1)] &&
-        index % arrayFieldSize[0] !== 0
-      )
-        array[index + (arrayFieldSize[0] - 1)].innerHTML =
-          gameArray[index + (arrayFieldSize[0] - 1)];
-      }
-      openNeighborCells();
-    }
+    });
   });
-});
 }
-openCell()
-arrayOfDomButton.forEach((cell, index, array) => {
-  cell.addEventListener("click", "contextmenu", () => {
-    console.log("AAAAAA");
-  })
-})
+openCell();
 
 function gameOver() {
-  let messageGameOver = document.createElement("div")
+  let messageGameOver = document.createElement("div");
   messageGameOver.className = "message-gameover";
   body.appendChild(messageGameOver);
   let phraseLose = document.createElement("div");
@@ -230,24 +301,36 @@ function gameOver() {
   phraseLose.innerHTML = "Game over!";
   messageGameOver.appendChild(phraseLose);
   let buttonTryAgain = document.createElement("button");
-buttonTryAgain.className = "button-try-again";
-buttonTryAgain.innerHTML = "Try again";
-messageGameOver.appendChild(buttonTryAgain);
-buttonTryAgain.addEventListener("click", () => {
-  arrayOfDomButton.forEach((cell) => {
-    cell.innerHTML = " ";
-  })
-  fieldFilling()
-  openCell()
-})
+  buttonTryAgain.className = "button-try-again";
+  buttonTryAgain.innerHTML = "Try again";
+  messageGameOver.appendChild(buttonTryAgain);
+  buttonTryAgain.addEventListener("click", () => {
+    arrayOfDomButton.forEach((cell) => {
+      cell.innerHTML = " ";
+    });
+    fieldFilling();
+    openCell();
+  });
 }
+
+function playSoundMove(typeSound) {
+  let audio = document.createElement("audio");
+  audio.src = `./assets/audio/${typeSound}.mp3`;
+  audio.autoplay = true;
+  return true;
+}
+
 // checkbox
-// arrayComplexity.forEach((value) => {
-//   const complexity = document.createElement("input");
-//   const textComplexity = document.createElement("label");
-//   complexity.type = "radio";
-//   complexity.className = "buttonComplexity";
-//   textComplexity.innerHTML = value;
-//   wrapperComplexity.appendChild(complexity);
-//   wrapperComplexity.appendChild(textComplexity);
-// });
+const wrapperComplexity = document.createElement("div");
+wrapperComplexity.className = "complexity-wrapper";
+body.appendChild(wrapperComplexity);
+
+arrayComplexity.forEach((value) => {
+  const complexity = document.createElement("input");
+  const textComplexity = document.createElement("label");
+  complexity.type = "radio";
+  complexity.className = "buttonComplexity";
+  textComplexity.innerHTML = value;
+  wrapperComplexity.appendChild(complexity);
+  wrapperComplexity.appendChild(textComplexity);
+});

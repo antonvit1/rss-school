@@ -1,12 +1,16 @@
-let countBomb = 5;
+let countBomb = 2;
 let flag = 0;
 let checkSound = true;
-
+let checkWin = false;
+let counterWin = 0;
+let second = 0;
 let width = 10;
+let timerUpdate;
+let countClick = 0;
+
 const arrayComplexity = ["Easy", "Medium", "Hard"];
 const body = document.querySelector("body");
 body.classList = "body";
-
 
 //create inscription about count flag
 let numberOfRemainBombs = countBomb;
@@ -35,11 +39,13 @@ const divCell = document.createElement("div");
 divCell.className = "all-cells";
 divCell.style.gridTemplateColumns = `repeat(${width}, 25px)`;
 
-
+const downWrapper = document.createElement("div");
+downWrapper.className = "down-wrapperty"
+body.appendChild(downWrapper)
 // checkbox
 const wrapperComplexity = document.createElement("div");
 wrapperComplexity.className = "complexity-wrapper";
-body.appendChild(wrapperComplexity);
+downWrapper.appendChild(wrapperComplexity);
 
 arrayComplexity.forEach((value) => {
   const complexity = document.createElement("input");
@@ -53,58 +59,51 @@ arrayComplexity.forEach((value) => {
   wrapperComplexity.appendChild(textComplexity);
 });
 
-let arrOfDomComplexity = Array.from(document.querySelectorAll(".buttonComplexityText"));
+const imgRestart = document.createElement("img");
+imgRestart.className = "restart";
+imgRestart.src = `./assets/img/restart.svg`;
+downWrapper.appendChild(imgRestart);
+
+imgRestart.addEventListener("click", () => {
+  createNewFild()
+})
+
+let arrOfDomComplexity = Array.from(
+  document.querySelectorAll(".buttonComplexityText")
+);
 arrOfDomComplexity.forEach((choice) => {
-
   choice.addEventListener("click", () => {
-  if (choice.innerHTML === "Easy") {
-
-    width = 10;
-    numberOfRemainBombs = countBomb;
-    countFlag.innerHTML = numberOfRemainBombs;
-
-    while(divCell.firstChild){
-      divCell.removeChild(divCell.firstChild)
-      }
-    writtenDom()
-    fieldFilling();
-    openCell();
-
-    divCell.style.gridTemplateColumns = `repeat(${width}, 25px)`;
-
-  } else if (choice.innerHTML === "Medium") {
-    width = 15;
-    numberOfRemainBombs = countBomb;
-    countFlag.innerHTML = numberOfRemainBombs;
-
-    while(divCell.firstChild){
-    divCell.removeChild(divCell.firstChild)
+    if (choice.innerHTML === "Easy") {
+      width = 10;
+      createNewFild();
+    } else if (choice.innerHTML === "Medium") {
+      width = 15;
+      createNewFild();
+    } else if (choice.innerHTML === "Hard") {
+      width = 25;
+      createNewFild();
     }
-    writtenDom()
-    fieldFilling();
-    openCell();
-    divCell.style.gridTemplateColumns = `repeat(${width}, 25px)`;
-
-  } else if (choice.innerHTML === "Hard") {
-    width = 25;
-    numberOfRemainBombs = countBomb;
-    countFlag.innerHTML = numberOfRemainBombs;
-
-    while(divCell.firstChild){
-      divCell.removeChild(divCell.firstChild)
-      }
-    writtenDom()
-    fieldFilling();
-    openCell();
-    divCell.style.gridTemplateColumns = `repeat(${width}, 25px)`;
-
-  }
   });
 });
 
-
-
-
+function createNewFild() {
+  // countBomb = Math.floor(Math.random() * 90) + 10;
+  countBomb = 2;
+  numberOfRemainBombs = countBomb;
+  countFlag.innerHTML = numberOfRemainBombs;
+  countClick = 0;
+  clickNumber.innerHTML = countClick;
+  while (divCell.firstChild) {
+    divCell.removeChild(divCell.firstChild);
+  }
+  writtenDom();
+  fieldFilling();
+  clearInterval(timerUpdate);
+  second = 0;
+  timer.innerHTML = second;
+  openCell();
+  divCell.style.gridTemplateColumns = `repeat(${width}, 25px)`;
+}
 
 const soundOnOff = document.createElement("img");
 soundOnOff.className = "sound-on-off";
@@ -121,66 +120,91 @@ soundOnOff.addEventListener("click", () => {
   }
 });
 
+const timerWrapper = document.createElement("div");
+timerWrapper.className = "timer-wrapper";
+wrapperInscriptionCountFlag.appendChild(timerWrapper);
+const timerImg = document.createElement("img");
+timerImg.className = "timer-img";
+timerImg.src = `./assets/img/timer.svg`;
+timerWrapper.appendChild(timerImg);
+const timer = document.createElement("div");
+timer.className = "timer";
+timer.innerHTML = second;
+timerWrapper.appendChild(timer);
+
+const clickWrapper = document.createElement("div");
+clickWrapper.className = "click-wrapper";
+wrapperInscriptionCountFlag.appendChild(clickWrapper);
+const clickImg = document.createElement("img");
+clickImg.className = "click-img";
+clickImg.src = `./assets/img/click.svg`;
+clickWrapper.appendChild(clickImg);
+const clickNumber = document.createElement("div");
+clickNumber.className = "click-number";
+clickNumber.innerHTML = countClick;
+clickWrapper.appendChild(clickNumber);
+
 wrapperOfWrapperComplexity.appendChild(divCell);
 function writtenDom() {
-let arrayOfCellAll = Array(width * width).fill(" ");
-let arrayOfCell = [];
-for (let i = 0; i < arrayOfCellAll.length / width; i++) {
-  arrayOfCell[i] = arrayOfCellAll.slice(i * width, i * width + width);
-}
-arrayOfCell.forEach((element) => {
-  element.forEach((value) => {
-    let buttonCell = document.createElement("button");
-    buttonCell.className = "cell";
-    buttonCell.innerHTML = value;
-    divCell.appendChild(buttonCell);
+  let arrayOfCellAll = Array(width * width).fill(" ");
+  let arrayOfCell = [];
+  for (let i = 0; i < arrayOfCellAll.length / width; i++) {
+    arrayOfCell[i] = arrayOfCellAll.slice(i * width, i * width + width);
+  }
+  arrayOfCell.forEach((element) => {
+    element.forEach((value) => {
+      let buttonCell = document.createElement("button");
+      buttonCell.className = "cell";
+      buttonCell.innerHTML = value;
+      divCell.appendChild(buttonCell);
 
-    buttonCell.addEventListener("contextmenu", (e) => {
-      e.preventDefault();
-      if (numberOfRemainBombs > 0) {
-        if (buttonCell.innerHTML === "🚩") {
-          buttonCell.innerHTML = " ";
-          numberOfRemainBombs += 1;
-          countFlag.innerHTML = numberOfRemainBombs;
-          if (checkSound) {
-            playSound("bomb");
-          }
-        } else if (buttonCell.innerHTML === " ") {
-          buttonCell.innerHTML = "🚩";
-          numberOfRemainBombs -= 1;
-          countFlag.innerHTML = numberOfRemainBombs;
-          if (checkSound) {
-            playSound("bomb");
-          }
-        } else if (
-          buttonCell.innerHTML !== "🚩" &&
-          buttonCell.innerHTML !== " "
-        ) {
-          buttonCell.innerHTML;
-          if (checkSound) {
-            playSound("bomb");
-          }
-        } else if (numberOfRemainBombs > 0) {
-          mesageNoFlag.innerHTML = "You used all the flags!";
-        }
-      } else {
-        if (buttonCell.innerHTML === "🚩") {
-          buttonCell.innerHTML = " ";
-          numberOfRemainBombs += 1;
-          countFlag.innerHTML = numberOfRemainBombs;
-          mesageNoFlag.innerHTML = "";
-          if (checkSound) {
-            playSound("bomb");
+      buttonCell.addEventListener("contextmenu", (e) => {
+        e.preventDefault();
+
+        if (numberOfRemainBombs > 0) {
+          if (buttonCell.innerHTML === "🚩") {
+            buttonCell.innerHTML = " ";
+            numberOfRemainBombs += 1;
+            countFlag.innerHTML = numberOfRemainBombs;
+            if (checkSound) {
+              playSound("bomb");
+            }
+          } else if (buttonCell.innerHTML === " ") {
+            buttonCell.innerHTML = "🚩";
+            numberOfRemainBombs -= 1;
+            countFlag.innerHTML = numberOfRemainBombs;
+            if (checkSound) {
+              playSound("bomb");
+            }
+          } else if (
+            buttonCell.innerHTML !== "🚩" &&
+            buttonCell.innerHTML !== " "
+          ) {
+            buttonCell.innerHTML;
+            if (checkSound) {
+              playSound("bomb");
+            }
+          } else if (numberOfRemainBombs > 0) {
+            mesageNoFlag.innerHTML = "You used all the flags!";
           }
         } else {
-          mesageNoFlag.innerHTML = "You used all the flags!";
+          if (buttonCell.innerHTML === "🚩") {
+            buttonCell.innerHTML = " ";
+            numberOfRemainBombs += 1;
+            countFlag.innerHTML = numberOfRemainBombs;
+            mesageNoFlag.innerHTML = "";
+            if (checkSound) {
+              playSound("bomb");
+            }
+          } else {
+            mesageNoFlag.innerHTML = "You used all the flags!";
+          }
         }
-      }
+      });
     });
   });
-});
 }
-writtenDom()
+writtenDom();
 
 let gameArray = [];
 
@@ -247,12 +271,17 @@ function fieldFilling() {
 }
 fieldFilling();
 
-
 function openCell() {
   let arrayOfDomButton = Array.from(document.querySelectorAll(".cell"));
   arrayOfDomButton.forEach((cell, index, array) => {
     cell.addEventListener("click", () => {
+      countClick += 1;
+      clickNumber.innerHTML = countClick;
       if (arrayOfDomButton.every((cell) => cell.innerHTML === " ")) {
+        timerUpdate = setInterval(() => {
+          second += 1;
+          timer.innerHTML = second;
+        }, 1000);
         cell.innerHTML = gameArray[index];
         while (cell.innerHTML === "💣") {
           fieldFilling();
@@ -269,8 +298,11 @@ function openCell() {
             value.innerHTML = gameArray[i];
           }
         });
+checkWin = false;
         gameOver();
+
       }
+
       if (cell.innerHTML === "0") {
         if (checkSound) {
           playSound("one-click");
@@ -286,6 +318,7 @@ function openCell() {
             array[currentIndex - (width + 1)].innerHTML =
               gameArray[currentIndex - (width + 1)];
             array[currentIndex - (width + 1)].classList.add("checked");
+
             if (array[currentIndex - (width + 1)].innerHTML === "0") {
               // console.log("left-top-diagonal", currentIndex);
               openNeighborCells(currentIndex - (width + 1));
@@ -389,8 +422,25 @@ function openCell() {
       if (cell.innerHTML !== "0" && cell.innerHTML !== "💣" && checkSound) {
         playSound("one-click");
       }
+      counterWin = 0;
+      arrayOfDomButton.forEach((buttonEmpty, indBut, arrbut) => {
+
+    if (buttonEmpty.innerHTML !== "🚩" && buttonEmpty.innerHTML !== " " && buttonEmpty.innerHTML !== "💣" ) {
+    counterWin += 1;
+    console.log(counterWin);
+    if (width * width - countBomb === counterWin) {
+      checkWin = true;
+         gameOver()
+      checkWin = false;
+    }
+
+    }
+      })
+
     });
+
   });
+
 }
 openCell();
 
@@ -398,20 +448,36 @@ function gameOver() {
   let messageGameOver = document.createElement("div");
   messageGameOver.className = "message-gameover";
   body.appendChild(messageGameOver);
+  let imgGame = document.createElement("img");
+  imgGame.className = "img-game";
+
+  messageGameOver.appendChild(imgGame)
   let phraseLose = document.createElement("div");
   phraseLose.className = "inscription-lose";
-  phraseLose.innerHTML = "Game over!";
+
   messageGameOver.appendChild(phraseLose);
   let buttonTryAgain = document.createElement("button");
   buttonTryAgain.className = "button-try-again";
   buttonTryAgain.innerHTML = "Try again";
   messageGameOver.appendChild(buttonTryAgain);
+if (checkWin) {
+  imgGame.src = `./assets/img/smiley.svg`
+  phraseLose.innerHTML = "You are win! Congratulation!";
+  if (checkSound) {
+  playSound("win");
+  }
+} else {
+  imgGame.src = `./assets/img/sadsmiley.svg`
+  phraseLose.innerHTML = "Game over!";
+}
+
   buttonTryAgain.addEventListener("click", () => {
-    arrayOfDomButton.forEach((cell) => {
-      cell.innerHTML = " ";
-    });
-    fieldFilling();
-    openCell();
+    createNewFild()
+    messageGameOver.removeChild(messageGameOver.firstChild)
+    messageGameOver.removeChild(messageGameOver.firstChild)
+    messageGameOver.removeChild(messageGameOver.firstChild)
+    messageGameOver.remove();
+
   });
 }
 
@@ -421,6 +487,3 @@ function playSound(typeSound) {
   audio.autoplay = true;
   return true;
 }
-
-
-

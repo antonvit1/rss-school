@@ -299,7 +299,7 @@ function openCell() {
           }
         });
 checkWin = false;
-        gameOver();
+        messageEndGame();
 
       }
 
@@ -430,7 +430,7 @@ checkWin = false;
     console.log(counterWin);
     if (width * width - countBomb === counterWin) {
       checkWin = true;
-         gameOver()
+         messageEndGame()
       checkWin = false;
     }
 
@@ -444,39 +444,39 @@ checkWin = false;
 }
 openCell();
 
-function gameOver() {
-  let messageGameOver = document.createElement("div");
-  messageGameOver.className = "message-gameover";
-  body.appendChild(messageGameOver);
-  let imgGame = document.createElement("img");
-  imgGame.className = "img-game";
+function messageEndGame() {
+  let messageFinalGame = document.createElement("div");
+  messageFinalGame.className = "message-final";
+  body.appendChild(messageFinalGame);
+  let imgGameFinal = document.createElement("img");
+  imgGameFinal.className = "img-game-final";
 
-  messageGameOver.appendChild(imgGame)
-  let phraseLose = document.createElement("div");
-  phraseLose.className = "inscription-lose";
+  messageFinalGame.appendChild(imgGameFinal)
+  let phraseFinalGame = document.createElement("div");
+  phraseFinalGame.className = "final-game-inscription";
 
-  messageGameOver.appendChild(phraseLose);
+  messageFinalGame.appendChild(phraseFinalGame);
   let buttonTryAgain = document.createElement("button");
   buttonTryAgain.className = "button-try-again";
   buttonTryAgain.innerHTML = "Try again";
-  messageGameOver.appendChild(buttonTryAgain);
+  messageFinalGame.appendChild(buttonTryAgain);
 if (checkWin) {
-  imgGame.src = `./assets/img/smiley.svg`
-  phraseLose.innerHTML = "You are win! Congratulation!";
+  imgGameFinal.src = `./assets/img/smiley.svg`
+  phraseFinalGame.innerHTML = "You are win! Congratulation!";
   if (checkSound) {
   playSound("win");
   }
 } else {
-  imgGame.src = `./assets/img/sadsmiley.svg`
-  phraseLose.innerHTML = "Game over!";
+  imgGameFinal.src = `./assets/img/sadsmiley.svg`
+  phraseFinalGame.innerHTML = "Game over!";
 }
 
   buttonTryAgain.addEventListener("click", () => {
     createNewFild()
-    messageGameOver.removeChild(messageGameOver.firstChild)
-    messageGameOver.removeChild(messageGameOver.firstChild)
-    messageGameOver.removeChild(messageGameOver.firstChild)
-    messageGameOver.remove();
+    messageFinalGame.removeChild(messageFinalGame.firstChild)
+    messageFinalGame.removeChild(messageFinalGame.firstChild)
+    messageFinalGame.removeChild(messageFinalGame.firstChild)
+    messageFinalGame.remove();
 
   });
 }

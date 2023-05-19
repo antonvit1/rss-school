@@ -2,12 +2,14 @@ let countBomb = 2;
 let flag = 0;
 let checkSound = true;
 let checkWin = false;
+let countGame = 0;
 let counterWin = 0;
 let second = 0;
 let width = 10;
 let timerUpdate;
 let countClick = 0;
-
+let tableResults = [];
+let complexityGame = "Easy";
 const arrayComplexity = ["Easy", "Medium", "Hard"];
 const body = document.querySelector("body");
 body.classList = "body";
@@ -28,6 +30,32 @@ countFlag.className = "count-flag";
 countFlag.innerHTML = numberOfRemainBombs;
 wrapperInscriptionCountFlag.appendChild(countFlag);
 
+const display = document.createElement("input");
+display.className = "display";
+display.type = "text";
+wrapperInscriptionCountFlag.appendChild(display);
+// display.focus();
+
+let buttonUse = document.createElement("button");
+buttonUse.className = "button-use-bomb";
+buttonUse.innerHTML = "Use";
+wrapperInscriptionCountFlag.appendChild(buttonUse);
+buttonUse.addEventListener("click", () => {
+  if (display.value >= 10 && display.value <= 99) {
+    countBomb = display.value;
+    createNewFild();
+  }
+  // else {
+  //   let messageError = document.createElement("div");
+  //   messageError.className = "message-error";
+  //   messageError.innerHTML = "Enter an integer number less then 99 and greater than 9";
+  //   body.appendChild(messageError);
+  //   messageError.addEventListener("click", () => {
+  //     messageError.remove();
+  //   })
+  // }
+});
+
 let mesageNoFlag = document.createElement("span");
 mesageNoFlag.className = "message-no-flag";
 wrapperInscriptionCountFlag.appendChild(mesageNoFlag);
@@ -40,8 +68,9 @@ divCell.className = "all-cells";
 divCell.style.gridTemplateColumns = `repeat(${width}, 25px)`;
 
 const downWrapper = document.createElement("div");
-downWrapper.className = "down-wrapperty"
-body.appendChild(downWrapper)
+downWrapper.className = "down-wrapperty";
+body.appendChild(downWrapper);
+
 // checkbox
 const wrapperComplexity = document.createElement("div");
 wrapperComplexity.className = "complexity-wrapper";
@@ -65,8 +94,8 @@ imgRestart.src = `./assets/img/restart.svg`;
 downWrapper.appendChild(imgRestart);
 
 imgRestart.addEventListener("click", () => {
-  createNewFild()
-})
+  createNewFild();
+});
 
 let arrOfDomComplexity = Array.from(
   document.querySelectorAll(".buttonComplexityText")
@@ -75,12 +104,15 @@ arrOfDomComplexity.forEach((choice) => {
   choice.addEventListener("click", () => {
     if (choice.innerHTML === "Easy") {
       width = 10;
+      complexityGame = "Easy";
       createNewFild();
     } else if (choice.innerHTML === "Medium") {
       width = 15;
+      complexityGame = "Medium";
       createNewFild();
     } else if (choice.innerHTML === "Hard") {
       width = 25;
+      complexityGame = "Hard";
       createNewFild();
     }
   });
@@ -88,7 +120,7 @@ arrOfDomComplexity.forEach((choice) => {
 
 function createNewFild() {
   // countBomb = Math.floor(Math.random() * 90) + 10;
-  countBomb = 2;
+
   numberOfRemainBombs = countBomb;
   countFlag.innerHTML = numberOfRemainBombs;
   countClick = 0;
@@ -271,11 +303,19 @@ function fieldFilling() {
 }
 fieldFilling();
 
+let a = 0;
+
 function openCell() {
   let arrayOfDomButton = Array.from(document.querySelectorAll(".cell"));
   arrayOfDomButton.forEach((cell, index, array) => {
     cell.addEventListener("click", () => {
-      countClick += 1;
+      if (!cell.classList.contains("checked") && cell.innerHTML === " ") {
+        countClick += 1;
+        if (checkSound) {
+          playSound("one-click");
+        }
+      }
+
       clickNumber.innerHTML = countClick;
       if (arrayOfDomButton.every((cell) => cell.innerHTML === " ")) {
         timerUpdate = setInterval(() => {
@@ -298,15 +338,11 @@ function openCell() {
             value.innerHTML = gameArray[i];
           }
         });
-checkWin = false;
+        checkWin = false;
         messageEndGame();
-
       }
 
       if (cell.innerHTML === "0") {
-        if (checkSound) {
-          playSound("one-click");
-        }
         // cell.innerHTML = "i";
         function openNeighborCells(currentIndex) {
           // if (array[currentIndex].classList.contains("checked")) return;
@@ -321,6 +357,7 @@ checkWin = false;
 
             if (array[currentIndex - (width + 1)].innerHTML === "0") {
               // console.log("left-top-diagonal", currentIndex);
+
               openNeighborCells(currentIndex - (width + 1));
             }
           }
@@ -419,28 +456,69 @@ checkWin = false;
         }
         openNeighborCells(index);
       }
-      if (cell.innerHTML !== "0" && cell.innerHTML !== "💣" && checkSound) {
-        playSound("one-click");
-      }
+
       counterWin = 0;
+      let differenceOfFlags = 0;
       arrayOfDomButton.forEach((buttonEmpty, indBut, arrbut) => {
+        if (buttonEmpty.innerHTML === "1") {
+          buttonEmpty.classList.add("one");
+        }
+        if (buttonEmpty.innerHTML === "2") {
+          buttonEmpty.classList.add("two");
+        }
+        if (buttonEmpty.innerHTML === "3") {
+          buttonEmpty.classList.add("three");
+        }
+        if (buttonEmpty.innerHTML === "4") {
+          buttonEmpty.classList.add("four");
+        }
+        if (buttonEmpty.innerHTML === "5") {
+          buttonEmpty.classList.add("five");
+        }
+        if (buttonEmpty.innerHTML === "6") {
+          buttonEmpty.classList.add("six");
+        }
+        if (buttonEmpty.innerHTML === "7") {
+          buttonEmpty.classList.add("seven");
+        }
+        if (buttonEmpty.innerHTML === "8") {
+          buttonEmpty.classList.add("eight");
+        }
+        if (
+          buttonEmpty.innerHTML !== "🚩" &&
+          buttonEmpty.innerHTML !== " " &&
+          buttonEmpty.innerHTML !== "💣"
+        ) {
+          counterWin += 1;
 
-    if (buttonEmpty.innerHTML !== "🚩" && buttonEmpty.innerHTML !== " " && buttonEmpty.innerHTML !== "💣" ) {
-    counterWin += 1;
-    console.log(counterWin);
-    if (width * width - countBomb === counterWin) {
-      checkWin = true;
-         messageEndGame()
-      checkWin = false;
-    }
+          if (width * width - countBomb === counterWin) {
+            countGame += 1;
+            checkWin = true;
+            messageEndGame();
+            tableResults.push({
+              Game: countGame,
+              fild: complexityGame,
+              Bomb: countBomb,
+              Time: second,
+              Click: countClick,
+            });
 
-    }
-      })
-
+            if (tableResults.length > 10) {
+tableResults.reverse().splice(-1, 1);
+tableResults.reverse();
+            }
+            console.log(tableResults);
+            checkWin = false;
+          }
+        }
+        if (buttonEmpty.innerHTML === "🚩") {
+          differenceOfFlags += 1;
+        }
+      });
+      numberOfRemainBombs = countBomb - differenceOfFlags;
+      countFlag.innerHTML = numberOfRemainBombs;
     });
-
   });
-
 }
 openCell();
 
@@ -451,7 +529,7 @@ function messageEndGame() {
   let imgGameFinal = document.createElement("img");
   imgGameFinal.className = "img-game-final";
 
-  messageFinalGame.appendChild(imgGameFinal)
+  messageFinalGame.appendChild(imgGameFinal);
   let phraseFinalGame = document.createElement("div");
   phraseFinalGame.className = "final-game-inscription";
 
@@ -460,24 +538,24 @@ function messageEndGame() {
   buttonTryAgain.className = "button-try-again";
   buttonTryAgain.innerHTML = "Try again";
   messageFinalGame.appendChild(buttonTryAgain);
-if (checkWin) {
-  imgGameFinal.src = `./assets/img/smiley.svg`
-  phraseFinalGame.innerHTML = "You are win! Congratulation!";
-  if (checkSound) {
-  playSound("win");
+  if (checkWin) {
+    imgGameFinal.src = `./assets/img/smiley.svg`;
+    phraseFinalGame.innerHTML = "You are win! Congratulation!";
+    if (checkSound) {
+      playSound("win");
+    }
+  } else {
+    imgGameFinal.src = `./assets/img/sadsmiley.svg`;
+    phraseFinalGame.innerHTML = "Game over!";
   }
-} else {
-  imgGameFinal.src = `./assets/img/sadsmiley.svg`
-  phraseFinalGame.innerHTML = "Game over!";
-}
-
+  bodyWrapper.classList.add("active");
   buttonTryAgain.addEventListener("click", () => {
-    createNewFild()
-    messageFinalGame.removeChild(messageFinalGame.firstChild)
-    messageFinalGame.removeChild(messageFinalGame.firstChild)
-    messageFinalGame.removeChild(messageFinalGame.firstChild)
+    createNewFild();
+    bodyWrapper.classList.toggle("active");
+    messageFinalGame.removeChild(messageFinalGame.firstChild);
+    messageFinalGame.removeChild(messageFinalGame.firstChild);
+    messageFinalGame.removeChild(messageFinalGame.firstChild);
     messageFinalGame.remove();
-
   });
 }
 
@@ -487,3 +565,69 @@ function playSound(typeSound) {
   audio.autoplay = true;
   return true;
 }
+
+
+let buttonResult = document.createElement("button");
+buttonResult.className = "button-results";
+buttonResult.innerHTML = "Last results";
+body.appendChild(buttonResult);
+
+let bodyWrapper = document.createElement("div");
+bodyWrapper.className = "body-wrapper";
+body.appendChild(bodyWrapper);
+
+buttonResult.addEventListener("click", () => {
+  bodyWrapper.classList.add("active");
+resultOfGame();
+})
+const arrayTable = ["Game №","Fild", "Bomb", "Time", "Click"]
+function resultOfGame() {
+let tr;
+let td;
+let th
+let tableResult = document.createElement("table");
+tableResult.className = "fild-result";
+body.appendChild(tableResult);
+for (let i = 0; i < arrayTable.length; i++) {
+  console.log(tableResults[i]);
+	 td = document.createElement("td");
+   td.className = "td";
+
+   tableResult.appendChild(td)
+   th = document.createElement("th")
+   th.className = "th";
+   th.innerHTML = arrayTable[i];
+   td.appendChild(th)
+	for (let k = 0; k < tableResults.length; k++) {
+
+		 tr = document.createElement('tr');
+     tr.className = "tr";
+       tr.innerHTML = Object.values(tableResults[k])[i];
+     td.appendChild(tr);
+	}
+
+}
+
+let buttonCloseTable = document.createElement("button");
+buttonCloseTable.className = "button-close-table";
+let imgClose = document.createElement("img");
+imgClose.src = `./assets/img/close.svg`;
+imgClose.alt = "cross";
+tableResult.appendChild(buttonCloseTable);
+buttonCloseTable.appendChild(imgClose);
+
+bodyWrapper.addEventListener("click", () => {
+  buttonCloseTable.remove();
+  tableResult.remove()
+  bodyWrapper.classList.toggle("active");
+})
+buttonCloseTable.addEventListener("click", () => {
+  buttonCloseTable.remove();
+  tableResult.remove()
+  bodyWrapper.classList.toggle("active");
+})
+}
+
+
+
+

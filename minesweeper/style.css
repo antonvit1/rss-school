@@ -1,6 +1,7 @@
 .body {
   display: flex;
   flex-direction: column;
+  background-image: url(assets/img/white.jpg);
 }
 
 .complexity-wrapper {
@@ -15,34 +16,47 @@
 .all-cells {
   display: grid;
   gap: 0px;
+  border: 10px inset rgb(206, 198, 198);
 }
 .cell {
   width: 25px;
   height: 25px;
 }
+.cell.zero {
+  color: #443939;
+  background-color: #a79999;
+}
 .cell.one {
+  background-color: #a79999;
   color: blue;
 }
 .cell.two {
   color: green;
+  background-color: #a79999;
 }
 .cell.three {
   color: red;
+  background-color: #a79999;
 }
 .cell.four {
   color: rgb(240, 6, 217);
+  background-color: #a79999;
 }
 .cell.five {
   color: brown;
+  background-color: #a79999;
 }
 .cell.six {
   color: rgb(17, 120, 134);
+  background-color: #a79999;
 }
 .cell.seven {
   color: rgb(221, 203, 3);
+  background-color: #a79999;
 }
 .cell.eight {
-  color: rgb(255, 255, 255);
+  color: rgb(116, 85, 85);
+  background-color: #a79999;
 }
 .inscription-count-flag {
   display: flex;
@@ -52,18 +66,29 @@
 }
 .count-flag {
   font-family: "Arial", sans-serif;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 600;
   color: rgb(15, 19, 19);
-  padding-left: 10px;
+  padding-left: 5px;
   padding-top: 3px;
 }
 .display {
-  width: 50px;
-  height: 20px;
+  width: 30px;
+  height: 25px;
   margin-left: 10px;
 }
-
+.button-use-bomb {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  cursor: pointer;
+  border: 1px solid #2c1818;
+  border-radius: 2px;
+}
+.button-use-bomb:hover {
+  background-color: #646060;
+  color: rgb(255, 255, 255);
+  border: 1px solid #2c1818;
+}
 .message-no-flag {
   padding-left: 20px;
   padding-top: 4px;
@@ -87,23 +112,43 @@
   font-weight: 600;
   color: rgb(15, 19, 19);
 }
-.restart {
-  width: 40px;
-  padding-top: 10px;
+
+.buttonComplexityText {
+  padding-left: 10px;
+  cursor: pointer;
+}
+.buttonComplexityText:hover {
+  color: red;
+}
+.buttonComplexityText.active {
+  color: rgb(133, 86, 90);
+}
+.ri-loop-left-line {
+  font-size: 25px;
+  padding-top: 15px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 15px;
+  cursor: pointer;
+}
+.restart:hover {
+  background-color: rgb(81, 72, 72);
 }
 .sound-on-off {
-  width: 25px;
+  font-size: 25px;
+  cursor: pointer;
 }
+
 .timer-wrapper {
   display: flex;
   justify-content: space-between;
 }
-.timer-img {
-  padding-left: 20px;
-  width: 30px;
+.ri-timer-line {
+  padding-left: 15px;
+  font-size: 25px;
 }
 .timer {
-  padding-top: 10px;
+  padding-top: 5px;
   padding-left: 10px;
   font-family: "Arial", sans-serif;
   font-size: 18px;
@@ -114,13 +159,13 @@
   display: flex;
   justify-content: space-between;
 }
-.click-img {
-  padding-left: 20px;
-  width: 30px;
+.ri-cursor-line {
+  padding-left: 15px;
+  font-size: 25px;
 }
 .click-number {
-  padding-top: 10px;
-  padding-left: 10px;
+  padding-top: 5px;
+  padding-left: 5px;
   font-family: "Arial", sans-serif;
   font-size: 18px;
   font-weight: 600;
@@ -131,10 +176,12 @@
   top: 10%;
   right: 10%;
   left: 10%;
-  background: #543f3f;
+  background-color: rgba(228, 244, 244, 0.6);
+  border: 2px solid rgb(68, 64, 64);
   border-radius: 9px;
-  border: 2px solid #fddcc4;
   text-align: center;
+  /* opacity: 0.7; */
+  /* rgb(228, 244, 244); */
 }
 .img-game-final {
   padding-top: 20px;
@@ -157,27 +204,46 @@
   color: rgb(15, 19, 19);
   padding: 10px 6px 10px 6px;
   margin-bottom: 30px;
+  cursor: pointer;
+  border: 1px solid #2c1818;
+  border-radius: 9px;
+  opacity: 1;
+}
+.button-try-again:hover {
+  background-color: #646060;
+  color: rgb(255, 255, 255);
+  border: 1px solid #2c1818;
 }
 .button-results {
   width: 200px;
   margin: 0 auto;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  cursor: pointer;
+  border: 1px solid #2c1818;
+  border-radius: 5px;
+}
+.button-results:hover {
+  background-color: #646060;
+  color: rgb(255, 255, 255);
+  border: 1px solid #2c1818;
 }
 .fild-result {
-  position: absolute;
+  position: fixed;
   display: flex;
   justify-content: space-around;
-  right: 10%;
   left: 10%;
+  right: 10%;
   top: 20%;
-  background-color: aqua;
-  border: 2px solid black;
+  background-color: rgb(228, 244, 244);
+  border: 1px solid rgb(68, 64, 64);
   border-radius: 10px;
 }
 .th {
   font-family: "Arial", sans-serif;
   font-size: 21px;
   font-weight: 600;
-  color: rgb(15, 19, 19);
+  color: rgb(50, 70, 70);
 }
 
 .tr {
@@ -188,17 +254,20 @@
   text-align: center;
 }
 .button-close-table {
-  position: relative;
-  width: 60px;
-  height: 60px;
+  position: absolute;
+  width: 50px;
+  height: 50px;
   display: flex;
   border-radius: 50%;
-  border: 2px solid #f1cdb3;
+  border: 2px solid #777471;
   justify-content: center;
   align-items: center;
-  right: -70px;
-  top: -70px;
+  right: 100px;
+  top: -55px;
   cursor: pointer;
+}
+.button-close-table:hover {
+  background-color: #a29f9b;
 }
 .body-wrapper {
   position: fixed;
@@ -212,4 +281,79 @@
 }
 .body-wrapper.active {
   display: block;
+}
+.message-error {
+  text-align: center;
+  font-family: "Arial", sans-serif;
+  font-size: 30px;
+  font-weight: 600;
+  color: rgb(34, 44, 44);
+  position: absolute;
+  top: 10%;
+  right: 10%;
+  left: 10%;
+  background-color: rgb(228, 244, 244);
+  border: 2px solid rgb(68, 64, 64);
+  border-radius: 9px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+.wrupper-style-wrapper {
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+}
+.styleWrapper {
+  display: flex;
+  justify-content: center;
+}
+.dark-style {
+  border-radius: 5px;
+  cursor: pointer;
+}
+.dark-style:hover {
+  background-color: #a29f9b;
+}
+.light-style {
+  margin-left: 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.light-style:hover {
+  background-color: #a29f9b;
+}
+.body.style {
+  background-image: url(assets/img/dark.jpg);
+}
+
+.body.style .count-flag,
+.body.style .timer,
+.body.style .click-number,
+.body.style .buttonComplexityText,
+.body.style .ri-loop-left-line,
+.body.style .ri-volume-up-line,
+.body.style .ri-volume-mute-line,
+.body.style .ri-timer-line,
+.body.style .ri-cursor-line {
+  color: antiquewhite;
+}
+
+@media (max-width: 660px) {
+  .cell {
+    width: 15px;
+    height: 15px;
+    font-size: 9px;
+    display: flex;
+    justify-content: center;
+  }
+  .all-cells {
+    display: grid;
+    gap: 0px;
+    border: 4px inset rgb(206, 198, 198);
+  }
+  .img-game-final {
+    padding-top: 20px;
+    width: 200px;
+    text-align: center;
+  }
 }

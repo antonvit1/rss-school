@@ -4,17 +4,29 @@ let checkSound;
 let checkWin = false;
 let countGame = 0;
 let counterWin = 0;
-let second;
-let width = 10;
+let second = 0;
+let width;
 let timerUpdate;
-let countClick;
+let countClick = 0;
 let tableResults = [];
-let complexityGame ="Easy";
-let numberOfRemainBombs = countBomb;
+let numberOfRemainingBombs = countBomb;
 const arrayComplexity = ["Easy", "Medium", "Hard"];
+let complexityGame;
+
 const body = document.querySelector("body");
 body.classList = "body";
 
+if (localStorage.getItem("complexity")) {
+  complexityGame = JSON.parse(localStorage.getItem("complexity"));
+} else {
+  complexityGame = "Easy";
+}
+
+if (localStorage.getItem("width")) {
+  width = JSON.parse(localStorage.getItem("width"));
+} else {
+  width = 10;
+}
 
 //create inscription about count flag
 
@@ -29,12 +41,25 @@ wrapperInscriptionCountFlag.appendChild(inscriptionCountFlag);
 
 let countFlag = document.createElement("div");
 countFlag.className = "count-flag";
-countFlag.innerHTML = numberOfRemainBombs;
+
+if (localStorage.getItem("countBomb")) {
+  countBomb = JSON.parse(localStorage.getItem("countBomb"));
+}
+
+if (localStorage.getItem("flag")) {
+  numberOfRemainingBombs = JSON.parse(localStorage.getItem("flag"));
+} else {
+  numberOfRemainingBombs = countBomb;
+}
+
+countFlag.innerHTML = numberOfRemainingBombs;
 wrapperInscriptionCountFlag.appendChild(countFlag);
 
 const display = document.createElement("input");
 display.className = "display";
 display.type = "text";
+
+display.value = countBomb;
 wrapperInscriptionCountFlag.appendChild(display);
 
 let buttonUse = document.createElement("button");
@@ -44,7 +69,6 @@ wrapperInscriptionCountFlag.appendChild(buttonUse);
 buttonUse.addEventListener("click", () => {
   if (display.value >= 10 && display.value <= 99) {
     countBomb = +display.value;
-
     createNewField();
   } else {
     let messageError = document.createElement("div");
@@ -64,8 +88,6 @@ buttonUse.addEventListener("click", () => {
   }
 });
 
-
-
 let mesageNoFlag = document.createElement("span");
 mesageNoFlag.className = "message-no-flag";
 wrapperInscriptionCountFlag.appendChild(mesageNoFlag);
@@ -78,35 +100,26 @@ divCell.className = "all-cells";
 if (window.matchMedia("(max-width: 660px)").matches) {
   divCell.style.gridTemplateColumns = `repeat(${width}, 15px)`;
 } else {
-divCell.style.gridTemplateColumns = `repeat(${width}, 25px)`;
+  divCell.style.gridTemplateColumns = `repeat(${width}, 25px)`;
 }
 const downWrapper = document.createElement("div");
 downWrapper.className = "down-wrapperty";
 body.appendChild(downWrapper);
 
-
-
 if (localStorage.getItem("click")) {
-  countClick = JSON.parse(localStorage.getItem("click"))
-} else {
-  countClick = 0;
+  countClick = JSON.parse(localStorage.getItem("click"));
 }
 
 if (localStorage.getItem("time")) {
-  second = JSON.parse(localStorage.getItem("time"))
-  // timerUpdate = setInterval(() => {
-  //   second += 1;
-  //   timer.innerHTML = second;
-  // }, 1000);
-} else {
-second = 0;
-}
 
-// if (localStorage.getItem("width")) {
-//   width = JSON.parse(localStorage.getItem("width"));
-// } else {
-// width = 10;//////////////////////////////////////////////////////////////////////
-// }
+  if (countClick) {
+    second = JSON.parse(localStorage.getItem("time"));
+    timerUpdate = setInterval(() => {
+      second += 1;
+      timer.innerHTML = second;
+    }, 1000);
+  }
+}
 
 //complexity
 const wrapperComplexity = document.createElement("div");
@@ -115,7 +128,7 @@ downWrapper.appendChild(wrapperComplexity);
 
 arrayComplexity.forEach((value) => {
   const textComplexity = document.createElement("label");
-   textComplexity.className = "buttonComplexityText";
+  textComplexity.className = "buttonComplexityText";
   textComplexity.innerHTML = value;
 
   wrapperComplexity.appendChild(textComplexity);
@@ -135,19 +148,21 @@ let arrOfDomComplexity = Array.from(
 );
 
 arrOfDomComplexity.forEach((choice, index, arr) => {
-  arr[0].classList.add("active")
+
+  if (choice.innerHTML === complexityGame) {
+    choice.classList.add("active");
+  }
+
   choice.addEventListener("click", () => {
-
     arr.forEach((compl) => {
-      compl.classList.remove("active")
-    })
+      compl.classList.remove("active");
+    });
 
-    choice.classList.add("active")
+    choice.classList.add("active");
     if (choice.innerHTML === "Easy") {
-
       width = 10;
       complexityGame = "Easy";
-      choice.classList.add("active")
+      choice.classList.add("active");
       createNewField();
     } else if (choice.innerHTML === "Medium") {
       width = 15;
@@ -158,6 +173,11 @@ arrOfDomComplexity.forEach((choice, index, arr) => {
       complexityGame = "Hard";
       createNewField();
     }
+    if (window.matchMedia("(max-width: 660px)").matches) {
+      divCell.style.gridTemplateColumns = `repeat(${width}, 15px)`;
+    } else {
+      divCell.style.gridTemplateColumns = `repeat(${width}, 25px)`;
+    }
   });
 });
 
@@ -165,25 +185,21 @@ const soundOnOff = document.createElement("i");
 soundOnOff.className = "sound-on-off ri-volume-up-line";
 wrapperInscriptionCountFlag.appendChild(soundOnOff);
 
-
-if (JSON.parse(localStorage.getItem("checkSound"))){
+if (JSON.parse(localStorage.getItem("checkSound"))) {
   soundOnOff.classList.remove("ri-volume-mute-line");
   soundOnOff.classList.remove("ri-volume-up-line");
 
-if (JSON.parse(localStorage.getItem("checkSound")) === "on") {
-  soundOnOff.classList.add("ri-volume-up-line");
-  soundOnOff.classList.remove("ri-volume-mute-line");
-  checkSound = "on";
-
-} else if (JSON.parse(localStorage.getItem("checkSound")) === "off"){
-  soundOnOff.classList.remove("ri-volume-up-line");
-  soundOnOff.classList.add("ri-volume-mute-line");
-  checkSound = "off";
-
-}
+  if (JSON.parse(localStorage.getItem("checkSound")) === "on") {
+    soundOnOff.classList.add("ri-volume-up-line");
+    soundOnOff.classList.remove("ri-volume-mute-line");
+    checkSound = "on";
+  } else if (JSON.parse(localStorage.getItem("checkSound")) === "off") {
+    soundOnOff.classList.remove("ri-volume-up-line");
+    soundOnOff.classList.add("ri-volume-mute-line");
+    checkSound = "off";
+  }
 } else {
   checkSound = "on";
-
 }
 
 soundOnOff.addEventListener("click", () => {
@@ -199,15 +215,8 @@ soundOnOff.addEventListener("click", () => {
 });
 
 function createNewField() {
-  console.log(localStorage.getItem("flag"), "123");
-  if (localStorage.getItem("flag")) {
-    numberOfRemainBombs = JSON.parse(localStorage.getItem("flag"))
-  } else {
-    numberOfRemainBombs = countBomb;//////////////////////////////////////////////////////flag
-  }
-
-  countFlag.innerHTML = numberOfRemainBombs;
-
+  numberOfRemainingBombs = countBomb;
+  countFlag.innerHTML = numberOfRemainingBombs;
   countClick = 0;
   second = 0;
   timer.innerHTML = second;
@@ -218,17 +227,8 @@ function createNewField() {
   writtenDom();
   fieldFilling();
   clearInterval(timerUpdate);
-
   openCell();
-  if (window.matchMedia("(max-width: 660px)").matches) {
-    divCell.style.gridTemplateColumns = `repeat(${width}, 15px)`;
-  } else {
-  divCell.style.gridTemplateColumns = `repeat(${width}, 25px)`;
-  }
-  // divCell.style.gridTemplateColumns = `repeat(${width}, 25px)`;
-  }
-
-
+}
 
 const timerWrapper = document.createElement("div");
 timerWrapper.className = "timer-wrapper";
@@ -256,7 +256,6 @@ clickWrapper.appendChild(clickNumber);
 
 wrapperOfWrapperComplexity.appendChild(divCell);
 
-
 function writtenDom() {
   let arrayOfCellAll = Array(width * width).fill(" ");
   let arrayOfCell = [];
@@ -273,18 +272,18 @@ function writtenDom() {
       buttonCell.addEventListener("contextmenu", (e) => {
         e.preventDefault();
 
-        if (numberOfRemainBombs > 0) {
+        if (numberOfRemainingBombs > 0) {
           if (buttonCell.innerHTML === "🚩") {
             buttonCell.innerHTML = " ";
-            numberOfRemainBombs += 1;
-            countFlag.innerHTML = numberOfRemainBombs;
+            numberOfRemainingBombs += 1;
+            countFlag.innerHTML = numberOfRemainingBombs;
             if (checkSound === "on") {
               playSound("bomb");
             }
           } else if (buttonCell.innerHTML === " ") {
             buttonCell.innerHTML = "🚩";
-            numberOfRemainBombs -= 1;
-            countFlag.innerHTML = numberOfRemainBombs;
+            numberOfRemainingBombs -= 1;
+            countFlag.innerHTML = numberOfRemainingBombs;
             if (checkSound === "on") {
               playSound("bomb");
             }
@@ -296,14 +295,14 @@ function writtenDom() {
             if (checkSound === "on") {
               playSound("bomb");
             }
-          } else if (numberOfRemainBombs > 0) {
+          } else if (numberOfRemainingBombs > 0) {
             mesageNoFlag.innerHTML = "You used all the flags!";
           }
         } else {
           if (buttonCell.innerHTML === "🚩") {
             buttonCell.innerHTML = " ";
-            numberOfRemainBombs += 1;
-            countFlag.innerHTML = numberOfRemainBombs;
+            numberOfRemainingBombs += 1;
+            countFlag.innerHTML = numberOfRemainingBombs;
             mesageNoFlag.innerHTML = "";
             if (checkSound === "on") {
               playSound("bomb");
@@ -321,20 +320,19 @@ writtenDom();
 let gameArray = [];
 
 function fieldFilling() {
-
   gameArray = [];
   let smallHelpArr = [];
   let helpCountBomb = 0;
-  console.log(countBomb);
 
- console.log(display.value);
+
+
   const arrayBomb = Array(countBomb).fill("💣");
 
   const arrayWithoutBomb = Array(width * width - countBomb).fill(" ");
   const totalGameArray = arrayWithoutBomb
     .concat(arrayBomb)
     .sort(() => Math.random() - 0.5);
-console.log(totalGameArray);
+
   for (let i = 0; i < totalGameArray.length / width; i++) {
     gameArray[i] = totalGameArray.slice(i * width, i * width + width);
   }
@@ -381,7 +379,7 @@ console.log(totalGameArray);
       return value;
     });
   });
-  console.log(gameArray);
+
   gameArray = gameArray.flat();
 }
 
@@ -393,8 +391,7 @@ if (localStorage.getItem("gameArray")) {
 
 let arrayOfDomButton = Array.from(document.querySelectorAll(".cell"));
 function openCell() {
-
- arrayOfDomButton = Array.from(document.querySelectorAll(".cell"));
+  arrayOfDomButton = Array.from(document.querySelectorAll(".cell"));
   arrayOfDomButton.forEach((cell, index, array) => {
     cell.addEventListener("click", () => {
       if (!cell.classList.contains("checked") && cell.innerHTML === " ") {
@@ -406,15 +403,16 @@ function openCell() {
 
       clickNumber.innerHTML = countClick;
       if (arrayOfDomButton.every((cell) => cell.innerHTML === " ")) {
-        timerUpdate = setInterval(() => {
-          second += 1;
-          timer.innerHTML = second;
-        }, 1000);
+
         cell.innerHTML = gameArray[index];
         while (cell.innerHTML === "💣") {
           fieldFilling();
           cell.innerHTML = gameArray[index];
         }
+        timerUpdate = setInterval(() => {
+          second += 1;
+          timer.innerHTML = second;
+        }, 1000);
       }
       cell.innerHTML = gameArray[index];
       if (cell.innerHTML === "💣") {
@@ -432,7 +430,6 @@ function openCell() {
 
       if (cell.innerHTML === "0") {
         function openNeighborCells(currentIndex) {
-
           if (
             array[currentIndex - (width + 1)] &&
             !array[currentIndex - (width + 1)].classList.contains("checked") &&
@@ -537,7 +534,7 @@ function openCell() {
       counterWin = 0;
       let differenceOfFlags = 0;
       arrayOfDomButton.forEach((buttonEmpty, indBut, arrbut) => {
-        addColorsToNumbers(buttonEmpty)
+        addColorsToNumbers(buttonEmpty);
         if (
           buttonEmpty.innerHTML !== "🚩" &&
           buttonEmpty.innerHTML !== " " &&
@@ -561,7 +558,7 @@ function openCell() {
               tableResults.reverse().splice(-1, 1);
               tableResults.reverse();
             }
-            console.log(tableResults);
+
             checkWin = false;
           }
         }
@@ -569,14 +566,13 @@ function openCell() {
           differenceOfFlags += 1;
         }
       });
-      numberOfRemainBombs = countBomb - differenceOfFlags;
-      countFlag.innerHTML = numberOfRemainBombs;
+      numberOfRemainingBombs = countBomb - differenceOfFlags;
+      countFlag.innerHTML = numberOfRemainingBombs;
     });
   });
 }
 
 function addColorsToNumbers(buttonEmpty) {
-
   if (buttonEmpty.innerHTML === "0") {
     buttonEmpty.classList.add("zero");
   }
@@ -607,21 +603,23 @@ function addColorsToNumbers(buttonEmpty) {
 }
 
 if (localStorage.getItem("arrayOfDomButton")) {
-  const arrayLocalStorage = JSON.parse(localStorage.getItem("arrayOfDomButton"));
+  const arrayLocalStorage = JSON.parse(
+    localStorage.getItem("arrayOfDomButton")
+  );
   arrayOfDomButton.forEach((cellEl, index, arr) => {
     if (arrayLocalStorage[index] !== " " && arrayLocalStorage[index] !== "🚩") {
-cellEl.classList.add("checked");
-cellEl.innerHTML = arrayLocalStorage[index]
-addColorsToNumbers(cellEl)
+      cellEl.classList.add("checked");
+      cellEl.innerHTML = arrayLocalStorage[index];
+      addColorsToNumbers(cellEl);
     } else if (arrayLocalStorage[index] === "🚩") {
-      cellEl.innerHTML = arrayLocalStorage[index]
+      cellEl.innerHTML = arrayLocalStorage[index];
     }
-
-  })
+  });
 }
 openCell();
 
 function messageEndGame() {
+  clearInterval(timerUpdate);
   let messageFinalGame = document.createElement("div");
   messageFinalGame.className = "message-final";
   body.appendChild(messageFinalGame);
@@ -639,7 +637,7 @@ function messageEndGame() {
   messageFinalGame.appendChild(buttonTryAgain);
   if (checkWin) {
     imgGameFinal.src = `./assets/img/smiley.svg`;
-    phraseFinalGame.innerHTML = "You are win! Congratulation!";
+    phraseFinalGame.innerHTML = `Hooray! You found all mines in ${second} seconds and ${countClick} moves!`;
     if (checkSound === "on") {
       playSound("win");
     }
@@ -685,12 +683,11 @@ let td;
 let th;
 let tableResult;
 function resultOfGame() {
-
   tableResult = document.createElement("table");
   tableResult.className = "fild-result";
   body.appendChild(tableResult);
   for (let i = 0; i < arrayTable.length; i++) {
-    console.log(tableResults[i]);
+
     td = document.createElement("td");
     td.className = "td";
 
@@ -728,11 +725,11 @@ function closeVisul() {
     bodyWrapper.classList.remove("active");
   });
 }
-const wrapperStyleWrapper = document.createElement("div")
+const wrapperStyleWrapper = document.createElement("div");
 wrapperStyleWrapper.className = "wrupper-style-wrapper";
 body.appendChild(wrapperStyleWrapper);
 
-const styleWrapper = document.createElement("div")
+const styleWrapper = document.createElement("div");
 styleWrapper.className = "style-wrapper";
 wrapperStyleWrapper.appendChild(styleWrapper);
 
@@ -748,30 +745,38 @@ styleWrapper.appendChild(lightStyle);
 
 darkStyle.addEventListener("click", () => {
   body.classList.add("style");
- })
+});
 
- lightStyle.addEventListener("click", () => {
+lightStyle.addEventListener("click", () => {
   body.classList.remove("style");
- })
-console.log(complexityGame);
-function saveInLocalStorage() {
-localStorage.setItem("flag", numberOfRemainBombs);
-localStorage.setItem("time", second);
-localStorage.setItem("complexity", JSON.stringify(complexityGame));
-localStorage.setItem("click", countClick);
-localStorage.setItem("countBomb", countBomb);
-localStorage.setItem("width", width);
-localStorage.setItem("checkSound", JSON.stringify(checkSound))
-localStorage.setItem("gameArray",JSON.stringify(gameArray));
-let lSarrayOfDomButton = arrayOfDomButton.map((value) => {
-  return value.innerHTML;
-})
-localStorage.setItem("arrayOfDomButton",JSON.stringify(lSarrayOfDomButton));
-}
-window.addEventListener('beforeunload', (event) => {
-  if (document.querySelector(".message-final") !== null){
-    createNewField()
-  }
-  saveInLocalStorage()
+});
 
+function saveInLocalStorage() {
+  localStorage.setItem("flag", numberOfRemainingBombs);
+  localStorage.setItem("time", second);
+  localStorage.setItem("complexity", JSON.stringify(complexityGame));
+  localStorage.setItem("click", countClick);
+  localStorage.setItem("countBomb", countBomb);
+  localStorage.setItem("width", width);
+  localStorage.setItem("checkSound", JSON.stringify(checkSound));
+  localStorage.setItem("gameArray", JSON.stringify(gameArray));
+  let lSarrayOfDomButton = arrayOfDomButton.map((value) => {
+    return value.innerHTML;
+  });
+  localStorage.setItem("arrayOfDomButton", JSON.stringify(lSarrayOfDomButton));
+}
+
+window.addEventListener("resize", () => {
+  if (window.matchMedia("(max-width: 660px)").matches) {
+    divCell.style.gridTemplateColumns = `repeat(${width}, 15px)`;
+  } else {
+    divCell.style.gridTemplateColumns = `repeat(${width}, 25px)`;
+  }
+});
+
+window.addEventListener("beforeunload", (event) => {
+  if (document.querySelector(".message-final") !== null) {
+    createNewField();
+  }
+  saveInLocalStorage();
 });

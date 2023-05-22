@@ -262,8 +262,8 @@
   border: 2px solid #777471;
   justify-content: center;
   align-items: center;
-  right: 100px;
-  top: -55px;
+  right: -30px;
+  top: -50px;
   cursor: pointer;
 }
 .button-close-table:hover {
@@ -336,6 +336,10 @@
 .body.style .ri-timer-line,
 .body.style .ri-cursor-line {
   color: antiquewhite;
+}
+
+.body.style .buttonComplexityText.active {
+  color: rgb(133, 86, 90);
 }
 
 @media (max-width: 660px) {

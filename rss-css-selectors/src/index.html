@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+      crossorigin="anonymous"></script>
+    <!-- <link rel="stylesheet" href="style.css" /> -->
+  </head>
+  <body class="body conteiner-fluid">
+    <div class="wrapper row">
+      <section
+        class="left-fild col-md-9"
+        style="background-color: rgb(48, 44, 44)">
+        <div class="header-left d-flex justify-content-between">
+          <div class="logo">
+            <img class="logo-img" src="../assets/logo.svg" alt="plate" />
+            <span class="name-logo">CSS Diner</span>
+          </div>
+          <div class="share">
+            <span class="share-text">Share</span>
+            <a
+              href="https://www.google.com/intl/ru/gmail/about/"
+              target="_blank">
+              <svg
+                class="link-socNetwork"
+                xmlns="http://www.w3.org/2000/svg"
+                width="30"
+                height="30"
+                fill="currentColor"
+                class="bi bi-envelope-fill"
+                viewBox="0 0 16 16">
+                <path
+                  d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z" />
+              </svg>
+            </a>
+            <a href="https://ru-ru.facebook.com/" target="_blank">
+              <svg
+                class="link-socNetwork"
+                xmlns="http://www.w3.org/2000/svg"
+                width="30"
+                height="30"
+                fill="currentColor"
+                class="bi bi-facebook"
+                viewBox="0 0 16 16">
+                <path
+                  d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
+              </svg>
+            </a>
+            <a href="https://twitter.com/?lang=ru" target="_blank">
+              <svg
+                class="link-socNetwork"
+                xmlns="http://www.w3.org/2000/svg"
+                width="30"
+                height="30"
+                fill="currentColor"
+                class="bi bi-twitter"
+                viewBox="0 0 16 16">
+                <path
+                  d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z" />
+              </svg>
+            </a>
+          </div>
+        </div>
+        <h1 class="task-name">Select the plates</h1>
+        <button class="button-help">Help, I'm stuck!</button>
+        <div class="img-wrapper">
+
+        <div class="img-table">
+          <img class="plate-one" src="assets/plate.svg" alt="plate" />
+          <img class="plate-two" src="assets/plate.svg" alt="plate" />
+        </div>
+      </div>
+        <div class="field-for-input">
+          <div class="table-wrapper">
+            <div class="hat-table">
+              <div class="hat-table-left">
+                <span>CSS Editor</span>
+                <span>style.css</span>
+              </div>
+              <div class="hat-table-right">
+                <span>HTML Viewer</span>
+                <span>table.html</span>
+              </div>
+            </div>
+            <div class="count-str">
+              1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
+            </div>
+            <div class="user-input">
+              <div class="input-field">
+                <input
+                  type="text"
+                  id="input-answer"
+                  placeholder="Type in a CSS selector" />
+                  <div class="text-in-field">
+                    {<br>/* Style would go here. */<br>}<br><br>/*<br>
+                    Type a number to skip to a level.<br>
+                    Ex🠖"5" for level 5<br>*/
+                  </div>
+                </div>
+                <button class="button-enter">
+                  <svg class="img-enter" width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="48" height="48" fill="currentColor" fill-opacity="0.01"/>
+                    <path d="M44 44V4H24V20H4V44H44Z" fill="currentColor" stroke="black" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M21 28L17 32L21 36" stroke="white" stroke-width="4" stroke-linecap="round" />
+                    <path d="M34 23V32H17" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </button>
+
+            </div>
+            <div class="count-str-two">
+              1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
+            </div>
+            <div class="html-code">
+              <span class="html_str1">&lt;div class="table&gt;<br></span>
+              <span class="html_str2">&lt;plate/&gt;<br></span>
+              <span class="html_str3">&lt;plate/&gt;<br></span>
+              <span class="html_str4">&lt;div/&gt;</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section
+        class="right-section col-md-3"
+        style="background-color: rgb(37, 30, 30)">
+        <div class="header-right">
+          <div class="level">
+            <span class="curent-level">Level 1 0f 10</span>
+            <svg class="check-mark" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 50 50" ><path d="M 41.9375 8.625 C 41.273438 8.648438 40.664063 9 40.3125 9.5625 L 21.5 38.34375 L 9.3125 27.8125 C 8.789063 27.269531 8.003906 27.066406 7.28125 27.292969 C 6.5625 27.515625 6.027344 28.125 5.902344 28.867188 C 5.777344 29.613281 6.078125 30.363281 6.6875 30.8125 L 20.625 42.875 C 21.0625 43.246094 21.640625 43.410156 22.207031 43.328125 C 22.777344 43.242188 23.28125 42.917969 23.59375 42.4375 L 43.6875 11.75 C 44.117188 11.121094 44.152344 10.308594 43.78125 9.644531 C 43.410156 8.984375 42.695313 8.589844 41.9375 8.625 Z"/></svg>
+          </div>
+
+          <div class="buttons-right-section">
+            <button class="left-button">
+            <svg class="img-button" fill="currentColor" viewBox="0 0 16 16">
+              <path
+                fill-rule="evenodd"
+                d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
+            </svg>
+          </button>
+          <button class="right-button">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              class="img-button"
+              viewBox="0 0 16 16">
+              <path
+                fill-rule="evenodd"
+                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+            </svg>
+          </button>
+          <button class="button-menu">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              class="img-menu"
+              viewBox="0 0 16 16">
+              <path
+                fill-rule="evenodd"
+                d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+            </svg>
+          </button>
+          </div>
+        </div>
+        <progress id="progress" max="100" value="10"></progress>
+        <div class="discription-task"></div>
+        <span class="topic-task">Type Selector</span>
+        <div class="task">Select elements by their type</div>
+        <div class="syble-task"><mark>A</mark></div>
+        <div class="description-task">
+          Selects all elements of type <mark><strong>A</strong></mark
+          >. Type refers to the type of tag, so <mark>&lt;div&gt;</mark>,
+          <mark>&lt;p&gt;</mark> and <mark>&lt;ul&gt;</mark> are all different
+          element types.
+        </div>
+        <span class="example-world">Examples</span>
+        <div class="example-first">
+          div selects all <mark>&lt;div&gt;</mark> elements.
+        </div>
+        <div class="example-second">
+          p selects all <mark>&lt;p&gt;</mark> elements.
+        </div>
+      </section>
+    </div>
+    <!-- <script src="index.ts"></script> -->
+  </body>
+</html>

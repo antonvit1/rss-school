@@ -1,0 +1,9 @@
+{
+    "name": "Type Selector",
+    "task": "Select elements by their type",
+     "letters": "A",
+     "diskription": "Selects all elements of type A. Type refers to the type of tag, so <div>, <p> and <ul> are all different element types.",
+     "exampleWord": "Examples",
+     "example": "div selects all <div> elements. p selects all <p> elements."
+
+   }

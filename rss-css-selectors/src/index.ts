@@ -1,1 +1,5 @@
-console.log("hellow Typescript");
+import "./style.css"
+
+
+console.log('111111111111111111111')
+

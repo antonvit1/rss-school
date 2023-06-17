@@ -1,5 +1,4 @@
 import "./style.css"
+console.log('222');
 
-
-console.log('111111111111111111111')
 

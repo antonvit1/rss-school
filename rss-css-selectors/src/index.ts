@@ -1,4 +1,5 @@
 import "./style.css";
+// import "./array-of-tasks"
 
 const arrayTask = [
   {
@@ -18,8 +19,7 @@ const arrayTask = [
     curLevel: "1",
     topic_task: "ID Selector",
     answer: "plate",
-    markSideBoxTask: "mark-one"
-    // changeColorMark:
+
   },
   {
     mainClass: "task2",
@@ -38,7 +38,7 @@ const arrayTask = [
     curLevel: "2",
     topic_task: "ID Selector",
     answer: "mushroom",
-    markSideBoxTask: "mark-two"
+
   },
   {
     mainClass: "task3",
@@ -65,9 +65,42 @@ const arrayTask = [
     example_second:
       '<mark>ul#long</mark> selects ul <mark>&lt;id="long"&gt;</mark>',
       answer: "#plate",
-      markSideBoxTask: "mark-three"
+
   },
 ];
+const contentRightSect = [
+{
+topic_task: "Type Selector",
+task: "Select elements by their type",
+symbol_task: "A",
+description_task: "Selects all elements of type <mark><strong>A</strong></mark>. Type refers to the type of tag, so <mark>&lt;div&gt;</mark>,<mark>&lt;p&gt;</mark> and <mark>&lt;ul&gt;</mark> are all different element types.",
+example_word: "Examples",
+example_first: "<mark>div</mark> selects all <mark>&lt;div&gt;</mark> elements.",
+example_second: "<mark>p</mark> selects all <mark>&lt;p&gt;</mark> elements.",
+
+},
+{
+topic_task: "Type Selector",
+task: "Select elements by their type",
+symbol_task: "A",
+description_task: "Selects all elements of type <mark><strong>A</strong></mark>. Type refers to the type of tag, so <mark>&lt;div&gt;</mark>,<mark>&lt;p&gt;</mark> and <mark>&lt;ul&gt;</mark> are all different element types.",
+example_word: "Examples",
+example_first: "<mark>div</mark> selects all <mark>&lt;div&gt;</mark> elements.",
+example_second: "<mark>p</mark> selects all <mark>&lt;p&gt;</mark> elements.",
+
+},
+{
+topic_task: "Type Selector",
+task: "Select elements by their type",
+symbol_task: "A",
+description_task: "Selects all elements of type <mark><strong>A</strong></mark>. Type refers to the type of tag, so <mark>&lt;div&gt;</mark>,<mark>&lt;p&gt;</mark> and <mark>&lt;ul&gt;</mark> are all different element types.",
+example_word: "Examples",
+example_first: "<mark>div</mark> selects all <mark>&lt;div&gt;</mark> elements.",
+example_second: "<mark>p</mark> selects all <mark>&lt;p&gt;</mark> elements.",
+
+}
+
+]
 
 let indexOfArrayTask = 0;
 let markMain = document.querySelector(".mark-main");
@@ -84,8 +117,17 @@ let htmlCodeStr5 = <HTMLElement>document.querySelector(".html_str5");
 let currentLevel = <HTMLElement>document.querySelector(".current-level");
 let progress = <HTMLProgressElement>document.querySelector("#progress");
 
-let imgTable = document.querySelector(".img-table");
+//Right section
+let topicTask = <HTMLElement>document.querySelector(".topic-task");
+let taskNameText = <HTMLElement>document.querySelector(".task");
+let symbolTask = <HTMLElement>document.querySelector(".symbol-task");
+let descriptionTask = <HTMLElement>document.querySelector(".description-task");
+let exampleWord = <HTMLElement>document.querySelector(".example-word");
+let exampleFirst = <HTMLElement>document.querySelector(".example-first");
+let exampleSecond = <HTMLElement>document.querySelector(".example-second");
 
+
+let imgTable = document.querySelector(".img-table");
 
 markMain?.addEventListener("click", function () {
   markMain?.classList.toggle("active");
@@ -147,7 +189,6 @@ function changePictureHtmlTableTask() {
   pictureOne.src = arrayTask[indexOfArrayTask].src1;
   imgTable?.appendChild(pictureOne);
 
-
   pictureTwo.className = arrayTask[indexOfArrayTask].img2;
   pictureTwo.src = arrayTask[indexOfArrayTask].src2;
   imgTable?.appendChild(pictureTwo);
@@ -160,12 +201,23 @@ function changePictureHtmlTableTask() {
   highlightHtmlImg(pictureTwo, htmlCodeStr3);
   highlightHtmlImg(pictureThree, htmlCodeStr4);
 }
+function changeTextRightSect() {
+topicTask.innerHTML = contentRightSect[indexOfArrayTask].topic_task;
+taskNameText.innerHTML = contentRightSect[indexOfArrayTask].task;
+symbolTask.innerHTML = contentRightSect[indexOfArrayTask].symbol_task;
+descriptionTask.innerHTML = contentRightSect[indexOfArrayTask].description_task;
+exampleWord.innerHTML = contentRightSect[indexOfArrayTask].example_word;
+exampleFirst.innerHTML = contentRightSect[indexOfArrayTask].example_first;
+exampleSecond.innerHTML = contentRightSect[indexOfArrayTask].example_second;
+}
+
 
 
 rightBtn?.addEventListener("click", function () {
   addClassToBodyNext();
   indexOfArrayTask += 1;
   changePictureHtmlTableTask();
+  changeTextRightSect()
   removeClassFromBodyNext();
 });
 
@@ -173,15 +225,20 @@ leftBtn?.addEventListener("click", function () {
   addClassToBodyPrev();
   indexOfArrayTask -= 1;
   changePictureHtmlTableTask();
+  changeTextRightSect()
   removeClassFromBodyPrev();
 });
 
 let answerTask: any = document.querySelector("#input-answer");
 let buttonEnter = <HTMLElement>document.querySelector(".img-enter");
 let allTable = <HTMLElement>document.querySelector(".table-wrapper");
-let chekMarkTask = <HTMLElement>document.querySelector(".check-mark");
-let markSideBoxTask = <HTMLElement>document.getElementById(arrayTask[indexOfArrayTask].markSideBoxTask);
-console.log(arrayTask[indexOfArrayTask].markSideBoxTask);
+// let chekMarkTask = <HTMLElement>document.querySelector(".check-mark");
+// let markSideBoxTask = <HTMLElement>document.getElementById(arrayTask[indexOfArrayTask].markSide);
+
+// function changeColorDoneTask(markHead: any, markSide: any) {
+//   markHead?.classList.add(arrayTask[indexOfArrayTask].headMark);
+//   markSide?.classList.add("done");
+// }
 
 buttonEnter.addEventListener("click", function() {
 
@@ -190,8 +247,8 @@ buttonEnter.addEventListener("click", function() {
     indexOfArrayTask += 1;
     changePictureHtmlTableTask();
     removeClassFromBodyNext();
-    chekMarkTask?.classList.add("active");
-    markSideBoxTask?.classList.add("active");
+  // changeColorDoneTask(chekMarkTask, markSideBoxTask)
+
     } else {
 
 allTable.classList.add("shake");

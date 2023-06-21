@@ -26,8 +26,8 @@
 .task2 .shadow {
   box-shadow: 4px 4px 4px 4px rgba(34, 60, 80, 0.2);
 }
-.task2 .check-mark.active,
-.task2 #mark-two.active {
+.task2 #mark-two .done,
+.task2 .change-color-mark2 {
   color: green;
 }
 .task2 .shake {

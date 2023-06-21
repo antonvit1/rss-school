@@ -1,0 +1,68 @@
+export const arrayTask= [
+    {
+      mainClass: "task1",
+      class_highlight1: "highlight1",
+      shadowImg: "shadow",
+      taskName: "Select the plate",
+      img1: "plate1",
+      src1: "assets/plate.svg",
+      img2: "plate2",
+      src2: "assets/plate.svg",
+      img3: "",
+      src3: "",
+      html_str2: "&lt;plate/&gt;<br>",
+      html_str4: "&lt;div/&gt;",
+      html_str5: "",
+      curLevel: "1",
+      topic_task: "ID Selector",
+      answer: "plate",
+      markSideBoxTask: "mark-one"
+      // changeColorMark:
+    },
+    {
+      mainClass: "task2",
+      class_highlight1: "highlight1",
+      shadowImg: "shadow",
+      taskName: "Select the mushroom",
+      img1: "mushroom1",
+      src1: "assets/mushroom.svg",
+      img2: "plate",
+      src2: "assets/plate.svg",
+      img3: "mushroom2",
+      src3: "assets/mushroom.svg",
+      html_str2: "&lt;mushroom/&gt;<br>",
+      html_str4: "&lt;mushroom/&gt;<br>",
+      html_str5: "&lt;div/&gt;",
+      curLevel: "2",
+      topic_task: "ID Selector",
+      answer: "mushroom",
+      markSideBoxTask: "mark-two"
+    },
+    {
+      mainClass: "task3",
+      class_highlight1: "highlight1",
+      shadowImg: "shadow",
+      taskName: "Select the fancy plate",
+      img1: "plate-fancy",
+      src1: "assets/plate-svgrepo.svg",
+      img2: "plate",
+      src2: "assets/plate.svg",
+      img3: "mushroom",
+      src3: "assets/mushroom.svg",
+      html_str2: '&lt;plate id="fancy"/&gt;<br>',
+      html_str4: "&lt;mushroom/&gt;<br>",
+      html_str5: "&lt;div/&gt;",
+      curLevel: "3",
+      topic_task: "ID Selector",
+      task: "Select elements with an ID",
+      symble_task: "#id",
+      description_task:
+        "Selects the element with a specific <mark><strong>id</strong></mark>. You can also combine the ID selector with the type selector.",
+      example_first:
+        '<mark>#cool</mark> selects any element with <mark>id="cool"</mark>',
+      example_second:
+        '<mark>ul#long</mark> selects ul <mark>&lt;id="long"&gt;</mark>',
+        answer: "#plate",
+        markSideBoxTask: "mark-three"
+    },
+  ];

@@ -23,7 +23,7 @@
 .task1 .shadow {
   box-shadow: 4px 4px 4px 4px rgba(34, 60, 80, 0.2);
 }
-.task1 .check-mark.active,
-.task1 #mark-one.active {
+.task1 #mark-one .done,
+.task1 .change-color-mark1 {
   color: green;
 }

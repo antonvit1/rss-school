@@ -46,32 +46,7 @@
   width: 500px;
   height: 200px;
 }
-.plate-one {
-  border-radius: 40%;
-  height: 160px;
-  animation: 0.5s infinite alternate slidein;
-  padding-right: 20px;
-}
-.plate-two {
-  border-radius: 40%;
-  height: 160px;
-  animation: 0.5s infinite alternate slidein;
-  padding-left: 20px;
-}
-.plate-one:hover,
-.plate-two:hover {
-  box-shadow: 4px 4px 4px 4px rgba(34, 60, 80, 0.2);
-  cursor: pointer;
-}
 
-@keyframes slidein {
-  from {
-    width: 130px;
-  }
-  to {
-    width: 150px;
-  }
-}
 .field-for-input {
   background-color: rgb(42, 35, 35);
   margin-top: 2%;
@@ -115,9 +90,22 @@
   background-color: rgb(236, 236, 236);
   padding: 10px;
 }
+.input-field {
+  width: 100%;
+}
 #input-answer {
   border: 0;
   background-color: rgb(236, 236, 236);
+  width: 100%;
+  animation: blink 1s infinite;
+}
+@keyframes blink {
+  from {
+    background-color: aquamarine;
+  }
+  to {
+    background-color: rgb(236, 236, 236);
+  }
 }
 .button-enter {
   display: flex;
@@ -167,26 +155,63 @@
   width: 25px;
   color: rgb(121, 122, 124);
 }
+.buttons-right-section {
+  display: flex;
+  justify-content: center;
+}
 .left-button,
-.right-button,
-.button-menu {
+.right-button {
   cursor: pointer;
   border: 0;
   background-color: rgb(37, 30, 30);
 }
+
 .img-button,
 .img-button {
   width: 25px;
   color: rgb(121, 122, 124);
 }
-.img-menu {
-  width: 35px;
-  color: rgb(121, 122, 124);
-}
+
 .img-button:hover,
-.img-button:hover,
-.img-menu:hover {
+.img-button:hover {
   color: rgb(161, 162, 163);
+}
+.mark-main {
+  padding-top: 15px;
+  margin: 0;
+  width: 25px;
+  height: 25px;
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+  cursor: pointer;
+}
+.mark-main span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 25px;
+  height: 2px;
+  transform: translate(-50%, -50%);
+  background-color: rgb(121, 122, 124);
+  transition: all 0.5s;
+}
+.mark-main span:nth-of-type(2) {
+  top: calc(50% - 7px);
+}
+.mark-main span:nth-of-type(3) {
+  top: calc(50% + 7px);
+}
+.mark-main.active span:nth-of-type(1) {
+  display: none;
+}
+.mark-main.active span:nth-of-type(2) {
+  top: 50%;
+  transform: translate(-50%, 0%) rotate(45deg);
+}
+.mark-main.active span:nth-of-type(3) {
+  top: 50%;
+  transform: translate(-50%, 0%) rotate(-45deg);
 }
 #progress {
   width: 100%;
@@ -223,3 +248,53 @@ mark {
   background-color: rgb(58, 58, 58);
   color: rgb(180, 181, 181);
 }
+.side-box {
+  position: fixed;
+  top: 0;
+  left: 75%;
+  width: 25%;
+  height: 100%;
+  background: #292929;
+  transform: translateX(200%);
+  transition: transform 0.7s;
+}
+
+.side-box.active {
+  transform: translateX(0);
+}
+.choose-level {
+  color: rgb(121, 122, 124);
+  padding-left: 10px;
+  padding-top: 10px;
+  font-size: 2em;
+}
+.side-box-list {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  padding-top: 40px;
+  padding-left: 20px;
+}
+.side-box-list li {
+  padding-top: 10px;
+}
+.task {
+  text-decoration: none;
+}
+.check-mark {
+  color: rgb(121, 122, 124);
+  width: 20px;
+}
+
+.btn-reset-progress {
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: rgb(37, 30, 30);
+  color: rgb(121, 122, 124);
+  border-color: aliceblue;
+  margin: 100px 10px 10px 10px;
+}
+
+@import "./css/task-two.css";
+@import "./css/task-one.css";

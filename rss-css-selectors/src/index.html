@@ -75,8 +75,7 @@
         <div class="img-wrapper">
 
         <div class="img-table">
-          <img class="plate-one" src="assets/plate.svg" alt="plate" />
-          <img class="plate-two" src="assets/plate.svg" alt="plate" />
+
         </div>
       </div>
         <div class="field-for-input">
@@ -121,10 +120,10 @@
             </div>
             <div class="html-code">
               <span>&lt;div class="table&gt;<br></span>
-              <span>&lt;plate/&gt;<br></span>
-              <span>&lt;plate/&gt;<br></span>
-              <span>&lt;div/&gt;</span>
-              <span></span>
+              <span class="html_str2">&lt;plate/&gt;<br></span>
+              <span class="html_str3">&lt;plate/&gt;<br></span>
+              <span class="html_str4">&lt;div/&gt;</span>
+              <span class="html_str5"></span>
               <span></span>
               <span></span>
               <span></span>
@@ -145,7 +144,7 @@
         style="background-color: rgb(37, 30, 30)">
         <div class="header-right">
           <div class="level">
-            <span class="curent-level">Level 1 0f 10</span>
+            <span class="inscrip-level">Level <span class="current-level" >1</span> 0f 10</span>
             <svg class="check-mark" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 50 50" ><path d="M 41.9375 8.625 C 41.273438 8.648438 40.664063 9 40.3125 9.5625 L 21.5 38.34375 L 9.3125 27.8125 C 8.789063 27.269531 8.003906 27.066406 7.28125 27.292969 C 6.5625 27.515625 6.027344 28.125 5.902344 28.867188 C 5.777344 29.613281 6.078125 30.363281 6.6875 30.8125 L 20.625 42.875 C 21.0625 43.246094 21.640625 43.410156 22.207031 43.328125 C 22.777344 43.242188 23.28125 42.917969 23.59375 42.4375 L 43.6875 11.75 C 44.117188 11.121094 44.152344 10.308594 43.78125 9.644531 C 43.410156 8.984375 42.695313 8.589844 41.9375 8.625 Z"/></svg>
           </div>
 
@@ -168,17 +167,13 @@
                 d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
             </svg>
           </button>
-          <button class="button-menu">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="currentColor"
-              class="img-menu"
-              viewBox="0 0 16 16">
-              <path
-                fill-rule="evenodd"
-                d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
-            </svg>
-          </button>
+          <div class="button-menu">
+            <div class="mark-main">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
           </div>
         </div>
         <progress id="progress" max="100" value="10"></progress>
@@ -194,13 +189,51 @@
         </div>
         <span class="example-world">Examples</span>
         <div class="example-first">
-          div selects all <mark>&lt;div&gt;</mark> elements.
+          <mark>div</mark> selects all <mark>&lt;div&gt;</mark> elements.
         </div>
         <div class="example-second">
-          p selects all <mark>&lt;p&gt;</mark> elements.
+          <mark>p</mark> selects all <mark>&lt;p&gt;</mark> elements.
         </div>
       </section>
     </div>
+<div class="side-box">
+  <span class="choose-level">Choose a level</span>
+  <nav>
+<ul class="side-box-list">
+<li>
+  <svg class="check-mark" id="mark-one" role="img" focusable="false" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14"><path fill="currentColor" d="M1.00000001 7.71134025l3.83505154 3.8041237 8.16494844-8.16494844-.86597938-.86597938L4.83505155 9.7835052 1.86597939 6.81443303z"/></svg>
+  <a class="task">1 A</a></li>
+  <li>
+    <svg class="check-mark" id="mark-two" role="img" focusable="false" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14"><path fill="currentColor" d="M1.00000001 7.71134025l3.83505154 3.8041237 8.16494844-8.16494844-.86597938-.86597938L4.83505155 9.7835052 1.86597939 6.81443303z"/></svg>
+    <a class="task">2 A</a></li>
+    <li>
+      <svg class="check-mark" id="mark-three" role="img" focusable="false" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14"><path fill="currentColor" d="M1.00000001 7.71134025l3.83505154 3.8041237 8.16494844-8.16494844-.86597938-.86597938L4.83505155 9.7835052 1.86597939 6.81443303z"/></svg>
+      <a class="task">3 #id</a></li>
+      <li>
+        <svg class="check-mark" role="img" focusable="false" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14"><path fill="currentColor" d="M1.00000001 7.71134025l3.83505154 3.8041237 8.16494844-8.16494844-.86597938-.86597938L4.83505155 9.7835052 1.86597939 6.81443303z"/></svg>
+        <a class="task">4 A B</a></li>
+        <li>
+          <svg class="check-mark" role="img" focusable="false" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14"><path fill="currentColor" d="M1.00000001 7.71134025l3.83505154 3.8041237 8.16494844-8.16494844-.86597938-.86597938L4.83505155 9.7835052 1.86597939 6.81443303z"/></svg>
+          <a class="task">5 #id A</a></li>
+          <li>
+            <svg class="check-mark" role="img" focusable="false" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14"><path fill="currentColor" d="M1.00000001 7.71134025l3.83505154 3.8041237 8.16494844-8.16494844-.86597938-.86597938L4.83505155 9.7835052 1.86597939 6.81443303z"/></svg>
+            <a class="task">6 .className</a></li>
+            <li>
+              <svg class="check-mark" role="img" focusable="false" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14"><path fill="currentColor" d="M1.00000001 7.71134025l3.83505154 3.8041237 8.16494844-8.16494844-.86597938-.86597938L4.83505155 9.7835052 1.86597939 6.81443303z"/></svg>
+              <a class="task">7 A.className</a></li>
+              <li>
+                <svg class="check-mark" role="img" focusable="false" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14"><path fill="currentColor" d="M1.00000001 7.71134025l3.83505154 3.8041237 8.16494844-8.16494844-.86597938-.86597938L4.83505155 9.7835052 1.86597939 6.81443303z"/></svg>
+                <a class="task">8 Put your back into it!</a></li>
+                <li>
+                  <svg class="check-mark" role="img" focusable="false" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14"><path fill="currentColor" d="M1.00000001 7.71134025l3.83505154 3.8041237 8.16494844-8.16494844-.86597938-.86597938L4.83505155 9.7835052 1.86597939 6.81443303z"/></svg>
+                  <a class="task">9 A, B</a></li>
+                  <li>
+                    <svg class="check-mark" role="img" focusable="false" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14"><path fill="currentColor" d="M1.00000001 7.71134025l3.83505154 3.8041237 8.16494844-8.16494844-.86597938-.86597938L4.83505155 9.7835052 1.86597939 6.81443303z"/></svg>
+                    <a class="task">10 *</a></li>
+</ul>
+</nav>
+<button class="btn-reset-progress">Resset Progress</button>
+</div>
     <!-- <script src="index.ts"></script> -->
   </body>
 </html>

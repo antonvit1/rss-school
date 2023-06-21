@@ -1,0 +1,29 @@
+.task1 .plate1,
+.task1 .plate2 {
+  border-radius: 40%;
+  height: 160px;
+  cursor: pointer;
+  animation: 0.5s infinite alternate slidein;
+}
+@keyframes slidein {
+  from {
+    width: 130px;
+  }
+  to {
+    width: 150px;
+  }
+}
+.task1 .html-str4 {
+  padding-left: 20px;
+}
+
+.task1 .highlight1 {
+  color: aliceblue;
+}
+.task1 .shadow {
+  box-shadow: 4px 4px 4px 4px rgba(34, 60, 80, 0.2);
+}
+.task1 .check-mark.active,
+.task1 #mark-one.active {
+  color: green;
+}

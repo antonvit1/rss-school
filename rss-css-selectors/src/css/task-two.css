@@ -1,0 +1,51 @@
+.task2 .mushroom1,
+.task2 .mushroom2 {
+  border-radius: 40%;
+  height: 150px;
+  animation: 0.5s infinite alternate slidein;
+}
+
+@keyframes slidein {
+  from {
+    width: 130px;
+  }
+  to {
+    width: 150px;
+  }
+}
+.task2 .plate {
+  border-radius: 40%;
+  height: 150px;
+}
+.task2 .html_str4 {
+  padding-left: 20px;
+}
+.task2 .highlight1 {
+  color: aliceblue;
+}
+.task2 .shadow {
+  box-shadow: 4px 4px 4px 4px rgba(34, 60, 80, 0.2);
+}
+.task2 .check-mark.active,
+.task2 #mark-two.active {
+  color: green;
+}
+.task2 .shake {
+  animation: 1.2s shake infinite;
+}
+
+@keyframes shake {
+  0%,
+  50%,
+  100% {
+    transform: rotate(0deg);
+  }
+  10%,
+  30% {
+    transform: rotate(-5deg);
+  }
+  20%,
+  40% {
+    transform: rotate(5deg);
+  }
+}

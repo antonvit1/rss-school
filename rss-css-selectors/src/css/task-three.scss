@@ -1,37 +1,33 @@
-.task2 .mushroom1,
-.task2 .mushroom2 {
+.task3 .plate-fancy {
   border-radius: 40%;
-  height: 150px;
+  margin-bottom: 50px;
   animation: 0.5s infinite alternate slidein;
 }
-
 @keyframes slidein {
   from {
-    width: 130px;
+    width: 120px;
   }
   to {
-    width: 150px;
+    width: 130px;
   }
 }
-.task2 .plate {
-  border-radius: 40%;
-  height: 150px;
+.task3 .plate,
+.task3 .mushroom {
+  padding-top: 10px;
+  height: 130px;
+  margin-left: 15px;
 }
-.task2 .html_str4 {
+.task3 .shake {
+  animation: 1.2s shake infinite;
+}
+.task3 .html_str4 {
   padding-left: 20px;
 }
-.task2 .highlight1 {
+.task3 .highlight1 {
   color: aliceblue;
 }
-.task2 .shadow {
+.task3 .shadow {
   box-shadow: 4px 4px 4px 4px rgba(34, 60, 80, 0.2);
-}
-.task2 #mark-two .done,
-.task2 .change-color-mark2 {
-  color: green;
-}
-.task2 .shake {
-  animation: 1.2s shake infinite;
 }
 
 @keyframes shake {

@@ -1,16 +1,28 @@
+html,
+body {
+  height: 100vh;
+}
+.body {
+  display: flex;
+  flex-direction: column;
+}
+
+.wrapper {
+  flex-grow: 1;
+}
 .left-fild {
   padding-top: 10px;
   padding-left: 30px;
 }
 .logo-img {
-  width: 30px;
+  width: 20px;
 }
 .name-logo {
-  font-size: 1.5rem;
+  font-size: 1rem;
   color: rgb(121, 122, 124);
 }
 .share-text {
-  font-size: 1.5rem;
+  font-size: 1rem;
   color: rgb(121, 122, 124);
   padding-right: 5px;
 }
@@ -19,9 +31,10 @@
   margin-right: 5px;
 }
 .task-name {
-  padding-top: 30px;
+  font-size: 2em;
   color: rgb(121, 122, 124);
   text-align: center;
+  margin: 0;
 }
 .button-help {
   display: flex;
@@ -31,10 +44,10 @@
   background-color: rgb(37, 30, 30);
   color: rgb(121, 122, 124);
   padding: 2px 10px;
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
-.img-wrapper {
+.table-img-wrapper {
   display: flex;
   justify-content: center;
 }
@@ -42,9 +55,9 @@
   display: flex;
   justify-content: center;
   background-image: url("../assets/table.svg");
-  background-size: cover;
-  width: 500px;
-  height: 200px;
+  background-size: contain;
+  width: 430px;
+  height: 180px;
 }
 
 .field-for-input {
@@ -67,8 +80,7 @@
   border: solid 0.5px rgb(121, 122, 124);
   display: flex;
   justify-content: space-between;
-
-  padding: 10px 5px;
+  padding: 5px 5px;
 }
 .hat-table-left,
 .hat-table-right {
@@ -79,16 +91,19 @@
 }
 
 .count-str {
+  font-size: 0.95em;
   padding-left: 14px;
   padding-right: 14px;
-  padding-top: 12px;
+  padding-top: 5px;
   background-color: rgb(197, 197, 197);
 }
 .user-input {
+  font-size: 0.95em;
   display: flex;
   justify-content: space-between;
   background-color: rgb(236, 236, 236);
   padding: 10px;
+  padding-top: 4px;
 }
 .input-field {
   width: 100%;
@@ -97,16 +112,8 @@
   border: 0;
   background-color: rgb(236, 236, 236);
   width: 100%;
-  animation: blink 1s infinite;
 }
-@keyframes blink {
-  from {
-    background-color: aquamarine;
-  }
-  to {
-    background-color: rgb(236, 236, 236);
-  }
-}
+
 .button-enter {
   display: flex;
   align-items: flex-start;
@@ -124,13 +131,16 @@
   color: rgb(110, 109, 109);
 }
 .count-str-two {
+  font-size: 0.95em;
   border: solid 1px rgb(121, 122, 124);
   padding-left: 14px;
   padding-right: 14px;
-  padding-top: 12px;
+  padding-top: 5px;
 }
 .html-code {
+  font-size: 0.95em;
   padding: 10px;
+  padding-top: 4px;
   border: solid 0.5px rgb(121, 122, 124);
 }
 .html_str2,
@@ -139,6 +149,9 @@
 }
 .right-section {
   padding-top: 10px;
+  padding-left: 15px;
+  padding-right: 10px;
+  border-left: solid 1px rgb(63, 61, 61);
 }
 .header-right {
   display: flex;
@@ -188,7 +201,7 @@
 }
 .mark-main span {
   position: absolute;
-  top: 50%;
+  top: 65%;
   left: 50%;
   width: 25px;
   height: 2px;
@@ -197,10 +210,10 @@
   transition: all 0.5s;
 }
 .mark-main span:nth-of-type(2) {
-  top: calc(50% - 7px);
+  top: calc(65% - 8px);
 }
 .mark-main span:nth-of-type(3) {
-  top: calc(50% + 7px);
+  top: calc(65% + 8px);
 }
 .mark-main.active span:nth-of-type(1) {
   display: none;
@@ -248,6 +261,26 @@ mark {
   background-color: rgb(58, 58, 58);
   color: rgb(180, 181, 181);
 }
+.footer {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  background-color: #363131;
+  border-top: solid 1px rgb(63, 61, 61);
+}
+.logoRS {
+  width: 70px;
+}
+.year-of-creation {
+  font-size: 1.2em;
+  font-weight: 700;
+  padding: 1px 40px 1px 40px;
+  color: rgb(3, 3, 3);
+}
+.icon-github {
+  width: 70px;
+}
 .side-box {
   position: fixed;
   top: 0;
@@ -278,8 +311,13 @@ mark {
 .side-box-list li {
   padding-top: 10px;
 }
-.task {
+.task-of-menu {
   text-decoration: none;
+  cursor: pointer;
+  color: rgb(121, 122, 124);
+}
+.task-of-menu:hover {
+  color: rgb(172, 174, 176);
 }
 .check-mark {
   color: rgb(121, 122, 124);
@@ -287,14 +325,60 @@ mark {
 }
 
 .btn-reset-progress {
-  width: 100%;
+  font-size: 1.2em;
+  font-weight: 600;
+  width: 95%;
   padding-top: 10px;
   padding-bottom: 10px;
   background-color: rgb(37, 30, 30);
   color: rgb(121, 122, 124);
-  border-color: aliceblue;
-  margin: 100px 10px 10px 10px;
+  border-color: rgb(96, 97, 98);
+  margin: 150px 1px 10px 10px;
+  border-radius: 5px;
+}
+.btn-reset-progress:hover {
+  background-color: rgb(53, 44, 44);
+}
+.popup {
+  position: absolute;
+  background-color: bisque;
+  width: auto;
+  padding: 10px;
 }
 
-@import "./css/task-two.css";
-@import "./css/task-one.css";
+@media (max-width: 800px) {
+  .left-fild {
+    padding-left: 5px;
+  }
+  .field-for-input {
+    margin-right: 5%;
+    margin-left: 5%;
+  }
+  .count-str,
+  .count-str-two {
+    padding-top: 3px;
+    font-size: 0.9em;
+  }
+  .text-in-field,
+  #input-answer,
+  .html-code {
+    font-size: 0.9em;
+  }
+
+  .button-enter {
+    width: 40px;
+  }
+  /* .header-right {
+    display: flex;
+    flex-direction: column;
+  } */
+  .inscrip-level {
+    font-size: 0.8em;
+  }
+  .check-mark {
+    width: 20px;
+  }
+}
+@import "./css/task-two.scss";
+@import "./css/task-one.scss";
+@import "./css/task-three.scss";

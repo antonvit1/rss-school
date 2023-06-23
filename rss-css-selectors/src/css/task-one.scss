@@ -1,5 +1,5 @@
-.task1 .plate1,
-.task1 .plate2 {
+.task1 .strawberry1,
+.task1 .strawberry2 {
   border-radius: 40%;
   height: 160px;
   cursor: pointer;
@@ -23,7 +23,7 @@
 .task1 .shadow {
   box-shadow: 4px 4px 4px 4px rgba(34, 60, 80, 0.2);
 }
-.task1 #mark-one .done,
-.task1 .change-color-mark1 {
+#mark-one .done,
+.task1 .done {
   color: green;
 }

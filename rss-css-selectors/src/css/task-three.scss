@@ -1,21 +1,25 @@
 .task3 .plate-fancy {
   border-radius: 40%;
-  margin-bottom: 50px;
-  animation: 0.5s infinite alternate slidein;
+  height: 100px;
+  margin-top: 20px;
+  animation: 1.1s infinite opas;
 }
-@keyframes slidein {
-  from {
-    width: 120px;
-  }
-  to {
-    width: 130px;
-  }
+@keyframes opas {
+  20% {
+     opacity: 1;
+    }
+  80% {
+     opacity: 0.3;
+     }
+  100% {
+     opacity: 1;
+    }
 }
 .task3 .plate,
 .task3 .mushroom {
   padding-top: 10px;
   height: 130px;
-  margin-left: 15px;
+
 }
 .task3 .shake {
   animation: 1.2s shake infinite;
@@ -44,4 +48,14 @@
   40% {
     transform: rotate(5deg);
   }
+}
+.task3 .level-3 {
+  color:aliceblue
+}
+.help3 {
+  color: rgb(37, 30, 30);
+  font-size: 1em;
+}
+.help3.active {
+  color:rgb(203, 238, 5);
 }

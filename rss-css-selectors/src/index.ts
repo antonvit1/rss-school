@@ -1,6 +1,7 @@
 import "./style.css";
 import levels from "./allLevels.json";
-import tooltipsTexts from "./tooltipsTexts.json";
+// import tooltipsTexts from "./tooltipsTexts.json";
+import levelsDescriptions from "./levelsDescriptions.json";
 import { changeTextRightSect } from "./levelsDescription";
 import { updateStateOfMainCheckMark } from "./levelsMenu";
 import { levelsOfMenu } from "./levelsMenu";
@@ -10,17 +11,16 @@ import { markLevelsOfMenu } from "./levelsMenu";
 export let currentLevel: number = 0;
 
 type ImgField = "img1" | "img2" | "img3" | "img4";
+// type ImgFieldInside = "imgIn1" | "imgIn2" | "imgIn3" | "imgIn4";
 
 let rightBtn = document.querySelector(".right-button");
 let leftBtn = document.querySelector(".left-button");
 
+let buttonHelp = <HTMLElement>document.querySelector(".button-help");
+
 let addClassBody = <HTMLElement>document.querySelector(".body");
 let taskName = <HTMLElement>document.querySelector(".task-name");
-let htmlCodeStr2 = <HTMLElement>document.querySelector(".html_str2");
-let htmlCodeStr3 = <HTMLElement>document.querySelector(".html_str3");
-let htmlCodeStr4 = <HTMLElement>document.querySelector(".html_str4");
-let htmlCodeStr5 = <HTMLElement>document.querySelector(".html_str5");
-let htmlCodeStr6 = <HTMLElement>document.querySelector(".html_str6");
+let htmlContent = <HTMLElement>document.querySelector(".html-content");
 let currentLevelEl = <HTMLElement>document.querySelector(".current-level");
 
 let answerTask: any = document.querySelector("#input-answer");
@@ -33,7 +33,7 @@ if (localStorage.getItem("indexArrOfTask")) {
 }
 
 addClassBody.classList.add(levels[currentLevel].mainClass);
-changePictureHtmlTableTask();
+createLevelElements();
 
 function addClassToBodyNext() {
   addClassBody.classList.add(levels[currentLevel + 1].mainClass);
@@ -49,18 +49,14 @@ function removeClassFromBodyPrev() {
 }
 
 levelsOfMenu.forEach((elem) => {
-
-
   elem.addEventListener("click", function () {
     addClassBody.classList.remove(levels[currentLevel].mainClass);
     currentLevel = levels.findIndex(
       (lev, i) => elem.className === lev.levelInMenu
     );
-
-
     addClassBody.classList.add(levels[currentLevel].mainClass);
     updateStateOfMainCheckMark();
-    changePictureHtmlTableTask();
+    createLevelElements();
     changeTextRightSect();
   });
 });
@@ -74,100 +70,119 @@ btnRessetProgress?.addEventListener("click", function () {
   });
 });
 
-function createPopup(
-  parentElement: HTMLElement,
-  img: ImgField,
-  showPopUp: boolean
-) {
-  if (showPopUp) {
-    let popUp = document.createElement("div");
-    popUp.className = "popup";
-    popUp.innerHTML = levels[currentLevel][img].tooltip;
-    parentElement?.appendChild(popUp);
-  } else {
-    parentElement?.lastChild && parentElement.removeChild(parentElement?.lastChild);
-  }
-}
-
-function highlightHtmlImg(
-  picture: HTMLElement,
-  textHTML: HTMLElement,
-  img: ImgField
-) {
+function highlightHtmlImg(picture: HTMLElement, textHTML: HTMLElement) {
+  const popup = picture.querySelector(".popup");
   picture.addEventListener("mouseover", function () {
-    picture.classList.add(levels[currentLevel].shadowImg);
-    textHTML.classList.add(levels[currentLevel].class_highlight1);
-    createPopup(picture, img, true);
+    picture.classList.add("shadow");
+    textHTML.classList.add("highlight1");
+popup?.classList.add("active");
+
   });
   picture.addEventListener("mouseout", function () {
-    picture.classList.remove(levels[currentLevel].shadowImg);
-    textHTML.classList.remove(levels[currentLevel].class_highlight1);
-    createPopup(picture, img, false);
+    picture.classList.remove("shadow");
+    textHTML.classList.remove("highlight1");
+    popup?.classList.remove("active");
   });
 
   textHTML.addEventListener("mouseover", function () {
-    textHTML.classList.add(levels[currentLevel].class_highlight1);
-    picture.classList.add(levels[currentLevel].shadowImg);
-    createPopup(picture, img, true);
+    textHTML.classList.add("highlight1");
+    picture.classList.add("shadow");
+    popup?.classList.add("active");
   });
   textHTML.addEventListener("mouseout", function () {
-    textHTML.classList.remove(levels[currentLevel].class_highlight1);
-    picture.classList.remove(levels[currentLevel].shadowImg);
-    createPopup(picture, img, false);
+    textHTML.classList.remove("highlight1");
+    picture.classList.remove("shadow");
+    popup?.classList.remove("active");
   });
 }
 
-function createPicture(img: ImgField) {
+function createLevelPictures() {
+  let arrayPictures: HTMLElement[] = [];
+  imgTable?.replaceChildren();
+  levels[currentLevel].images.forEach((pictureObj) => {
+    const picture = createPicture(pictureObj);
+    arrayPictures.push(picture);
+    if (pictureObj.nestedImg) {
+      const nested = createPicture(pictureObj.nestedImg);
+      picture.appendChild(nested);
+      arrayPictures.push(nested);
+    }
+  });
+  return arrayPictures;
+}
+
+function createPicture(obj: any, nested = false) {
   let imgWrapper = document.createElement("div");
   imgWrapper.className = "position-relative";
-  imgTable?.appendChild(imgWrapper);
+  if (!nested) {
+    imgTable?.appendChild(imgWrapper);
+  }
   let picture = document.createElement("img");
-  picture.className = levels[currentLevel][img].class;
-  picture.src = levels[currentLevel][img].src;
+  picture.className = obj.class;
+  picture.src = obj.src;
   imgWrapper?.appendChild(picture);
-
+  let popUp = document.createElement("div");
+  popUp.className = "popup";
+  popUp.innerHTML = obj.tooltip;
+  imgWrapper.appendChild(popUp);
   return imgWrapper;
 }
 
-function changePictureHtmlTableTask() {
-  imgTable?.replaceChildren();
-  let pictureOne = createPicture("img1");
-  let pictureTwo = createPicture("img2");
-  let pictureThree = createPicture("img3");
-  let pictureFour = createPicture("img4");
+function createHtmlBlocks() {
+  const arrElem: HTMLElement[] = [];
+  htmlContent?.replaceChildren();
+  levels[currentLevel].html_code.forEach((tagObj) => {
+    const divHtmlElement = createHtmlBlock(tagObj);
+    arrElem.push(divHtmlElement);
+    if (tagObj.html_nested) {
+      const htmlNested = createHtmlBlock(tagObj.html_nested);
+      divHtmlElement.appendChild(htmlNested);
+      arrElem.push(htmlNested);
+    }
+  });
+  return arrElem;
+}
 
+function createHtmlBlock(obj: any) {
+  let strHtmlCode = document.createElement("div");
+  strHtmlCode.className = "str-html-code";
+  strHtmlCode.innerHTML = obj.html;
+  if (!obj.html_nested) {
+    htmlContent.appendChild(strHtmlCode);
+  }
+  return strHtmlCode;
+}
+
+function createLevelElements() {
+  let picturesElArr = createLevelPictures();
+  let htmlElArr = createHtmlBlocks();
+  picturesElArr.forEach((pictEl, index) => {
+    highlightHtmlImg(pictEl, htmlElArr[index]);
+  });
   taskName.innerHTML = levels[currentLevel].taskName;
-  htmlCodeStr2.innerHTML = levels[currentLevel].html_str2;
-  htmlCodeStr3.innerHTML = levels[currentLevel].html_str3;
-  htmlCodeStr4.innerHTML = levels[currentLevel].html_str4;
-  htmlCodeStr5.innerHTML = levels[currentLevel].html_str5;
-  htmlCodeStr6.innerHTML = levels[currentLevel].html_str6;
   currentLevelEl.innerHTML = levels[currentLevel].curLevel;
-
-  highlightHtmlImg(pictureOne, htmlCodeStr2, "img1");
-  highlightHtmlImg(pictureTwo, htmlCodeStr3, "img2");
-  highlightHtmlImg(pictureThree, htmlCodeStr4, "img3");
 }
 
 rightBtn?.addEventListener("click", function () {
   addClassToBodyNext();
   currentLevel += 1;
   updateStateOfMainCheckMark();
-  changePictureHtmlTableTask();
+  createLevelElements();
   changeTextRightSect();
   removeClassFromBodyNext();
+  delAnswer();
 });
 
 leftBtn?.addEventListener("click", function () {
   addClassToBodyPrev();
   currentLevel -= 1;
   updateStateOfMainCheckMark();
-  changePictureHtmlTableTask();
+  createLevelElements();
   changeTextRightSect();
   removeClassFromBodyPrev();
+  delAnswer();
 });
-
-buttonEnter.addEventListener("click", function () {
+function implementEnterPress() {
   if (answerTask.value === levels[currentLevel].answer) {
     let markSideBoxTask = <HTMLElement>(
       document.getElementById(levels[currentLevel].checkMarkSideId)
@@ -178,7 +193,7 @@ buttonEnter.addEventListener("click", function () {
     addClassToBodyNext();
     levels[currentLevel].isLevelDone = true;
     currentLevel += 1;
-    changePictureHtmlTableTask();
+    createLevelElements();
     removeClassFromBodyNext();
     updateStateOfMainCheckMark();
   } else {
@@ -186,6 +201,15 @@ buttonEnter.addEventListener("click", function () {
     setTimeout(() => {
       allTable.classList.remove("shake");
     }, 1200);
+  }
+}
+buttonEnter.addEventListener("click", function () {
+  implementEnterPress();
+});
+
+document.addEventListener("keyup", function (event) {
+  if (event.code === "Enter") {
+    implementEnterPress();
   }
 });
 function saveLocalStorage() {
@@ -195,3 +219,17 @@ function saveLocalStorage() {
 window.addEventListener("beforeunload", function () {
   saveLocalStorage();
 });
+
+buttonHelp.addEventListener("click", function () {
+  answerTask.classList = "fly-answer";
+  answerTask.value = levels[currentLevel].answer;
+  let symbolHelp = <HTMLElement>(
+    document.querySelector(`.${levelsDescriptions[currentLevel].classHelp}`)
+  );
+  symbolHelp.classList.add("active");
+});
+
+function delAnswer() {
+  answerTask.classList.remove("fly-answer");
+  answerTask.value = "";
+}

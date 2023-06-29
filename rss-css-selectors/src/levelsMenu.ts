@@ -8,6 +8,7 @@ export let levelsOfMenu = Array.from(document.querySelectorAll(".task-of-menu"))
 export let btnRessetProgress = document.querySelector(".btn-reset-progress");
 export let markLevelsOfMenu = Array.from(document.querySelectorAll(".check-mark"))
 
+
 markMain?.addEventListener("click", function () {
     markMain?.classList.toggle("active");
     sideBox?.classList.toggle("active");

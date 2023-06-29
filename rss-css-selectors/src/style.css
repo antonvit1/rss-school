@@ -47,6 +47,10 @@ body {
   margin-top: 10px;
   margin-bottom: 10px;
 }
+.button-help:hover {
+  background-color: rgb(53, 47, 47);
+  color: rgb(136, 137, 139);
+}
 .table-img-wrapper {
   display: flex;
   justify-content: center;
@@ -143,9 +147,8 @@ body {
   padding-top: 4px;
   border: solid 0.5px rgb(121, 122, 124);
 }
-.html_str2,
-.html_str3 {
-  padding-left: 20px;
+.str-html-code {
+  padding-left: 15px;
 }
 .right-section {
   padding-top: 10px;
@@ -318,7 +321,9 @@ mark {
 }
 .task-of-menu:hover {
   color: rgb(172, 174, 176);
+  padding-top: 20px;
 }
+
 .check-mark {
   color: rgb(121, 122, 124);
   width: 20px;
@@ -340,10 +345,14 @@ mark {
   background-color: rgb(53, 44, 44);
 }
 .popup {
+  display: none;
   position: absolute;
   background-color: bisque;
   width: auto;
   padding: 10px;
+}
+.popup.active {
+  display: block;
 }
 
 @media (max-width: 800px) {
@@ -382,3 +391,5 @@ mark {
 @import "./css/task-two.scss";
 @import "./css/task-one.scss";
 @import "./css/task-three.scss";
+@import "./css/task-four.scss";
+@import "./css/task-five.scss";

@@ -14,21 +14,7 @@
   height: 50px;
   animation: 1.1s infinite shake;
 }
-@keyframes shake {
-  0%,
-  50%,
-  100% {
-    transform: rotate(0deg);
-  }
-  10%,
-  30% {
-    transform: rotate(-5deg);
-  }
-  20%,
-  40% {
-    transform: rotate(5deg);
-  }
-}
+
 .task4 .html_str2,
 .task4 .html_str3,
 .task4 .html_str5,
@@ -47,4 +33,21 @@
 }
 .help4.active {
   color:rgb(203, 238, 5);
+}
+.task4 .fly-answer {
+  white-space: nowrap;
+  overflow: hidden;
+  animation: appearance 3s ;
+}
+.task4 .shake {
+  animation: 1.2s shake-table infinite;
+}
+#mark-four.done,
+.task4 .done {
+  color: green;
+}
+.task4 .position-relative.fly-img {
+  white-space: nowrap;
+  overflow: hidden;
+  animation: fly 1s infinite;
 }

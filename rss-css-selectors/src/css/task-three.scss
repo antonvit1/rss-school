@@ -22,7 +22,7 @@
 
 }
 .task3 .shake {
-  animation: 1.2s shake infinite;
+  animation: 1.2s shake-table infinite;
 }
 .task3 .html_str4 {
   padding-left: 20px;
@@ -30,25 +30,14 @@
 .task3 .highlight1 {
   color: aliceblue;
 }
+#mark-three.done,
+.task3 .done {
+  color: green;
+}
 .task3 .shadow {
   box-shadow: 4px 4px 4px 4px rgba(34, 60, 80, 0.2);
 }
 
-@keyframes shake {
-  0%,
-  50%,
-  100% {
-    transform: rotate(0deg);
-  }
-  10%,
-  30% {
-    transform: rotate(-5deg);
-  }
-  20%,
-  40% {
-    transform: rotate(5deg);
-  }
-}
 .task3 .level-3 {
   color:aliceblue
 }
@@ -59,3 +48,14 @@
 .help3.active {
   color:rgb(203, 238, 5);
 }
+.task3 .fly-answer {
+  white-space: nowrap;
+  overflow: hidden;
+  animation: appearance 3s;
+}
+.task3 .position-relative.fly-img {
+  white-space: nowrap;
+  overflow: hidden;
+  animation: fly 1s infinite;
+}
+

@@ -388,6 +388,56 @@ mark {
     width: 20px;
   }
 }
+
+@keyframes shake {
+  0%,
+  50%,
+  100% {
+    transform: rotate(0deg);
+  }
+  10%,
+  30% {
+    transform: rotate(-5deg);
+  }
+  20%,
+  40% {
+    transform: rotate(5deg);
+  }
+}
+
+@keyframes shake-table {
+  0%,
+  50%,
+  100% {
+    transform: rotate(0deg);
+  }
+  10%,
+  30% {
+    transform: rotate(-5deg);
+  }
+  20%,
+  40% {
+    transform: rotate(5deg);
+  }
+}
+
+@keyframes fly {
+  0% {
+    margin-top: -5px;
+  }
+  100% {
+    margin-top: -600px;
+  }
+}
+@keyframes appearance {
+  0% {
+    width: 0px;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
 @import "./css/task-two.scss";
 @import "./css/task-one.scss";
 @import "./css/task-three.scss";

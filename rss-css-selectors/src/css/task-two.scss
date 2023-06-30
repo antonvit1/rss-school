@@ -38,38 +38,15 @@
   color: green;
 }
 .task2 .shake {
-  animation: 1.2s shake infinite;
+  animation: 1.2s shake-table infinite;
 }
 
-@keyframes shake {
-  0%,
-  50%,
-  100% {
-    transform: rotate(0deg);
-  }
-  10%,
-  30% {
-    transform: rotate(-5deg);
-  }
-  20%,
-  40% {
-    transform: rotate(5deg);
-  }
-}
 .task2 .fly-answer {
   white-space: nowrap;
   overflow: hidden;
-  animation: appearance 3s linear forwards;
+  animation: appearance 3s;
 }
 
-@keyframes appearance {
-  0% {
-    width: 0px;
-  }
-  100% {
-    width: 100%
-  }
-}
 .task2 .level-2 {
   color:aliceblue
 }
@@ -80,3 +57,10 @@
 .help2.active {
   color:rgb(203, 238, 5);
 }
+.task2 .position-relative.fly-img {
+  white-space: nowrap;
+  overflow: hidden;
+  animation: fly 1s infinite;
+}
+
+

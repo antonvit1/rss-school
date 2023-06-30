@@ -1,17 +1,14 @@
 import "./style.css";
-import levels from "./allLevels.json";
-// import tooltipsTexts from "./tooltipsTexts.json";
+import levelsFromJson from "./allLevels.json";
 import levelsDescriptions from "./levelsDescriptions.json";
 import { changeTextRightSect } from "./levelsDescription";
-import { updateStateOfMainCheckMark } from "./levelsMenu";
 import { levelsOfMenu } from "./levelsMenu";
 import { btnRessetProgress } from "./levelsMenu";
 import { markLevelsOfMenu } from "./levelsMenu";
+import { HtmlCode, Image, Level } from "./types";
 
 export let currentLevel: number = 0;
-
-type ImgField = "img1" | "img2" | "img3" | "img4";
-// type ImgFieldInside = "imgIn1" | "imgIn2" | "imgIn3" | "imgIn4";
+let levels: Level[] = [];
 
 let rightBtn = document.querySelector(".right-button");
 let leftBtn = document.querySelector(".left-button");
@@ -23,17 +20,21 @@ let taskName = <HTMLElement>document.querySelector(".task-name");
 let htmlContent = <HTMLElement>document.querySelector(".html-content");
 let currentLevelEl = <HTMLElement>document.querySelector(".current-level");
 
-let answerTask: any = document.querySelector("#input-answer");
+let answerTask = <HTMLInputElement>document.querySelector("#input-answer");
 let buttonEnter = <HTMLElement>document.querySelector(".img-enter");
 let allTable = <HTMLElement>document.querySelector(".table-wrapper");
 let imgTable = document.querySelector(".img-table");
+let chekMarkTask = document.querySelector(".check-mark");
+currentLevel = +JSON.parse(localStorage.getItem("indexArrOfTask") || "0");
+levels = JSON.parse(localStorage.getItem("allLevels") || "null") || levelsFromJson;
 
-if (localStorage.getItem("indexArrOfTask")) {
-  currentLevel = +JSON.parse(localStorage.getItem("indexArrOfTask") || "0");
+function updateStateOfMainCheckMark() {
+  chekMarkTask?.classList.remove("done");
+  if (levels[currentLevel].isLevelDone) {
+    chekMarkTask?.classList.add("done");
+  }
 }
-
-addClassBody.classList.add(levels[currentLevel].mainClass);
-createLevelElements();
+  loadPage()
 
 function addClassToBodyNext() {
   addClassBody.classList.add(levels[currentLevel + 1].mainClass);
@@ -62,12 +63,21 @@ levelsOfMenu.forEach((elem) => {
 });
 
 btnRessetProgress?.addEventListener("click", function () {
-  levels.forEach((obj, i) => {
+  levels.forEach((obj) => {
     obj.isLevelDone = false;
+    obj.isLevelDoneWithHelp = false;
   });
   markLevelsOfMenu.forEach((elem) => {
     elem.classList.remove("done");
   });
+  levelsDescriptions.forEach((obj, i) => {
+    let symbolHelp = <HTMLElement>(
+      document.querySelector(`.${levelsDescriptions[i].classHelp}`)
+    );
+    symbolHelp.classList.remove("active");
+  })
+
+
 });
 
 function highlightHtmlImg(picture: HTMLElement, textHTML: HTMLElement) {
@@ -75,8 +85,7 @@ function highlightHtmlImg(picture: HTMLElement, textHTML: HTMLElement) {
   picture.addEventListener("mouseover", function () {
     picture.classList.add("shadow");
     textHTML.classList.add("highlight1");
-popup?.classList.add("active");
-
+    popup?.classList.add("active");
   });
   picture.addEventListener("mouseout", function () {
     picture.classList.remove("shadow");
@@ -103,7 +112,7 @@ function createLevelPictures() {
     const picture = createPicture(pictureObj);
     arrayPictures.push(picture);
     if (pictureObj.nestedImg) {
-      const nested = createPicture(pictureObj.nestedImg);
+      const nested = createPicture(pictureObj.nestedImg, true);
       picture.appendChild(nested);
       arrayPictures.push(nested);
     }
@@ -111,11 +120,14 @@ function createLevelPictures() {
   return arrayPictures;
 }
 
-function createPicture(obj: any, nested = false) {
+function createPicture(obj: Image, nested = false) {
   let imgWrapper = document.createElement("div");
-  imgWrapper.className = "position-relative";
+
   if (!nested) {
     imgTable?.appendChild(imgWrapper);
+    imgWrapper.className = "position-relative";
+  } else {
+    imgWrapper.className = "position-absolute";
   }
   let picture = document.createElement("img");
   picture.className = obj.class;
@@ -135,7 +147,7 @@ function createHtmlBlocks() {
     const divHtmlElement = createHtmlBlock(tagObj);
     arrElem.push(divHtmlElement);
     if (tagObj.html_nested) {
-      const htmlNested = createHtmlBlock(tagObj.html_nested);
+      const htmlNested = createHtmlBlock(tagObj.html_nested, true);
       divHtmlElement.appendChild(htmlNested);
       arrElem.push(htmlNested);
     }
@@ -143,11 +155,11 @@ function createHtmlBlocks() {
   return arrElem;
 }
 
-function createHtmlBlock(obj: any) {
+function createHtmlBlock(obj: HtmlCode, html_nested = false) {
   let strHtmlCode = document.createElement("div");
   strHtmlCode.className = "str-html-code";
   strHtmlCode.innerHTML = obj.html;
-  if (!obj.html_nested) {
+  if (!html_nested) {
     htmlContent.appendChild(strHtmlCode);
   }
   return strHtmlCode;
@@ -163,38 +175,79 @@ function createLevelElements() {
   currentLevelEl.innerHTML = levels[currentLevel].curLevel;
 }
 
+function flyImg() {
+  let allpict = document.querySelectorAll(".position-relative");
+  allpict.forEach((imgOfTable) => {
+    imgOfTable.classList.add("fly-img");
+  });
+  return allpict;
+}
+
 rightBtn?.addEventListener("click", function () {
-  addClassToBodyNext();
-  currentLevel += 1;
-  updateStateOfMainCheckMark();
-  createLevelElements();
-  changeTextRightSect();
-  removeClassFromBodyNext();
-  delAnswer();
+  if (currentLevel <= 11) {
+    // if (levels[currentLevel].isLevelDone = false){
+    //   updateStateOfMainCheckMark()
+    // }
+    addClassToBodyNext();
+    currentLevel += 1;
+    updateStateOfMainCheckMark();
+    createLevelElements();
+    changeTextRightSect();
+    removeClassFromBodyNext();
+    delAnswer();
+  }
 });
 
 leftBtn?.addEventListener("click", function () {
-  addClassToBodyPrev();
-  currentLevel -= 1;
-  updateStateOfMainCheckMark();
-  createLevelElements();
-  changeTextRightSect();
-  removeClassFromBodyPrev();
-  delAnswer();
+  if (currentLevel !== 0) {
+    addClassToBodyPrev();
+    currentLevel -= 1;
+    updateStateOfMainCheckMark();
+    createLevelElements();
+    changeTextRightSect();
+    removeClassFromBodyPrev();
+    delAnswer();
+  }
 });
+
+function loadPage() {
+updateStateOfMainCheckMark();
+  addClassBody.classList.add(levels[currentLevel].mainClass);
+  createLevelElements();
+  changeTextRightSect()
+  levels.forEach((obj, i) => {
+    if (obj.isLevelDone) {
+      let symbolHelp = <HTMLElement>(
+        document.querySelector(`.${levelsDescriptions[i].classHelp}`)
+      );
+      symbolHelp.classList.add("active");
+    }
+    if (obj.isLevelDoneWithHelp) {
+      let markSideBoxTask = <HTMLElement>(
+        document.getElementById(levels[i].checkMarkSideId)
+      );
+       markSideBoxTask?.classList.add("done");
+    }
+  })
+}
+
 function implementEnterPress() {
   if (answerTask.value === levels[currentLevel].answer) {
-    let markSideBoxTask = <HTMLElement>(
-      document.getElementById(levels[currentLevel].checkMarkSideId)
-    );
-
-    (document.getElementById("input-answer") as HTMLInputElement).value = "";
-    markSideBoxTask?.classList.add("done");
-    addClassToBodyNext();
-    levels[currentLevel].isLevelDone = true;
-    currentLevel += 1;
-    createLevelElements();
-    removeClassFromBodyNext();
+    flyImg();
+    setTimeout(() => {
+      let markSideBoxTask = <HTMLElement>(
+        document.getElementById(levels[currentLevel].checkMarkSideId)
+      );
+      (document.getElementById("input-answer") as HTMLInputElement).value = "";
+      markSideBoxTask?.classList.add("done");
+      addClassToBodyNext();
+      levels[currentLevel].isLevelDone = true;
+      currentLevel += 1;
+      createLevelElements();
+      removeClassFromBodyNext();
+      changeTextRightSect()
+      delAnswer();
+    }, 1000);
     updateStateOfMainCheckMark();
   } else {
     allTable.classList.add("shake");
@@ -202,7 +255,7 @@ function implementEnterPress() {
       allTable.classList.remove("shake");
     }, 1200);
   }
-}
+ }
 buttonEnter.addEventListener("click", function () {
   implementEnterPress();
 });
@@ -214,6 +267,7 @@ document.addEventListener("keyup", function (event) {
 });
 function saveLocalStorage() {
   localStorage.setItem("indexArrOfTask", String(currentLevel));
+  localStorage.setItem("allLevels", JSON.stringify(levels));
 }
 
 window.addEventListener("beforeunload", function () {
@@ -221,8 +275,9 @@ window.addEventListener("beforeunload", function () {
 });
 
 buttonHelp.addEventListener("click", function () {
-  answerTask.classList = "fly-answer";
+  answerTask.className = "fly-answer";
   answerTask.value = levels[currentLevel].answer;
+  levels[currentLevel].isLevelDoneWithHelp = true;
   let symbolHelp = <HTMLElement>(
     document.querySelector(`.${levelsDescriptions[currentLevel].classHelp}`)
   );

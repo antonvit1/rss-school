@@ -1,8 +1,6 @@
 [
   {
     "mainClass": "task1",
-    "class_highlight1": "highlight1",
-    "shadowImg": "shadow",
     "taskName": "Select the plate",
     "images": [
       {
@@ -14,16 +12,6 @@
         "src": "assets/strawberry.svg",
         "class": "strawberry2",
         "tooltip": "&lt;strawberry/&gt;<br>"
-      },
-      {
-        "src": "",
-        "class": "",
-        "tooltip": ""
-      },
-      {
-        "src": "",
-        "class": "",
-        "tooltip": ""
       }
     ],
     "html_code": [
@@ -34,14 +22,12 @@
     "answer": "strawberry",
     "checkMarkSideId": "mark-one",
     "isLevelDone": false,
+    "isLevelDoneWithHelp": false,
     "levelInMenu": "task-of-menu level-1"
   },
   {
     "mainClass": "task2",
-    "class_highlight1": "highlight1",
-    "shadowImg": "shadow",
     "taskName": "Select the mushroom",
-
     "images": [
       {
         "src": "assets/mushroom.svg",
@@ -57,42 +43,22 @@
         "src": "assets/mushroom.svg",
         "class": "mushroom2",
         "tooltip": "&lt;mushroom/&gt;<br>"
-      },
-      {
-        "src": "",
-        "class": "",
-        "tooltip": ""
       }
     ],
     "html_code": [
       { "html": "&lt;worm id=\"pest-insect\"/&gt;<br>" },
       { "html": "&lt;mushroom/&gt;<br>" },
-      { "html": "&lt;worm/&gt;<br>" },
-      {
-        "html": "&lt;mushroom/&gt;<br>"
-      },
-      { "html": "&lt;mushroom/&gt;<br>" },
-      { "html": "&lt;div/&gt;" },
-      { "html": "" },
-      { "html": "" },
-      { "html": "" },
-      { "html": "" },
-      { "html": "" },
-      { "html": "" },
-      { "html": "" },
-      { "html": "" },
-      { "html": "" }
+      { "html": "&lt;worm/&gt;<br>" }
     ],
     "curLevel": "2",
     "answer": "mushroom",
     "checkMarkSideId": "mark-two",
     "isLevelDone": false,
+    "isLevelDoneWithHelp": false,
     "levelInMenu": "task-of-menu level-2"
   },
   {
     "mainClass": "task3",
-    "class_highlight1": "highlight1",
-    "shadowImg": "shadow",
     "taskName": "Select the fancy plate",
 
     "images": [
@@ -110,42 +76,22 @@
         "src": "assets/mushroom.svg",
         "class": "mushroom",
         "tooltip": "&lt;mushroom/&gt;<br>"
-      },
-      {
-        "src": "",
-        "class": "",
-        "tooltip": ""
       }
     ],
     "html_code": [
       { "html": "&lt;worm id=\"pest-insect\"/&gt;<br>" },
       { "html": "&lt;mushroom/&gt;<br>" },
-      { "html": "&lt;worm/&gt;<br>" },
-      {
-        "html": "&lt;mushroom/&gt;<br>"
-      },
-      { "html": "&lt;mushroom/&gt;<br>" },
-      { "html": "&lt;div/&gt;" },
-      { "html": "" },
-      { "html": "" },
-      { "html": "" },
-      { "html": "" },
-      { "html": "" },
-      { "html": "" },
-      { "html": "" },
-      { "html": "" },
-      { "html": "" }
+      { "html": "&lt;worm/&gt;<br>" }
     ],
     "curLevel": "3",
     "answer": "#fancy",
     "checkMarkSideId": "mark-three",
     "isLevelDone": false,
+    "isLevelDoneWithHelp": false,
     "levelInMenu": "task-of-menu level-3"
   },
   {
     "mainClass": "task4",
-    "class_highlight1": "highlight1",
-    "shadowImg": "shadow",
     "taskName": "Select the warm eats a mashroom",
     "images": [
       {
@@ -175,29 +121,17 @@
       { "html": "&lt;worm/&gt;<br>" },
       {
         "html": "&lt;mushroom/&gt;<br>"
-      },
-      { "html": "&lt;mushroom/&gt;<br>" },
-      { "html": "&lt;div/&gt;" },
-      { "html": "" },
-      { "html": "" },
-      { "html": "" },
-      { "html": "" },
-      { "html": "" },
-      { "html": "" },
-      { "html": "" },
-      { "html": "" },
-      { "html": "" }
+      }
     ],
     "curLevel": "4",
     "answer": "mushroom worm",
     "checkMarkSideId": "mark-four",
     "isLevelDone": false,
+    "isLevelDoneWithHelp": false,
     "levelInMenu": "task-of-menu level-4"
   },
   {
     "mainClass": "task5",
-    "class_highlight1": "highlight1",
-    "shadowImg": "shadow",
     "taskName": "Select the warm eats a mashroom",
     "images": [
       {
@@ -227,29 +161,19 @@
       }
     ],
     "html_code": [
-      { "html": "&lt;worm id=\"pest-insect\"/&gt;<br>" },
+      { "html": "&lt;worm/&gt;<br>" },
       { "html": "&lt;mushroom/&gt;<br>" },
       { "html": "&lt;worm/&gt;<br>" },
       {
         "html": "&lt;mushroom/&gt;<br>",
         "html_nested": { "html": "&lt;mushroom/&gt;<br>" }
-      },
-      { "html": "&lt;mushroom/&gt;<br>" },
-      { "html": "&lt;div/&gt;" },
-      { "html": "" },
-      { "html": "" },
-      { "html": "" },
-      { "html": "" },
-      { "html": "" },
-      { "html": "" },
-      { "html": "" },
-      { "html": "" },
-      { "html": "" }
+      }
     ],
     "curLevel": "5",
     "answer": "plate .worm",
     "checkMarkSideId": "mark-four",
     "isLevelDone": false,
+    "isLevelDoneWithHelp": false,
     "levelInMenu": "task-of-menu level-5"
   }
 ]

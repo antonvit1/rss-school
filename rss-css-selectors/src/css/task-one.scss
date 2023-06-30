@@ -6,37 +6,9 @@
   cursor: pointer;
   animation: 1.1s infinite shake;
 }
-@keyframes shake {
-  0%,
-  50%,
-  100% {
-    transform: rotate(0deg);
-  }
-  10%,
-  30% {
-    transform: rotate(-5deg);
-  }
-  20%,
-  40% {
-    transform: rotate(5deg);
-  }
-}
-.task1 .strawberry1.active,
-.task1 .strawberry2.active {
-  animation: 1.1s infinite fly;
-}
-@keyframes fly {
-  0% {
-    transform: translateY(0px)
-  }
-  100% {
-    transform: translateY(100px);
-  }
-}
 .task1 .html-str4 {
   padding-left: 20px;
 }
-
 .task1 .highlight1 {
   color: aliceblue;
 }
@@ -50,37 +22,13 @@
 .task1 .fly-answer {
   white-space: nowrap;
   overflow: hidden;
-  animation: appearance 3s linear forwards;
-}
-
-@keyframes appearance {
-  0% {
-    width: 0px;
-  }
-  100% {
-    width: 100%
-  }
+  animation: appearance 3s ;
 }
 
 .task1 .shake {
-  animation: 1.2s shake infinite;
+  animation: 1.2s shake-table infinite;
 }
 
-@keyframes shake {
-  0%,
-  50%,
-  100% {
-    transform: rotate(0deg);
-  }
-  10%,
-  30% {
-    transform: rotate(-5deg);
-  }
-  20%,
-  40% {
-    transform: rotate(5deg);
-  }
-}
 .task1 .level-1 {
   color:aliceblue
 }
@@ -90,4 +38,9 @@
 }
 .help1.active {
   color:rgb(203, 238, 5);
+}
+.task1 .position-relative.fly-img {
+  white-space: nowrap;
+  overflow: hidden;
+  animation: fly 1s infinite;
 }

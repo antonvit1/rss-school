@@ -6,17 +6,17 @@
       {
         "src": "assets/strawberry.svg",
         "class": "strawberry1",
-        "tooltip": "&lt;strawberry/&gt;<br>"
+        "tooltip": "&lt;strawberry/&gt;"
       },
       {
         "src": "assets/strawberry.svg",
         "class": "strawberry2",
-        "tooltip": "&lt;strawberry/&gt;<br>"
+        "tooltip": "&lt;strawberry/&gt;"
       }
     ],
     "html_code": [
-      { "html": "&lt;worm id=\"pest-insect\"/&gt;<br>" },
-      { "html": "&lt;mushroom/&gt;<br>" }
+      { "html": "&lt;strawberry/&gt;" },
+      { "html": "&lt;strawberry/&gt;" }
     ],
     "curLevel": "1",
     "answer": "strawberry",
@@ -32,23 +32,23 @@
       {
         "src": "assets/mushroom.svg",
         "class": "mushroom1",
-        "tooltip": "&lt;mushroom/&gt;<br>"
+        "tooltip": "&lt;mushroom/&gt;"
       },
       {
         "src": "assets/plate.svg",
         "class": "plate",
-        "tooltip": "&lt;plate/&gt;<br>"
+        "tooltip": "&lt;plate/&gt;"
       },
       {
         "src": "assets/mushroom.svg",
         "class": "mushroom2",
-        "tooltip": "&lt;mushroom/&gt;<br>"
+        "tooltip": "&lt;mushroom/&gt;"
       }
     ],
     "html_code": [
-      { "html": "&lt;worm id=\"pest-insect\"/&gt;<br>" },
-      { "html": "&lt;mushroom/&gt;<br>" },
-      { "html": "&lt;worm/&gt;<br>" }
+      { "html": "&lt;mushroom/&gt;" },
+      { "html": "&lt;plate/&gt;" },
+      { "html": "&lt;mushroom/&gt;" }
     ],
     "curLevel": "2",
     "answer": "mushroom",
@@ -63,28 +63,28 @@
 
     "images": [
       {
-        "src": "assets/plate-svgrepo.svg",
-        "class": "plate-fancy",
-        "tooltip": "&lt;plate id=\"fancy\"/&gt;<br>"
+        "src": "assets/fly-agaric.svg",
+        "class": "fly-agaric",
+        "tooltip": "&lt;mushroom id=\"fly-agaric\"/&gt;"
       },
       {
         "src": "assets/plate.svg",
         "class": "plate",
-        "tooltip": "&lt;plate/&gt;<br>"
+        "tooltip": "&lt;plate/&gt;"
       },
       {
         "src": "assets/mushroom.svg",
         "class": "mushroom",
-        "tooltip": "&lt;mushroom/&gt;<br>"
+        "tooltip": "&lt;mushroom/&gt;"
       }
     ],
     "html_code": [
-      { "html": "&lt;worm id=\"pest-insect\"/&gt;<br>" },
-      { "html": "&lt;mushroom/&gt;<br>" },
-      { "html": "&lt;worm/&gt;<br>" }
+      { "html": "&lt;mushroom id=\"fly-agaric\"/&gt;" },
+      { "html": "&lt;plate/&gt;" },
+      { "html": "&lt;mushroom/&gt;" }
     ],
     "curLevel": "3",
-    "answer": "#fancy",
+    "answer": "#fly-agaric",
     "checkMarkSideId": "mark-three",
     "isLevelDone": false,
     "isLevelDoneWithHelp": false,
@@ -102,29 +102,27 @@
       {
         "src": "assets/mushroom.svg",
         "class": "mushroom",
-        "tooltip": "&lt;mushroom/&gt;<br>"
+        "tooltip": "&lt;mushroom/&gt;"
       },
       {
         "src": "assets/worms.svg",
         "class": "worm2",
-        "tooltip": "&lt;worm/&gt;<br>"
+        "tooltip": "&lt;worm/&gt;"
       },
       {
         "src": "assets/mushroom.svg",
         "class": "mushroom",
-        "tooltip": "&lt;mushroom/&gt;<br>"
+        "tooltip": "&lt;mushroom/&gt;"
       }
     ],
     "html_code": [
-      { "html": "&lt;worm id=\"pest-insect\"/&gt;<br>" },
-      { "html": "&lt;mushroom/&gt;<br>" },
-      { "html": "&lt;worm/&gt;<br>" },
-      {
-        "html": "&lt;mushroom/&gt;<br>"
-      }
+      { "html": "&lt;worm/&gt;" },
+      { "html": "&lt;mushroom/&gt;" },
+      { "html": "&lt;worm class=\"eat\"/&gt;" },
+      { "html": "&lt;mushroom/&gt;" }
     ],
     "curLevel": "4",
-    "answer": "mushroom worm",
+    "answer": ".eat",
     "checkMarkSideId": "mark-four",
     "isLevelDone": false,
     "isLevelDoneWithHelp": false,
@@ -135,45 +133,117 @@
     "taskName": "Select the warm eats a mashroom",
     "images": [
       {
-        "src": "assets/worms.svg",
-        "class": "plate",
-        "tooltip": "&lt;worm/&gt;<br>"
+        "src": "assets/fly-agaric.svg",
+        "class": "fly-agaric",
+        "tooltip": "&lt;fly-agaric/&gt;"
       },
       {
-        "src": "assets/plate-svgrepo.svg",
-        "class": "plate-fancy",
-        "tooltip": "&lt;mushroom/&gt;<br>"
-      },
-      {
-        "src": "assets/plate-svgrepo.svg",
-        "class": "plate-fancy",
-        "tooltip": "&lt;worm/&gt;<br>"
-      },
-      {
-        "src": "assets/plate.svg",
-        "class": "plate",
-        "tooltip": "&lt;mushroom/&gt;<br>",
+        "src": "assets/mushroom.svg",
+        "class": "mushroom",
+        "tooltip": "&lt;mushroom/&gt;",
         "nestedImg": {
-          "src": "assets/mushroom.svg",
-          "class": "mushroom",
-          "tooltip": "&lt;mushroom/&gt;<br>"
+          "src": "assets/worms.svg",
+          "class": "worm",
+          "tooltip": "&lt;worm/&gt;"
+        }
+      },
+      {
+        "src": "assets/fly-agaric.svg",
+        "class": "fly-agaric",
+        "tooltip": "&lt;fly-agaric/&gt;"
+      },
+      {
+        "src": "assets/mushroom.svg",
+        "class": "mushroom",
+        "tooltip": "&lt;mushroom/&gt;",
+        "nestedImg": {
+          "src": "assets/worms.svg",
+          "class": "worm",
+          "tooltip": "&lt;worm/&gt;"
         }
       }
     ],
     "html_code": [
-      { "html": "&lt;worm/&gt;<br>" },
-      { "html": "&lt;mushroom/&gt;<br>" },
-      { "html": "&lt;worm/&gt;<br>" },
+      { "html": "&lt;fly-agaric/&gt" },
       {
-        "html": "&lt;mushroom/&gt;<br>",
-        "html_nested": { "html": "&lt;mushroom/&gt;<br>" }
+        "html": "&lt;mushroom/&gt;",
+        "html_nested": { "html": "&lt;worm/&gt;" }
+      },
+      { "html": "&lt;fly-agaric/&gt" },
+      {
+        "html": "&lt;mushroom/&gt;",
+        "html_nested": { "html": "&lt;worm/&gt;" }
       }
     ],
+    "closedTag1": "</mushroom>",
     "curLevel": "5",
-    "answer": "plate .worm",
-    "checkMarkSideId": "mark-four",
+    "answer": "mushroom worm",
+    "checkMarkSideId": "mark-five",
     "isLevelDone": false,
     "isLevelDoneWithHelp": false,
     "levelInMenu": "task-of-menu level-5"
+  },
+  {
+    "mainClass": "task6",
+    "taskName": "Select the warm eats a mashroom",
+    "images": [
+      {
+        "src": "assets/fly-agaric.svg",
+        "class": "fly-agaric",
+        "tooltip": "&lt;fly-agaric/&gt;"
+      },
+      {
+        "src": "assets/mushroom.svg",
+        "class": "mushroom",
+        "tooltip": "&lt;mushroom/&gt;",
+        "nestedImg": {
+          "src": "assets/worms.svg",
+          "class": "worm",
+          "tooltip": "&lt;worm/&gt;"
+        }
+      },
+      {
+        "src": "assets/fly-agaric.svg",
+        "class": "fly-agaric",
+        "tooltip": "&lt;fly-agaric/&gt;",
+        "nestedImg": {
+          "src": "assets/worms.svg",
+          "class": "worm",
+          "tooltip": "&lt;worm/&gt;"
+        }
+      },
+      {
+        "src": "assets/mushroom.svg",
+        "class": "mushroom",
+        "tooltip": "&lt;mushroom/&gt;",
+        "nestedImg": {
+          "src": "assets/worms.svg",
+          "class": "worm",
+          "tooltip": "&lt;worm/&gt;"
+        }
+      }
+    ],
+    "html_code": [
+      { "html": "&lt;fly-agaric/&gt" },
+      {
+        "html": "&lt;mushroom/&gt;",
+        "html_nested": { "html": "&lt;worm/&gt;" }
+      },
+      {
+        "html": "&lt;fly-agaric/&gt",
+        "html_nested": { "html": "&lt;worm/&gt;" }
+      },
+      {
+        "html": "&lt;mushroom/&gt;",
+        "html_nested": { "html": "&lt;worm/&gt;" }
+      }
+    ],
+    "closedTag1": "</mushroom>",
+    "curLevel": "6",
+    "answer": "mushroom worm",
+    "checkMarkSideId": "mark-six",
+    "isLevelDone": false,
+    "isLevelDoneWithHelp": false,
+    "levelInMenu": "task-of-menu level-6"
   }
 ]

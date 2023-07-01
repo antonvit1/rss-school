@@ -3,6 +3,7 @@ export type Level = {
   taskName: string;
   images: Image[];
   html_code: HtmlCode[];
+  closedTag1: string;
   curLevel: string;
   answer: string;
   checkMarkSideId: string;
@@ -18,6 +19,6 @@ export type Image = {
 };
 export type HtmlCode = {
   html: string;
-  html_nested: HtmlCode;
+  html_nested: any;
 };
 

@@ -10,6 +10,8 @@ import { HtmlCode, Image, Level } from "./types";
 export let currentLevel: number = 0;
 let levels: Level[] = [];
 
+
+
 let rightBtn = document.querySelector(".right-button");
 let leftBtn = document.querySelector(".left-button");
 
@@ -150,6 +152,8 @@ function createHtmlBlocks() {
       const htmlNested = createHtmlBlock(tagObj.html_nested, true);
       divHtmlElement.appendChild(htmlNested);
       arrElem.push(htmlNested);
+      let closedTag = document.createTextNode(levels[currentLevel].closedTag1);
+      divHtmlElement.appendChild(closedTag);
     }
   });
   return arrElem;
@@ -185,9 +189,6 @@ function flyImg() {
 
 rightBtn?.addEventListener("click", function () {
   if (currentLevel <= 11) {
-    // if (levels[currentLevel].isLevelDone = false){
-    //   updateStateOfMainCheckMark()
-    // }
     addClassToBodyNext();
     currentLevel += 1;
     updateStateOfMainCheckMark();
@@ -265,13 +266,13 @@ document.addEventListener("keyup", function (event) {
     implementEnterPress();
   }
 });
-function saveLocalStorage() {
-  localStorage.setItem("indexArrOfTask", String(currentLevel));
-  localStorage.setItem("allLevels", JSON.stringify(levels));
-}
+// function saveLocalStorage() {
+//   localStorage.setItem("indexArrOfTask", String(currentLevel));
+//   localStorage.setItem("allLevels", JSON.stringify(levels));
+// }
 
 window.addEventListener("beforeunload", function () {
-  saveLocalStorage();
+  // saveLocalStorage();
 });
 
 buttonHelp.addEventListener("click", function () {

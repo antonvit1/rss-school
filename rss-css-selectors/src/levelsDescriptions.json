@@ -48,5 +48,15 @@
     "example_word": "Examples",
     "example_first": "<mark>p strong</mark> selects all <mark>&lt;strong&gt;</mark> elements that are inside of any <mark>&lt;p&gt;</mark>.",
     "example_second": "<mark>#fancy span</mark> selects any span elements that are inside of the element with <mark>id=\"fancy\"</mark>"
+  },
+  {
+    "classHelp": "help6",
+    "topic_task": "Descendant Selector",
+    "task": "Select an element inside another element",
+    "symbol_task": "A B",
+    "description_task": "Selects all <mark><strong>B</strong></mark> inside of <mark><strong>A</strong></mark>. <mark><strong>B</strong></mark> is called a descendant because it is inside of another element.",
+    "example_word": "Examples",
+    "example_first": "<mark>p strong</mark> selects all <mark>&lt;strong&gt;</mark> elements that are inside of any <mark>&lt;p&gt;</mark>.",
+    "example_second": "<mark>#fancy span</mark> selects any span elements that are inside of the element with <mark>id=\"fancy\"</mark>"
   }
 ]

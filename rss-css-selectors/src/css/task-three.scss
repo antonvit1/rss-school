@@ -1,20 +1,10 @@
-.task3 .plate-fancy {
+.task3 .fly-agaric {
   border-radius: 40%;
   height: 100px;
   margin-top: 20px;
-  animation: 1.1s infinite opas;
+  animation: 1.1s infinite shake;
 }
-@keyframes opas {
-  20% {
-     opacity: 1;
-    }
-  80% {
-     opacity: 0.3;
-     }
-  100% {
-     opacity: 1;
-    }
-}
+
 .task3 .plate,
 .task3 .mushroom {
   padding-top: 10px;
@@ -24,9 +14,7 @@
 .task3 .shake {
   animation: 1.2s shake-table infinite;
 }
-.task3 .html_str4 {
-  padding-left: 20px;
-}
+
 .task3 .highlight1 {
   color: aliceblue;
 }

@@ -145,14 +145,14 @@ function createPicture(obj: Image, nested = false) {
 function createHtmlBlocks() {
   const arrElem: HTMLElement[] = [];
   htmlContent?.replaceChildren();
-  levels[currentLevel].html_code.forEach((tagObj) => {
+  levels[currentLevel].html_code.forEach((tagObj, i) => {
     const divHtmlElement = createHtmlBlock(tagObj);
     arrElem.push(divHtmlElement);
     if (tagObj.html_nested) {
       const htmlNested = createHtmlBlock(tagObj.html_nested, true);
       divHtmlElement.appendChild(htmlNested);
       arrElem.push(htmlNested);
-      let closedTag = document.createTextNode(levels[currentLevel].closedTag1);
+      let closedTag = document.createTextNode(levels[currentLevel].html_code[i].html_close);
       divHtmlElement.appendChild(closedTag);
     }
   });
@@ -188,7 +188,7 @@ function flyImg() {
 }
 
 rightBtn?.addEventListener("click", function () {
-  if (currentLevel <= 11) {
+  if (currentLevel < 12) {
     addClassToBodyNext();
     currentLevel += 1;
     updateStateOfMainCheckMark();
@@ -258,11 +258,13 @@ function implementEnterPress() {
   }
  }
 buttonEnter.addEventListener("click", function () {
+  if (currentLevel < 12){
   implementEnterPress();
+  }
 });
 
 document.addEventListener("keyup", function (event) {
-  if (event.code === "Enter") {
+  if (event.code === "Enter" && currentLevel < 12) {
     implementEnterPress();
   }
 });

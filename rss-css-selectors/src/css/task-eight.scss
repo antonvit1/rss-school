@@ -1,0 +1,62 @@
+.task8 .large-beetle,
+.task8 .strawberry,
+.task8 .mushroom {
+    width: 90px;
+    padding-top: 25px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.task8 .small-beetle-on-table {
+    padding-top: 50px;
+    width: 30px;
+}
+.task8 .small-beetle {
+    width: 30px;
+    padding-top: 10px;
+}
+.task8 .highlight1 {
+    color: aliceblue;
+  }
+  .task8 .level-8 {
+    color:aliceblue;
+  }
+ .task8 .shadow {
+    box-shadow: 4px 4px 4px 4px rgba(34, 60, 80, 0.2);
+  }
+ .help8 {
+    color: rgb(37, 30, 30);
+    font-size: 1em;
+  }
+.help8.active {
+    color:rgb(203, 238, 5);
+  }
+  #mark-eight.done,
+.task8 .done {
+  color: green;
+}
+.position-absolute {
+    top: 30px;
+    left: 30px;
+
+  }
+  .task8 .position-relative .strawberry,
+  .task8 .position-relative .mushroom {
+    width: 90px;
+    padding-top: 25px;
+    padding-left: 5px;
+    padding-right: 5px;
+    animation: 1.1s infinite shake;
+  }
+  .task8 .position-relative.fly-img {
+    white-space: nowrap;
+    overflow: hidden;
+    animation: fly 1s infinite;
+  }
+  .task8 .shake {
+    animation: 1.2s shake-table infinite;
+  }
+  .task8 .fly-answer {
+    white-space: nowrap;
+    overflow: hidden;
+    animation: appearance 3s ;
+  }

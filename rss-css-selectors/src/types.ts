@@ -19,6 +19,7 @@ export type Image = {
 };
 export type HtmlCode = {
   html: string;
+  html_close: string;
   html_nested: any;
 };
 

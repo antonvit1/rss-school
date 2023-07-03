@@ -23,7 +23,7 @@
     "classHelp": "help3",
     "topic_task": "ID Selector",
     "task": "Select elements with an ID",
-    "symbol_task": "#id",
+    "symbol_task": "<mark>#id</mark>",
     "description_task": "Selects all element with a specific <mark><strong>id</strong></mark>. You can also combine the ID selector with the type selector.",
     "example_word": "Examples",
     "example_first": "<mark>#cool</mark> selects any element with <mark>id=\"cool\"</mark> elements.",
@@ -31,16 +31,66 @@
   },
   {
     "classHelp": "help4",
-    "topic_task": "Descendant Selector",
-    "task": "Select an element inside another element",
-    "symbol_task": "A B",
-    "description_task": "Selects all <mark><strong>B</strong></mark> inside of <mark><strong>A</strong></mark>. <mark><strong>B</strong></mark> is called a descendant because it is inside of another element.",
+    "topic_task": "Nth Child ",
+    "task": "Select an element by its order in another element",
+    "symbol_task": "<mark>:nth-child()</mark>",
+    "description_task": "Selects <mark>nth</mark> () child element in another element.",
     "example_word": "Examples",
-    "example_first": "<mark>p strong</mark> selects all <mark>&lt;strong&gt;</mark> elements that are inside of any <mark>&lt;p&gt;</mark>.",
-    "example_second": "<mark>#fancy span</mark> selects any span elements that are inside of the element with <mark>id=\"fancy\"</mark>"
+    "example_first": "<mark>:nth-child(6)</mark>selects every element that is the 8th child of another element.",
+    "example_second": "<mark>div p:nth-child(5)</mark> selects the second p in every <mark>div</mark>"
   },
   {
     "classHelp": "help5",
+    "topic_task": "Combine the Class Selector",
+    "task": "",
+    "symbol_task": "<mark>A.className</mark>",
+    "description_task": "You can combine the class selector with other selectors, like the type selector.",
+    "example_word": "Examples",
+    "example_first": "<mark>ul.important</mark> selects all <mark>ul</mark> elements that have <mark>class=\"important\"</mark>",
+    "example_second": "<mark>#big.wide</mark> selects all elements with <mark>id=\"big\"</mark> that also have <mark>class=\"wide\"</mark>"
+  },
+  {
+    "classHelp": "help6",
+    "topic_task": "Combine the Universal Selector",
+    "task": "Select the all worms eating a mashroom",
+    "symbol_task": "<mark>A *</mark>",
+    "description_task": "This selects all elements inside of <mark>A</mark>",
+    "example_word": "Examples",
+    "example_first": "<mark>p *</mark> selects every element inside all <mark>&lt;p&gt;</mark> elements.",
+    "example_second": "<mark>ul.fancy *</mark> selects every element inside all <mark>&lt;ul class=\"eating\"&gt;</mark>"
+  },
+  {
+    "classHelp": "help7",
+    "topic_task": "Combine the Class Selector",
+    "task": "",
+    "symbol_task": "<mark>A B.className</mark>",
+    "description_task": "You can combine the class selector with other selectors, like the type selector.",
+    "example_word": "Examples",
+    "example_first": "<mark>p *</mark> selects every element inside all <mark>&lt;p&gt;</mark> elements.",
+    "example_second": "<mark>ul.fancy *</mark> selects every element inside all <mark>&lt;ul class=\"eating\"&gt;</mark>"
+  },
+  {
+    "classHelp": "help8",
+    "topic_task": "Comma Combinator",
+    "task": "Combine, selectors, with... commas!",
+    "symbol_task": "<mark>A, B</mark>",
+    "description_task": "Thanks to Shatner technology, this selects all <mark>A</mark> and <mark>B</mark> elements. You can combine any selectors this way, and you can specify more than two.",
+    "example_word": "Examples",
+    "example_first": "<mark>p .good</mark> selects all <mark>&lt;p&gt;</mark> elements as well as all elements with <mark>class=\"good\"</mark>.",
+    "example_second": "<mark>a, p, div</mark> selects all <mark>&lt;a&gt;</mark>, <mark>&lt;p&gt;</mark> and <mark>&lt;div&gt;</mark> elements"
+  },
+  {
+    "classHelp": "help9",
+    "topic_task": "The Universal Selector",
+    "task": "You can select everything!",
+    "symbol_task": "<mark>*</mark>",
+    "description_task": "You can select all elements with the universal selector!",
+    "example_word": "Examples",
+    "example_first": "<mark>p *</mark> selects any element inside all <mark>&lt;p&gt;</mark> elements",
+    "example_second": ""
+  },
+  {
+    "classHelp": "help10",
     "topic_task": "Descendant Selector",
     "task": "Select an element inside another element",
     "symbol_task": "A B",
@@ -50,7 +100,7 @@
     "example_second": "<mark>#fancy span</mark> selects any span elements that are inside of the element with <mark>id=\"fancy\"</mark>"
   },
   {
-    "classHelp": "help6",
+    "classHelp": "help11",
     "topic_task": "Descendant Selector",
     "task": "Select an element inside another element",
     "symbol_task": "A B",

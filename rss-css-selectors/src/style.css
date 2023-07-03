@@ -354,6 +354,9 @@ mark {
 .popup.active {
   display: block;
 }
+.popup {
+  top: -60px;
+}
 
 @media (max-width: 800px) {
   .left-fild {
@@ -444,3 +447,8 @@ mark {
 @import "./css/task-four.scss";
 @import "./css/task-five.scss";
 @import "./css/task-six.scss";
+@import "./css/task-seven.scss";
+@import "./css/task-eight.scss";
+@import "./css/task-nine.scss";
+@import "./css/task-ten.scss";
+@import "./css/task-eleven.scss";

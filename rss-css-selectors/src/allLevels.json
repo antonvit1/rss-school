@@ -1,7 +1,7 @@
 [
   {
     "mainClass": "task1",
-    "taskName": "Select the plate",
+    "taskName": "Select the strawberry",
     "images": [
       {
         "src": "assets/strawberry.svg",
@@ -59,7 +59,7 @@
   },
   {
     "mainClass": "task3",
-    "taskName": "Select the fancy plate",
+    "taskName": "Select the 3rd beetle",
 
     "images": [
       {
@@ -92,22 +92,22 @@
   },
   {
     "mainClass": "task4",
-    "taskName": "Select the warm eats a mashroom",
+    "taskName": "Select 3rd beetle",
     "images": [
       {
-        "src": "assets/worms.svg",
-        "class": "worm",
-        "tooltip": "&lt;worm/&gt;<br>"
+        "src": "assets/beetle.svg",
+        "class": "beetle",
+        "tooltip": "&lt;beetle/&gt;<br>"
       },
       {
-        "src": "assets/mushroom.svg",
-        "class": "mushroom",
-        "tooltip": "&lt;mushroom/&gt;"
+        "src": "assets/beetle.svg",
+        "class": "beetle",
+        "tooltip": "&lt;beetle/&gt;<br>"
       },
       {
-        "src": "assets/worms.svg",
-        "class": "worm2",
-        "tooltip": "&lt;worm/&gt;"
+        "src": "assets/beetle.svg",
+        "class": "beetle3",
+        "tooltip": "&lt;beetle/&gt;<br>"
       },
       {
         "src": "assets/mushroom.svg",
@@ -116,13 +116,13 @@
       }
     ],
     "html_code": [
-      { "html": "&lt;worm/&gt;" },
-      { "html": "&lt;mushroom/&gt;" },
-      { "html": "&lt;worm class=\"eat\"/&gt;" },
+      { "html": "&lt;beetle/&gt;" },
+      { "html": "&lt;beetle/&gt;" },
+      { "html": "&lt;beetle/&gt;" },
       { "html": "&lt;mushroom/&gt;" }
     ],
     "curLevel": "4",
-    "answer": ".eat",
+    "answer": "beetle:nth-child(3)",
     "checkMarkSideId": "mark-four",
     "isLevelDone": false,
     "isLevelDoneWithHelp": false,
@@ -133,9 +133,9 @@
     "taskName": "Select the warm eats a mashroom",
     "images": [
       {
-        "src": "assets/fly-agaric.svg",
-        "class": "fly-agaric",
-        "tooltip": "&lt;fly-agaric/&gt;"
+        "src": "assets/beetle.svg",
+        "class": "beetle-eat",
+        "tooltip": "&lt;beetle class=\"eating\"/&gt;"
       },
       {
         "src": "assets/mushroom.svg",
@@ -144,7 +144,7 @@
         "nestedImg": {
           "src": "assets/worms.svg",
           "class": "worm",
-          "tooltip": "&lt;worm/&gt;"
+          "tooltip": "&lt;worm class=\"eating\"/&gt;"
         }
       },
       {
@@ -159,25 +159,26 @@
         "nestedImg": {
           "src": "assets/worms.svg",
           "class": "worm",
-          "tooltip": "&lt;worm/&gt;"
+          "tooltip": "&lt;worm class=\"eating\"/&gt;"
         }
       }
     ],
     "html_code": [
-      { "html": "&lt;fly-agaric/&gt" },
+      { "html": "&lt;beetle class=\"eating\"/&gt;" },
       {
         "html": "&lt;mushroom/&gt;",
-        "html_nested": { "html": "&lt;worm/&gt;" }
+        "html_close": "</mushroom>",
+        "html_nested": { "html": "&lt;worm class=\"eating\"/&gt;" }
       },
       { "html": "&lt;fly-agaric/&gt" },
       {
         "html": "&lt;mushroom/&gt;",
-        "html_nested": { "html": "&lt;worm/&gt;" }
+        "html_close": "</mushroom>",
+        "html_nested": { "html": "&lt;worm class=\"eating\"/&gt;" }
       }
     ],
-    "closedTag1": "</mushroom>",
     "curLevel": "5",
-    "answer": "mushroom worm",
+    "answer": "worm.eating",
     "checkMarkSideId": "mark-five",
     "isLevelDone": false,
     "isLevelDoneWithHelp": false,
@@ -185,12 +186,12 @@
   },
   {
     "mainClass": "task6",
-    "taskName": "Select the warm eats a mashroom",
+    "taskName": "Select the all worms eating a mashroom",
     "images": [
       {
-        "src": "assets/fly-agaric.svg",
-        "class": "fly-agaric",
-        "tooltip": "&lt;fly-agaric/&gt;"
+        "src": "assets/berry.svg",
+        "class": "berry",
+        "tooltip": "&lt;berry/&gt;"
       },
       {
         "src": "assets/mushroom.svg",
@@ -205,7 +206,7 @@
       {
         "src": "assets/fly-agaric.svg",
         "class": "fly-agaric",
-        "tooltip": "&lt;fly-agaric/&gt;",
+        "tooltip": "&lt;mushroom id=\"fly-agaric\"/&gt;",
         "nestedImg": {
           "src": "assets/worms.svg",
           "class": "worm",
@@ -224,26 +225,361 @@
       }
     ],
     "html_code": [
-      { "html": "&lt;fly-agaric/&gt" },
+      { "html": "&lt;berry/&gt;" },
       {
         "html": "&lt;mushroom/&gt;",
+        "html_close": "</mushroom>",
         "html_nested": { "html": "&lt;worm/&gt;" }
       },
       {
-        "html": "&lt;fly-agaric/&gt",
+        "html": "&lt;mushroom id=\"fly-agaric\"/&gt;",
+        "html_close": "</mushroom>",
         "html_nested": { "html": "&lt;worm/&gt;" }
       },
       {
         "html": "&lt;mushroom/&gt;",
+        "html_close": "</mushroom>",
         "html_nested": { "html": "&lt;worm/&gt;" }
       }
     ],
-    "closedTag1": "</mushroom>",
     "curLevel": "6",
-    "answer": "mushroom worm",
+    "answer": "mushroom *",
     "checkMarkSideId": "mark-six",
     "isLevelDone": false,
     "isLevelDoneWithHelp": false,
     "levelInMenu": "task-of-menu level-6"
+  },
+  {
+    "mainClass": "task7",
+    "taskName": "Select all worm in the mushroom",
+    "images": [
+      {
+        "src": "assets/worms.svg",
+        "class": "worm",
+        "tooltip": "&lt;worm class=\"small\"/&gt;"
+      },
+      {
+        "src": "assets/mushroom.svg",
+        "class": "mushroom",
+        "tooltip": "&lt;mushroom/&gt;",
+        "nestedImg": {
+          "src": "assets/worms.svg",
+          "class": "small-worm",
+          "tooltip": "&lt;worm class=\"small\"/&gt;"
+        }
+      },
+      {
+        "src": "assets/worms.svg",
+        "class": "big-worm",
+        "tooltip": "&lt;worm/&gt;"
+      },
+      {
+        "src": "assets/mushroom.svg",
+        "class": "mushroom",
+        "tooltip": "&lt;mushroom/&gt;",
+        "nestedImg": {
+          "src": "assets/worms.svg",
+          "class": "small-worm",
+          "tooltip": "&lt;worm class=\"small\"/&gt;"
+        }
+      }
+    ],
+    "html_code": [
+      { "html": "&lt;worm class=\"small\"/&gt;" },
+      {
+        "html": "&lt;mushroom/&gt;",
+        "html_close": "</mushroom>",
+        "html_nested": { "html": "&lt;worm class=\"small\"/&gt;" }
+      },
+      {
+        "html": "&lt;worm/&gt;"
+      },
+      {
+        "html": "&lt;mushroom/&gt;",
+        "html_close": "</mushroom>",
+        "html_nested": { "html": "&lt;worm class=\"small\"/&gt;" }
+      }
+    ],
+    "curLevel": "7",
+    "answer": "mushroom worm.small",
+    "checkMarkSideId": "mark-seven",
+    "isLevelDone": false,
+    "isLevelDoneWithHelp": false,
+    "levelInMenu": "task-of-menu level-7"
+  },
+  {
+    "mainClass": "task8",
+    "taskName": "Select all the strawberrys and mushrooms",
+    "images": [
+      {
+        "src": "assets/beetle.svg",
+        "class": "large-beetle",
+        "tooltip": "&lt;large-beetle/&gt;"
+      },
+      {
+        "src": "assets/strawberry.svg",
+        "class": "strawberry",
+        "tooltip": "&lt;strawberry/&gt;",
+        "nestedImg": {
+          "src": "assets/beetle.svg",
+          "class": "small-beetle",
+          "tooltip": "&lt;small-beetle/&gt;"
+        }
+      },
+      {
+        "src": "assets/beetle.svg",
+        "class": "small-beetle-on-table",
+        "tooltip": "&lt;small-beetle/&gt;"
+      },
+      {
+        "src": "assets/mushroom.svg",
+        "class": "mushroom",
+        "tooltip": "&lt;mushroom/&gt;",
+        "nestedImg": {
+          "src": "assets/beetle.svg",
+          "class": "small-beetle",
+          "tooltip": "&lt;small-beetle/&gt;"
+        }
+      },
+      {
+        "src": "assets/strawberry.svg",
+        "class": "strawberry",
+        "tooltip": "&lt;strawberry/&gt;",
+        "nestedImg": {
+          "src": "assets/beetle.svg",
+          "class": "small-beetle",
+          "tooltip": "&lt;small-beetle/&gt;"
+        }
+      }
+    ],
+    "html_code": [
+      { "html": "&lt;large-beetle/&gt;" },
+      {
+        "html": "&lt;strawberry/&gt;",
+        "html_close": "</strawberry>",
+        "html_nested": { "html": "&lt;small-beetle/&gt;" }
+      },
+      {
+        "html": "&lt;small-beetle/&gt;"
+      },
+      {
+        "html": "&lt;mushroom/&gt;",
+        "html_close": "</mushroom>",
+        "html_nested": { "html": "&lt;small-beetle/&gt;" }
+      },
+      {
+        "html": "&lt;strawberry/&gt;",
+        "html_close": "</strawberry>",
+        "html_nested": { "html": "&lt;small-beetle/&gt;" }
+      }
+    ],
+    "curLevel": "8",
+    "answer": "strawberry, mushroom, strawberry",
+    "checkMarkSideId": "mark-eight",
+    "isLevelDone": false,
+    "isLevelDoneWithHelp": false,
+    "levelInMenu": "task-of-menu level-8"
+  },
+  {
+    "mainClass": "task9",
+    "taskName": "Select everything on the table",
+    "images": [
+      {
+        "src": "assets/strawberry.svg",
+        "class": "strawberry",
+        "tooltip": "&lt;strawberry/&gt;"
+      },
+      {
+        "src": "assets/fly-agaric.svg",
+        "class": "fly-agaric",
+        "tooltip": "&lt;mushroom class=\"fly-agaric\"/&gt;",
+        "nestedImg": {
+          "src": "assets/worms.svg",
+          "class": "worm",
+          "tooltip": "&lt;worm/&gt;"
+        }
+      },
+      {
+        "src": "assets/beetle.svg",
+        "class": "small-beetle-on-table",
+        "tooltip": "&lt;small-beetle/&gt;"
+      },
+      {
+        "src": "assets/mushroom.svg",
+        "class": "mushroom",
+        "tooltip": "&lt;mushroom/&gt;",
+        "nestedImg": {
+          "src": "assets/beetle.svg",
+          "class": "small-beetle",
+          "tooltip": "&lt;small-beetle/&gt;"
+        }
+      },
+      {
+        "src": "assets/strawberry.svg",
+        "class": "strawberry",
+        "tooltip": "&lt;strawberry/&gt;",
+        "nestedImg": {
+          "src": "assets/worms.svg",
+          "class": "worm",
+          "tooltip": "&lt;worm/&gt;"
+        }
+      }
+    ],
+    "html_code": [
+      { "html": "&lt;strawberry/&gt;" },
+      {
+        "html": "&lt;mushroom class=\"fly-agaric\"/&gt;",
+        "html_close": "</mushroom>",
+        "html_nested": { "html": "&lt;worm class=\"small\"/&gt;" }
+      },
+      {
+        "html": "&lt;small-beetle/&gt;"
+      },
+      {
+        "html": "&lt;mushroom/&gt;",
+        "html_close": "</mushroom>",
+        "html_nested": { "html": "&lt;small-beetle/&gt;" }
+      },
+      {
+        "html": "&lt;strawberry/&gt;",
+        "html_close": "</strawberry>",
+        "html_nested": { "html": "&lt;worm class=\"small\"/&gt;" }
+      }
+    ],
+    "curLevel": "9",
+    "answer": "strawberry, mushroom, small-beetle, worm",
+    "checkMarkSideId": "mark-nine",
+    "isLevelDone": false,
+    "isLevelDoneWithHelp": false,
+    "levelInMenu": "task-of-menu level-9"
+  },
+  {
+    "mainClass": "task10",
+    "taskName": "Select the warm eats a mashroom",
+    "images": [
+      {
+        "src": "assets/fly-agaric.svg",
+        "class": "fly-agaric",
+        "tooltip": "&lt;mushroom class=\"fly-agaric\"/&gt;"
+      },
+      {
+        "src": "assets/mushroom.svg",
+        "class": "mushroom",
+        "tooltip": "&lt;mushroom/&gt;",
+        "nestedImg": {
+          "src": "assets/beetle.svg",
+          "class": "small-beetle",
+          "tooltip": "&lt;beetle id=\"small\"/&gt;"
+        }
+      },
+      {
+        "src": "assets/beetle.svg",
+        "class": "beetle",
+        "tooltip": "&lt;beetle/&gt;"
+      },
+      {
+        "src": "assets/fly-agaric.svg",
+        "class": "fly-agaric",
+        "tooltip": "&lt;fly-agaric/&gt;"
+      },
+      {
+        "src": "assets/mushroom.svg",
+        "class": "mushroom",
+        "tooltip": "&lt;mushroom/&gt;",
+        "nestedImg": {
+          "src": "assets/worms.svg",
+          "class": "worm",
+          "tooltip": "&lt;worm/&gt;"
+        }
+      }
+    ],
+    "html_code": [
+      { "html": "&lt;fly-agaric/&gt" },
+      {
+        "html": "&lt;mushroom/&gt;",
+        "html_close": "</mushroom>",
+        "html_nested": { "html": "&lt;beetle id=\"small\"/&gt;" }
+      },
+      { "html": "&lt;beetle/&gt;" },
+      { "html": "&lt;fly-agaric/&gt" },
+      {
+        "html": "&lt;mushroom/&gt;",
+        "html_close": "</mushroom>",
+        "html_nested": { "html": "&lt;worm/&gt" }
+      }
+    ],
+    "curLevel": "10",
+    "answer": "mushroom * #small, mushroom * worm",
+    "checkMarkSideId": "mark-ten",
+    "isLevelDone": false,
+    "isLevelDoneWithHelp": false,
+    "levelInMenu": "task-of-menu level-10"
+  },
+  {
+    "mainClass": "task11",
+    "taskName": "Select the warm eats a mashroom",
+    "images": [
+      {
+        "src": "assets/mushroom.svg",
+        "class": "mushroom",
+        "tooltip": "&lt;mushroom/&gt;",
+        "nestedImg": {
+          "src": "assets/beetle.svg",
+          "class": "small-beetle",
+          "tooltip": "&lt;small-beetle/&gt;",
+          "nestedImg": {
+            "src": "assets/mushroom.svg",
+            "class": "mushroomS",
+            "tooltip": "&lt;mushroomS/&gt;"
+          }
+        }
+      },
+      {
+        "src": "assets/beetle.svg",
+        "class": "beetle",
+        "tooltip": "&lt;beetle/&gt;"
+      },
+      {
+        "src": "assets/fly-agaric.svg",
+        "class": "fly-agaric",
+        "tooltip": "&lt;fly-agaric/&gt;"
+      },
+      {
+        "src": "assets/mushroom.svg",
+        "class": "mushroom",
+        "tooltip": "&lt;mushroom/&gt;",
+        "nestedImg": {
+          "src": "assets/worms.svg",
+          "class": "worm",
+          "tooltip": "&lt;worm/&gt;"
+        }
+      }
+    ],
+    "html_code": [
+      {
+        "html": "&lt;mushroom/&gt;",
+        "html_close": "</mushroom>",
+        "html_nested": {
+          "html": "&lt;small-beetle/&gt;",
+          "html_nested": {
+            "html": "&lt;worm/&gt;",
+            "html_nested": { "html": "&lt;mushroom/&gt;" }
+          }
+        }
+      },
+      { "html": "&lt;beetle/&gt;" },
+      { "html": "&lt;fly-agaric/&gt" },
+      {
+        "html": "&lt;mushroom/&gt;",
+        "html_close": "</mushroom>",
+        "html_nested": { "html": "&lt;worm/&gt;" }
+      }
+    ],
+    "curLevel": "11",
+    "answer": "mushroom worm",
+    "checkMarkSideId": "mark-eleven",
+    "isLevelDone": false,
+    "isLevelDoneWithHelp": false,
+    "levelInMenu": "task-of-menu level-11"
   }
 ]

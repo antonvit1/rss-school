@@ -1,51 +1,52 @@
-.task6 .fly-agaric,
-.task6 .mushroom,
-.task6 .berry {
+.task7 .big-worm,
+.task7 .mushroom {
     width: 90px;
     padding-top: 25px;
     padding-left: 5px;
     padding-right: 5px;
 }
-.task6 .highlight1 {
+.task7 .worm {
+  width: 50px;
+  padding-top: 60px;
+  }
+.task7 .highlight1 {
     color: aliceblue;
   }
-  .task6 .level-6 {
+  .task7 .level-7 {
     color:aliceblue;
   }
-  .task6 .shadow {
+ .task7 .shadow {
     box-shadow: 4px 4px 4px 4px rgba(34, 60, 80, 0.2);
   }
-  .help6 {
+ .help7 {
     color: rgb(37, 30, 30);
     font-size: 1em;
   }
-  .help6.active {
+.help7.active {
     color:rgb(203, 238, 5);
   }
-  #mark-six.done,
-.task6 .done {
+  #mark-seven.done,
+.task7 .done {
   color: green;
 }
 .position-absolute {
   top: 30px;
   left: 30px;
-
 }
-.position-absolute .worm {
+.position-absolute .small-worm {
   width: 50px;
   top:50px;
   animation: 1.1s infinite shake;
 }
-
-.task6 .position-relative.fly-img {
+.task7 .position-relative.fly-img {
   white-space: nowrap;
   overflow: hidden;
   animation: fly 1s infinite;
 }
-.task6 .shake {
+.task7 .shake {
   animation: 1.2s shake-table infinite;
 }
-.task6 .fly-answer {
+.task7 .fly-answer {
   white-space: nowrap;
   overflow: hidden;
   animation: appearance 3s ;

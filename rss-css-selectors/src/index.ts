@@ -10,13 +10,10 @@ import { HtmlCode, Image, Level } from "./types";
 export let currentLevel: number = 0;
 let levels: Level[] = [];
 
-
-
 let rightBtn = document.querySelector(".right-button");
 let leftBtn = document.querySelector(".left-button");
-
+let winMessage = <HTMLElement>document.querySelector(".win-message")
 let buttonHelp = <HTMLElement>document.querySelector(".button-help");
-
 let addClassBody = <HTMLElement>document.querySelector(".body");
 let taskName = <HTMLElement>document.querySelector(".task-name");
 let htmlContent = <HTMLElement>document.querySelector(".html-content");
@@ -78,29 +75,35 @@ btnRessetProgress?.addEventListener("click", function () {
     );
     symbolHelp.classList.remove("active");
   })
-
-
+  winMessage.classList.remove("active");
 });
+
+
 
 function highlightHtmlImg(picture: HTMLElement, textHTML: HTMLElement) {
   const popup = picture.querySelector(".popup");
-  picture.addEventListener("mouseover", function () {
+  picture.addEventListener("mouseover", function (event) {
+    event.stopPropagation();
+
     picture.classList.add("shadow");
     textHTML.classList.add("highlight1");
     popup?.classList.add("active");
   });
-  picture.addEventListener("mouseout", function () {
+  picture.addEventListener("mouseout", function (event) {
+    event.stopPropagation();
     picture.classList.remove("shadow");
     textHTML.classList.remove("highlight1");
     popup?.classList.remove("active");
   });
 
-  textHTML.addEventListener("mouseover", function () {
+  textHTML.addEventListener("mouseover", function (event) {
+    event.stopPropagation();
     textHTML.classList.add("highlight1");
     picture.classList.add("shadow");
     popup?.classList.add("active");
   });
-  textHTML.addEventListener("mouseout", function () {
+  textHTML.addEventListener("mouseout", function (event) {
+    event.stopPropagation();
     textHTML.classList.remove("highlight1");
     picture.classList.remove("shadow");
     popup?.classList.remove("active");
@@ -188,7 +191,7 @@ function flyImg() {
 }
 
 rightBtn?.addEventListener("click", function () {
-  if (currentLevel < 12) {
+  if (currentLevel < 10) {
     addClassToBodyNext();
     currentLevel += 1;
     updateStateOfMainCheckMark();
@@ -210,7 +213,6 @@ leftBtn?.addEventListener("click", function () {
     delAnswer();
   }
 });
-
 function loadPage() {
 updateStateOfMainCheckMark();
   addClassBody.classList.add(levels[currentLevel].mainClass);
@@ -232,8 +234,26 @@ updateStateOfMainCheckMark();
   })
 }
 
+function checkIfAllLevelsDone(){
+
+if (levels.every((val) => val.isLevelDone)) {
+  winMessage.classList.add("active");
+}
+}
+
+function implementEnterPressLastLevel(){
+  flyImg();
+  let markSideBoxTask = <HTMLElement>(
+    document.getElementById(levels[currentLevel].checkMarkSideId)
+  );
+  (document.getElementById("input-answer") as HTMLInputElement).value = "";
+  markSideBoxTask?.classList.add("done");
+  levels[currentLevel].isLevelDone = true;
+  updateStateOfMainCheckMark();
+  changeTextRightSect()
+}
 function implementEnterPress() {
-  if (answerTask.value === levels[currentLevel].answer) {
+  if (levels[currentLevel].answers.includes(answerTask.value)) {
     flyImg();
     setTimeout(() => {
       let markSideBoxTask = <HTMLElement>(
@@ -250,6 +270,7 @@ function implementEnterPress() {
       delAnswer();
     }, 1000);
     updateStateOfMainCheckMark();
+
   } else {
     allTable.classList.add("shake");
     setTimeout(() => {
@@ -258,28 +279,41 @@ function implementEnterPress() {
   }
  }
 buttonEnter.addEventListener("click", function () {
-  if (currentLevel < 12){
+  if (currentLevel < 10){
   implementEnterPress();
+  checkIfAllLevelsDone();
   }
-});
+  if (currentLevel === 10 && levels[currentLevel].answers.includes(answerTask.value)) {
+    implementEnterPressLastLevel()
+    checkIfAllLevelsDone();
 
-document.addEventListener("keyup", function (event) {
-  if (event.code === "Enter" && currentLevel < 12) {
+  }
+
+ });
+
+document.addEventListener("keydown", function (event) {
+  if (event.code === "Enter" && currentLevel < 10) {
     implementEnterPress();
+    checkIfAllLevelsDone();
+  }
+  if (event.code === "Enter" && currentLevel === 10 && levels[currentLevel].answers.includes(answerTask.value)) {
+    implementEnterPressLastLevel()
+    checkIfAllLevelsDone()
+
   }
 });
-// function saveLocalStorage() {
-//   localStorage.setItem("indexArrOfTask", String(currentLevel));
-//   localStorage.setItem("allLevels", JSON.stringify(levels));
-// }
+function saveLocalStorage() {
+  localStorage.setItem("indexArrOfTask", String(currentLevel));
+  localStorage.setItem("allLevels", JSON.stringify(levels));
+}
 
 window.addEventListener("beforeunload", function () {
-  // saveLocalStorage();
+  saveLocalStorage();
 });
 
 buttonHelp.addEventListener("click", function () {
   answerTask.className = "fly-answer";
-  answerTask.value = levels[currentLevel].answer;
+  answerTask.value = levels[currentLevel].answers[0];
   levels[currentLevel].isLevelDoneWithHelp = true;
   let symbolHelp = <HTMLElement>(
     document.querySelector(`.${levelsDescriptions[currentLevel].classHelp}`)

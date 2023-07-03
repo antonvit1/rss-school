@@ -97,9 +97,9 @@
                   id="input-answer"
                   placeholder="Type in a CSS selector" />
                 <div class="text-in-field">
-                  {<br />/* Style would go here. */<br />}<br /><br />/*<br />
-                  Type a number to skip to a level.<br />
-                  Ex🠖"5" for level 5<br />*/
+                  {<br />/* Style would go here. */<br />}<br /><br /><br />
+                  <br />
+                  <br />
                 </div>
               </div>
               <button class="button-enter">
@@ -153,7 +153,7 @@
         <div class="header-right">
           <div class="level">
             <span class="inscrip-level"
-              >Level <span class="current-level">1</span> 0f 10</span
+              >Level <span class="current-level">1</span> 0f 11</span
             >
             <svg
               class="check-mark"
@@ -193,7 +193,7 @@
             </div>
           </div>
         </div>
-        <progress id="progress" max="100" value="10"></progress>
+        <progress id="progress" max="110" value="11"></progress>
         <div class="discription-task"></div>
         <span class="topic-task">Type Selector</span>
         <div class="task">Select elements by their type</div>
@@ -483,7 +483,7 @@
                 d="M1.00000001 7.71134025l3.83505154 3.8041237 8.16494844-8.16494844-.86597938-.86597938L4.83505155 9.7835052 1.86597939 6.81443303z" />
             </svg>
             <span class="help4">?</span>
-            <span class="task-of-menu level-4">4 A B</span>
+            <span class="task-of-menu level-4">4 :nth-child()</span>
           </li>
           <li>
             <svg
@@ -499,7 +499,7 @@
                 d="M1.00000001 7.71134025l3.83505154 3.8041237 8.16494844-8.16494844-.86597938-.86597938L4.83505155 9.7835052 1.86597939 6.81443303z" />
             </svg>
             <span class="help5">?</span>
-            <span class="task-of-menu level-5">5 #id A</span>
+            <span class="task-of-menu level-5">5 A.className</span>
           </li>
           <li>
             <svg
@@ -515,7 +515,7 @@
                 d="M1.00000001 7.71134025l3.83505154 3.8041237 8.16494844-8.16494844-.86597938-.86597938L4.83505155 9.7835052 1.86597939 6.81443303z" />
             </svg>
             <span class="help6">?</span>
-            <span class="task-of-menu level-6">6 .className</span>
+            <span class="task-of-menu level-6">6 A *</span>
           </li>
           <li>
             <svg
@@ -531,7 +531,7 @@
                 d="M1.00000001 7.71134025l3.83505154 3.8041237 8.16494844-8.16494844-.86597938-.86597938L4.83505155 9.7835052 1.86597939 6.81443303z" />
             </svg>
             <span class="help7">?</span>
-            <span class="task-of-menu level-7">7 A.className</span>
+            <span class="task-of-menu level-7">7 A B.className</span>
           </li>
           <li>
             <svg
@@ -547,7 +547,7 @@
                 d="M1.00000001 7.71134025l3.83505154 3.8041237 8.16494844-8.16494844-.86597938-.86597938L4.83505155 9.7835052 1.86597939 6.81443303z" />
             </svg>
             <span class="help8">?</span>
-            <span class="task-of-menu level-8">8 Put your back into it!</span>
+            <span class="task-of-menu level-8">8 A, B</span>
           </li>
           <li>
             <svg
@@ -563,7 +563,7 @@
                 d="M1.00000001 7.71134025l3.83505154 3.8041237 8.16494844-8.16494844-.86597938-.86597938L4.83505155 9.7835052 1.86597939 6.81443303z" />
             </svg>
             <span class="help9">?</span>
-            <span class="task-of-menu level-9">9 A, B</span>
+            <span class="task-of-menu level-9">9 A B</span>
           </li>
           <li>
             <svg
@@ -595,12 +595,13 @@
                 d="M1.00000001 7.71134025l3.83505154 3.8041237 8.16494844-8.16494844-.86597938-.86597938L4.83505155 9.7835052 1.86597939 6.81443303z" />
             </svg>
             <span class="help11">?</span>
-            <span class="task-of-menu level-11">11 *</span>
+            <span class="task-of-menu level-11">A ~ B</span>
           </li>
         </ul>
       </nav>
       <button class="btn-reset-progress">Resset Progress</button>
     </div>
     <!-- <script src="index.ts"></script> -->
+    <div class="win-message">You are win!</div>
   </body>
 </html>

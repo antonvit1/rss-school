@@ -357,6 +357,22 @@ mark {
 .popup {
   top: -60px;
 }
+.win-message {
+  position: absolute;
+  background-color: rgb(158, 163, 96);
+  top: 30%;
+  left: 15%;
+  width: 50%;
+  text-align: center;
+  font-size: 3em;
+  font-weight: 800;
+  border: solid 1px bisque;
+  border-radius: 10px;
+  display: none;
+}
+.win-message.active {
+  display: block;
+}
 
 @media (max-width: 800px) {
   .left-fild {
@@ -380,10 +396,7 @@ mark {
   .button-enter {
     width: 40px;
   }
-  /* .header-right {
-    display: flex;
-    flex-direction: column;
-  } */
+
   .inscrip-level {
     font-size: 0.8em;
   }

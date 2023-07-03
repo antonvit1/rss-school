@@ -101,12 +101,12 @@
   },
   {
     "classHelp": "help11",
-    "topic_task": "Descendant Selector",
-    "task": "Select an element inside another element",
-    "symbol_task": "A B",
-    "description_task": "Selects all <mark><strong>B</strong></mark> inside of <mark><strong>A</strong></mark>. <mark><strong>B</strong></mark> is called a descendant because it is inside of another element.",
+    "topic_task": "General Sibling Selector",
+    "task": "Select elements that follows another element",
+    "symbol_task": "<mark>A B</mark>",
+    "description_task": "You can select all siblings of an element that follow it. This is like the Adjacent Selector (A + B) except it gets all of the following elements instead of one.",
     "example_word": "Examples",
-    "example_first": "<mark>p strong</mark> selects all <mark>&lt;strong&gt;</mark> elements that are inside of any <mark>&lt;p&gt;</mark>.",
-    "example_second": "<mark>#fancy span</mark> selects any span elements that are inside of the element with <mark>id=\"fancy\"</mark>"
+    "example_first": "<mark>A ~ B</mark> selects all <mark>&lt;B&gt;</mark> that follow a <mark>&lt;A&gt;</mark>.",
+    "example_second": ""
   }
 ]

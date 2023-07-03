@@ -5,7 +5,7 @@ export type Level = {
   html_code: HtmlCode[];
   closedTag1: string;
   curLevel: string;
-  answer: string;
+  answers: string[];
   checkMarkSideId: string;
   isLevelDone: boolean;
   isLevelDoneWithHelp: boolean;

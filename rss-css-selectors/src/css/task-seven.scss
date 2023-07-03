@@ -1,31 +1,31 @@
 .task7 .big-worm,
 .task7 .mushroom {
-    width: 90px;
-    padding-top: 25px;
-    padding-left: 5px;
-    padding-right: 5px;
+  width: 90px;
+  padding-top: 25px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 .task7 .worm {
   width: 50px;
   padding-top: 60px;
-  }
+}
 .task7 .highlight1 {
-    color: aliceblue;
-  }
-  .task7 .level-7 {
-    color:aliceblue;
-  }
- .task7 .shadow {
-    box-shadow: 4px 4px 4px 4px rgba(34, 60, 80, 0.2);
-  }
- .help7 {
-    color: rgb(37, 30, 30);
-    font-size: 1em;
-  }
+  color: aliceblue;
+}
+.task7 .level-7 {
+  color: aliceblue;
+}
+.task7 .shadow {
+  box-shadow: 4px 4px 4px 4px rgba(34, 60, 80, 0.2);
+}
+.help7 {
+  color: rgb(37, 30, 30);
+  font-size: 1em;
+}
 .help7.active {
-    color:rgb(203, 238, 5);
-  }
-  #mark-seven.done,
+  color: rgb(203, 238, 5);
+}
+#mark-seven.done,
 .task7 .done {
   color: green;
 }
@@ -35,7 +35,7 @@
 }
 .position-absolute .small-worm {
   width: 50px;
-  top:50px;
+  top: 50px;
   animation: 1.1s infinite shake;
 }
 .task7 .position-relative.fly-img {
@@ -49,6 +49,5 @@
 .task7 .fly-answer {
   white-space: nowrap;
   overflow: hidden;
-  animation: appearance 3s ;
+  animation: appearance 3s;
 }
-

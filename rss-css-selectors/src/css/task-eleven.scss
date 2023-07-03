@@ -1,54 +1,52 @@
 .task11 .mushroom,
 .task11 .beetle-r,
 .task11 .fly-agaric {
-width: 80px;
-padding-top: 20px;
+  width: 80px;
+  padding-top: 20px;
 }
 .task11 .small-beetle-r,
 .task11 .small-beetle {
-    width: 40px;
-
+  width: 40px;
 }
 .task11 .beetle-table-r,
 .task11 .small-beetle-table {
-    width: 40px;
-    margin-top: 40px;
-
+  width: 40px;
+  margin-top: 40px;
 }
 .task11 .beetle-table-r,
 .task11 .beetle-r {
-    animation: 1.1s infinite shake;
+  animation: 1.1s infinite shake;
 }
 .task11 .highlight1 {
-    color: aliceblue;
-  }
-  .task11 .level-11 {
-    color:aliceblue;
-  }
- .task11 .shadow {
-    box-shadow: 4px 4px 4px 4px rgba(34, 60, 80, 0.2);
-  }
- .help11 {
-    color: rgb(37, 30, 30);
-    font-size: 1em;
-  }
+  color: aliceblue;
+}
+.task11 .level-11 {
+  color: aliceblue;
+}
+.task11 .shadow {
+  box-shadow: 4px 4px 4px 4px rgba(34, 60, 80, 0.2);
+}
+.help11 {
+  color: rgb(37, 30, 30);
+  font-size: 1em;
+}
 .help11.active {
-    color:rgb(203, 238, 5);
-  }
-  #mark-eleven.done,
+  color: rgb(203, 238, 5);
+}
+#mark-eleven.done,
 .task11 .done {
   color: green;
 }
 .task11 .position-relative.fly-img {
-    white-space: nowrap;
-    overflow: hidden;
-    animation: fly 1s;
-  }
-  .task11 .shake {
-    animation: 1.2s shake-table infinite;
-  }
-  .task11 .fly-answer {
-    white-space: nowrap;
-    overflow: hidden;
-    animation: appearance 3s ;
-  }
+  white-space: nowrap;
+  overflow: hidden;
+  animation: fly 1s;
+}
+.task11 .shake {
+  animation: 1.2s shake-table infinite;
+}
+.task11 .fly-answer {
+  white-space: nowrap;
+  overflow: hidden;
+  animation: appearance 3s;
+}

@@ -30,19 +30,17 @@
 }
 
 .task2 .level-2 {
-  color:aliceblue
+  color: aliceblue;
 }
 .help2 {
   color: rgb(37, 30, 30);
   font-size: 1em;
 }
 .help2.active {
-  color:rgb(203, 238, 5);
+  color: rgb(203, 238, 5);
 }
 .task2 .position-relative.fly-img {
   white-space: nowrap;
   overflow: hidden;
   animation: fly 1s infinite;
 }
-
-

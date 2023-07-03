@@ -1,50 +1,50 @@
 .task10 .fly-agaric,
 .task10 .mushroom,
 .task10 .beetle {
-    width: 80px;
-    padding-top: 25px;
-    padding-left: 5px;
-    padding-right: 5px;
+  width: 80px;
+  padding-top: 25px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 .task10 .small-beetle,
 .task10 .worm {
-    padding-top: 10px;
-    width: 40px;
+  padding-top: 10px;
+  width: 40px;
 }
 .task10 .position-absolute .worm,
 .task10 .position-absolute .small-beetle {
-    animation: 1.1s infinite shake;
+  animation: 1.1s infinite shake;
 }
 .task10 .highlight1 {
-    color: aliceblue;
-  }
-  .task10 .level-10 {
-    color:aliceblue;
-  }
- .task10 .shadow {
-    box-shadow: 4px 4px 4px 4px rgba(34, 60, 80, 0.2);
-  }
- .help10 {
-    color: rgb(37, 30, 30);
-    font-size: 1em;
-  }
+  color: aliceblue;
+}
+.task10 .level-10 {
+  color: aliceblue;
+}
+.task10 .shadow {
+  box-shadow: 4px 4px 4px 4px rgba(34, 60, 80, 0.2);
+}
+.help10 {
+  color: rgb(37, 30, 30);
+  font-size: 1em;
+}
 .help10.active {
-    color:rgb(203, 238, 5);
-  }
-  #mark-ten.done,
+  color: rgb(203, 238, 5);
+}
+#mark-ten.done,
 .task10 .done {
   color: green;
 }
 .task10 .position-relative.fly-img {
-    white-space: nowrap;
-    overflow: hidden;
-    animation: fly 1s infinite;
-  }
-  .task10 .shake {
-    animation: 1.2s shake-table infinite;
-  }
-  .task10 .fly-answer {
-    white-space: nowrap;
-    overflow: hidden;
-    animation: appearance 3s ;
-  }
+  white-space: nowrap;
+  overflow: hidden;
+  animation: fly 1s infinite;
+}
+.task10 .shake {
+  animation: 1.2s shake-table infinite;
+}
+.task10 .fly-answer {
+  white-space: nowrap;
+  overflow: hidden;
+  animation: appearance 3s;
+}

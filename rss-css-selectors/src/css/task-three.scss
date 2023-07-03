@@ -9,7 +9,6 @@
 .task3 .mushroom {
   padding-top: 10px;
   height: 130px;
-
 }
 .task3 .shake {
   animation: 1.2s shake-table infinite;
@@ -27,14 +26,14 @@
 }
 
 .task3 .level-3 {
-  color:aliceblue
+  color: aliceblue;
 }
 .help3 {
   color: rgb(37, 30, 30);
   font-size: 1em;
 }
 .help3.active {
-  color:rgb(203, 238, 5);
+  color: rgb(203, 238, 5);
 }
 .task3 .fly-answer {
   white-space: nowrap;
@@ -46,4 +45,3 @@
   overflow: hidden;
   animation: fly 1s infinite;
 }
-

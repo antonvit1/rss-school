@@ -10,10 +10,9 @@
   padding-left: 20px;
 }
 .task1 .highlight1 {
-    color: aliceblue;
+  color: aliceblue;
 }
 .task1 .shadow {
-
   box-shadow: 4px 4px 4px 4px rgba(34, 60, 80, 0.2);
 }
 #mark-one .done,
@@ -23,7 +22,7 @@
 .task1 .fly-answer {
   white-space: nowrap;
   overflow: hidden;
-  animation: appearance 3s ;
+  animation: appearance 3s;
 }
 
 .task1 .shake {
@@ -31,14 +30,14 @@
 }
 
 .task1 .level-1 {
-  color:aliceblue
+  color: aliceblue;
 }
 .help1 {
   color: rgb(37, 30, 30);
   font-size: 1em;
 }
 .help1.active {
-  color:rgb(203, 238, 5);
+  color: rgb(203, 238, 5);
 }
 .task1 .position-relative.fly-img {
   white-space: nowrap;
@@ -46,5 +45,5 @@
   animation: fly 1s infinite;
 }
 .popup {
-top: -50px
+  top: -50px;
 }

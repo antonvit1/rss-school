@@ -1,4 +1,3 @@
-
 .task4 .mushroom,
 .task4 .beetle,
 .task4 .beetle3 {
@@ -20,19 +19,19 @@
 }
 
 .task4 .level-4 {
-  color:aliceblue
+  color: aliceblue;
 }
 .help4 {
   color: rgb(37, 30, 30);
   font-size: 1em;
 }
 .help4.active {
-  color:rgb(203, 238, 5);
+  color: rgb(203, 238, 5);
 }
 .task4 .fly-answer {
   white-space: nowrap;
   overflow: hidden;
-  animation: appearance 3s ;
+  animation: appearance 3s;
 }
 .task4 .shake {
   animation: 1.2s shake-table infinite;

@@ -12,7 +12,7 @@ let levels: Level[] = [];
 
 let rightBtn = document.querySelector(".right-button");
 let leftBtn = document.querySelector(".left-button");
-let winMessage = <HTMLElement>document.querySelector(".win-message")
+let winMessage = <HTMLElement>document.querySelector(".win-message");
 let buttonHelp = <HTMLElement>document.querySelector(".button-help");
 let addClassBody = <HTMLElement>document.querySelector(".body");
 let taskName = <HTMLElement>document.querySelector(".task-name");
@@ -25,7 +25,8 @@ let allTable = <HTMLElement>document.querySelector(".table-wrapper");
 let imgTable = document.querySelector(".img-table");
 let chekMarkTask = document.querySelector(".check-mark");
 currentLevel = +JSON.parse(localStorage.getItem("indexArrOfTask") || "0");
-levels = JSON.parse(localStorage.getItem("allLevels") || "null") || levelsFromJson;
+levels =
+  JSON.parse(localStorage.getItem("allLevels") || "null") || levelsFromJson;
 
 function updateStateOfMainCheckMark() {
   chekMarkTask?.classList.remove("done");
@@ -33,7 +34,7 @@ function updateStateOfMainCheckMark() {
     chekMarkTask?.classList.add("done");
   }
 }
-  loadPage()
+loadPage();
 
 function addClassToBodyNext() {
   addClassBody.classList.add(levels[currentLevel + 1].mainClass);
@@ -74,11 +75,9 @@ btnRessetProgress?.addEventListener("click", function () {
       document.querySelector(`.${levelsDescriptions[i].classHelp}`)
     );
     symbolHelp.classList.remove("active");
-  })
+  });
   winMessage.classList.remove("active");
 });
-
-
 
 function highlightHtmlImg(picture: HTMLElement, textHTML: HTMLElement) {
   const popup = picture.querySelector(".popup");
@@ -155,7 +154,9 @@ function createHtmlBlocks() {
       const htmlNested = createHtmlBlock(tagObj.html_nested, true);
       divHtmlElement.appendChild(htmlNested);
       arrElem.push(htmlNested);
-      let closedTag = document.createTextNode(levels[currentLevel].html_code[i].html_close);
+      let closedTag = document.createTextNode(
+        levels[currentLevel].html_code[i].html_close
+      );
       divHtmlElement.appendChild(closedTag);
     }
   });
@@ -214,10 +215,10 @@ leftBtn?.addEventListener("click", function () {
   }
 });
 function loadPage() {
-updateStateOfMainCheckMark();
+  updateStateOfMainCheckMark();
   addClassBody.classList.add(levels[currentLevel].mainClass);
   createLevelElements();
-  changeTextRightSect()
+  changeTextRightSect();
   levels.forEach((obj, i) => {
     if (obj.isLevelDone) {
       let symbolHelp = <HTMLElement>(
@@ -229,19 +230,18 @@ updateStateOfMainCheckMark();
       let markSideBoxTask = <HTMLElement>(
         document.getElementById(levels[i].checkMarkSideId)
       );
-       markSideBoxTask?.classList.add("done");
+      markSideBoxTask?.classList.add("done");
     }
-  })
+  });
 }
 
-function checkIfAllLevelsDone(){
-
-if (levels.every((val) => val.isLevelDone)) {
-  winMessage.classList.add("active");
+function checkIfAllLevelsDone() {
+  if (levels.every((val) => val.isLevelDone)) {
+    winMessage.classList.add("active");
+  }
 }
-}
 
-function implementEnterPressLastLevel(){
+function implementEnterPressLastLevel() {
   flyImg();
   let markSideBoxTask = <HTMLElement>(
     document.getElementById(levels[currentLevel].checkMarkSideId)
@@ -250,7 +250,7 @@ function implementEnterPressLastLevel(){
   markSideBoxTask?.classList.add("done");
   levels[currentLevel].isLevelDone = true;
   updateStateOfMainCheckMark();
-  changeTextRightSect()
+  changeTextRightSect();
 }
 function implementEnterPress() {
   if (levels[currentLevel].answers.includes(answerTask.value)) {
@@ -266,40 +266,43 @@ function implementEnterPress() {
       currentLevel += 1;
       createLevelElements();
       removeClassFromBodyNext();
-      changeTextRightSect()
+      changeTextRightSect();
       delAnswer();
     }, 1000);
     updateStateOfMainCheckMark();
-
   } else {
     allTable.classList.add("shake");
     setTimeout(() => {
       allTable.classList.remove("shake");
     }, 1200);
   }
- }
+}
 buttonEnter.addEventListener("click", function () {
-  if (currentLevel < 10){
-  implementEnterPress();
-  checkIfAllLevelsDone();
-  }
-  if (currentLevel === 10 && levels[currentLevel].answers.includes(answerTask.value)) {
-    implementEnterPressLastLevel()
+  if (currentLevel < 10) {
+    implementEnterPress();
     checkIfAllLevelsDone();
-
   }
-
- });
+  if (
+    currentLevel === 10 &&
+    levels[currentLevel].answers.includes(answerTask.value)
+  ) {
+    implementEnterPressLastLevel();
+    checkIfAllLevelsDone();
+  }
+});
 
 document.addEventListener("keydown", function (event) {
   if (event.code === "Enter" && currentLevel < 10) {
     implementEnterPress();
     checkIfAllLevelsDone();
   }
-  if (event.code === "Enter" && currentLevel === 10 && levels[currentLevel].answers.includes(answerTask.value)) {
-    implementEnterPressLastLevel()
-    checkIfAllLevelsDone()
-
+  if (
+    event.code === "Enter" &&
+    currentLevel === 10 &&
+    levels[currentLevel].answers.includes(answerTask.value)
+  ) {
+    implementEnterPressLastLevel();
+    checkIfAllLevelsDone();
   }
 });
 function saveLocalStorage() {

@@ -285,10 +285,7 @@ buttonEnter.addEventListener("click", function () {
     implementEnterPress();
     showMessageIfAllLevelsDone();
   }
-  if (
-    currentLevel === 10 &&
-    levels[currentLevel].answers.includes(answerTask.value)
-  ) {
+  if (currentLevel === 10) {
     implementEnterPressLastLevel();
     showMessageIfAllLevelsDone();
   }
@@ -301,9 +298,7 @@ document.addEventListener("keydown", function (event) {
   }
   if (
     event.code === "Enter" &&
-    currentLevel === 10 &&
-    levels[currentLevel].answers.includes(answerTask.value)
-  ) {
+    currentLevel === 10) {
     implementEnterPressLastLevel();
     showMessageIfAllLevelsDone();
   }

@@ -373,7 +373,32 @@ mark {
 .win-message.active {
   display: block;
 }
-
+code.hljs.apache {
+  margin-top: 0px;
+}
+.hljs {
+  margin: 0;
+  padding: 0;
+  /* background-color: rgb(42, 35, 35); */
+  font-size: 1.05em;
+  height: auto;
+  width: auto;
+}
+code,
+pre {
+  margin: 0;
+  padding: 0;
+  font-size: 1.05em;
+}
+/* .hljs-section,
+.code {
+  margin: 0;
+  padding: 0;
+}
+.apache {
+  margin: 0;
+  padding: 0;
+} */
 @media (max-width: 800px) {
   .left-fild {
     padding-left: 5px;

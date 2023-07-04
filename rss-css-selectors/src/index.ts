@@ -5,30 +5,31 @@ import { changeTextRightSect } from "./levelsDescription";
 import { levelsOfMenu } from "./levelsMenu";
 import { btnRessetProgress } from "./levelsMenu";
 import { markLevelsOfMenu } from "./levelsMenu";
-import { HtmlCode, Image, Level } from "./types";
+import { HtmlCode, Image, Level, LevelDescription } from "./types";
 
 export let currentLevel: number = 0;
 let levels: Level[] = [];
 
-let rightBtn = document.querySelector(".right-button");
-let leftBtn = document.querySelector(".left-button");
-let winMessage = <HTMLElement>document.querySelector(".win-message");
-let buttonHelp = <HTMLElement>document.querySelector(".button-help");
-let addClassBody = <HTMLElement>document.querySelector(".body");
-let taskName = <HTMLElement>document.querySelector(".task-name");
-let htmlContent = <HTMLElement>document.querySelector(".html-content");
-let currentLevelEl = <HTMLElement>document.querySelector(".current-level");
+const rightBtn = <HTMLElement>document.querySelector(".right-button");
+const leftBtn = <HTMLElement>document.querySelector(".left-button");
+const winMessage = <HTMLElement>document.querySelector(".win-message");
+const buttonHelp = <HTMLElement>document.querySelector(".button-help");
+const addClassBody = <HTMLElement>document.querySelector(".body");
+const taskName = <HTMLElement>document.querySelector(".task-name");
+const htmlContent = <HTMLElement>document.querySelector(".html-content");
+const currentLevelEl = <HTMLElement>document.querySelector(".current-level");
 
-let answerTask = <HTMLInputElement>document.querySelector("#input-answer");
-let buttonEnter = <HTMLElement>document.querySelector(".img-enter");
-let allTable = <HTMLElement>document.querySelector(".table-wrapper");
-let imgTable = document.querySelector(".img-table");
-let chekMarkTask = document.querySelector(".check-mark");
+const answerTask = <HTMLInputElement>document.querySelector("#input-answer");
+const buttonEnter = <HTMLElement>document.querySelector(".img-enter");
+const allTable = <HTMLElement>document.querySelector(".table-wrapper");
+const imgTable = <HTMLElement>document.querySelector(".img-table");
+const chekMarkTask = <HTMLElement>document.querySelector(".check-mark");
+
 currentLevel = +JSON.parse(localStorage.getItem("indexArrOfTask") || "0");
 levels =
   JSON.parse(localStorage.getItem("allLevels") || "null") || levelsFromJson;
 
-function updateStateOfMainCheckMark() {
+function updateStateOfMainCheckMark(): void {
   chekMarkTask?.classList.remove("done");
   if (levels[currentLevel].isLevelDone) {
     chekMarkTask?.classList.add("done");
@@ -36,24 +37,24 @@ function updateStateOfMainCheckMark() {
 }
 loadPage();
 
-function addClassToBodyNext() {
+function addClassToBodyNext(): void {
   addClassBody.classList.add(levels[currentLevel + 1].mainClass);
 }
-function addClassToBodyPrev() {
+function addClassToBodyPrev(): void {
   addClassBody.classList.add(levels[currentLevel - 1].mainClass);
 }
-function removeClassFromBodyNext() {
+function removeClassFromBodyNext(): void {
   addClassBody.classList.remove(levels[currentLevel - 1].mainClass);
 }
-function removeClassFromBodyPrev() {
+function removeClassFromBodyPrev(): void {
   addClassBody.classList.remove(levels[currentLevel + 1].mainClass);
 }
 
-levelsOfMenu.forEach((elem) => {
+levelsOfMenu.forEach((elem: Element) => {
   elem.addEventListener("click", function () {
     addClassBody.classList.remove(levels[currentLevel].mainClass);
     currentLevel = levels.findIndex(
-      (lev, i) => elem.className === lev.levelInMenu
+      (lev: Level, i: number) => elem.className === lev.levelInMenu
     );
     addClassBody.classList.add(levels[currentLevel].mainClass);
     updateStateOfMainCheckMark();
@@ -63,45 +64,49 @@ levelsOfMenu.forEach((elem) => {
 });
 
 btnRessetProgress?.addEventListener("click", function () {
-  levels.forEach((obj) => {
+
+  levels.forEach((obj: Level) => {
     obj.isLevelDone = false;
     obj.isLevelDoneWithHelp = false;
   });
-  markLevelsOfMenu.forEach((elem) => {
+  markLevelsOfMenu.forEach((elem: Element) => {
     elem.classList.remove("done");
   });
-  levelsDescriptions.forEach((obj, i) => {
+  levelsDescriptions.forEach((obj: LevelDescription, i: number) => {
     let symbolHelp = <HTMLElement>(
       document.querySelector(`.${levelsDescriptions[i].classHelp}`)
     );
     symbolHelp.classList.remove("active");
   });
+
   winMessage.classList.remove("active");
+  currentLevel = 1;
+  loadPage();
 });
 
 function highlightHtmlImg(picture: HTMLElement, textHTML: HTMLElement) {
   const popup = picture.querySelector(".popup");
-  picture.addEventListener("mouseover", function (event) {
+  picture.addEventListener("mouseover", function (event: Event) {
     event.stopPropagation();
 
     picture.classList.add("shadow");
     textHTML.classList.add("highlight1");
     popup?.classList.add("active");
   });
-  picture.addEventListener("mouseout", function (event) {
+  picture.addEventListener("mouseout", function (event: Event) {
     event.stopPropagation();
     picture.classList.remove("shadow");
     textHTML.classList.remove("highlight1");
     popup?.classList.remove("active");
   });
 
-  textHTML.addEventListener("mouseover", function (event) {
+  textHTML.addEventListener("mouseover", function (event: Event) {
     event.stopPropagation();
     textHTML.classList.add("highlight1");
     picture.classList.add("shadow");
     popup?.classList.add("active");
   });
-  textHTML.addEventListener("mouseout", function (event) {
+  textHTML.addEventListener("mouseout", function (event: Event) {
     event.stopPropagation();
     textHTML.classList.remove("highlight1");
     picture.classList.remove("shadow");
@@ -109,10 +114,10 @@ function highlightHtmlImg(picture: HTMLElement, textHTML: HTMLElement) {
   });
 }
 
-function createLevelPictures() {
+function createLevelPictures(): HTMLElement[]  {
   let arrayPictures: HTMLElement[] = [];
   imgTable?.replaceChildren();
-  levels[currentLevel].images.forEach((pictureObj) => {
+  levels[currentLevel].images.forEach((pictureObj: Image) => {
     const picture = createPicture(pictureObj);
     arrayPictures.push(picture);
     if (pictureObj.nestedImg) {
@@ -124,7 +129,7 @@ function createLevelPictures() {
   return arrayPictures;
 }
 
-function createPicture(obj: Image, nested = false) {
+function createPicture(obj: Image, nested = false): HTMLElement {
   let imgWrapper = document.createElement("div");
 
   if (!nested) {
@@ -144,10 +149,10 @@ function createPicture(obj: Image, nested = false) {
   return imgWrapper;
 }
 
-function createHtmlBlocks() {
+function createHtmlBlocks(): HTMLElement[] {
   const arrElem: HTMLElement[] = [];
   htmlContent?.replaceChildren();
-  levels[currentLevel].html_code.forEach((tagObj, i) => {
+  levels[currentLevel].html_code.forEach((tagObj: HtmlCode, i:number) => {
     const divHtmlElement = createHtmlBlock(tagObj);
     arrElem.push(divHtmlElement);
     if (tagObj.html_nested) {
@@ -163,7 +168,7 @@ function createHtmlBlocks() {
   return arrElem;
 }
 
-function createHtmlBlock(obj: HtmlCode, html_nested = false) {
+function createHtmlBlock(obj: HtmlCode, html_nested = false): HTMLElement {
   let strHtmlCode = document.createElement("div");
   strHtmlCode.className = "str-html-code";
   strHtmlCode.innerHTML = obj.html;
@@ -173,23 +178,22 @@ function createHtmlBlock(obj: HtmlCode, html_nested = false) {
   return strHtmlCode;
 }
 
-function createLevelElements() {
+function createLevelElements(): void {
   let picturesElArr = createLevelPictures();
   let htmlElArr = createHtmlBlocks();
-  picturesElArr.forEach((pictEl, index) => {
+  picturesElArr.forEach((pictEl: HTMLElement, index: number) => {
     highlightHtmlImg(pictEl, htmlElArr[index]);
   });
   taskName.innerHTML = levels[currentLevel].taskName;
   currentLevelEl.innerHTML = levels[currentLevel].curLevel;
 }
 
-function flyImg() {
-  let allpict = document.querySelectorAll(".position-relative");
-  allpict.forEach((imgOfTable) => {
+function flyImg(): void {
+  const allPict = document.querySelectorAll(".position-relative");
+  allPict.forEach((imgOfTable: Element) => {
     imgOfTable.classList.add("fly-img");
   });
-  return allpict;
-}
+ }
 
 rightBtn?.addEventListener("click", function () {
   if (currentLevel < 10) {
@@ -214,12 +218,12 @@ leftBtn?.addEventListener("click", function () {
     delAnswer();
   }
 });
-function loadPage() {
+function loadPage(): void {
   updateStateOfMainCheckMark();
   addClassBody.classList.add(levels[currentLevel].mainClass);
   createLevelElements();
   changeTextRightSect();
-  levels.forEach((obj, i) => {
+  levels.forEach((obj: Level, i: number) => {
     if (obj.isLevelDone) {
       let symbolHelp = <HTMLElement>(
         document.querySelector(`.${levelsDescriptions[i].classHelp}`)
@@ -235,13 +239,13 @@ function loadPage() {
   });
 }
 
-function checkIfAllLevelsDone() {
-  if (levels.every((val) => val.isLevelDone)) {
+function showMessageIfAllLevelsDone(): void {
+  if (levels.every((val: Level) => val.isLevelDone)) {
     winMessage.classList.add("active");
   }
 }
 
-function implementEnterPressLastLevel() {
+function implementEnterPressLastLevel(): void {
   flyImg();
   let markSideBoxTask = <HTMLElement>(
     document.getElementById(levels[currentLevel].checkMarkSideId)
@@ -252,7 +256,7 @@ function implementEnterPressLastLevel() {
   updateStateOfMainCheckMark();
   changeTextRightSect();
 }
-function implementEnterPress() {
+function implementEnterPress(): void {
   if (levels[currentLevel].answers.includes(answerTask.value)) {
     flyImg();
     setTimeout(() => {
@@ -280,21 +284,21 @@ function implementEnterPress() {
 buttonEnter.addEventListener("click", function () {
   if (currentLevel < 10) {
     implementEnterPress();
-    checkIfAllLevelsDone();
+    showMessageIfAllLevelsDone();
   }
   if (
     currentLevel === 10 &&
     levels[currentLevel].answers.includes(answerTask.value)
   ) {
     implementEnterPressLastLevel();
-    checkIfAllLevelsDone();
+    showMessageIfAllLevelsDone();
   }
 });
 
 document.addEventListener("keydown", function (event) {
   if (event.code === "Enter" && currentLevel < 10) {
     implementEnterPress();
-    checkIfAllLevelsDone();
+    showMessageIfAllLevelsDone();
   }
   if (
     event.code === "Enter" &&
@@ -302,10 +306,10 @@ document.addEventListener("keydown", function (event) {
     levels[currentLevel].answers.includes(answerTask.value)
   ) {
     implementEnterPressLastLevel();
-    checkIfAllLevelsDone();
+    showMessageIfAllLevelsDone();
   }
 });
-function saveLocalStorage() {
+function saveLocalStorage(): void {
   localStorage.setItem("indexArrOfTask", String(currentLevel));
   localStorage.setItem("allLevels", JSON.stringify(levels));
 }
@@ -324,7 +328,7 @@ buttonHelp.addEventListener("click", function () {
   symbolHelp.classList.add("active");
 });
 
-function delAnswer() {
+function delAnswer(): void {
   answerTask.classList.remove("fly-answer");
   answerTask.value = "";
 }

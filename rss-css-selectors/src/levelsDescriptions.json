@@ -52,7 +52,7 @@
   {
     "classHelp": "help6",
     "topic_task": "Combine the Universal Selector",
-    "task": "Select the all worms eating a mashroom",
+    "task": "Select all worms that eat mushrooms",
     "symbol_task": "<mark>A *</mark>",
     "description_task": "This selects all elements inside of <mark>A</mark>",
     "example_word": "Examples",

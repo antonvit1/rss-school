@@ -1,7 +1,7 @@
 [
   {
     "mainClass": "task1",
-    "taskName": "Select the strawberry",
+    "taskName": "Select the strawberries",
     "images": [
       {
         "src": "assets/strawberry.svg",
@@ -27,7 +27,7 @@
   },
   {
     "mainClass": "task2",
-    "taskName": "Select the mushroom",
+    "taskName": "Select the mushrooms",
     "images": [
       {
         "src": "assets/mushroom.svg",
@@ -59,7 +59,7 @@
   },
   {
     "mainClass": "task3",
-    "taskName": "Select the 3rd beetle",
+    "taskName": "Select the fly-agaric mushroom",
 
     "images": [
       {
@@ -130,7 +130,7 @@
   },
   {
     "mainClass": "task5",
-    "taskName": "Select worms eats a mushroom",
+    "taskName": "Select worms that eat mushrooms",
     "images": [
       {
         "src": "assets/worms.svg",
@@ -186,11 +186,11 @@
   },
   {
     "mainClass": "task6",
-    "taskName": "Select the all worms eating a mashroom",
+    "taskName": "Select all worms that eat mushrooms",
     "images": [
       {
         "src": "assets/worms.svg",
-        "class": "berry",
+        "class": "worm-big",
         "tooltip": "&lt;worm/&gt;"
       },
       {
@@ -214,12 +214,12 @@
         }
       },
       {
-        "src": "assets/mushroom.svg",
-        "class": "mushroom",
-        "tooltip": "&lt;mushroom/&gt;",
+        "src": "assets/strawberry.svg",
+        "class": "strawberry",
+        "tooltip": "&lt;strawberry/&gt;",
         "nestedImg": {
           "src": "assets/worms.svg",
-          "class": "worm",
+          "class": "worm-small",
           "tooltip": "&lt;worm class=\"eating/&gt;"
         }
       }
@@ -237,8 +237,8 @@
         "html_nested": { "html": "&lt;worm class=\"eating\"/&gt;" }
       },
       {
-        "html": "&lt;mushroom/&gt;",
-        "html_close": "</mushroom>",
+        "html": "&lt;strawberry/&gt;",
+        "html_close": "</strawberry>",
         "html_nested": { "html": "&lt;worm class=\"eating\"/&gt;" }
       }
     ],
@@ -251,8 +251,18 @@
   },
   {
     "mainClass": "task7",
-    "taskName": "Select all worm in the mushroom",
+    "taskName": "Select all worms that eat mushrooms",
     "images": [
+      {
+        "src": "assets/mushroom.svg",
+        "class": "mushroom",
+        "tooltip": "&lt;mushroom/&gt;",
+        "nestedImg": {
+          "src": "assets/beetle.svg",
+          "class": "beetle",
+          "tooltip": "&lt;beetle class=\"eating\"/&gt;"
+        }
+      },
       {
         "src": "assets/worms.svg",
         "class": "worm",
@@ -285,6 +295,11 @@
       }
     ],
     "html_code": [
+      {
+        "html": "&lt;mushroom/&gt;",
+        "html_close": "</mushroom>",
+        "html_nested": { "html": "&lt;beetle class=\"eating\"/&gt;" }
+      },
       { "html": "&lt;worm class=\"eating\"/&gt;" },
       {
         "html": "&lt;mushroom/&gt;",
@@ -309,7 +324,7 @@
   },
   {
     "mainClass": "task8",
-    "taskName": "Select all the strawberrys and mushrooms",
+    "taskName": "Select all strawberries and mushrooms",
     "images": [
       {
         "src": "assets/beetle.svg",
@@ -455,7 +470,7 @@
   },
   {
     "mainClass": "task10",
-    "taskName": "Select the worm and the beetle eats a mushroom",
+    "taskName": "Select the worm and the beetle that eat mushrooms",
     "images": [
       {
         "src": "assets/fly-agaric.svg",

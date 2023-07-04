@@ -3,20 +3,14 @@
   "exclude": [],
   "compilerOptions": {
     "sourceMap": true,
-    /* Visit https://aka.ms/tsconfig to read more about this file */
-    /* Language and Environment */
     "target": "ESNext",
     "moduleResolution": "Node",
-
-    /* Modules */
     "module": "ESNext",
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    // "preserveSymlinks": true,
     "forceConsistentCasingInFileNames": true,
-
-    /* Type Checking */
+    "noImplicitAny": true,
     "strict": true,
     "skipLibCheck": true
-  },
+  }
 }

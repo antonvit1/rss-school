@@ -20,6 +20,15 @@ export type Image = {
 export type HtmlCode = {
   html: string;
   html_close: string;
-  html_nested: any;
+  html_nested: HtmlCode;
 };
-
+export type LevelDescription = {
+classHelp: string;
+topic_task: string;
+task: string;
+symbol_task: string;
+description_task: string;
+example_word: string;
+example_first: string;
+example_second: string;
+}

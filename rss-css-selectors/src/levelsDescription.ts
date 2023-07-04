@@ -10,7 +10,7 @@ let exampleFirst = <HTMLElement>document.querySelector(".example-first");
 let exampleSecond = <HTMLElement>document.querySelector(".example-second");
 let progress = <HTMLProgressElement>document.querySelector("#progress");
 
-export function changeTextRightSect() {
+export function changeTextRightSect(): void {
     topicTask.innerHTML = levelsDescriptions[currentLevel].topic_task;
     taskNameText.innerHTML = levelsDescriptions[currentLevel].task;
     symbolTask.innerHTML = levelsDescriptions[currentLevel].symbol_task;

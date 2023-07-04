@@ -19,7 +19,7 @@
       { "html": "&lt;strawberry/&gt;" }
     ],
     "curLevel": "1",
-    "answers": ["strawberry"],
+    "answers": ["strawberry", "strawberry:first-child, srawberry:nth-child(2)"],
     "checkMarkSideId": "mark-one",
     "isLevelDone": false,
     "isLevelDoneWithHelp": false,
@@ -51,7 +51,7 @@
       { "html": "&lt;mushroom/&gt;" }
     ],
     "curLevel": "2",
-    "answers": ["mushroom"],
+    "answers": ["mushroom", "mushroom:first-child, mushroom:nth-child(2)"],
     "checkMarkSideId": "mark-two",
     "isLevelDone": false,
     "isLevelDoneWithHelp": false,
@@ -84,7 +84,7 @@
       { "html": "&lt;mushroom/&gt;" }
     ],
     "curLevel": "3",
-    "answers": ["#fly-agaric", "mushroom#fly-agaric"],
+    "answers": ["#fly-agaric", "mushroom#fly-agaric", "mushroom:first-child"],
     "checkMarkSideId": "mark-three",
     "isLevelDone": false,
     "isLevelDoneWithHelp": false,

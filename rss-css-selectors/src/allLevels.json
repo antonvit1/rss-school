@@ -84,7 +84,7 @@
       { "html": "&lt;mushroom/&gt;" }
     ],
     "curLevel": "3",
-    "answers": ["#fly-agaric"],
+    "answers": ["#fly-agaric", "mushroom#fly-agaric"],
     "checkMarkSideId": "mark-three",
     "isLevelDone": false,
     "isLevelDoneWithHelp": false,
@@ -178,7 +178,7 @@
       }
     ],
     "curLevel": "5",
-    "answers": ["worm.eating", "mushroom worm"],
+    "answers": ["worm.eating", "mushroom worm", ".eating"],
     "checkMarkSideId": "mark-five",
     "isLevelDone": false,
     "isLevelDoneWithHelp": false,
@@ -243,7 +243,12 @@
       }
     ],
     "curLevel": "6",
-    "answers": ["mushroom *", ".eating"],
+    "answers": [
+      "mushroom *",
+      "mushroom .eating",
+      "mushroom worm",
+      "mushroom worm.eating"
+    ],
     "checkMarkSideId": "mark-six",
     "isLevelDone": false,
     "isLevelDoneWithHelp": false,
@@ -389,7 +394,7 @@
       }
     ],
     "curLevel": "8",
-    "answers": ["strawberry, mushroom, strawberry"],
+    "answers": ["strawberry, mushroom", "mushroom, strawberry"],
     "checkMarkSideId": "mark-eight",
     "isLevelDone": false,
     "isLevelDoneWithHelp": false,
@@ -605,7 +610,8 @@
     "curLevel": "11",
     "answers": [
       "mushroom ~ beetle, beetle ~ .small",
-      "mushroom ~ beetle, beetle ~ beetle"
+      "mushroom ~ beetle, beetle ~ beetle",
+      "mushroom ~ beetle, beetle ~ beetle.small"
     ],
     "checkMarkSideId": "mark-eleven",
     "isLevelDone": false,

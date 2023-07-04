@@ -80,8 +80,7 @@ btnRessetProgress?.addEventListener("click", function () {
   });
 
   winMessage.classList.remove("active");
-  currentLevel = 1;
-  loadPage();
+
 });
 
 function highlightHtmlImg(picture: HTMLElement, textHTML: HTMLElement) {
@@ -309,14 +308,14 @@ document.addEventListener("keydown", function (event) {
     showMessageIfAllLevelsDone();
   }
 });
-function saveLocalStorage(): void {
-  localStorage.setItem("indexArrOfTask", String(currentLevel));
-  localStorage.setItem("allLevels", JSON.stringify(levels));
-}
+// function saveLocalStorage(): void {
+//   localStorage.setItem("indexArrOfTask", String(currentLevel));
+//   localStorage.setItem("allLevels", JSON.stringify(levels));
+// }
 
-window.addEventListener("beforeunload", function () {
-  saveLocalStorage();
-});
+// window.addEventListener("beforeunload", function () {
+//   saveLocalStorage();
+// });
 
 buttonHelp.addEventListener("click", function () {
   answerTask.className = "fly-answer";

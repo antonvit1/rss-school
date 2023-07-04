@@ -43,7 +43,7 @@ module.exports = {
   ],
 
   output: {
-    filename: "script.js",
+    filename: "main.js",
     path: path.resolve(__dirname, "dist"),
   },
 };

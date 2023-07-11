@@ -1,0 +1,16 @@
+{
+    "include": ["**/*"],
+    "exclude": [],
+    "compilerOptions": {
+      "sourceMap": true,
+      "target": "ESNext",
+      "moduleResolution": "Node",
+      "module": "ESNext",
+      "resolveJsonModule": true,
+      "esModuleInterop": true,
+      "forceConsistentCasingInFileNames": true,
+      "noImplicitAny": true,
+      "strict": true,
+      "skipLibCheck": true
+    }
+  }

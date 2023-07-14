@@ -7,6 +7,7 @@ module.exports = {
     mode: "development",
     entry: "./index.ts",
     devtool: "inline-source-map",
+
     module: {
       rules: [
         {
@@ -19,9 +20,13 @@ module.exports = {
           use: [MiniCssExtractPlugin.loader, "css-loader"],
         },
         {
-          test: /\.svg/,
-          type: "asset/resource",
-        },
+          test: /\.svg$/,
+          loader: 'svg-inline-loader'
+      },
+        // {
+        //   test: /\.svg/,
+        //   type: "asset/resource",
+        // },
 
         {
           test: /\.s[ac]ss$/i,
@@ -38,7 +43,7 @@ module.exports = {
       }),
       new MiniCssExtractPlugin(),
       new CopyWebpackPlugin({
-        patterns: [{ from: "./assets", to: "assets" }],
+        patterns: [{ from: __dirname + "/src/assets", to: "assets"}],
       }),
     ],
 

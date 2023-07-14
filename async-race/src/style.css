@@ -106,7 +106,8 @@ body {
 }
 .wrapper-car {
     padding-left: 2%;
-    padding-top: 4%;
+    padding-top: 3%;
+    border-bottom: 1px dashed white;
 }
 .wrapper-car-button {
     display: flex;
@@ -139,4 +140,48 @@ body {
 .btn-return-car:hover {
     background-color: rgb(110, 98, 98);
     cursor: pointer;
+}
+.wrapper-prev-next {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+}
+.wrapper-road-car {
+    display: flex;
+    justify-content: space-between;
+}
+.wrap-btn-start-return {
+    display: flex;
+    align-items: flex-start;
+}
+
+.btn-prev {
+    margin-right: 15px;
+}
+.btn-next {
+    margin-left: 15px;
+}
+.btn-prev,
+.btn-next {
+    border: none;
+    border-radius: 3px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    font-weight: 600;
+    background-color: rgb(132, 128, 128);
+    color: rgb(0, 0, 0);
+}
+.btn-prev:hover,
+.btn-next:hover {
+    cursor: pointer;
+    background-color: beige;
+}
+.car {
+    height: 70px;
+    width: 150px;
+}
+.flag {
+    height: 70px;
+    width: 70px;
+    padding-right: 90px;
 }

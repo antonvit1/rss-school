@@ -145,7 +145,7 @@ export function newCarCreat() {
     imgAuto.classList.add('car')
     // imgAuto.setAttribute("fill", addColorCar.value)
     const path = <SVGPathElement>imgAuto.querySelector('path')
-    path.style.fill = "blue";
+    path.style.fill = addColorCar.value;
     wrapperStartReturnbtn.appendChild(imgAuto)
 
     const imgFinishFlag = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
@@ -158,4 +158,12 @@ function saveCarInArray() {
     const carName = <HTMLInputElement>document.querySelector(".field-input-creat-car")
     const addColorCar = <HTMLInputElement>document.querySelector(".add-car-color")
     arrayOfCars.push({brend: `${carName.value}`, color: `${addColorCar.value}`})
+
+
 }
+function getCars() {
+    fetch("http://127.0.0.1:3000/garage/")
+.then(response => response.json())
+.then(data => console.log(data))
+}
+getCars()

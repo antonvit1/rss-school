@@ -1,4 +1,4 @@
-import { fieldRoad } from './main-elements'
+import { contentWrapperToWinner } from './main-elements'
 const tableResults: string[] = [
     'Number',
     'Car',
@@ -13,7 +13,7 @@ let tableResult
 export function createTablewinnersResult() {
     tableResult = document.createElement('table')
     tableResult.className = 'table-result'
-    fieldRoad.appendChild(tableResult)
+    contentWrapperToWinner.appendChild(tableResult)
     for (let i = 0; i < tableResults.length; i++) {
         td = document.createElement('td')
         td.className = 'td'

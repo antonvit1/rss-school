@@ -1,4 +1,4 @@
-const defaulCarBrends: string[] = [
+export const defaultCarBrends: string[] = [
     'Audi',
     'BMW',
     'Ford',
@@ -12,8 +12,9 @@ const defaulCarBrends: string[] = [
     'Suzuki',
     'Kia',
     'Porshe',
+    "Opel"
 ]
-const defaultCarModels: string[] = [
+export const defaultCarModels: string[] = [
     '3',
     '5',
     '7',
@@ -27,9 +28,11 @@ const defaultCarModels: string[] = [
     'F150',
     'logan',
     'M8',
+    "coupe"
 ]
 
 const body = <HTMLElement>document.querySelector('body')
+
 
 export const bodyWrapper = <HTMLElement>document.createElement('div')
 bodyWrapper.className = 'body-wrapper'
@@ -48,35 +51,36 @@ btnToWinner.className = 'button-winner'
 btnToWinner.innerHTML = 'To Winner'
 header.appendChild(btnToWinner)
 
-export const sectionCreateCar = <HTMLElement>document.createElement('section')
-sectionCreateCar.className = 'section-create-car'
-bodyWrapper.appendChild(sectionCreateCar)
+export const headerSection = <HTMLElement>document.createElement('section')
+headerSection.className = 'section-create-car'
+bodyWrapper.appendChild(headerSection)
 
 const wrapperPageName = <HTMLElement>document.createElement('div')
 wrapperPageName.className = 'wrapper-page-name'
 bodyWrapper.appendChild(wrapperPageName)
 
-const pageName = <HTMLElement>document.createElement('div')
+export const pageName = <HTMLElement>document.createElement('div')
 pageName.className = 'page-name'
-pageName.innerHTML = 'Garage (100)'
 wrapperPageName.appendChild(pageName)
-const pageNumber = <HTMLElement>document.createElement('div')
+export const pageNumber = <HTMLElement>document.createElement('div')
 pageNumber.className = 'page-number'
-pageNumber.innerHTML = 'Page #1'
 wrapperPageName.appendChild(pageNumber)
 
-export const fieldRoad = <HTMLElement>document.createElement('section')
-fieldRoad.className = 'field-road'
-bodyWrapper.appendChild(fieldRoad)
+export const contentWrapperToGarage = <HTMLElement>document.createElement('section')
+contentWrapperToGarage.className = 'section-road'
+bodyWrapper.appendChild(contentWrapperToGarage)
+export const contentWrapperToWinner = <HTMLElement>document.createElement('section')
+contentWrapperToWinner.className = 'section-winner'
+bodyWrapper.appendChild(contentWrapperToWinner)
 
 const wrapperBtnPrevNext = <HTMLElement>document.createElement('div')
 wrapperBtnPrevNext.className = 'wrapper-prev-next'
 bodyWrapper.appendChild(wrapperBtnPrevNext)
-const btnPrev = <HTMLElement>document.createElement('button')
+export const btnPrev = <HTMLElement>document.createElement('button')
 btnPrev.className = 'btn-prev'
 btnPrev.innerHTML = 'Prev'
 wrapperBtnPrevNext.appendChild(btnPrev)
-const btnNext = <HTMLElement>document.createElement('button')
+export const btnNext = <HTMLElement>document.createElement('button')
 btnNext.className = 'btn-next'
 btnNext.innerHTML = 'Next'
 wrapperBtnPrevNext.appendChild(btnNext)

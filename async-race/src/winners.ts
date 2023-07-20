@@ -22,7 +22,7 @@ export function createTablewinnersResult() {
         th.className = 'th'
         th.innerHTML = tableResults[i]
         td.appendChild(th)
-        for (let k = 0; k < tableResults.length; k++) {
+        for (let k = 0; k < 1; k++) {
             tr = document.createElement('tr')
             tr.className = 'tr'
             tr.innerHTML = 'a'

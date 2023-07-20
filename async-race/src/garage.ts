@@ -20,7 +20,7 @@ const amountOfCarOnPage: number = 7
 let currentPage: number = 1
 let selectedCarId: number | null = null
 
-let amountAllCars: number = 0
+// let amountAllCars: number = 0
 
 loadGaragePage()
 
@@ -75,8 +75,12 @@ export function createFormForUpdatingCar() {
     updatingCarForm.appendChild(btnUpdate)
 
     btnUpdate.addEventListener('click', function () {
-        if(selectedCarId) {
-            updateCar(inputUpdateCarName.value, carColorUpdateInput.value, selectedCarId)
+        if (selectedCarId) {
+            updateCar(
+                inputUpdateCarName.value,
+                carColorUpdateInput.value,
+                selectedCarId
+            )
             selectedCarId = null
         }
     })
@@ -99,27 +103,41 @@ export function createMainBtns() {
     btnGenerateCars.innerHTML = 'Generate Cars'
     btnsWrapper.appendChild(btnGenerateCars)
     btnGenerateCars.addEventListener('click', function () {
-        for (let i = 0; i <=amountGenerateCarsToBtn; i++) {
+        for (let i = 0; i <= amountGenerateCarsToBtn; i++) {
             addNewCarWithoutGetCar(
-            `${
-                defaultCarBrends[
-                    Math.round(Math.random() * defaultCarBrends.length)
-                ]
-            } ${
-                defaultCarModels[
-                    Math.round(Math.random() * defaultCarBrends.length)
-                ]
-            }`,
-            `#${Math.random().toString(16).slice(3, 9)}`
-        )
+                `${
+                    defaultCarBrends[
+                        Math.round(Math.random() * defaultCarBrends.length)
+                    ]
+                } ${
+                    defaultCarModels[
+                        Math.round(Math.random() * defaultCarBrends.length)
+                    ]
+                }`,
+                `#${Math.random().toString(16).slice(3, 9)}`
+            )
         }
         updateGarageContent()
+    })
+    const btnStartCar = <HTMLElement>document.querySelector('.btn-start-car')
+    btnStartRace.addEventListener('click', function () {
+        arrayOfCars.forEach((car) => {
+            startCarEngine(car.id)
+            // btnStartCar.setAttribute('disabled', '')
+        })
+    })
+    btnReset.addEventListener('click', function () {
+        arrayOfCars.forEach((car) => {
+            stopCarEngine(car.id)
+            // btnStartCar.removeAttribute('disabled')
+        })
     })
 }
 
 function createSectionForCar(car: Car) {
     const wrapperCar = <HTMLElement>document.createElement('div')
     wrapperCar.className = 'wrapper-car'
+    wrapperCar.id = `car-${car.id}`
     contentWrapperToGarage.appendChild(wrapperCar)
     createButtonsForCar(wrapperCar, car)
     createBtnsStartStopCarName(car, wrapperCar)
@@ -127,12 +145,9 @@ function createSectionForCar(car: Car) {
 }
 
 function createButtonsForCar(wrapperCar: HTMLElement, car: Car) {
-    // const inputCarName = <HTMLInputElement>(
-    //     document.querySelector('.field-input-creat-car')
     const carColorUpdateInput = <HTMLInputElement>(
         document.querySelector('.update-car-color')
     )
-    // )
     const inputUpdateCarName = <HTMLInputElement>(
         document.querySelector('.field-input-update-car')
     )
@@ -156,7 +171,6 @@ function createButtonsForCar(wrapperCar: HTMLElement, car: Car) {
         carColorUpdateInput.value = car.color
         selectedCarId = car.id
     })
-
 }
 function createBtnsStartStopCarName(car: Car, wrapperCar: HTMLElement) {
     const wrapperStartReturnbtns = <HTMLElement>document.createElement('div')
@@ -174,6 +188,15 @@ function createBtnsStartStopCarName(car: Car, wrapperCar: HTMLElement) {
     carName.className = 'car-name'
     carName.innerHTML = car.name
     wrapperStartReturnbtns.appendChild(carName)
+
+    btnStartCar.addEventListener('click', function () {
+        startCarEngine(car.id)
+        btnStartCar.setAttribute('disabled', '')
+    })
+    btnReturnCar.addEventListener('click', function () {
+        stopCarEngine(car.id)
+        btnStartCar.removeAttribute('disabled')
+    })
 }
 
 export function createNewCar(car: Car, wrapperCar: HTMLElement) {
@@ -183,6 +206,9 @@ export function createNewCar(car: Car, wrapperCar: HTMLElement) {
     const wrapperRoadCar = <HTMLElement>document.createElement('div')
     wrapperRoadCar.className = 'wrapper-road-car'
     wrapperCarFlag.appendChild(wrapperRoadCar)
+    const wrapperSvgCar = <HTMLElement>document.createElement('div')
+    wrapperSvgCar.className = 'wrapper-svg-car'
+    wrapperCarFlag.appendChild(wrapperSvgCar)
     const imgAuto = document.createElementNS(
         'http://www.w3.org/2000/svg',
         'svg'
@@ -191,7 +217,7 @@ export function createNewCar(car: Car, wrapperCar: HTMLElement) {
     imgAuto.classList.add('car')
     const path = <SVGPathElement>imgAuto.querySelector('path')
     path.style.fill = car.color
-    wrapperCarFlag.appendChild(imgAuto)
+    wrapperSvgCar.appendChild(imgAuto)
 
     const imgFinishFlag = document.createElementNS(
         'http://www.w3.org/2000/svg',
@@ -244,7 +270,7 @@ async function deleteCar(id: number) {
 }
 
 async function updateCar(carName: string, color: string, id: number) {
-    const response = await fetch(`http://127.0.0.1:3000/engine`, {
+    const response = await fetch(`http://127.0.0.1:3000/garage/${id}`, {
         method: 'PUT',
         body: JSON.stringify({ name: carName, color: color }),
         headers: { 'Content-Type': 'application/json' },
@@ -252,12 +278,83 @@ async function updateCar(carName: string, color: string, id: number) {
     updateGarageContent()
 }
 
-async function startCarEngine() {
-    const response = await fetch('http://127.0.0.1:3000/garage/${id}', {
-        method: 'PATCH',
-        body: JSON.stringify({velocity: 64, distance: 50000})
-    })
+async function startCarEngine(id: number | null) {
+    const response = await fetch(
+        `http://127.0.0.1:3000/engine?id=${id}&status=started`,
+        {
+            method: 'PATCH',
+        }
+    )
+    const parametrsOfCar = await response.json()
+    console.log(
+        parametrsOfCar.velocity,
+        parametrsOfCar.distance,
+        Math.floor((parametrsOfCar.distance / parametrsOfCar.velocity) * 0.1) *
+            0.01
+    )
+    startCarAnimation(id, parametrsOfCar.distance, parametrsOfCar.velocity)
+    switchEngineToDriveMode(id)
 }
+
+function startCarAnimation(id: number | null, distance: number, speed: number) {
+    const wrapperCar = <HTMLElement>document.querySelector(`#car-${id}`)
+    const wrapperSvgCar = <HTMLElement>(
+        wrapperCar.querySelector('.wrapper-svg-car')
+    )
+    const lengthOfRoadInPercent: number = 83
+    const procentTime: number = 0.01
+    const amountOfCadrs: number = 15
+    let startTime: number = Date.now()
+    let timer = setInterval(function () {
+        let timePassed: number = Date.now() - startTime
+        if (
+            timePassed / ((distance / speed) * procentTime) >=
+            lengthOfRoadInPercent
+        ) {
+            clearInterval(timer)
+            return
+        }
+        draw(timePassed)
+    }, amountOfCadrs)
+    function draw(timePassed: number) {
+        wrapperSvgCar.style.left =
+            timePassed / ((distance / speed) * procentTime) + '%'
+    }
+}
+
+async function stopCarEngine(id: number) {
+    const response = await fetch(
+        `http://127.0.0.1:3000/engine?id=${id}&status=stopped`,
+        {
+            method: 'PATCH',
+        }
+    )
+    const parametrsOfCar = await response.json()
+    console.log(parametrsOfCar)
+
+    const wrapperCar = <HTMLElement>document.querySelector(`#car-${id}`)
+    const wrapperSvgCar = <HTMLElement>(
+        wrapperCar.querySelector('.wrapper-svg-car')
+    )
+    wrapperSvgCar.style.left = '0'
+}
+
+async function switchEngineToDriveMode(id: number | null) {
+    try{
+    const response = await fetch(
+        `http://127.0.0.1:3000/engine?id=${id}&status=drive`,
+        {
+            method: 'PATCH',
+        }
+    )
+        const success = await response.json()
+        console.log(success)
+    } catch(e: any) {
+        console.log(e.code, "123456789");
+
+    }
+    }
+
 
 btnPrev.addEventListener('click', function () {
     if (currentPage - 1) {

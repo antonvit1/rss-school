@@ -211,11 +211,12 @@ body {
 .flag {
     height: 60px;
     width: 60px;
-    margin-right: 12vw;
+    margin-right: 100px;
 }
 .wrapper-svg-car {
     position: relative;
 }
+
 @media (max-width: 920px) {
     .section-create-car {
         display: flex;

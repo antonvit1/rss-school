@@ -186,7 +186,7 @@ function createBtnsStartStopCarName(car: Car, wrapperCar: HTMLElement) {
     wrapperStartReturnbtns.appendChild(btnReturnCar)
     const carName = <HTMLElement>document.createElement('div')
     carName.className = 'car-name'
-    carName.innerHTML = car.name
+    carName.innerHTML = car.name + ` ${car.id}`
     wrapperStartReturnbtns.appendChild(carName)
 
     btnStartCar.addEventListener('click', function () {
@@ -293,19 +293,32 @@ async function startCarEngine(id: number | null) {
             0.01
     )
     startCarAnimation(id, parametrsOfCar.distance, parametrsOfCar.velocity)
-    switchEngineToDriveMode(id)
+
 }
 
-function startCarAnimation(id: number | null, distance: number, speed: number) {
+
+
+ function startCarAnimation(id: number | null, distance: number, speed: number ) {
     const wrapperCar = <HTMLElement>document.querySelector(`#car-${id}`)
     const wrapperSvgCar = <HTMLElement>(
         wrapperCar.querySelector('.wrapper-svg-car')
     )
-    const lengthOfRoadInPercent: number = 83
+
+    let isEngineWorking = true
+     switchEngineToDriveMode(id).then((status: boolean) => {
+
+        isEngineWorking = status
+     } )
+
+    let lengthOfRoadInPercent: number = 83
     const procentTime: number = 0.01
-    const amountOfCadrs: number = 15
     let startTime: number = Date.now()
+
     let timer = setInterval(function () {
+        if(!isEngineWorking) {
+            clearInterval(timer)
+            return
+        }
         let timePassed: number = Date.now() - startTime
         if (
             timePassed / ((distance / speed) * procentTime) >=
@@ -315,11 +328,13 @@ function startCarAnimation(id: number | null, distance: number, speed: number) {
             return
         }
         draw(timePassed)
-    }, amountOfCadrs)
+
+
+    }, 0)
     function draw(timePassed: number) {
         wrapperSvgCar.style.left =
             timePassed / ((distance / speed) * procentTime) + '%'
-    }
+               }
 }
 
 async function stopCarEngine(id: number) {
@@ -349,11 +364,34 @@ async function switchEngineToDriveMode(id: number | null) {
     )
         const success = await response.json()
         console.log(success)
+        return true
     } catch(e: any) {
-        console.log(e.code, "123456789");
+        console.log("false");
+
+      return false
+           }
+    }
+
+    async function getWinners (id: number | null, car: Car) {
+const response = await fetch(`http://127.0.0.1:3000/winners`,
+     {
+        method: "GET"
+     }
+     )
+     const parametrs = await response.json()
+     console.log(parametrs);
 
     }
-    }
+    async function getWinner(id: number | null, car: Car) {
+        const response = await fetch(`http://127.0.0.1:3000/winners/${id}`,
+             {
+                method: "GET"
+             }
+             )
+             const parametrs = await response.json()
+             console.log(parametrs);
+
+            }
 
 
 btnPrev.addEventListener('click', function () {

@@ -9,17 +9,27 @@ import {
     defaultCarModels,
 } from './main-elements'
 import { createTablewinnersResult } from './winners'
-import { Car } from './types'
+import { Car, parametrsOfFinishedCars } from './types'
+import {
+    addNewCarWithoutGetCarAction,
+    addNewCarAction,
+    getCarsAction,
+    deleteCarAction,
+    updateCarAction,
+    startCarEngineAction,
+    stopCarEngineAction,
+    switchEngineToDriveModeAction,
+} from './store'
 
 const imgCar = require('!svg-inline-loader?classPrefix!./assets/car.svg')
 const imgFlag = require('!svg-inline-loader?classPrefix!./assets/flag.svg')
 
-const arrayOfCars: Car[] = []
-const amountGenerateCarsToBtn: number = 99
-const amountOfCarOnPage: number = 7
-let currentPage: number = 1
+let arrayOfCars: Car[] = []
+export const amountGenerateCarsToBtn: number = 99
+export const amountOfCarOnPage: number = 7
+export let currentPage: number = 1
 let selectedCarId: number | null = null
-
+const finishedCars: parametrsOfFinishedCars[] = []
 // let amountAllCars: number = 0
 
 loadGaragePage()
@@ -28,9 +38,9 @@ function loadGaragePage() {
     createFormForCreatingCar()
     createFormForUpdatingCar()
     createMainBtns()
-    getCars()
+    renderCars()
     createTablewinnersResult()
-    pageNumber.innerHTML = `Page#${currentPage}`
+    console.log('onload ', arrayOfCars)
 }
 
 export function createFormForCreatingCar() {
@@ -104,7 +114,7 @@ export function createMainBtns() {
     btnsWrapper.appendChild(btnGenerateCars)
     btnGenerateCars.addEventListener('click', function () {
         for (let i = 0; i <= amountGenerateCarsToBtn; i++) {
-            addNewCarWithoutGetCar(
+            addNewCarWithoutGetCarAction(
                 `${
                     defaultCarBrends[
                         Math.round(Math.random() * defaultCarBrends.length)
@@ -119,10 +129,11 @@ export function createMainBtns() {
         }
         updateGarageContent()
     })
-    const btnStartCar = <HTMLElement>document.querySelector('.btn-start-car')
+
     btnStartRace.addEventListener('click', function () {
+
         arrayOfCars.forEach((car) => {
-            startCarEngine(car.id)
+            startEngineOfCar(car.id)
             // btnStartCar.setAttribute('disabled', '')
         })
     })
@@ -164,6 +175,7 @@ function createButtonsForCar(wrapperCar: HTMLElement, car: Car) {
     wrapperCarButton.appendChild(btnRemove)
 
     btnRemove.addEventListener('click', function () {
+
         deleteCar(car.id)
     })
     btnSelect.addEventListener('click', function () {
@@ -190,7 +202,7 @@ function createBtnsStartStopCarName(car: Car, wrapperCar: HTMLElement) {
     wrapperStartReturnbtns.appendChild(carName)
 
     btnStartCar.addEventListener('click', function () {
-        startCarEngine(car.id)
+        startEngineOfCar(car.id)
         btnStartCar.setAttribute('disabled', '')
     })
     btnReturnCar.addEventListener('click', function () {
@@ -228,94 +240,29 @@ export function createNewCar(car: Car, wrapperCar: HTMLElement) {
     wrapperRoadCar.appendChild(imgFinishFlag)
 }
 
-function updateGarageContent() {
+async function updateGarageContent() {
     contentWrapperToGarage.innerHTML = ''
-    getCars()
-}
-async function addNewCarWithoutGetCar(carName: string, color: string) {
-    const response = await fetch('http://127.0.0.1:3000/garage', {
-        method: 'POST',
-        body: JSON.stringify({ name: carName, color: color }),
-        headers: { 'Content-Type': 'application/json' },
-    })
-}
-async function addNewCar(carName: string, color: string) {
-    const response = await fetch('http://127.0.0.1:3000/garage', {
-        method: 'POST',
-        body: JSON.stringify({ name: carName, color: color }),
-        headers: { 'Content-Type': 'application/json' },
-    })
-    updateGarageContent()
+    arrayOfCars = []
+    console.log('update', arrayOfCars)
+    await renderCars()
 }
 
-async function getCars() {
-    const response = await fetch(
-        `http://127.0.0.1:3000/garage/?_limit=${amountOfCarOnPage}&_page=${currentPage}`
-    )
-    const cars: Car[] = await response.json()
-    pageNumber.innerHTML = `Page #${currentPage}`
-    pageName.innerHTML = `Garage (${response.headers.get('X-Total-Count')})`
-    cars.forEach((car: Car) => {
-        createSectionForCar(car)
-        arrayOfCars.push(car)
-    })
-}
-
-async function deleteCar(id: number) {
-    const response = await fetch(`http://127.0.0.1:3000/garage/${id}`, {
-        method: 'DELETE',
-        body: JSON.stringify({}),
-    })
-    updateGarageContent()
-}
-
-async function updateCar(carName: string, color: string, id: number) {
-    const response = await fetch(`http://127.0.0.1:3000/garage/${id}`, {
-        method: 'PUT',
-        body: JSON.stringify({ name: carName, color: color }),
-        headers: { 'Content-Type': 'application/json' },
-    })
-    updateGarageContent()
-}
-
-async function startCarEngine(id: number | null) {
-    const response = await fetch(
-        `http://127.0.0.1:3000/engine?id=${id}&status=started`,
-        {
-            method: 'PATCH',
-        }
-    )
-    const parametrsOfCar = await response.json()
-    console.log(
-        parametrsOfCar.velocity,
-        parametrsOfCar.distance,
-        Math.floor((parametrsOfCar.distance / parametrsOfCar.velocity) * 0.1) *
-            0.01
-    )
-    startCarAnimation(id, parametrsOfCar.distance, parametrsOfCar.velocity)
-
-}
-
-
-
- function startCarAnimation(id: number | null, distance: number, speed: number ) {
+function startCarAnimation(id: number | null, distance: number, speed: number) {
     const wrapperCar = <HTMLElement>document.querySelector(`#car-${id}`)
     const wrapperSvgCar = <HTMLElement>(
         wrapperCar.querySelector('.wrapper-svg-car')
     )
-
     let isEngineWorking = true
-     switchEngineToDriveMode(id).then((status: boolean) => {
-
+    switchEngineToDriveModeAction(id).then((status: boolean) => {
         isEngineWorking = status
-     } )
+    })
 
     let lengthOfRoadInPercent: number = 83
     const procentTime: number = 0.01
     let startTime: number = Date.now()
 
     let timer = setInterval(function () {
-        if(!isEngineWorking) {
+        if (!isEngineWorking) {
             clearInterval(timer)
             return
         }
@@ -324,75 +271,58 @@ async function startCarEngine(id: number | null) {
             timePassed / ((distance / speed) * procentTime) >=
             lengthOfRoadInPercent
         ) {
+            if (id) {
+                finishedCars.push({ id, time: distance / speed })
+            }
             clearInterval(timer)
             return
         }
         draw(timePassed)
-
-
     }, 0)
     function draw(timePassed: number) {
         wrapperSvgCar.style.left =
             timePassed / ((distance / speed) * procentTime) + '%'
-               }
+    }
+}
+async function renderCars() {
+    const { cars, amountOfCars } = await getCarsAction(amountOfCarOnPage, currentPage)
+    pageNumber.innerHTML = `Page #${currentPage}`
+    pageName.innerHTML = `Garage (${amountOfCars})`
+    cars.forEach((car: Car) => {
+        createSectionForCar(car)
+        arrayOfCars.push(car)
+    })
+}
+
+async function addNewCar(carName: string, color: string) {
+    await addNewCarAction(carName, color)
+    updateGarageContent()
+}
+
+async function deleteCar(id: number) {
+    await deleteCarAction(id)
+    updateGarageContent()
+    console.log(arrayOfCars)
+}
+
+async function updateCar(carName: string, color: string, id: number) {
+    await updateCarAction(carName, color, id)
+    updateGarageContent()
+}
+
+async function startEngineOfCar(id: number) {
+    const parametrs = await startCarEngineAction(id)
+    startCarAnimation(id, parametrs.distance, parametrs.velocity)
 }
 
 async function stopCarEngine(id: number) {
-    const response = await fetch(
-        `http://127.0.0.1:3000/engine?id=${id}&status=stopped`,
-        {
-            method: 'PATCH',
-        }
-    )
-    const parametrsOfCar = await response.json()
-    console.log(parametrsOfCar)
-
+    const parametrs = await stopCarEngineAction(id)
     const wrapperCar = <HTMLElement>document.querySelector(`#car-${id}`)
     const wrapperSvgCar = <HTMLElement>(
         wrapperCar.querySelector('.wrapper-svg-car')
     )
-    wrapperSvgCar.style.left = '0'
+    wrapperSvgCar.style.left = `${parametrs.velocity}`
 }
-
-async function switchEngineToDriveMode(id: number | null) {
-    try{
-    const response = await fetch(
-        `http://127.0.0.1:3000/engine?id=${id}&status=drive`,
-        {
-            method: 'PATCH',
-        }
-    )
-        const success = await response.json()
-        console.log(success)
-        return true
-    } catch(e: any) {
-        console.log("false");
-
-      return false
-           }
-    }
-
-    async function getWinners (id: number | null, car: Car) {
-const response = await fetch(`http://127.0.0.1:3000/winners`,
-     {
-        method: "GET"
-     }
-     )
-     const parametrs = await response.json()
-     console.log(parametrs);
-
-    }
-    async function getWinner(id: number | null, car: Car) {
-        const response = await fetch(`http://127.0.0.1:3000/winners/${id}`,
-             {
-                method: "GET"
-             }
-             )
-             const parametrs = await response.json()
-             console.log(parametrs);
-
-            }
-
 
 btnPrev.addEventListener('click', function () {
     if (currentPage - 1) {

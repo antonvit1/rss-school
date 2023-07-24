@@ -1,9 +1,9 @@
 export type Car = {
-    name: string;
-    color: string;
-    id: number;
+    name: string
+    color: string
+    id: number
 }
 export type parametrsOfFinishedCars = {
-    id: number;
-    time: number;
+    id: number
+    time: number
 }

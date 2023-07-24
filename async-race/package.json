@@ -5,7 +5,9 @@
     "main": "index.js",
     "scripts": {
         "build": "webpack",
-        "start": "webpack-dev-server"
+        "start": "webpack-dev-server",
+        "lint": "npx eslint ./src",
+        "lint:fix": "npx eslint ./src --fix"
     },
     "repository": {
         "type": "git",
@@ -20,7 +22,11 @@
         "copy-webpack-plugin": "^11.0.0",
         "css-loader": "^6.8.1",
         "eslint": "^8.44.0",
+        "eslint-config-airbnb-typescript": "^17.1.0",
         "eslint-config-prettier": "^8.8.0",
+        "eslint-plugin-import": "^2.27.5",
+        "eslint-plugin-prettier": "^5.0.0",
+        "eslint-plugin-unicorn": "^48.0.0",
         "json-loader": "^0.5.7",
         "mini-css-extract-plugin": "^2.7.6",
         "node-sass": "^9.0.0",

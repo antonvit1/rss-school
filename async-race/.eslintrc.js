@@ -11,12 +11,12 @@ module.exports = {
         "plugin:unicorn/recommended",
         "plugin:prettier/recommended",
         "prettier",
-        "prettier/@typescript-eslint"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "ecmaVersion": "latest",
-        "sourceType": "module"
+        "sourceType": "module",
+        "project":  ['./tsconfig.json'],
     },
     "plugins": [
         "@typescript-eslint",
@@ -27,6 +27,8 @@ module.exports = {
     ],
     "rules": {
         "no-debugger": "off",
-        "no-console": 0
-    }
+        "no-console": 0,
+        "max-lines-per-function": ["error", 40]
+    },
+
 }

@@ -1,7 +1,7 @@
 import {
     contentWrapperToGarage,
-    btnPrev,
-    btnNext,
+    btnPrev as buttonPrevious,
+    btnNext as buttonNext,
     headerSection,
     pageName,
     pageNumber,
@@ -20,14 +20,18 @@ import {
     stopCarEngineAction,
     switchEngineToDriveModeAction,
 } from './store'
-import { createWinnerAction, getWinnerAction, updateWinnerAction } from '../winners/storeWinners'
+import {
+    createWinnerAction,
+    getWinnerAction,
+    updateWinnerAction,
+} from '../winners/storeWinners'
 const imgCar = require('!svg-inline-loader?classPrefix!../assets/car.svg')
 const imgFlag = require('!svg-inline-loader?classPrefix!../assets/flag.svg')
 
 let arrayOfCars: Car[] = []
-export const amountGenerateCarsToBtn: number = 99
-export const amountOfCarOnPage: number = 7
-export let currentPage: number = 1
+export const amountGenerateCarsToBtn = 99
+export const amountOfCarOnPage = 7
+export let currentPage = 1
 let selectedCarId: number | null = null
 const finishedCars: parametrsOfFinishedCars[] = []
 // let amountAllCars: number = 0
@@ -46,21 +50,21 @@ function loadGaragePage() {
 export function createFormForCreatingCar() {
     const creatingCarForm = <HTMLElement>document.createElement('div')
     creatingCarForm.className = 'creating-car-form'
-    headerSection.appendChild(creatingCarForm)
+    headerSection.append(creatingCarForm)
     const inputCarName = <HTMLInputElement>document.createElement('input')
     inputCarName.className = 'field-input-creat-car'
     inputCarName.type = 'text'
-    creatingCarForm.appendChild(inputCarName)
+    creatingCarForm.append(inputCarName)
     const colorOfCarInput = <HTMLInputElement>document.createElement('input')
     colorOfCarInput.className = 'add-car-color'
     colorOfCarInput.type = 'color'
-    creatingCarForm.appendChild(colorOfCarInput)
-    const btnCreate = <HTMLElement>document.createElement('button')
-    btnCreate.className = 'button-create-car'
-    btnCreate.innerHTML = 'Create'
-    creatingCarForm.appendChild(btnCreate)
+    creatingCarForm.append(colorOfCarInput)
+    const buttonCreate = <HTMLElement>document.createElement('button')
+    buttonCreate.className = 'button-create-car'
+    buttonCreate.innerHTML = 'Create'
+    creatingCarForm.append(buttonCreate)
 
-    btnCreate.addEventListener('click', function () {
+    buttonCreate.addEventListener('click', function () {
         addNewCar(inputCarName.value, colorOfCarInput.value)
     })
 }
@@ -68,23 +72,23 @@ export function createFormForCreatingCar() {
 export function createFormForUpdatingCar() {
     const updatingCarForm = <HTMLElement>document.createElement('div')
     updatingCarForm.className = 'field-update-car'
-    headerSection.appendChild(updatingCarForm)
+    headerSection.append(updatingCarForm)
     const inputUpdateCarName = <HTMLInputElement>document.createElement('input')
     inputUpdateCarName.className = 'field-input-update-car'
     inputUpdateCarName.type = 'text'
-    updatingCarForm.appendChild(inputUpdateCarName)
+    updatingCarForm.append(inputUpdateCarName)
     const carColorUpdateInput = <HTMLInputElement>(
         document.createElement('input')
     )
     carColorUpdateInput.className = 'update-car-color'
     carColorUpdateInput.type = 'color'
-    updatingCarForm.appendChild(carColorUpdateInput)
-    const btnUpdate = <HTMLElement>document.createElement('button')
-    btnUpdate.className = 'button-update-car'
-    btnUpdate.innerHTML = 'Update'
-    updatingCarForm.appendChild(btnUpdate)
+    updatingCarForm.append(carColorUpdateInput)
+    const buttonUpdate = <HTMLElement>document.createElement('button')
+    buttonUpdate.className = 'button-update-car'
+    buttonUpdate.innerHTML = 'Update'
+    updatingCarForm.append(buttonUpdate)
 
-    btnUpdate.addEventListener('click', function () {
+    buttonUpdate.addEventListener('click', function () {
         if (selectedCarId) {
             updateCar(
                 inputUpdateCarName.value,
@@ -99,21 +103,21 @@ export function createFormForUpdatingCar() {
 export function createMainBtns() {
     const btnsWrapper = <HTMLElement>document.createElement('div')
     btnsWrapper.className = 'btns-race-reset-generate'
-    headerSection.appendChild(btnsWrapper)
-    const btnStartRace = <HTMLElement>document.createElement('button')
-    btnStartRace.className = 'btn-race'
-    btnStartRace.innerHTML = 'Race'
-    btnsWrapper.appendChild(btnStartRace)
-    const btnReset = <HTMLElement>document.createElement('button')
-    btnReset.className = 'btn-reset'
-    btnReset.innerHTML = 'Reset'
-    btnsWrapper.appendChild(btnReset)
-    const btnGenerateCars = <HTMLElement>document.createElement('button')
-    btnGenerateCars.className = 'btn-generate-cars'
-    btnGenerateCars.innerHTML = 'Generate Cars'
-    btnsWrapper.appendChild(btnGenerateCars)
-    btnGenerateCars.addEventListener('click', function () {
-        for (let i = 0; i <= amountGenerateCarsToBtn; i++) {
+    headerSection.append(btnsWrapper)
+    const buttonStartRace = <HTMLElement>document.createElement('button')
+    buttonStartRace.className = 'btn-race'
+    buttonStartRace.innerHTML = 'Race'
+    btnsWrapper.append(buttonStartRace)
+    const buttonReset = <HTMLElement>document.createElement('button')
+    buttonReset.className = 'btn-reset'
+    buttonReset.innerHTML = 'Reset'
+    btnsWrapper.append(buttonReset)
+    const buttonGenerateCars = <HTMLElement>document.createElement('button')
+    buttonGenerateCars.className = 'btn-generate-cars'
+    buttonGenerateCars.innerHTML = 'Generate Cars'
+    btnsWrapper.append(buttonGenerateCars)
+    buttonGenerateCars.addEventListener('click', function () {
+        for (let index = 0; index <= amountGenerateCarsToBtn; index++) {
             addNewCarWithoutGetCarAction(
                 `${
                     defaultCarBrends[
@@ -129,19 +133,37 @@ export function createMainBtns() {
         }
         updateGarageContent()
     })
-
-    btnStartRace.addEventListener('click', function () {
+    createEventPressButton(buttonStartRace, buttonReset, buttonGenerateCars)
+}
+function createEventPressButton(
+    buttonStartRace: HTMLElement,
+    buttonReset: HTMLElement,
+    buttonGenerateCars: HTMLElement
+) {
+    buttonStartRace.addEventListener('click', function () {
+        const btnsStartCar = [...document.querySelectorAll('.btn-start-car')]
         arrayOfCars.forEach(async (car) => {
-           await startEngineOfCar(car.id)
-            // btnStartCar.setAttribute('disabled', '')
+            await startEngineOfCar(car.id)
         })
+        buttonReset.setAttribute('disabled', 'true')
+        buttonStartRace.setAttribute('disabled', 'true')
+        for (const element of btnsStartCar) {
+            element.setAttribute('disabled', 'true')
+        }
+
         determineOFWinner()
     })
-    btnReset.addEventListener('click', function () {
-        arrayOfCars.forEach((car) => {
+    buttonReset.addEventListener('click', function () {
+        const btnsStartCar = [...document.querySelectorAll('.btn-start-car')]
+        setInterval(function () {
+            buttonStartRace.removeAttribute('disabled')
+        }, 1300)
+        for (const car of arrayOfCars) {
             stopCarEngine(car.id)
-            // btnStartCar.removeAttribute('disabled')
-        })
+            for (const element of btnsStartCar) {
+                element.removeAttribute('disabled')
+            }
+        }
     })
 }
 
@@ -149,7 +171,7 @@ function createSectionForCar(car: Car) {
     const wrapperCar = <HTMLElement>document.createElement('div')
     wrapperCar.className = 'wrapper-car'
     wrapperCar.id = `car-${car.id}`
-    contentWrapperToGarage.appendChild(wrapperCar)
+    contentWrapperToGarage.append(wrapperCar)
     createButtonsForCar(wrapperCar, car)
     createBtnsStartStopCarName(car, wrapperCar)
     createNewCar(car, wrapperCar)
@@ -164,21 +186,20 @@ function createButtonsForCar(wrapperCar: HTMLElement, car: Car) {
     )
     const wrapperCarButton = <HTMLElement>document.createElement('div')
     wrapperCarButton.className = 'wrapper-car-button'
-    wrapperCar.appendChild(wrapperCarButton)
-    const btnSelect = <HTMLElement>document.createElement('button')
-    btnSelect.className = 'btn-select'
-    btnSelect.innerHTML = 'Select'
-    wrapperCarButton.appendChild(btnSelect)
-    const btnRemove = <HTMLElement>document.createElement('button')
-    btnRemove.className = 'btn-remove'
-    btnRemove.innerHTML = 'Remove'
-    wrapperCarButton.appendChild(btnRemove)
+    wrapperCar.append(wrapperCarButton)
+    const buttonSelect = <HTMLElement>document.createElement('button')
+    buttonSelect.className = 'btn-select'
+    buttonSelect.innerHTML = 'Select'
+    wrapperCarButton.append(buttonSelect)
+    const buttonRemove = <HTMLElement>document.createElement('button')
+    buttonRemove.className = 'btn-remove'
+    buttonRemove.innerHTML = 'Remove'
+    wrapperCarButton.append(buttonRemove)
 
-    btnRemove.addEventListener('click', function () {
-
+    buttonRemove.addEventListener('click', function () {
         deleteCar(car.id)
     })
-    btnSelect.addEventListener('click', function () {
+    buttonSelect.addEventListener('click', function () {
         inputUpdateCarName.value = car.name
         carColorUpdateInput.value = car.color
         selectedCarId = car.id
@@ -187,40 +208,40 @@ function createButtonsForCar(wrapperCar: HTMLElement, car: Car) {
 function createBtnsStartStopCarName(car: Car, wrapperCar: HTMLElement) {
     const wrapperStartReturnbtns = <HTMLElement>document.createElement('div')
     wrapperStartReturnbtns.className = 'wrap-btn-start-return'
-    wrapperCar.appendChild(wrapperStartReturnbtns)
-    const btnStartCar = <HTMLElement>document.createElement('button')
-    btnStartCar.className = 'btn-start-car'
-    btnStartCar.innerHTML = 'Start'
-    wrapperStartReturnbtns.appendChild(btnStartCar)
-    const btnReturnCar = <HTMLElement>document.createElement('button')
-    btnReturnCar.className = 'btn-return-car'
-    btnReturnCar.innerHTML = 'Return'
-    wrapperStartReturnbtns.appendChild(btnReturnCar)
+    wrapperCar.append(wrapperStartReturnbtns)
+    const buttonStartCar = <HTMLElement>document.createElement('button')
+    buttonStartCar.className = 'btn-start-car'
+    buttonStartCar.innerHTML = 'Start'
+    wrapperStartReturnbtns.append(buttonStartCar)
+    const buttonReturnCar = <HTMLElement>document.createElement('button')
+    buttonReturnCar.className = 'btn-return-car'
+    buttonReturnCar.innerHTML = 'Return'
+    wrapperStartReturnbtns.append(buttonReturnCar)
     const carName = <HTMLElement>document.createElement('div')
     carName.className = 'car-name'
     carName.innerHTML = car.name + ` ${car.id}`
-    wrapperStartReturnbtns.appendChild(carName)
+    wrapperStartReturnbtns.append(carName)
 
-    btnStartCar.addEventListener('click', function () {
+    buttonStartCar.addEventListener('click', function () {
         startEngineOfCar(car.id)
-        btnStartCar.setAttribute('disabled', '')
+        buttonStartCar.setAttribute('disabled', '')
     })
-    btnReturnCar.addEventListener('click', function () {
+    buttonReturnCar.addEventListener('click', function () {
         stopCarEngine(car.id)
-        btnStartCar.removeAttribute('disabled')
+        buttonStartCar.removeAttribute('disabled')
     })
 }
 
 export function createNewCar(car: Car, wrapperCar: HTMLElement) {
     const wrapperCarFlag = <HTMLElement>document.createElement('div')
     wrapperCarFlag.className = 'wrapper-btn-car-flag'
-    wrapperCar.appendChild(wrapperCarFlag)
+    wrapperCar.append(wrapperCarFlag)
     const wrapperRoadCar = <HTMLElement>document.createElement('div')
     wrapperRoadCar.className = 'wrapper-road-car'
-    wrapperCarFlag.appendChild(wrapperRoadCar)
+    wrapperCarFlag.append(wrapperRoadCar)
     const wrapperSvgCar = <HTMLElement>document.createElement('div')
     wrapperSvgCar.className = 'wrapper-svg-car'
-    wrapperCarFlag.appendChild(wrapperSvgCar)
+    wrapperCarFlag.append(wrapperSvgCar)
     const imgAuto = document.createElementNS(
         'http://www.w3.org/2000/svg',
         'svg'
@@ -229,7 +250,7 @@ export function createNewCar(car: Car, wrapperCar: HTMLElement) {
     imgAuto.classList.add('car')
     const path = <SVGPathElement>imgAuto.querySelector('path')
     path.style.fill = car.color
-    wrapperSvgCar.appendChild(imgAuto)
+    wrapperSvgCar.append(imgAuto)
 
     const imgFinishFlag = document.createElementNS(
         'http://www.w3.org/2000/svg',
@@ -237,7 +258,7 @@ export function createNewCar(car: Car, wrapperCar: HTMLElement) {
     )
     imgFinishFlag.innerHTML = imgFlag
     imgFinishFlag.classList.add('flag')
-    wrapperRoadCar.appendChild(imgFinishFlag)
+    wrapperRoadCar.append(imgFinishFlag)
 }
 
 async function updateGarageContent() {
@@ -256,56 +277,68 @@ function startCarAnimation(id: number | null, distance: number, speed: number) {
     switchEngineToDriveModeAction(id).then((status: boolean) => {
         isEngineWorking = status
     })
-
-    let lengthOfRoadInPercent: number = 83
-    const procentTime: number = 0.01
-    let startTime: number = Date.now()
-
-    let timer = setInterval(function () {
+    const lengthOfRoadInPercent = 88
+    const procentTime = 0.01
+    const startTime: number = Date.now()
+    const timer = setInterval(function () {
         if (!isEngineWorking) {
             clearInterval(timer)
             return
         }
-        let timePassed: number = Date.now() - startTime
+        const timePassed: number = Date.now() - startTime
         if (
             timePassed / ((distance / speed) * procentTime) >=
-            lengthOfRoadInPercent
+            lengthOfRoadInPercgitent
         ) {
             if (id) {
                 finishedCars.push({ id, time: distance / speed })
                 determineOFWinner()
             }
-
             clearInterval(timer)
+            const buttonReset = <HTMLElement>(
+                document.querySelector('.btn-reset')
+            )
+            buttonReset.removeAttribute('disabled')
             return
         }
         draw(timePassed)
     }, 0)
     function draw(timePassed: number) {
         wrapperSvgCar.style.left =
-            timePassed / ((distance / speed) * procentTime) + '%'
+            timePassed / ((distance / speed) * procentTime) + 'vw'
     }
-
 }
 
 async function determineOFWinner() {
+    if (finishedCars[0]) {
+        const existedWinner = await getWinnerAction(finishedCars[0].id)
+        console.log(existedWinner)
+        if (existedWinner.id) {
+            const bestTime =
+                finishedCars[0].time < existedWinner.time
+                    ? finishedCars[0].time
+                    : existedWinner.time
 
-    if(finishedCars[0]) {
-      const existedWinner = await getWinnerAction(finishedCars[0].id)
-
-        if(!existedWinner){
-   await createWinnerAction(finishedCars[0].id, 1, finishedCars[0].time)
+            await updateWinnerAction(
+                finishedCars[0].id,
+                existedWinner.wins + 1,
+                bestTime
+            )
         } else {
-const bestTime = finishedCars[0].time < existedWinner.time ? finishedCars[0].time : existedWinner.time
-
-          await updateWinnerAction(finishedCars[0].id, existedWinner.wins + 1, bestTime)
+            await createWinnerAction(
+                finishedCars[0].id,
+                1,
+                finishedCars[0].time
+            )
         }
     }
 }
 
-
 async function renderCars() {
-    const { cars, amountOfCars } = await getCarsAction(amountOfCarOnPage, currentPage)
+    const { cars, amountOfCars } = await getCarsAction(
+        amountOfCarOnPage,
+        currentPage
+    )
     pageNumber.innerHTML = `Page #${currentPage}`
     pageName.innerHTML = `Garage (${amountOfCars})`
     cars.forEach((car: Car) => {
@@ -344,15 +377,18 @@ async function stopCarEngine(id: number) {
     wrapperSvgCar.style.left = `${parametrs.velocity}`
 }
 
-btnPrev.addEventListener('click', function () {
+buttonPrevious.addEventListener('click', function () {
     if (currentPage - 1) {
         currentPage -= 1
         updateGarageContent()
     }
 })
-btnNext.addEventListener('click', function () {
+buttonNext.addEventListener('click', function () {
     if (currentPage + 1) {
         currentPage += 1
         updateGarageContent()
     }
 })
+function saveInLocalStorage() {
+    localStorage.setItem('pageNumber', String(currentPage))
+}

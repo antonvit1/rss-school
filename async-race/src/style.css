@@ -228,12 +228,19 @@ body {
     width: 140px;
 }
 .flag {
-    height: 60px;
+    height: 55px;
     width: 60px;
-    margin-right: 100px;
+    margin-right: 120px;
 }
 .wrapper-svg-car {
     position: relative;
+}
+.car-table {
+    width: 100px;
+    height: 50px;
+}
+.td {
+    padding-right: 15px;
 }
 
 @media (max-width: 920px) {

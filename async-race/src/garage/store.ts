@@ -92,7 +92,7 @@ export async function switchEngineToDriveModeAction(id: number | null) {
         )
         await response.json()
         return true
-    } catch (e) {
+    } catch {
         return false
     }
 }

@@ -205,12 +205,20 @@ body {
 
 .btn-prev {
     margin-right: 15px;
+    display: block;
 }
 .btn-next {
     margin-left: 15px;
+    display: block;
+}
+.btn-prev.active,
+.btn-next.active {
+    display: none;
 }
 .btn-prev,
-.btn-next {
+.btn-next,
+.btn-prev-winner,
+.btn-next-winner {
     border: none;
     border-radius: 3px;
     padding-top: 4px;
@@ -220,10 +228,25 @@ body {
     color: rgb(0, 0, 0);
 }
 .btn-prev:hover,
-.btn-next:hover {
+.btn-next:hover,
+.btn-prev-winner:hover,
+.btn-next-winner:hover {
     cursor: pointer;
     background-color: beige;
 }
+.btn-prev-winner {
+    margin-right: 15px;
+    display: none;
+}
+.btn-next-winner {
+    margin-left: 15px;
+    display: none;
+}
+.btn-prev-winner.active,
+.btn-next-winner.active {
+    display: block;
+}
+
 .car {
     height: 60px;
     width: 140px;
@@ -241,9 +264,22 @@ body {
     height: 50px;
 }
 .td {
-    padding-right: 15px;
+    padding: 11px;
 }
-
+.th {
+    padding: 11px;
+    text-align: left;
+}
+.button-sort {
+    margin: 0 4px;
+    background-color: beige;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.button-sort:hover {
+    background-color: rgb(164, 151, 133);
+}
 .message-win {
     position: absolute;
     font-weight: 700;

@@ -1,14 +1,15 @@
-import { Winner } from './types'
-
-export async function getWinnersAction(page: number) {
+export async function getWinnersAction(
+    page: number,
+    sort: string,
+    order: string
+) {
     const response = await fetch(
-        `http://127.0.0.1:3000/winners?_limit=7&_page=${page}`,
+        `http://127.0.0.1:3000/winners?_limit=7&_page=${page}&_sort=${sort}&_order=${order}`,
         {
             method: 'GET',
         }
     )
     const winners = await response.json()
-    console.log(response.headers.get('X-Total-Count'))
 
     return {
         winners: winners,
@@ -50,8 +51,8 @@ export async function updateWinnerAction(
         headers: { 'Content-Type': 'application/json' },
     })
 }
-export async function deleteWinnerAction( id: number) {
+export async function deleteWinnerAction(id: number) {
     const response = await fetch(`http://127.0.0.1:3000/winners`, {
-        method: 'DELETE'
+        method: 'DELETE',
     })
 }

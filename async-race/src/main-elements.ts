@@ -94,3 +94,11 @@ export const btnNext = <HTMLElement>document.createElement('button')
 btnNext.className = 'btn-next'
 btnNext.innerHTML = 'Next'
 wrapperButtonPreviousNext.append(btnNext)
+export const btnPrevWinners = <HTMLElement>document.createElement('button')
+btnPrevWinners.className = 'btn-prev-winner'
+btnPrevWinners.innerHTML = 'Prev'
+wrapperButtonPreviousNext.append(btnPrevWinners)
+export const btnNextWinner = <HTMLElement>document.createElement('button')
+btnNextWinner.className = 'btn-next-winner'
+btnNextWinner.innerHTML = 'Next'
+wrapperButtonPreviousNext.append(btnNextWinner)

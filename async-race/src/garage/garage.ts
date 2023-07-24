@@ -32,18 +32,18 @@ const imgFlag = require('!svg-inline-loader?classPrefix!../assets/flag.svg')
 let arrayOfCars: Car[] = []
 export const amountGenerateCarsToBtn = 99
 export const amountOfCarOnPage = 7
-export let currentPage = 1
+export let currentPage = +(localStorage.getItem('pageNumber') || 1)
 let selectedCarId: number | null = null
 let finishedCars: parametrsOfFinishedCars[] = []
-// let amountAllCars: number = 0
+let amountOfAllCars: number = 0
 
-loadGaragePage()
-
-function loadGaragePage() {
+export function loadGaragePage() {
+    headerSection.innerHTML = ''
     createFormForCreatingCar()
     createFormForUpdatingCar()
     createMainBtns()
     renderCars()
+    disabledBtnReturnReset()
 }
 
 export function createFormForCreatingCar() {
@@ -53,10 +53,13 @@ export function createFormForCreatingCar() {
     const inputCarName = <HTMLInputElement>document.createElement('input')
     inputCarName.className = 'field-input-creat-car'
     inputCarName.type = 'text'
+    inputCarName.value = localStorage.getItem('inputNameCreate') || ''
     creatingCarForm.append(inputCarName)
     const colorOfCarInput = <HTMLInputElement>document.createElement('input')
     colorOfCarInput.className = 'add-car-color'
     colorOfCarInput.type = 'color'
+    colorOfCarInput.value =
+        localStorage.getItem('inputColorCreate') || '#000000'
     creatingCarForm.append(colorOfCarInput)
     const buttonCreate = <HTMLElement>document.createElement('button')
     buttonCreate.className = 'button-create-car'
@@ -65,6 +68,8 @@ export function createFormForCreatingCar() {
 
     buttonCreate.addEventListener('click', function () {
         addNewCar(inputCarName.value, colorOfCarInput.value)
+        colorOfCarInput.value = '#000000'
+        inputCarName.value = ''
     })
 }
 
@@ -75,12 +80,15 @@ export function createFormForUpdatingCar() {
     const inputUpdateCarName = <HTMLInputElement>document.createElement('input')
     inputUpdateCarName.className = 'field-input-update-car'
     inputUpdateCarName.type = 'text'
+    inputUpdateCarName.value = localStorage.getItem('updateNameCreate') || ''
     updatingCarForm.append(inputUpdateCarName)
     const carColorUpdateInput = <HTMLInputElement>(
         document.createElement('input')
     )
     carColorUpdateInput.className = 'update-car-color'
     carColorUpdateInput.type = 'color'
+    carColorUpdateInput.value =
+        localStorage.getItem('updateColorCreate') || '#000000'
     updatingCarForm.append(carColorUpdateInput)
     const buttonUpdate = <HTMLElement>document.createElement('button')
     buttonUpdate.className = 'button-update-car'
@@ -95,6 +103,8 @@ export function createFormForUpdatingCar() {
                 selectedCarId
             )
             selectedCarId = null
+            carColorUpdateInput.value = '#000000'
+            inputUpdateCarName.value = ''
         }
     })
 }
@@ -132,25 +142,25 @@ export function createMainBtns() {
         }
         updateGarageContent()
     })
-    createEventPressButton(buttonStartRace, buttonReset, buttonGenerateCars)
+    createEventPressButton(buttonStartRace, buttonReset)
 }
 function createEventPressButton(
     buttonStartRace: HTMLElement,
-    buttonReset: HTMLElement,
-    buttonGenerateCars: HTMLElement
+    buttonReset: HTMLElement
 ) {
     buttonStartRace.addEventListener('click', function () {
         const btnsStartCar = [...document.querySelectorAll('.btn-start-car')]
+
         arrayOfCars.forEach(async (car) => {
             await startEngineOfCar(car.id)
         })
-        buttonReset.setAttribute('disabled', 'true')
+        buttonReset.removeAttribute('disabled')
         buttonStartRace.setAttribute('disabled', 'true')
         for (const element of btnsStartCar) {
             element.setAttribute('disabled', 'true')
         }
 
-        determineOFWinner()
+        unDisabledBtnReturnReset()
     })
     buttonReset.addEventListener('click', function () {
         finishedCars = []
@@ -217,6 +227,7 @@ function createBtnsStartStopCarName(car: Car, wrapperCar: HTMLElement) {
     const buttonReturnCar = <HTMLElement>document.createElement('button')
     buttonReturnCar.className = 'btn-return-car'
     buttonReturnCar.innerHTML = 'Return'
+    buttonReturnCar?.setAttribute('disabled', 'true')
     wrapperStartReturnbtns.append(buttonReturnCar)
     const carName = <HTMLElement>document.createElement('div')
     carName.className = 'car-name'
@@ -225,12 +236,14 @@ function createBtnsStartStopCarName(car: Car, wrapperCar: HTMLElement) {
 
     buttonStartCar.addEventListener('click', function () {
         startEngineOfCar(car.id)
-        buttonStartCar.setAttribute('disabled', '')
+        buttonStartCar?.setAttribute('disabled', '')
+        buttonReturnCar?.removeAttribute('disabled')
     })
     buttonReturnCar.addEventListener('click', function () {
         stopCarEngine(car.id)
-        buttonStartCar.removeAttribute('disabled')
+        buttonStartCar?.removeAttribute('disabled')
         removeWinMessage()
+        buttonReturnCar?.setAttribute('disabled', 'true')
     })
 }
 
@@ -289,21 +302,20 @@ function startCarAnimation(id: number | null, distance: number, speed: number) {
         }
         const timePassed: number = Date.now() - startTime
         if (timePassed / ((distance / speed) * procentTime) >=
-            lengthOfRoadInPercent) {
+            lengthOfRoadInPercent
+        ) {
             if (id) {
                 finishedCars.push({ id, time: distance / speed })
                 determineOFWinner()
             }
             if (finishedCars.length === 1) {
-                createMessageAboutWinner(id,
-                    +(Math.floor((distance / speed) * 0.1) * 0.01).toFixed(2)
-                )
+                createMessageAboutWinner(id, +(Math.floor((distance / speed) * 0.1) * 0.01).toFixed(2))
             }
             clearInterval(timer)
             const buttonReset = <HTMLElement>(
                 document.querySelector('.btn-reset')
             )
-            buttonReset.removeAttribute('disabled')
+            buttonReset?.removeAttribute('disabled')
             return
         }
         draw(timePassed)
@@ -325,6 +337,23 @@ function removeWinMessage() {
     const messageWin = <HTMLElement>document.querySelector('.message-win')
     if (messageWin) {
         messageWin.remove()
+    }
+}
+function disabledBtnReturnReset() {
+    const btnsReturn = [...document.querySelectorAll('.btn-return-car')]
+    for (const element of btnsReturn) {
+        element.setAttribute('disabled', 'true')
+    }
+    const btnReset = <HTMLElement>document.querySelector('.btn-reset')
+    btnReset.setAttribute('disabled', 'true')
+}
+function unDisabledBtnReturnReset() {
+    const btnsReturn = [...document.querySelectorAll('.btn-return-car')]
+    const btnReset = <HTMLElement>document.querySelector('.btn-reset')
+    btnReset.removeAttribute('disabled')
+
+    for (const element of btnsReturn) {
+        element.removeAttribute('disabled')
     }
 }
 
@@ -358,6 +387,9 @@ async function renderCars() {
         amountOfCarOnPage,
         currentPage
     )
+    if (amountOfCars) {
+        amountOfAllCars = +amountOfCars
+    }
     pageNumber.innerHTML = `Page #${currentPage}`
     pageName.innerHTML = `Garage (${amountOfCars})`
     cars.forEach((car: Car) => {
@@ -397,17 +429,36 @@ async function stopCarEngine(id: number) {
 }
 
 buttonPrevious.addEventListener('click', function () {
-    if (currentPage - 1) {
+    if (currentPage > 1) {
         currentPage -= 1
         updateGarageContent()
     }
 })
 buttonNext.addEventListener('click', function () {
-    if (currentPage + 1) {
+    if (currentPage + 1 < amountOfAllCars / 7) {
         currentPage += 1
         updateGarageContent()
     }
 })
 function saveInLocalStorageGarage() {
+    const inputNameCreate = <HTMLInputElement>(
+        document.querySelector('.field-input-creat-car')
+    )
+    const inputColorCreate = <HTMLInputElement>(
+        document.querySelector('.add-car-color')
+    )
+    const updateNameCreate = <HTMLInputElement>(
+        document.querySelector('.field-input-update-car')
+    )
+    const updateColorCreate = <HTMLInputElement>(
+        document.querySelector('.update-car-color')
+    )
     localStorage.setItem('pageNumber', String(currentPage))
+    localStorage.setItem('inputNameCreate', inputNameCreate.value)
+    localStorage.setItem('inputColorCreate', inputColorCreate.value)
+    localStorage.setItem('updateNameCreate', updateNameCreate.value)
+    localStorage.setItem('updateColorCreate', updateColorCreate.value)
 }
+window.addEventListener('beforeunload', function () {
+    saveInLocalStorageGarage()
+})

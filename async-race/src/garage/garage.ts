@@ -22,6 +22,7 @@ import {
 } from './store'
 import {
     createWinnerAction,
+    deleteWinnerAction,
     getWinnerAction,
     updateWinnerAction,
 } from '../winners/storeWinners'
@@ -33,7 +34,7 @@ export const amountGenerateCarsToBtn = 99
 export const amountOfCarOnPage = 7
 export let currentPage = 1
 let selectedCarId: number | null = null
-const finishedCars: parametrsOfFinishedCars[] = []
+let finishedCars: parametrsOfFinishedCars[] = []
 // let amountAllCars: number = 0
 
 loadGaragePage()
@@ -43,8 +44,6 @@ function loadGaragePage() {
     createFormForUpdatingCar()
     createMainBtns()
     renderCars()
-    // renderPageWinners()
-    // console.log('onload ', arrayOfCars)
 }
 
 export function createFormForCreatingCar() {
@@ -154,6 +153,7 @@ function createEventPressButton(
         determineOFWinner()
     })
     buttonReset.addEventListener('click', function () {
+        finishedCars = []
         const btnsStartCar = [...document.querySelectorAll('.btn-start-car')]
         setInterval(function () {
             buttonStartRace.removeAttribute('disabled')
@@ -164,6 +164,7 @@ function createEventPressButton(
                 element.removeAttribute('disabled')
             }
         }
+        removeWinMessage()
     })
 }
 
@@ -219,7 +220,7 @@ function createBtnsStartStopCarName(car: Car, wrapperCar: HTMLElement) {
     wrapperStartReturnbtns.append(buttonReturnCar)
     const carName = <HTMLElement>document.createElement('div')
     carName.className = 'car-name'
-    carName.innerHTML = car.name + ` ${car.id}`
+    carName.innerHTML = car.name
     wrapperStartReturnbtns.append(carName)
 
     buttonStartCar.addEventListener('click', function () {
@@ -229,6 +230,7 @@ function createBtnsStartStopCarName(car: Car, wrapperCar: HTMLElement) {
     buttonReturnCar.addEventListener('click', function () {
         stopCarEngine(car.id)
         buttonStartCar.removeAttribute('disabled')
+        removeWinMessage()
     })
 }
 
@@ -264,7 +266,7 @@ export function createNewCar(car: Car, wrapperCar: HTMLElement) {
 async function updateGarageContent() {
     contentWrapperToGarage.innerHTML = ''
     arrayOfCars = []
-    // console.log('update', arrayOfCars)
+
     await renderCars()
 }
 
@@ -286,13 +288,16 @@ function startCarAnimation(id: number | null, distance: number, speed: number) {
             return
         }
         const timePassed: number = Date.now() - startTime
-        if (
-            timePassed / ((distance / speed) * procentTime) >=
-            lengthOfRoadInPercgitent
-        ) {
+        if (timePassed / ((distance / speed) * procentTime) >=
+            lengthOfRoadInPercent) {
             if (id) {
                 finishedCars.push({ id, time: distance / speed })
                 determineOFWinner()
+            }
+            if (finishedCars.length === 1) {
+                createMessageAboutWinner(id,
+                    +(Math.floor((distance / speed) * 0.1) * 0.01).toFixed(2)
+                )
             }
             clearInterval(timer)
             const buttonReset = <HTMLElement>(
@@ -309,10 +314,24 @@ function startCarAnimation(id: number | null, distance: number, speed: number) {
     }
 }
 
+function createMessageAboutWinner(id: number | null, time: number) {
+    const car = arrayOfCars.find((auto) => auto.id === id)
+    const messageWin = <HTMLElement>document.createElement('div')
+    messageWin.className = 'message-win'
+    messageWin.innerHTML = `${car?.name} won with time ${time}`
+    contentWrapperToGarage.appendChild(messageWin)
+}
+function removeWinMessage() {
+    const messageWin = <HTMLElement>document.querySelector('.message-win')
+    if (messageWin) {
+        messageWin.remove()
+    }
+}
+
 async function determineOFWinner() {
-    if (finishedCars[0]) {
+    if (finishedCars.length === 1) {
         const existedWinner = await getWinnerAction(finishedCars[0].id)
-        console.log(existedWinner)
+
         if (existedWinner.id) {
             const bestTime =
                 finishedCars[0].time < existedWinner.time
@@ -354,8 +373,8 @@ async function addNewCar(carName: string, color: string) {
 
 async function deleteCar(id: number) {
     await deleteCarAction(id)
+    await deleteWinnerAction(id)
     updateGarageContent()
-    // console.log(arrayOfCars)
 }
 
 async function updateCar(carName: string, color: string, id: number) {
@@ -389,6 +408,6 @@ buttonNext.addEventListener('click', function () {
         updateGarageContent()
     }
 })
-function saveInLocalStorage() {
+function saveInLocalStorageGarage() {
     localStorage.setItem('pageNumber', String(currentPage))
 }

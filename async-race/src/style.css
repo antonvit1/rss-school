@@ -131,6 +131,7 @@ body {
 }
 .section-road {
     display: block;
+    position: relative;
 }
 .section-road.active {
     display: none;
@@ -243,6 +244,20 @@ body {
     padding-right: 15px;
 }
 
+.message-win {
+    position: absolute;
+    font-weight: 700;
+    font-size: 1.3em;
+    border: 1px solid rgb(174, 129, 70);
+    border-radius: 6px;
+    color: rgb(174, 129, 70);
+    width: 320px;
+    height: 30px;
+    top: 30%;
+    left: 25%;
+    padding: 7px;
+    text-align: center;
+}
 @media (max-width: 920px) {
     .section-create-car {
         display: flex;

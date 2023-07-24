@@ -64,12 +64,6 @@ export async function startCarEngineAction(id: number | null) {
         }
     )
     const parametrsOfCar = await response.json()
-    console.log(
-        parametrsOfCar.velocity,
-        parametrsOfCar.distance,
-        Math.floor((parametrsOfCar.distance / parametrsOfCar.velocity) * 0.1) *
-            0.01
-    )
     return parametrsOfCar
 }
 export async function stopCarEngineAction(id: number) {

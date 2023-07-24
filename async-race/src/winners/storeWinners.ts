@@ -50,3 +50,8 @@ export async function updateWinnerAction(
         headers: { 'Content-Type': 'application/json' },
     })
 }
+export async function deleteWinnerAction( id: number) {
+    const response = await fetch(`http://127.0.0.1:3000/winners`, {
+        method: 'DELETE'
+    })
+}

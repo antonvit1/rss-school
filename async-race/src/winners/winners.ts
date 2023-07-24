@@ -34,13 +34,11 @@ export function createWinnersTable() {
     }
 }
 function createRowOfWinnerTable(winner: ExtendedWinner) {
-    console.log(winner)
     const tableResult = <HTMLElement>document.querySelector('.table-result')
     const childTr = document.createElement('tr')
     childTr.className = 'tr'
     tableResult.append(childTr)
     const keys = Object.keys(winner)
-    console.log(keys)
 
     for (const key of keys) {
         const td = document.createElement('td')
@@ -92,5 +90,7 @@ export async function renderPageWinners() {
         createRowOfWinnerTable(parametrsOfWinner)
         carWinners.push(parametrsOfWinner)
     })
-    console.log(carWinners)
+}
+function saveInLocalStorageWinners() {
+    localStorage.setItem('pageNumber', String(page))
 }

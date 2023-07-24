@@ -29,9 +29,18 @@ export async function getCarsAction(
     const cars: Car[] = await response.json()
     return { cars: cars, amountOfCars: response.headers.get('X-Total-Count') }
 }
+
+export async function getCarAction(id: number) {
+    const response = await fetch(`http://127.0.0.1:3000/garage/${id}`, {
+        method: 'GET',
+    })
+    const parametrsOfCar = await response.json()
+    return parametrsOfCar
+}
+
 export async function deleteCarAction(id: number) {
     await fetch(`http://127.0.0.1:3000/garage/${id}`, {
-        method: 'DELETE'
+        method: 'DELETE',
     })
 }
 
@@ -87,17 +96,3 @@ export async function switchEngineToDriveModeAction(id: number | null) {
         return false
     }
 }
-// async function getWinners(id: number | null, car: Car) {
-//     const response = await fetch(`http://127.0.0.1:3000/winners`, {
-//         method: 'GET',
-//     })
-//     const parametrs = await response.json()
-//     console.log(parametrs)
-// }
-// async function getWinner(id: number | null, car: Car) {
-//     const response = await fetch(`http://127.0.0.1:3000/winners/${id}`, {
-//         method: 'GET',
-//     })
-//     const parametrs = await response.json()
-//     console.log(parametrs)
-// }

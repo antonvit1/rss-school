@@ -7,8 +7,8 @@ import {
     pageNumber,
     defaultCarBrends,
     defaultCarModels,
-} from './main-elements'
-import { createTablewinnersResult } from './winners'
+} from '../main-elements'
+import { renderPageWinners } from '../winners/winners'
 import { Car, parametrsOfFinishedCars } from './types'
 import {
     addNewCarWithoutGetCarAction,
@@ -20,9 +20,9 @@ import {
     stopCarEngineAction,
     switchEngineToDriveModeAction,
 } from './store'
-
-const imgCar = require('!svg-inline-loader?classPrefix!./assets/car.svg')
-const imgFlag = require('!svg-inline-loader?classPrefix!./assets/flag.svg')
+import { createWinnerAction, getWinnerAction, updateWinnerAction } from '../winners/storeWinners'
+const imgCar = require('!svg-inline-loader?classPrefix!../assets/car.svg')
+const imgFlag = require('!svg-inline-loader?classPrefix!../assets/flag.svg')
 
 let arrayOfCars: Car[] = []
 export const amountGenerateCarsToBtn: number = 99
@@ -39,8 +39,8 @@ function loadGaragePage() {
     createFormForUpdatingCar()
     createMainBtns()
     renderCars()
-    createTablewinnersResult()
-    console.log('onload ', arrayOfCars)
+    // renderPageWinners()
+    // console.log('onload ', arrayOfCars)
 }
 
 export function createFormForCreatingCar() {
@@ -131,11 +131,11 @@ export function createMainBtns() {
     })
 
     btnStartRace.addEventListener('click', function () {
-
-        arrayOfCars.forEach((car) => {
-            startEngineOfCar(car.id)
+        arrayOfCars.forEach(async (car) => {
+           await startEngineOfCar(car.id)
             // btnStartCar.setAttribute('disabled', '')
         })
+        determineOFWinner()
     })
     btnReset.addEventListener('click', function () {
         arrayOfCars.forEach((car) => {
@@ -243,7 +243,7 @@ export function createNewCar(car: Car, wrapperCar: HTMLElement) {
 async function updateGarageContent() {
     contentWrapperToGarage.innerHTML = ''
     arrayOfCars = []
-    console.log('update', arrayOfCars)
+    // console.log('update', arrayOfCars)
     await renderCars()
 }
 
@@ -273,7 +273,9 @@ function startCarAnimation(id: number | null, distance: number, speed: number) {
         ) {
             if (id) {
                 finishedCars.push({ id, time: distance / speed })
+                determineOFWinner()
             }
+
             clearInterval(timer)
             return
         }
@@ -283,7 +285,25 @@ function startCarAnimation(id: number | null, distance: number, speed: number) {
         wrapperSvgCar.style.left =
             timePassed / ((distance / speed) * procentTime) + '%'
     }
+
 }
+
+async function determineOFWinner() {
+
+    if(finishedCars[0]) {
+      const existedWinner = await getWinnerAction(finishedCars[0].id)
+
+        if(!existedWinner){
+   await createWinnerAction(finishedCars[0].id, 1, finishedCars[0].time)
+        } else {
+const bestTime = finishedCars[0].time < existedWinner.time ? finishedCars[0].time : existedWinner.time
+
+          await updateWinnerAction(finishedCars[0].id, existedWinner.wins + 1, bestTime)
+        }
+    }
+}
+
+
 async function renderCars() {
     const { cars, amountOfCars } = await getCarsAction(amountOfCarOnPage, currentPage)
     pageNumber.innerHTML = `Page #${currentPage}`
@@ -302,7 +322,7 @@ async function addNewCar(carName: string, color: string) {
 async function deleteCar(id: number) {
     await deleteCarAction(id)
     updateGarageContent()
-    console.log(arrayOfCars)
+    // console.log(arrayOfCars)
 }
 
 async function updateCar(carName: string, color: string, id: number) {

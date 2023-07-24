@@ -66,6 +66,13 @@ export const pageNumber = <HTMLElement>document.createElement('div')
 pageNumber.className = 'page-number'
 wrapperPageName.appendChild(pageNumber)
 
+export const pageNameToWinner = <HTMLElement>document.createElement('div')
+pageNameToWinner.className = 'page-name-winner'
+wrapperPageName.appendChild(pageNameToWinner)
+export const pageNumberToWinner = <HTMLElement>document.createElement('div')
+pageNumberToWinner.className = 'page-number-winner'
+wrapperPageName.appendChild(pageNumberToWinner)
+
 export const contentWrapperToGarage = <HTMLElement>document.createElement('section')
 contentWrapperToGarage.className = 'section-road'
 bodyWrapper.appendChild(contentWrapperToGarage)

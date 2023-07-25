@@ -8,7 +8,7 @@ import {
     defaultCarBrends,
     defaultCarModels,
 } from '../main-elements'
-import { renderPageWinners } from '../winners/winners'
+import { renderPageWinners, updateWinnersContent } from '../winners/winners'
 import { Car, parametrsOfFinishedCars } from './types'
 import {
     addNewCarWithoutGetCarAction,
@@ -42,7 +42,7 @@ export function loadGaragePage() {
     createFormForCreatingCar()
     createFormForUpdatingCar()
     createMainBtns()
-    renderCars()
+    updateGarageContent()
     disabledBtnReturnReset()
 }
 
@@ -209,6 +209,7 @@ function createButtonsForCar(wrapperCar: HTMLElement, car: Car) {
 
     buttonRemove.addEventListener('click', function () {
         deleteCar(car.id)
+
     })
     buttonSelect.addEventListener('click', function () {
         inputUpdateCarName.value = car.name
@@ -276,7 +277,7 @@ export function createNewCar(car: Car, wrapperCar: HTMLElement) {
     wrapperRoadCar.append(imgFinishFlag)
 }
 
-async function updateGarageContent() {
+export async function updateGarageContent() {
     contentWrapperToGarage.innerHTML = ''
     arrayOfCars = []
 
@@ -407,6 +408,7 @@ async function deleteCar(id: number) {
     await deleteCarAction(id)
     await deleteWinnerAction(id)
     updateGarageContent()
+    updateWinnersContent()
 }
 
 async function updateCar(carName: string, color: string, id: number) {
@@ -440,7 +442,7 @@ buttonNext.addEventListener('click', function () {
         updateGarageContent()
     }
 })
-function saveInLocalStorageGarage() {
+export function saveInLocalStorageGarage() {
     const inputNameCreate = <HTMLInputElement>(
         document.querySelector('.field-input-creat-car')
     )

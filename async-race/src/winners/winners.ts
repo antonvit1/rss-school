@@ -85,7 +85,7 @@ function createImgCar(winner: ExtendedWinner, td: HTMLElement) {
     wrapperTableSvgCar.append(imgAutoinTable)
 }
 
-function updateWinnersContent() {
+export function updateWinnersContent() {
     contentWrapperToWinner.innerHTML = ''
     carWinners = []
 }
@@ -141,7 +141,7 @@ btnPrevWinners.addEventListener('click', function () {
     }
 })
 btnNextWinner.addEventListener('click', function () {
-    if (page < amountOfAllWinners / 7) {
+    if (page < amountOfAllWinners / 10) {
         page += 1
         renderPageWinners()
     }

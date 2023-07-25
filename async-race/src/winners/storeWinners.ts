@@ -4,7 +4,7 @@ export async function getWinnersAction(
     order: string
 ) {
     const response = await fetch(
-        `http://127.0.0.1:3000/winners?_limit=7&_page=${page}&_sort=${sort}&_order=${order}`,
+        `http://127.0.0.1:3000/winners?_limit=10&_page=${page}&_sort=${sort}&_order=${order}`,
         {
             method: 'GET',
         }
@@ -52,7 +52,7 @@ export async function updateWinnerAction(
     })
 }
 export async function deleteWinnerAction(id: number) {
-    const response = await fetch(`http://127.0.0.1:3000/winners`, {
+    const response = await fetch(`http://127.0.0.1:3000/winner/${id}`, {
         method: 'DELETE',
     })
 }

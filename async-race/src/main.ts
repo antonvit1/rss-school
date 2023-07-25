@@ -18,6 +18,7 @@ import {
     createFormForUpdatingCar,
     createMainBtns,
     loadGaragePage,
+    saveInLocalStorageGarage
 } from './garage/garage'
 import { renderPageWinners } from './winners/winners'
 
@@ -36,9 +37,11 @@ buttonToGarage.addEventListener('click', function () {
 })
 
 window.addEventListener('beforeunload', function () {
+
     this.localStorage.setItem('screen', screenPage)
 })
 function loadWinners() {
+    saveInLocalStorageGarage()
     if (!contentWrapperToGarage.classList.contains('active')) {
         headerSection.innerHTML = ''
         contentWrapperToGarage.classList.add('active')
@@ -76,5 +79,5 @@ function loadGarage() {
     btnPrevWinners.classList.remove('active')
     btnNextWinner.classList.remove('active')
     screenPage = 'Garage'
-    loadGaragePage()
+       loadGaragePage()
 }

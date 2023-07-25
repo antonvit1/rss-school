@@ -52,7 +52,7 @@ export async function updateWinnerAction(
     })
 }
 export async function deleteWinnerAction(id: number) {
-    const response = await fetch(`http://127.0.0.1:3000/winner/${id}`, {
+    const response = await fetch(`http://127.0.0.1:3000/winners/${id}`, {
         method: 'DELETE',
     })
 }

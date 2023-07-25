@@ -456,10 +456,10 @@ export function saveInLocalStorageGarage() {
         document.querySelector('.update-car-color')
     )
     localStorage.setItem('pageNumber', String(currentPage))
-    localStorage.setItem('inputNameCreate', inputNameCreate.value)
-    localStorage.setItem('inputColorCreate', inputColorCreate.value)
-    localStorage.setItem('updateNameCreate', updateNameCreate.value)
-    localStorage.setItem('updateColorCreate', updateColorCreate.value)
+    localStorage.setItem('inputNameCreate', inputNameCreate?.value || '')
+    localStorage.setItem('inputColorCreate', inputColorCreate?.value || "")
+    localStorage.setItem('updateNameCreate', updateNameCreate?.value || '')
+    localStorage.setItem('updateColorCreate', updateColorCreate?.value || '')
 }
 window.addEventListener('beforeunload', function () {
     saveInLocalStorageGarage()

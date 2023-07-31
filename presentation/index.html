@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title>reveal.js</title>
+
+    <link rel="stylesheet" href="dist/reset.css" />
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/league.css" />
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css" />
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section
+          data-background-image="vue.png"
+          data-background-size="30%"></section>
+        <section>
+          <section
+            data-background-image="evan.jpg"
+            data-background-size="70%"></section>
+          <section
+            data-background-image="vue-3.jpg"
+            data-background-size="70%"></section>
+        </section>
+
+        <section data-markdown>
+          <textarea data-template>
+						```js [1-2|3-4|6-14]
+						<div id="app">{{ message }}</div>
+
+						<script>
+						  const { createApp, ref } = Vue
+
+						  createApp({
+							setup() {
+							  const message = ref('Hello vue!')
+							  return {
+								message
+							  }
+							}
+						  }).mount('#app')
+						</script>
+						 ```
+					</textarea
+          >
+        </section>
+        <section>
+          <ul>
+            <li>Template Syntax</li>
+            <li>Reactivity Fundaments</li>
+            <li>Components</li>
+            <li>Props</li>
+            <li>Lifecycle Hooks</li>
+            <li>other...</li>
+          </ul>
+        </section>
+        <section>
+			<section data-markdown>
+				<textarea data-template>
+					Template Syntax
+					```js [1-2]
+					<p>Using text interpolation: {{ rawHtml }}</p>
+					<p>Using v-html directive: <span v-html="rawHtml"></span></p>
+					 ```
+					</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
+							  v-bind directive
+							  ```js [1 | 3]
+							  <div v-bind:id="dynamicId"></div>
+
+							  <div :id="dynamicId"></div>
+							   ```
+							  </textarea
+				>
+			  </section>
+        </section>
+
+        <section >
+         <section data-markdown>
+          <textarea data-template>
+						Reactivity Fundaments
+						```js [1-2 | 3-8]
+						import { ref } from 'vue'
+
+const count = ref(0)
+console.log(count) // { value: 0 }
+console.log(count.value) // 0
+
+count.value++
+console.log(count.value)
+						 ```
+						</textarea>
+		</section>
+
+		<section data-markdown>
+			<textarea data-template>
+
+						  ```js [1 | 3-6 | 8-13]
+						  import { ref } from 'vue'
+
+export default {
+  // `setup` is a special hook dedicated for the Composition API.
+  setup() {
+    const count = ref(0)
+
+    // expose the ref to the template
+    return {
+      count
+    }
+  }
+}
+						   ```
+						  </textarea>
+		  </section>
+		  <section data-markdown>
+			<textarea data-template>
+
+						  ```js [1-3]
+						  <button @click="count++">
+							{{ count }}
+						  </button>
+						   ```
+						  </textarea>
+		  </section>
+        </section>
+		<section>
+			<h2>Components</h2>
+        <section data-background-image="components.jpg"
+		data-background-size="60%"></section>
+	</section>
+		<section><h2>Props</h2>
+			<section data-markdown>
+				<textarea data-template>
+								  ```js [1-5]
+								  <script setup>
+									const props = defineProps(['foo'])
+
+									console.log(props.foo)
+									</script>
+							   ```
+							  </textarea>
+			  </section>
+			  <section data-markdown>
+				<textarea data-template>
+								  ```js [1-7]
+								  export default {
+									props: ['foo'],
+									setup(props) {
+									  // setup() receives props as the first argument.
+									  console.log(props.foo)
+									}
+								  }
+							   ```
+							  </textarea>
+			  </section>
+			  <section data-markdown>
+				<textarea data-template>
+								  ```js [1-4]
+								  defineProps({
+									title: String,
+									likes: Number
+								  })
+							   ```
+							  </textarea>
+			  </section>
+		</section>
+		<section><h3>Lifecycle Hooks</h3>
+		<section data-background-image="diagram.jpg"
+		data-background-size="25%"></section>
+		</section>
+		<section> Thank you for your Attention!</section>
+      </div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+        hash: true,
+
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+      });
+    </script>
+  </body>
+</html>

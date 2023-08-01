@@ -1,10 +1,10 @@
 import {
-    btnToWinner as buttonToWinner,
-    btnToGarage as buttonToGarage,
-    btnPrev,
-    btnNext,
-    btnPrevWinners,
-    btnNextWinner,
+    buttonToWinner as buttonToWinner,
+    buttonToGarage as buttonToGarage,
+    buttonPrevious as buttonPrevious,
+    buttonNext as buttonNext,
+    buttonPreviousWinners as buttonPreviousWinners,
+    buttonNextWinner as buttonNextWinner,
     headerSection,
     contentWrapperToGarage,
     contentWrapperToWinner,
@@ -18,7 +18,7 @@ import {
     createFormForUpdatingCar,
     createMainBtns,
     loadGaragePage,
-    saveInLocalStorageGarage
+    saveInLocalStorageGarage,
 } from './garage/garage'
 import { renderPageWinners } from './winners/winners'
 
@@ -37,7 +37,6 @@ buttonToGarage.addEventListener('click', function () {
 })
 
 window.addEventListener('beforeunload', function () {
-
     this.localStorage.setItem('screen', screenPage)
 })
 function loadWinners() {
@@ -53,10 +52,10 @@ function loadWinners() {
     pageNumber.classList.add('active')
     pageNameToWinner.classList.add('active')
     pageNumberToWinner.classList.add('active')
-    btnPrev.classList.add('active')
-    btnNext.classList.add('active')
-    btnPrevWinners.classList.add('active')
-    btnNextWinner.classList.add('active')
+    buttonPrevious.classList.add('active')
+    buttonNext.classList.add('active')
+    buttonPreviousWinners.classList.add('active')
+    buttonNextWinner.classList.add('active')
     renderPageWinners()
     screenPage = 'Winner'
 }
@@ -74,10 +73,10 @@ function loadGarage() {
     pageNumber.classList.remove('active')
     pageNameToWinner.classList.remove('active')
     pageNumberToWinner.classList.remove('active')
-    btnPrev.classList.remove('active')
-    btnNext.classList.remove('active')
-    btnPrevWinners.classList.remove('active')
-    btnNextWinner.classList.remove('active')
+    buttonPrevious.classList.remove('active')
+    buttonNext.classList.remove('active')
+    buttonPreviousWinners.classList.remove('active')
+    buttonNextWinner.classList.remove('active')
     screenPage = 'Garage'
-       loadGaragePage()
+    loadGaragePage()
 }

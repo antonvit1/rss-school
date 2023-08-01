@@ -41,14 +41,14 @@ const header = <HTMLElement>document.createElement('header')
 header.className = 'header'
 bodyWrapper.append(header)
 
-export const btnToGarage = <HTMLElement>document.createElement('button')
-btnToGarage.className = 'button-garage'
-btnToGarage.innerHTML = 'To Garage'
-header.append(btnToGarage)
-export const btnToWinner = <HTMLElement>document.createElement('button')
-btnToWinner.className = 'button-winner'
-btnToWinner.innerHTML = 'To Winner'
-header.append(btnToWinner)
+export const buttonToGarage = <HTMLElement>document.createElement('button')
+buttonToGarage.className = 'button-garage'
+buttonToGarage.innerHTML = 'To Garage'
+header.append(buttonToGarage)
+export const buttonToWinner = <HTMLElement>document.createElement('button')
+buttonToWinner.className = 'button-winner'
+buttonToWinner.innerHTML = 'To Winner'
+header.append(buttonToWinner)
 
 export const headerSection = <HTMLElement>document.createElement('section')
 headerSection.className = 'section-create-car'
@@ -86,19 +86,21 @@ bodyWrapper.append(contentWrapperToWinner)
 const wrapperButtonPreviousNext = <HTMLElement>document.createElement('div')
 wrapperButtonPreviousNext.className = 'wrapper-prev-next'
 bodyWrapper.append(wrapperButtonPreviousNext)
-export const btnPrev = <HTMLElement>document.createElement('button')
-btnPrev.className = 'btn-prev'
-btnPrev.innerHTML = 'Prev'
-wrapperButtonPreviousNext.append(btnPrev)
-export const btnNext = <HTMLElement>document.createElement('button')
-btnNext.className = 'btn-next'
-btnNext.innerHTML = 'Next'
-wrapperButtonPreviousNext.append(btnNext)
-export const btnPrevWinners = <HTMLElement>document.createElement('button')
-btnPrevWinners.className = 'btn-prev-winner'
-btnPrevWinners.innerHTML = 'Prev'
-wrapperButtonPreviousNext.append(btnPrevWinners)
-export const btnNextWinner = <HTMLElement>document.createElement('button')
-btnNextWinner.className = 'btn-next-winner'
-btnNextWinner.innerHTML = 'Next'
-wrapperButtonPreviousNext.append(btnNextWinner)
+export const buttonPrevious = <HTMLElement>document.createElement('button')
+buttonPrevious.className = 'btn-prev'
+buttonPrevious.innerHTML = 'Prev'
+wrapperButtonPreviousNext.append(buttonPrevious)
+export const buttonNext = <HTMLElement>document.createElement('button')
+buttonNext.className = 'btn-next'
+buttonNext.innerHTML = 'Next'
+wrapperButtonPreviousNext.append(buttonNext)
+export const buttonPreviousWinners = <HTMLElement>(
+    document.createElement('button')
+)
+buttonPreviousWinners.className = 'btn-prev-winner'
+buttonPreviousWinners.innerHTML = 'Prev'
+wrapperButtonPreviousNext.append(buttonPreviousWinners)
+export const buttonNextWinner = <HTMLElement>document.createElement('button')
+buttonNextWinner.className = 'btn-next-winner'
+buttonNextWinner.innerHTML = 'Next'
+wrapperButtonPreviousNext.append(buttonNextWinner)

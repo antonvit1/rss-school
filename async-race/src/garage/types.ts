@@ -3,7 +3,7 @@ export type Car = {
     color: string
     id: number
 }
-export type parametrsOfFinishedCars = {
+export type ParametrsOfFinishedCars = {
     id: number
     time: number
 }

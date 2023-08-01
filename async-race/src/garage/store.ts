@@ -4,7 +4,7 @@ export async function addNewCarWithoutGetCarAction(
     carName: string,
     color: string
 ) {
-    const response = await fetch('http://127.0.0.1:3000/garage', {
+    await fetch('http://127.0.0.1:3000/garage', {
         method: 'POST',
         body: JSON.stringify({ name: carName, color: color }),
         headers: { 'Content-Type': 'application/json' },

@@ -1,15 +1,15 @@
 import {
     contentWrapperToGarage,
-    btnPrev as buttonPrevious,
-    btnNext as buttonNext,
+    buttonPrevious as buttonPrevious,
+    buttonNext as buttonNext,
     headerSection,
     pageName,
     pageNumber,
     defaultCarBrends,
     defaultCarModels,
 } from '../main-elements'
-import { renderPageWinners, updateWinnersContent } from '../winners/winners'
-import { Car, parametrsOfFinishedCars } from './types'
+import { updateWinnersContent } from '../winners/winners'
+import { Car, ParametrsOfFinishedCars } from './types'
 import {
     addNewCarWithoutGetCarAction,
     addNewCarAction,
@@ -25,17 +25,18 @@ import {
     deleteWinnerAction,
     getWinnerAction,
     updateWinnerAction,
-} from '../winners/storeWinners'
-const imgCar = require('!svg-inline-loader?classPrefix!../assets/car.svg')
-const imgFlag = require('!svg-inline-loader?classPrefix!../assets/flag.svg')
+} from '../winners/store-winners'
+
+import imgCar from '!svg-inline-loader?classPrefix!../assets/car.svg'
+import imgFlag from '!svg-inline-loader?classPrefix!../assets/flag.svg'
 
 let arrayOfCars: Car[] = []
-export const amountGenerateCarsToBtn = 99
+export const amountGenerateCarsToButton = 99
 export const amountOfCarOnPage = 7
 export let currentPage = +(localStorage.getItem('pageNumber') || 1)
 let selectedCarId: number | null = null
-let finishedCars: parametrsOfFinishedCars[] = []
-let amountOfAllCars: number = 0
+let finishedCars: ParametrsOfFinishedCars[] = []
+let amountOfAllCars = 0
 
 export function loadGaragePage() {
     headerSection.innerHTML = ''
@@ -43,7 +44,7 @@ export function loadGaragePage() {
     createFormForUpdatingCar()
     createMainBtns()
     updateGarageContent()
-    disabledBtnReturnReset()
+    disabledButtonReturnReset()
 }
 
 export function createFormForCreatingCar() {
@@ -126,7 +127,7 @@ export function createMainBtns() {
     buttonGenerateCars.innerHTML = 'Generate Cars'
     btnsWrapper.append(buttonGenerateCars)
     buttonGenerateCars.addEventListener('click', function () {
-        for (let index = 0; index <= amountGenerateCarsToBtn; index++) {
+        for (let index = 0; index <= amountGenerateCarsToButton; index++) {
             addNewCarWithoutGetCarAction(
                 `${
                     defaultCarBrends[
@@ -160,7 +161,7 @@ function createEventPressButton(
             element.setAttribute('disabled', 'true')
         }
 
-        unDisabledBtnReturnReset()
+        unDisabledButtonReturnReset()
     })
     buttonReset.addEventListener('click', function () {
         finishedCars = []
@@ -209,7 +210,6 @@ function createButtonsForCar(wrapperCar: HTMLElement, car: Car) {
 
     buttonRemove.addEventListener('click', function () {
         deleteCar(car.id)
-
     })
     buttonSelect.addEventListener('click', function () {
         inputUpdateCarName.value = car.name
@@ -285,10 +285,6 @@ export async function updateGarageContent() {
 }
 
 function startCarAnimation(id: number | null, distance: number, speed: number) {
-    const wrapperCar = <HTMLElement>document.querySelector(`#car-${id}`)
-    const wrapperSvgCar = <HTMLElement>(
-        wrapperCar.querySelector('.wrapper-svg-car')
-    )
     let isEngineWorking = true
     switchEngineToDriveModeAction(id).then((status: boolean) => {
         isEngineWorking = status
@@ -302,7 +298,8 @@ function startCarAnimation(id: number | null, distance: number, speed: number) {
             return
         }
         const timePassed: number = Date.now() - startTime
-        if (timePassed / ((distance / speed) * procentTime) >=
+        if (
+            timePassed / ((distance / speed) * procentTime) >=
             lengthOfRoadInPercent
         ) {
             if (id) {
@@ -310,7 +307,10 @@ function startCarAnimation(id: number | null, distance: number, speed: number) {
                 determineOFWinner()
             }
             if (finishedCars.length === 1) {
-                createMessageAboutWinner(id, +(Math.floor((distance / speed) * 0.1) * 0.01).toFixed(2))
+                createMessageAboutWinner(
+                    id,
+                    +(Math.floor((distance / speed) * 0.1) * 0.01).toFixed(2)
+                )
             }
             clearInterval(timer)
             const buttonReset = <HTMLElement>(
@@ -319,20 +319,29 @@ function startCarAnimation(id: number | null, distance: number, speed: number) {
             buttonReset?.removeAttribute('disabled')
             return
         }
-        draw(timePassed)
+        draw(id, timePassed, distance, speed, procentTime)
     }, 0)
-    function draw(timePassed: number) {
-        wrapperSvgCar.style.left =
-            timePassed / ((distance / speed) * procentTime) + 'vw'
-    }
 }
-
+function draw(
+    id: number | null,
+    timePassed: number,
+    distance: number,
+    speed: number,
+    procentTime: number
+) {
+    const wrapperCar = <HTMLElement>document.querySelector(`#car-${id}`)
+    const wrapperSvgCar = <HTMLElement>(
+        wrapperCar.querySelector('.wrapper-svg-car')
+    )
+    wrapperSvgCar.style.left =
+        timePassed / ((distance / speed) * procentTime) + 'vw'
+}
 function createMessageAboutWinner(id: number | null, time: number) {
     const car = arrayOfCars.find((auto) => auto.id === id)
     const messageWin = <HTMLElement>document.createElement('div')
     messageWin.className = 'message-win'
     messageWin.innerHTML = `${car?.name} won with time ${time}`
-    contentWrapperToGarage.appendChild(messageWin)
+    contentWrapperToGarage.append(messageWin)
 }
 function removeWinMessage() {
     const messageWin = <HTMLElement>document.querySelector('.message-win')
@@ -340,18 +349,18 @@ function removeWinMessage() {
         messageWin.remove()
     }
 }
-function disabledBtnReturnReset() {
+function disabledButtonReturnReset() {
     const btnsReturn = [...document.querySelectorAll('.btn-return-car')]
     for (const element of btnsReturn) {
         element.setAttribute('disabled', 'true')
     }
-    const btnReset = <HTMLElement>document.querySelector('.btn-reset')
-    btnReset.setAttribute('disabled', 'true')
+    const buttonReset = <HTMLElement>document.querySelector('.btn-reset')
+    buttonReset.setAttribute('disabled', 'true')
 }
-function unDisabledBtnReturnReset() {
+function unDisabledButtonReturnReset() {
     const btnsReturn = [...document.querySelectorAll('.btn-return-car')]
-    const btnReset = <HTMLElement>document.querySelector('.btn-reset')
-    btnReset.removeAttribute('disabled')
+    const buttonReset = <HTMLElement>document.querySelector('.btn-reset')
+    buttonReset.removeAttribute('disabled')
 
     for (const element of btnsReturn) {
         element.removeAttribute('disabled')
@@ -457,7 +466,7 @@ export function saveInLocalStorageGarage() {
     )
     localStorage.setItem('pageNumber', String(currentPage))
     localStorage.setItem('inputNameCreate', inputNameCreate?.value || '')
-    localStorage.setItem('inputColorCreate', inputColorCreate?.value || "")
+    localStorage.setItem('inputColorCreate', inputColorCreate?.value || '')
     localStorage.setItem('updateNameCreate', updateNameCreate?.value || '')
     localStorage.setItem('updateColorCreate', updateColorCreate?.value || '')
 }

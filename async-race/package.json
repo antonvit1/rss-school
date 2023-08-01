@@ -27,6 +27,7 @@
         "eslint-plugin-import": "^2.27.5",
         "eslint-plugin-prettier": "^5.0.0",
         "eslint-plugin-unicorn": "^48.0.0",
+        "html-webpack-plugin": "^5.5.3",
         "json-loader": "^0.5.7",
         "mini-css-extract-plugin": "^2.7.6",
         "node-sass": "^9.0.0",

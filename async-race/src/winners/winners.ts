@@ -2,13 +2,13 @@ import {
     contentWrapperToWinner,
     pageNameToWinner,
     pageNumberToWinner,
-    btnPrevWinners,
-    btnNextWinner,
+    buttonPreviousWinners as buttonPreviousWinners,
+    buttonNextWinner as buttonNextWinner,
 } from '../main-elements'
 import { ExtendedWinner, Winner, WinnerKey } from './types'
-import { getWinnersAction } from './storeWinners'
+import { getWinnersAction } from './store-winners'
 import { getCarAction } from '../garage/store'
-const imgCarInTable = require('!svg-inline-loader?classPrefix!../assets/car.svg')
+import imgCarInTable from '!svg-inline-loader?classPrefix!../assets/car.svg'
 
 const tableResults: string[] = [
     'Id',
@@ -22,7 +22,7 @@ let page = +(localStorage.getItem('pageNumber') || 1)
 let sort = localStorage.getItem('sort') || 'id'
 let order = localStorage.getItem('order') || 'ASC'
 let carWinners: ExtendedWinner[] = []
-let amountOfAllWinners: number = 0
+let amountOfAllWinners = 0
 
 export function createWinnersTable() {
     const tableResult = document.createElement('table')
@@ -31,10 +31,10 @@ export function createWinnersTable() {
     const headTr = document.createElement('tr')
     headTr.className = 'tr'
     tableResult.append(headTr)
-    for (const tableResult_ of tableResults) {
+    for (const lineResult of tableResults) {
         const th = document.createElement('th')
         th.className = 'th'
-        th.innerHTML = tableResult_
+        th.innerHTML = lineResult
         headTr.append(th)
         if (th.innerHTML === 'Wins') {
             createSortingButton(th, '↑', 'wins', 'ASC')
@@ -48,7 +48,6 @@ export function createWinnersTable() {
             createSortingButton(th, '↑', 'id', 'ASC')
             createSortingButton(th, '↓', 'id', 'DESC')
         }
-
     }
 }
 function createRowOfWinnerTable(winner: ExtendedWinner) {
@@ -103,7 +102,7 @@ export async function renderPageWinners() {
     if (amountOfWinners) {
         amountOfAllWinners = +amountOfWinners
     }
-    winners.forEach(async (winner: Winner, index: number) => {
+    winners.forEach(async (winner: Winner) => {
         const dopParameterOfWinner = await getCarAction(winner.id)
         const parametrsOfWinner = {
             number: winner.id,
@@ -120,27 +119,27 @@ export async function renderPageWinners() {
 function createSortingButton(
     th: HTMLElement,
     text: string,
-    sortArg: string,
-    orderArg: string
+    sortArgument: string,
+    orderArgument: string
 ) {
     const button = <HTMLElement>document.createElement('button')
     button.className = 'button-sort'
     button.innerHTML = text
-    th.appendChild(button)
+    th.append(button)
     button.addEventListener('click', function () {
-        sort = sortArg
-        order = orderArg
+        sort = sortArgument
+        order = orderArgument
         renderPageWinners()
     })
 }
 
-btnPrevWinners.addEventListener('click', function () {
+buttonPreviousWinners.addEventListener('click', function () {
     if (page > 1) {
         page -= 1
         renderPageWinners()
     }
 })
-btnNextWinner.addEventListener('click', function () {
+buttonNextWinner.addEventListener('click', function () {
     if (page < amountOfAllWinners / 10) {
         page += 1
         renderPageWinners()

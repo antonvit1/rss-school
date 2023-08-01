@@ -33,26 +33,25 @@ export async function createWinnerAction(
     wins: number,
     time: number
 ) {
-    const response = await fetch(`http://127.0.0.1:3000/winners`, {
+    await fetch(`http://127.0.0.1:3000/winners`, {
         method: 'POST',
         body: JSON.stringify({ id, wins, time }),
         headers: { 'Content-Type': 'application/json' },
     })
-    const parametrs = await response.json()
 }
 export async function updateWinnerAction(
     id: number,
     wins: number,
     time: number
 ) {
-    const response = await fetch(`http://127.0.0.1:3000/winners/${id}`, {
+    await fetch(`http://127.0.0.1:3000/winners/${id}`, {
         method: 'PUT',
         body: JSON.stringify({ id, wins, time }),
         headers: { 'Content-Type': 'application/json' },
     })
 }
 export async function deleteWinnerAction(id: number) {
-    const response = await fetch(`http://127.0.0.1:3000/winners/${id}`, {
+    await fetch(`http://127.0.0.1:3000/winners/${id}`, {
         method: 'DELETE',
     })
 }

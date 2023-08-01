@@ -2,13 +2,14 @@ module.exports = {
     "env": {
         "browser": true,
         "es2021": true,
-        "node": true
+        "node": true,
+
     },
     "extends": [
         "eslint:recommended",
         "airbnb-typescript/base",
         "plugin:@typescript-eslint/recommended",
-        "plugin:unicorn/recommended",
+
         "plugin:prettier/recommended",
         "prettier",
     ],
@@ -21,11 +22,13 @@ module.exports = {
     "plugins": [
         "@typescript-eslint",
         "prettier",
-        "unicorn" ,
+
         "import"
 
     ],
     "rules": {
+        "no-use-before-define": "off",
+        "@typescript-eslint/no-use-before-define": "off",
         "no-debugger": "off",
         "no-console": 0,
         "max-lines-per-function": ["error", 40]

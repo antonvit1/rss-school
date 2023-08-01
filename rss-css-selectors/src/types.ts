@@ -23,12 +23,12 @@ export type HtmlCode = {
   html_nested: HtmlCode;
 };
 export type LevelDescription = {
-classHelp: string;
-topic_task: string;
-task: string;
-symbol_task: string;
-description_task: string;
-example_word: string;
-example_first: string;
-example_second: string;
-}
+  classHelp: string;
+  topic_task: string;
+  task: string;
+  symbol_task: string;
+  description_task: string;
+  example_word: string;
+  example_first: string;
+  example_second: string;
+};

@@ -1,13 +1,11 @@
-export type Winner = {
+export interface Winner {
     id: number
     wins: number
     time: number
 }
-export type ExtendedWinner = {
+export interface ExtendedWinner extends Winner {
     number: number
     color: string
     name: string
-    wins: number
-    time: number
 }
 export type WinnerKey = 'number' | 'color' | 'name' | 'wins' | 'time'

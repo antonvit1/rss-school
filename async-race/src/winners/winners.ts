@@ -2,8 +2,8 @@ import {
     contentWrapperToWinner,
     pageNameToWinner,
     pageNumberToWinner,
-    buttonPreviousWinners as buttonPreviousWinners,
-    buttonNextWinner as buttonNextWinner,
+    buttonPreviousWinners,
+    buttonNextWinner,
 } from '../main-elements'
 import { ExtendedWinner, Winner, WinnerKey } from './types'
 import { getWinnersAction } from './store-winners'
@@ -92,28 +92,27 @@ export function updateWinnersContent() {
 export async function renderPageWinners() {
     updateWinnersContent()
     createWinnersTable()
-    const { winners, amountOfWinners } = await getWinnersAction(
-        page,
-        sort,
-        order
-    )
-    pageNumberToWinner.innerHTML = `Page #${page}`
-    pageNameToWinner.innerHTML = `Winners (${amountOfWinners})`
-    if (amountOfWinners) {
-        amountOfAllWinners = +amountOfWinners
-    }
-    winners.forEach(async (winner: Winner) => {
-        const dopParameterOfWinner = await getCarAction(winner.id)
-        const parametrsOfWinner = {
-            number: winner.id,
-            color: dopParameterOfWinner.color,
-            name: dopParameterOfWinner.name,
-            wins: winner.wins,
-            time: +(Math.floor(winner.time * 0.1) * 0.01).toFixed(2),
+    const parametrs = await getWinnersAction(page, sort, order)
+    if (parametrs) {
+        pageNumberToWinner.innerHTML = `Page #${page}`
+        pageNameToWinner.innerHTML = `Winners (${parametrs.amountOfWinners})`
+        if (parametrs.amountOfWinners) {
+            amountOfAllWinners = +parametrs.amountOfWinners
         }
-        createRowOfWinnerTable(parametrsOfWinner)
-        carWinners.push(parametrsOfWinner)
-    })
+        parametrs.winners.forEach(async (winner: Winner) => {
+            const dopParameterOfWinner = await getCarAction(winner.id)
+            const parametrsOfWinner = {
+                id: winner.id,
+                number: winner.id,
+                color: dopParameterOfWinner.color,
+                name: dopParameterOfWinner.name,
+                wins: winner.wins,
+                time: +(Math.floor(winner.time * 0.1) * 0.01).toFixed(2),
+            }
+            createRowOfWinnerTable(parametrsOfWinner)
+            carWinners.push(parametrsOfWinner)
+        })
+    }
 }
 
 function createSortingButton(

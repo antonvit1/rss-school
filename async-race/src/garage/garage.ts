@@ -1,7 +1,7 @@
 import {
     contentWrapperToGarage,
-    buttonPrevious as buttonPrevious,
-    buttonNext as buttonNext,
+    buttonPrevious,
+    buttonNext,
     headerSection,
     pageName,
     pageNumber,
@@ -393,19 +393,18 @@ async function determineOFWinner() {
 }
 
 async function renderCars() {
-    const { cars, amountOfCars } = await getCarsAction(
-        amountOfCarOnPage,
-        currentPage
-    )
-    if (amountOfCars) {
-        amountOfAllCars = +amountOfCars
+    const parametrs = await getCarsAction(amountOfCarOnPage, currentPage)
+    if (parametrs) {
+        if (parametrs.amountOfCars) {
+            amountOfAllCars = +parametrs.amountOfCars
+        }
+        pageNumber.innerHTML = `Page #${currentPage}`
+        pageName.innerHTML = `Garage (${parametrs.amountOfCars})`
+        parametrs.cars.forEach((car: Car) => {
+            createSectionForCar(car)
+            arrayOfCars.push(car)
+        })
     }
-    pageNumber.innerHTML = `Page #${currentPage}`
-    pageName.innerHTML = `Garage (${amountOfCars})`
-    cars.forEach((car: Car) => {
-        createSectionForCar(car)
-        arrayOfCars.push(car)
-    })
 }
 
 async function addNewCar(carName: string, color: string) {
@@ -436,7 +435,9 @@ async function stopCarEngine(id: number) {
     const wrapperSvgCar = <HTMLElement>(
         wrapperCar.querySelector('.wrapper-svg-car')
     )
-    wrapperSvgCar.style.left = `${parametrs.velocity}`
+    if (parametrs) {
+        wrapperSvgCar.style.left = `${parametrs.velocity}`
+    }
 }
 
 buttonPrevious.addEventListener('click', function () {

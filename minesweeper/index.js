@@ -62,7 +62,7 @@ display.type = "text";
 display.value = countBomb;
 wrapperInscriptionCountFlag.appendChild(display);
 
-let buttonUse = document.createElement("button");
+const buttonUse = document.createElement("button");
 buttonUse.className = "button-use-bomb";
 buttonUse.innerHTML = "Use";
 wrapperInscriptionCountFlag.appendChild(buttonUse);
@@ -663,10 +663,28 @@ function playSound(typeSound) {
   return true;
 }
 
-let buttonResult = document.createElement("button");
+const wrapperStyleWrapper = document.createElement("div");
+wrapperStyleWrapper.className = "wrupper-style-wrapper";
+body.appendChild(wrapperStyleWrapper);
+
+const styleWrapper = document.createElement("div");
+styleWrapper.className = "style-wrapper";
+wrapperStyleWrapper.appendChild(styleWrapper);
+
+const darkStyle = document.createElement("div");
+darkStyle.className = "dark-style";
+darkStyle.innerHTML = "Dark style";
+styleWrapper.appendChild(darkStyle);
+
+let buttonResult = document.createElement("div");
 buttonResult.className = "button-results";
 buttonResult.innerHTML = "Table results";
-body.appendChild(buttonResult);
+styleWrapper.appendChild(buttonResult);
+
+const lightStyle = document.createElement("div");
+lightStyle.className = "light-style";
+lightStyle.innerHTML = "Light style";
+styleWrapper.appendChild(lightStyle);
 
 let bodyWrapper = document.createElement("div");
 bodyWrapper.className = "body-wrapper";
@@ -725,23 +743,6 @@ function closeVisul() {
     bodyWrapper.classList.remove("active");
   });
 }
-const wrapperStyleWrapper = document.createElement("div");
-wrapperStyleWrapper.className = "wrupper-style-wrapper";
-body.appendChild(wrapperStyleWrapper);
-
-const styleWrapper = document.createElement("div");
-styleWrapper.className = "style-wrapper";
-wrapperStyleWrapper.appendChild(styleWrapper);
-
-const darkStyle = document.createElement("button");
-darkStyle.className = "dark-style";
-darkStyle.innerHTML = "Dark style";
-styleWrapper.appendChild(darkStyle);
-
-const lightStyle = document.createElement("button");
-lightStyle.className = "light-style";
-lightStyle.innerHTML = "Light style";
-styleWrapper.appendChild(lightStyle);
 
 darkStyle.addEventListener("click", () => {
   body.classList.add("style");

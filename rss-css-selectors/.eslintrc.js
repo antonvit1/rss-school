@@ -8,16 +8,17 @@ module.exports = {
         "eslint:recommended",
         "airbnb-typescript/base",
         "plugin:@typescript-eslint/recommended",
-        // "plugin:unicorn/recommended",
+        "plugin:unicorn/recommended",
         "plugin:prettier/recommended",
         "prettier",
-        // "prettier/@typescript-eslint",
+        "prettier/@typescript-eslint",
         ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "ecmaVersion": "latest",
         "sourceType": "module",
         "project":  ['./tsconfig.json'],
+
     },
     "plugins": [
         "@typescript-eslint",
